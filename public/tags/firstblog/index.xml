@@ -2,25 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FirstBlog on Terminal</title>
-    <link>/tags/firstblog/</link>
+    <link>//localhost:1313/tags/firstblog/</link>
     <description>Recent content in FirstBlog on Terminal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/firstblog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/firstblog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test Blog</title>
-      <link>/posts/test-blog/</link>
+      <link>//localhost:1313/posts/blogposts/test-blog/</link>
       <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
       
-      <guid>/posts/test-blog/</guid>
-      <description>&lt;h1 id=&#34;ok-here-we-go-this-is-a-test-blog&#34;&gt;ok here we go this is a test blog&lt;/h1&gt;
-&lt;p&gt;yeah idk..&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo apt rm / -r&lt;/code&gt;&lt;/p&gt;
+      <guid>//localhost:1313/posts/blogposts/test-blog/</guid>
+      <description>&lt;h1 id=&#34;fuck-hisokacupcake&#34;&gt;Fuck hisokacupcake&lt;/h1&gt;
+&lt;p&gt;&lt;img alt=&#34;imae&#34; src=&#34;https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/466001138_9041429502556328_789849932317665491_n.jpg?stp=dst-jpg_p526x296_tt6&amp;_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=833d8c&amp;_nc_ohc=hnnWg_l-QqsQ7kNvgGG8sBc&amp;_nc_zt=23&amp;_nc_ht=scontent.ftbs5-3.fna&amp;_nc_gid=A3N9aUAoV8UthpYA8v61tlO&amp;oh=00_AYAEt-YxdiPY_usZws9U0uzJt4WJmzgY8FXobkrTFttoPg&amp;oe=675A6EE6&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;Image Description&#34; src=&#34;avatar.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;Image Description&#34; src=&#34;pp.png&#34;&gt;&lt;/p&gt;</description>
-      <content>&lt;h1 id=&#34;ok-here-we-go-this-is-a-test-blog&#34;&gt;ok here we go this is a test blog&lt;/h1&gt;
-&lt;p&gt;yeah idk..&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo apt rm / -r&lt;/code&gt;&lt;/p&gt;
+      <content>&lt;h1 id=&#34;fuck-hisokacupcake&#34;&gt;Fuck hisokacupcake&lt;/h1&gt;
+&lt;p&gt;&lt;img alt=&#34;imae&#34; src=&#34;https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/466001138_9041429502556328_789849932317665491_n.jpg?stp=dst-jpg_p526x296_tt6&amp;_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=833d8c&amp;_nc_ohc=hnnWg_l-QqsQ7kNvgGG8sBc&amp;_nc_zt=23&amp;_nc_ht=scontent.ftbs5-3.fna&amp;_nc_gid=A3N9aUAoV8UthpYA8v61tlO&amp;oh=00_AYAEt-YxdiPY_usZws9U0uzJt4WJmzgY8FXobkrTFttoPg&amp;oe=675A6EE6&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;Image Description&#34; src=&#34;avatar.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;Image Description&#34; src=&#34;pp.png&#34;&gt;&lt;/p&gt;
 </content>
