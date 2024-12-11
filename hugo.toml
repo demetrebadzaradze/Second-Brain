@@ -1,5 +1,6 @@
-baseurl = "/"
+baseurl = "https://demetrebadzaradze.github.io/Second-Brain/"
 languageCode = "en-us"
+title = "Second Brain"
 # Add it only if you keep the theme in the `themes` directory.
 # Remove it if you use the theme as a remote Hugo Module.
 theme = "terminal"
@@ -20,7 +21,7 @@ paginate = 5
   fullWidthTheme = false
 
   # center theme with default width
-  centerTheme = false
+  centerTheme = true
 
   # if your resource directory contains an image called `cover.(jpg|png|webp)`,
   # then the file will be used as a cover automatically.
