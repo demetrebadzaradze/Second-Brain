@@ -143,6 +143,85 @@ this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 		</item>
 		
 		<item>
+			<title>Host terraria server on Linux server</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/host-terraria-server-on-linux-server/</link>
+			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
+			
+			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/host-terraria-server-on-linux-server/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<p><strong>easiest and simplest way</strong> to do this is to run it on <a href="https://www.youtube.com/watch?v=oUnWU4Y4kSY">docker</a>, because docker is pure magic and there docker image that handles all of what this needs called <code>rathena/terraria</code>.</p>
+<h1 id="installing-docker">installing docker</h1>
+<p>update repos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update 
+</span></span></code></pre></div><p>then install docker:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y docker.io
+</span></span></code></pre></div><p>and enable sysctl:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> --now docker
+</span></span></code></pre></div><h1 id="pull-and-run-image">pull and run image</h1>
+<p>probably making new directory for server configs is a good idea:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/opt/terraria/server1
+</span></span></code></pre></div><p>or something like in games directory what ever you would like just be careful with perditions.</p>
+<ul>
+<li>
+<h3 id="pull-the-image">pull the image</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull rathena/terraria
+</span></span></code></pre></div></li>
+<li>
+<h3 id="run-the-server">run the server</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--name<span class="o">=</span>terraria-server <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 7777:7777 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v ~/opt/terraria/server1:/config <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">WORLD_NAME</span><span class="o">=</span><span class="s2">&#34;MyWorld&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">MAX_PLAYERS</span><span class="o">=</span><span class="m">10</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">DIFFICULTY</span><span class="o">=</span><span class="m">2</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--restart unless-stopped <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>rathena/terraria
+</span></span></code></pre></div>now here there might be some <strong>things to modify</strong>
+<ul>
+<li>
+<p><code>-p</code> shows witch ports to forward from container to real machine and <code>7777</code> is a default port for terraria server. if you are running more then one definitely change this. if not this is good.</p>
+</li>
+<li>
+<p><code>-v</code> binds <code>/configs</code> folder on container to <code>~/opt/terraria/server1</code> on our server witch we initially crated, if you want to bind it somewhere else just change the <code>~/opt/terraria/server1</code> part to your desired path and again be careful with permeations.</p>
+</li>
+<li>
+<p><code>-e</code> makes environmental variables to configure server and thy are pretty self explanatory.</p>
+<ol>
+<li><code>WORD_NAME</code> specifies name of the world.</li>
+<li><code>MAX_PLAYERS</code> specifies max player count.</li>
+<li><code>DIFFICULTY</code> specifies difficulty of the game like
+<ul>
+<li><code>0</code>: Normal</li>
+<li><code>1</code>: Expert</li>
+<li><code>2</code>: Master</li>
+<li><code>3</code>: Journey Mode
+change as you wish.</li>
+</ul>
+</li>
+<li><strong>some other useful environmental variables</strong> are:
+<ul>
+<li><code>-e PASSWORD=&quot;yourpassword&quot;</code> specifies password for the server</li>
+<li><code>-e SEED=&quot;worldseed&quot;</code>: Specifies a seed for world generation.</li>
+<li><code>-e PORT=7777</code>: Sets the server&rsquo;s port. again if you are running another server change the port witch it runs on here and port forwarded in <code>-p</code> flag</li>
+</ul>
+</li>
+<li><code>--restart unless-stopped</code> this ensures that after power out of restart or shut down server starts automatically if you don&rsquo;t want that, delete it.</li>
+<li>and <code>  rathena/terraria</code> this you don&rsquo;t want to change, its a docker image witch container is created from.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="accessing-the-server">accessing the server</h1>
+<p>now for me I&rsquo;m using <a href="https://tailscale.com/">tailscale</a> witch is kind like a <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-vpn">VPN</a> and works behind <a href="https://nfware.com/blog/what-is-the-difference-between-nat-and-cgnat">CG-NAT</a> witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.</p>
+<h3 id="if-you-are-not-using-tailscale">if you are not using tailscale</h3>
+<p>this is not recommended but you forward your server&rsquo;s terraria&rsquo;s port and then share your public IP address to people that want to join and port. this doesn&rsquo;t work for CG-NAT.</p>
+<p><a href="https://nordvpn.com/blog/open-ports-on-router/">how to forward ports on your router?</a></p>
+]]></content>
+		</item>
+		
+		<item>
 			<title>Test Blog</title>
 			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/test-blog/</link>
 			<pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
