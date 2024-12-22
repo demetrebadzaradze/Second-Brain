@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Demetre Badzgaradze"><meta name="description" content="this is my second brain">
+
+  <meta itemprop="name" content="Handling images for hugo">
+  <meta itemprop="description" content="Plan so what Hugo want’s is to have all images that its gonna use in static/images also link needs to be appropriate. so for something this simple and easy I wrote a ==python script== that:
+reads all .md files in a directory finds all images in those files copies images to static/image files copes .md files into content/posts here is script :
+import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;D:\USER\Notes\Important\BlogPosts&#34; images_dir = r&#34;D:\USER\Notes\Important&#34; static_images_dir = r&#34;D:\USER\Projects\SecondBrain\static\images&#34; md_output_dir = r&#34;D:\USER\Projects\SecondBrain\content\Posts&#34; # Define the updated image regex pattern to match both image formats: # 1. ![Alt Text](image-path) # 2. ![[image-path]] image_pattern = re.compile(r&#39;!\[([^\]]*)\]\(([^)]&#43;)\)|!\[\[([^\]]&#43;)\]\]&#39;) def find_and_process_images(md_file): print(f&#34;\nProcessing file: {md_file}&#34;) # Read the content of the markdown file with open(md_file, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Find all image references in the Markdown file image_references = image_pattern.findall(content) print(f&#34;Found {len(image_references)} image references in {md_file}&#34;) # Process each image reference for match in image_references: if match[1]: # Format: ![Alt Text](image-path) alt_text = match[0] image_path = match[1] print(f&#34;Found image (Markdown format): Alt Text: &#39;{alt_text}&#39;, Path: {image_path}&#34;) elif match[2]: # Format: ![[image-path]] alt_text = &#34;image&#34; image_path = match[2] print(f&#34;Found image (Custom format): Path: {image_path}&#34;) # If the image path is an online URL, skip it if image_path.startswith(&#34;http&#34;) or image_path.startswith(&#34;https&#34;): print(f&#34;Skipping online image: {image_path}&#34;) continue # Determine if the image is a local file image_filename = os.path.basename(image_path) # Get the file name from the path image_extension = os.path.splitext(image_filename)[1].lower() print(f&#34;Image file name: {image_filename}, Extension: {image_extension}&#34;) image_new_filename = image_filename image_new_filename = image_new_filename.replace(&#39; &#39;, &#39;_&#39;) # Replace spaces with underscores print(f&#34;Updated image filename: {image_new_filename}&#34;) # Build the full image path in the images directory local_image_path = os.path.join(images_dir, image_filename) print(f&#34;Checking for image in local folder: {local_image_path}&#34;) if os.path.exists(local_image_path): print(f&#34;Image found in local folder: {local_image_path}&#34;) # The image exists locally, copy it to the Hugo static images directory destination_path = os.path.join(static_images_dir, image_new_filename) print(f&#34;Copying image to Hugo static images folder: {destination_path}&#34;) if not os.path.exists(destination_path): # Only copy if not already copied shutil.copy(local_image_path, destination_path) print(f&#34;Successfully copied image: {image_filename}&#34;) else: print(f&#34;Image already exists in destination: {destination_path}&#34;) # Update the image reference in the Markdown file new_image_path = f&#34;/images/{image_new_filename}&#34; content = content.replace(f&#34;![{alt_text}]({image_path})&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) content = content.replace(f&#34;![[{image_path}]]&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) print(f&#34;Updated image path in Markdown: {new_image_path}&#34;) else: print(f&#34;Image not found in the images folder: {local_image_path}&#34;) # Save the modified content into the output folder, keeping the original filename new_md_file_path = os.path.join(md_output_dir, os.path.basename(md_file)) print(f&#34;Saving updated Markdown file to: {new_md_file_path}&#34;) with open(new_md_file_path, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(f&#34;Successfully updated and saved Markdown file: {new_md_file_path}&#34;) # Step 2: Process all markdown files in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): md_file_path = os.path.join(posts_dir, filename) print(f&#34;\nProcessing Markdown file: {md_file_path}&#34;) find_and_process_images(md_file_path) print(&#34;\nProcessing complete!&#34;) Types of image syntax in markdown file in .md file there is many ways to insert image here is some:">
+  <meta itemprop="datePublished" content="2024-12-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-12-22T00:00:00+00:00">
+  <meta itemprop="wordCount" content="571">
+  <meta itemprop="keywords" content="Test"><meta property="og:url" content="/en/posts/handling-images-for-hugo/">
+  <meta property="og:site_name" content="Second Brain">
+  <meta property="og:title" content="Handling images for hugo">
+  <meta property="og:description" content="Plan so what Hugo want’s is to have all images that its gonna use in static/images also link needs to be appropriate. so for something this simple and easy I wrote a ==python script== that:
+reads all .md files in a directory finds all images in those files copies images to static/image files copes .md files into content/posts here is script :
+import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;D:\USER\Notes\Important\BlogPosts&#34; images_dir = r&#34;D:\USER\Notes\Important&#34; static_images_dir = r&#34;D:\USER\Projects\SecondBrain\static\images&#34; md_output_dir = r&#34;D:\USER\Projects\SecondBrain\content\Posts&#34; # Define the updated image regex pattern to match both image formats: # 1. ![Alt Text](image-path) # 2. ![[image-path]] image_pattern = re.compile(r&#39;!\[([^\]]*)\]\(([^)]&#43;)\)|!\[\[([^\]]&#43;)\]\]&#39;) def find_and_process_images(md_file): print(f&#34;\nProcessing file: {md_file}&#34;) # Read the content of the markdown file with open(md_file, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Find all image references in the Markdown file image_references = image_pattern.findall(content) print(f&#34;Found {len(image_references)} image references in {md_file}&#34;) # Process each image reference for match in image_references: if match[1]: # Format: ![Alt Text](image-path) alt_text = match[0] image_path = match[1] print(f&#34;Found image (Markdown format): Alt Text: &#39;{alt_text}&#39;, Path: {image_path}&#34;) elif match[2]: # Format: ![[image-path]] alt_text = &#34;image&#34; image_path = match[2] print(f&#34;Found image (Custom format): Path: {image_path}&#34;) # If the image path is an online URL, skip it if image_path.startswith(&#34;http&#34;) or image_path.startswith(&#34;https&#34;): print(f&#34;Skipping online image: {image_path}&#34;) continue # Determine if the image is a local file image_filename = os.path.basename(image_path) # Get the file name from the path image_extension = os.path.splitext(image_filename)[1].lower() print(f&#34;Image file name: {image_filename}, Extension: {image_extension}&#34;) image_new_filename = image_filename image_new_filename = image_new_filename.replace(&#39; &#39;, &#39;_&#39;) # Replace spaces with underscores print(f&#34;Updated image filename: {image_new_filename}&#34;) # Build the full image path in the images directory local_image_path = os.path.join(images_dir, image_filename) print(f&#34;Checking for image in local folder: {local_image_path}&#34;) if os.path.exists(local_image_path): print(f&#34;Image found in local folder: {local_image_path}&#34;) # The image exists locally, copy it to the Hugo static images directory destination_path = os.path.join(static_images_dir, image_new_filename) print(f&#34;Copying image to Hugo static images folder: {destination_path}&#34;) if not os.path.exists(destination_path): # Only copy if not already copied shutil.copy(local_image_path, destination_path) print(f&#34;Successfully copied image: {image_filename}&#34;) else: print(f&#34;Image already exists in destination: {destination_path}&#34;) # Update the image reference in the Markdown file new_image_path = f&#34;/images/{image_new_filename}&#34; content = content.replace(f&#34;![{alt_text}]({image_path})&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) content = content.replace(f&#34;![[{image_path}]]&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) print(f&#34;Updated image path in Markdown: {new_image_path}&#34;) else: print(f&#34;Image not found in the images folder: {local_image_path}&#34;) # Save the modified content into the output folder, keeping the original filename new_md_file_path = os.path.join(md_output_dir, os.path.basename(md_file)) print(f&#34;Saving updated Markdown file to: {new_md_file_path}&#34;) with open(new_md_file_path, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(f&#34;Successfully updated and saved Markdown file: {new_md_file_path}&#34;) # Step 2: Process all markdown files in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): md_file_path = os.path.join(posts_dir, filename) print(f&#34;\nProcessing Markdown file: {md_file_path}&#34;) find_and_process_images(md_file_path) print(&#34;\nProcessing complete!&#34;) Types of image syntax in markdown file in .md file there is many ways to insert image here is some:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-22T00:00:00+00:00">
+    <meta property="article:tag" content="Test">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Handling images for hugo">
+  <meta name="twitter:description" content="Plan so what Hugo want’s is to have all images that its gonna use in static/images also link needs to be appropriate. so for something this simple and easy I wrote a ==python script== that:
+reads all .md files in a directory finds all images in those files copies images to static/image files copes .md files into content/posts here is script :
+import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;D:\USER\Notes\Important\BlogPosts&#34; images_dir = r&#34;D:\USER\Notes\Important&#34; static_images_dir = r&#34;D:\USER\Projects\SecondBrain\static\images&#34; md_output_dir = r&#34;D:\USER\Projects\SecondBrain\content\Posts&#34; # Define the updated image regex pattern to match both image formats: # 1. ![Alt Text](image-path) # 2. ![[image-path]] image_pattern = re.compile(r&#39;!\[([^\]]*)\]\(([^)]&#43;)\)|!\[\[([^\]]&#43;)\]\]&#39;) def find_and_process_images(md_file): print(f&#34;\nProcessing file: {md_file}&#34;) # Read the content of the markdown file with open(md_file, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Find all image references in the Markdown file image_references = image_pattern.findall(content) print(f&#34;Found {len(image_references)} image references in {md_file}&#34;) # Process each image reference for match in image_references: if match[1]: # Format: ![Alt Text](image-path) alt_text = match[0] image_path = match[1] print(f&#34;Found image (Markdown format): Alt Text: &#39;{alt_text}&#39;, Path: {image_path}&#34;) elif match[2]: # Format: ![[image-path]] alt_text = &#34;image&#34; image_path = match[2] print(f&#34;Found image (Custom format): Path: {image_path}&#34;) # If the image path is an online URL, skip it if image_path.startswith(&#34;http&#34;) or image_path.startswith(&#34;https&#34;): print(f&#34;Skipping online image: {image_path}&#34;) continue # Determine if the image is a local file image_filename = os.path.basename(image_path) # Get the file name from the path image_extension = os.path.splitext(image_filename)[1].lower() print(f&#34;Image file name: {image_filename}, Extension: {image_extension}&#34;) image_new_filename = image_filename image_new_filename = image_new_filename.replace(&#39; &#39;, &#39;_&#39;) # Replace spaces with underscores print(f&#34;Updated image filename: {image_new_filename}&#34;) # Build the full image path in the images directory local_image_path = os.path.join(images_dir, image_filename) print(f&#34;Checking for image in local folder: {local_image_path}&#34;) if os.path.exists(local_image_path): print(f&#34;Image found in local folder: {local_image_path}&#34;) # The image exists locally, copy it to the Hugo static images directory destination_path = os.path.join(static_images_dir, image_new_filename) print(f&#34;Copying image to Hugo static images folder: {destination_path}&#34;) if not os.path.exists(destination_path): # Only copy if not already copied shutil.copy(local_image_path, destination_path) print(f&#34;Successfully copied image: {image_filename}&#34;) else: print(f&#34;Image already exists in destination: {destination_path}&#34;) # Update the image reference in the Markdown file new_image_path = f&#34;/images/{image_new_filename}&#34; content = content.replace(f&#34;![{alt_text}]({image_path})&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) content = content.replace(f&#34;![[{image_path}]]&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) print(f&#34;Updated image path in Markdown: {new_image_path}&#34;) else: print(f&#34;Image not found in the images folder: {local_image_path}&#34;) # Save the modified content into the output folder, keeping the original filename new_md_file_path = os.path.join(md_output_dir, os.path.basename(md_file)) print(f&#34;Saving updated Markdown file to: {new_md_file_path}&#34;) with open(new_md_file_path, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(f&#34;Successfully updated and saved Markdown file: {new_md_file_path}&#34;) # Step 2: Process all markdown files in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): md_file_path = os.path.join(posts_dir, filename) print(f&#34;\nProcessing Markdown file: {md_file_path}&#34;) find_and_process_images(md_file_path) print(&#34;\nProcessing complete!&#34;) Types of image syntax in markdown file in .md file there is many ways to insert image here is some:">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Handling images for hugo",
+    "name": "Handling images for hugo",
+    "description": "Plan so what Hugo want\u0026rsquo;s is to have all images that its gonna use in static/images also link needs to be appropriate. so for something this simple and easy I wrote a ==python script== that:\nreads all .md files in a directory finds all images in those files copies images to static/image files copes .md files into content/posts here is script :\nimport os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r\u0026#34;D:\\USER\\Notes\\Important\\BlogPosts\u0026#34; images_dir = r\u0026#34;D:\\USER\\Notes\\Important\u0026#34; static_images_dir = r\u0026#34;D:\\USER\\Projects\\SecondBrain\\static\\images\u0026#34; md_output_dir = r\u0026#34;D:\\USER\\Projects\\SecondBrain\\content\\Posts\u0026#34; # Define the updated image regex pattern to match both image formats: # 1. ![Alt Text](image-path) # 2. ![[image-path]] image_pattern = re.compile(r\u0026#39;!\\[([^\\]]*)\\]\\(([^)]+)\\)|!\\[\\[([^\\]]+)\\]\\]\u0026#39;) def find_and_process_images(md_file): print(f\u0026#34;\\nProcessing file: {md_file}\u0026#34;) # Read the content of the markdown file with open(md_file, \u0026#34;r\u0026#34;, encoding=\u0026#34;utf-8\u0026#34;) as file: content = file.read() # Find all image references in the Markdown file image_references = image_pattern.findall(content) print(f\u0026#34;Found {len(image_references)} image references in {md_file}\u0026#34;) # Process each image reference for match in image_references: if match[1]: # Format: ![Alt Text](image-path) alt_text = match[0] image_path = match[1] print(f\u0026#34;Found image (Markdown format): Alt Text: \u0026#39;{alt_text}\u0026#39;, Path: {image_path}\u0026#34;) elif match[2]: # Format: ![[image-path]] alt_text = \u0026#34;image\u0026#34; image_path = match[2] print(f\u0026#34;Found image (Custom format): Path: {image_path}\u0026#34;) # If the image path is an online URL, skip it if image_path.startswith(\u0026#34;http\u0026#34;) or image_path.startswith(\u0026#34;https\u0026#34;): print(f\u0026#34;Skipping online image: {image_path}\u0026#34;) continue # Determine if the image is a local file image_filename = os.path.basename(image_path) # Get the file name from the path image_extension = os.path.splitext(image_filename)[1].lower() print(f\u0026#34;Image file name: {image_filename}, Extension: {image_extension}\u0026#34;) image_new_filename = image_filename image_new_filename = image_new_filename.replace(\u0026#39; \u0026#39;, \u0026#39;_\u0026#39;) # Replace spaces with underscores print(f\u0026#34;Updated image filename: {image_new_filename}\u0026#34;) # Build the full image path in the images directory local_image_path = os.path.join(images_dir, image_filename) print(f\u0026#34;Checking for image in local folder: {local_image_path}\u0026#34;) if os.path.exists(local_image_path): print(f\u0026#34;Image found in local folder: {local_image_path}\u0026#34;) # The image exists locally, copy it to the Hugo static images directory destination_path = os.path.join(static_images_dir, image_new_filename) print(f\u0026#34;Copying image to Hugo static images folder: {destination_path}\u0026#34;) if not os.path.exists(destination_path): # Only copy if not already copied shutil.copy(local_image_path, destination_path) print(f\u0026#34;Successfully copied image: {image_filename}\u0026#34;) else: print(f\u0026#34;Image already exists in destination: {destination_path}\u0026#34;) # Update the image reference in the Markdown file new_image_path = f\u0026#34;/images/{image_new_filename}\u0026#34; content = content.replace(f\u0026#34;![{alt_text}]({image_path})\u0026#34;, f\u0026#34;![{alt_text}]({new_image_path})\u0026#34;) content = content.replace(f\u0026#34;![[{image_path}]]\u0026#34;, f\u0026#34;![{alt_text}]({new_image_path})\u0026#34;) print(f\u0026#34;Updated image path in Markdown: {new_image_path}\u0026#34;) else: print(f\u0026#34;Image not found in the images folder: {local_image_path}\u0026#34;) # Save the modified content into the output folder, keeping the original filename new_md_file_path = os.path.join(md_output_dir, os.path.basename(md_file)) print(f\u0026#34;Saving updated Markdown file to: {new_md_file_path}\u0026#34;) with open(new_md_file_path, \u0026#34;w\u0026#34;, encoding=\u0026#34;utf-8\u0026#34;) as file: file.write(content) print(f\u0026#34;Successfully updated and saved Markdown file: {new_md_file_path}\u0026#34;) # Step 2: Process all markdown files in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(\u0026#34;.md\u0026#34;): md_file_path = os.path.join(posts_dir, filename) print(f\u0026#34;\\nProcessing Markdown file: {md_file_path}\u0026#34;) find_and_process_images(md_file_path) print(\u0026#34;\\nProcessing complete!\u0026#34;) Types of image syntax in markdown file in .md file there is many ways to insert image here is some:\n",
+    "keywords": ["test"],
+    "articleBody": "Plan so what Hugo want’s is to have all images that its gonna use in static/images also link needs to be appropriate. so for something this simple and easy I wrote a ==python script== that:\nreads all .md files in a directory finds all images in those files copies images to static/image files copes .md files into content/posts here is script :\nimport os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r\"D:\\USER\\Notes\\Important\\BlogPosts\" images_dir = r\"D:\\USER\\Notes\\Important\" static_images_dir = r\"D:\\USER\\Projects\\SecondBrain\\static\\images\" md_output_dir = r\"D:\\USER\\Projects\\SecondBrain\\content\\Posts\" # Define the updated image regex pattern to match both image formats: # 1. ![Alt Text](image-path) # 2. ![[image-path]] image_pattern = re.compile(r'!\\[([^\\]]*)\\]\\(([^)]+)\\)|!\\[\\[([^\\]]+)\\]\\]') def find_and_process_images(md_file): print(f\"\\nProcessing file: {md_file}\") # Read the content of the markdown file with open(md_file, \"r\", encoding=\"utf-8\") as file: content = file.read() # Find all image references in the Markdown file image_references = image_pattern.findall(content) print(f\"Found {len(image_references)} image references in {md_file}\") # Process each image reference for match in image_references: if match[1]: # Format: ![Alt Text](image-path) alt_text = match[0] image_path = match[1] print(f\"Found image (Markdown format): Alt Text: '{alt_text}', Path: {image_path}\") elif match[2]: # Format: ![[image-path]] alt_text = \"image\" image_path = match[2] print(f\"Found image (Custom format): Path: {image_path}\") # If the image path is an online URL, skip it if image_path.startswith(\"http\") or image_path.startswith(\"https\"): print(f\"Skipping online image: {image_path}\") continue # Determine if the image is a local file image_filename = os.path.basename(image_path) # Get the file name from the path image_extension = os.path.splitext(image_filename)[1].lower() print(f\"Image file name: {image_filename}, Extension: {image_extension}\") image_new_filename = image_filename image_new_filename = image_new_filename.replace(' ', '_') # Replace spaces with underscores print(f\"Updated image filename: {image_new_filename}\") # Build the full image path in the images directory local_image_path = os.path.join(images_dir, image_filename) print(f\"Checking for image in local folder: {local_image_path}\") if os.path.exists(local_image_path): print(f\"Image found in local folder: {local_image_path}\") # The image exists locally, copy it to the Hugo static images directory destination_path = os.path.join(static_images_dir, image_new_filename) print(f\"Copying image to Hugo static images folder: {destination_path}\") if not os.path.exists(destination_path): # Only copy if not already copied shutil.copy(local_image_path, destination_path) print(f\"Successfully copied image: {image_filename}\") else: print(f\"Image already exists in destination: {destination_path}\") # Update the image reference in the Markdown file new_image_path = f\"/images/{image_new_filename}\" content = content.replace(f\"![{alt_text}]({image_path})\", f\"![{alt_text}]({new_image_path})\") content = content.replace(f\"![[{image_path}]]\", f\"![{alt_text}]({new_image_path})\") print(f\"Updated image path in Markdown: {new_image_path}\") else: print(f\"Image not found in the images folder: {local_image_path}\") # Save the modified content into the output folder, keeping the original filename new_md_file_path = os.path.join(md_output_dir, os.path.basename(md_file)) print(f\"Saving updated Markdown file to: {new_md_file_path}\") with open(new_md_file_path, \"w\", encoding=\"utf-8\") as file: file.write(content) print(f\"Successfully updated and saved Markdown file: {new_md_file_path}\") # Step 2: Process all markdown files in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(\".md\"): md_file_path = os.path.join(posts_dir, filename) print(f\"\\nProcessing Markdown file: {md_file_path}\") find_and_process_images(md_file_path) print(\"\\nProcessing complete!\") Types of image syntax in markdown file in .md file there is many ways to insert image here is some:\n![Alt text](image_url) this is simple when you copy file that online and after pasting it this is how its formatted. image_url represents online URL of image like: https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg. and Alt text is just a label ![Alt text](path/to/image.jpg) now this is local and its a full path ![Alt text](path/to/image%20with%20spaces.jpg) this is also local but with spaces this is actually tricky one, because you cant actually have spaces in URI so they are replaced with %20. ![A PNG Image](image.png) ![A JPEG Image](image.jpg) ![An SVG Logo](logo.svg) this is also local and this also means that it’s in same directory ![[image.png]] this doesn’t one is same as 4 but it doesn’t has label ",
+    "wordCount" : "571",
+    "inLanguage": "en",
+    "datePublished": "2024-12-22T00:00:00Z",
+    "dateModified": "2024-12-22T00:00:00Z",
+    "author":{
+        "@type": "Person",
+        "name": "Demetre Badzgaradze",
+        "url": "#IDONTKNOW"
+        },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/en/posts/handling-images-for-hugo/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Second Brain",
+      "description": "this is my second brain",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/favicon.ico"
+      }
+    }
+}
+</script><title>Handling images for hugo</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="/css/style.min.b5452571cf5fd282d330827d10902e9e19e247e854980f67cb526fd4d203c10b.css" integrity="sha256-tUUlcc9f0oLTMIJ9EJAunhniR+hUmA9ny1Jv1NIDwQs=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="/">Second Brain</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="/en/posts/">Posts</a><a href="/en/about/">About</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-links hide-in-mobile"><a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a><a href="https://x.com/TG_3W3p" target="_blank" rel="noopener me" title="X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
+</svg></a><a href="https://github.com/demetrebadzaradze" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path
+      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+   </path>
+</svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+   </svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=%2fen%2fposts%2fhandling-images-for-hugo%2f&amp;text=Handling%20images%20for%20hugo" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
+</svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=%2fen%2fposts%2fhandling-images-for-hugo%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Handling%20images%20for%20hugo&amp;body=%2fen%2fposts%2fhandling-images-for-hugo%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+   <polyline points="22,6 12,13 2,6"></polyline>
+</svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fen%2fposts%2fhandling-images-for-hugo%2f&amp;source=%2f&amp;title=Handling%20images%20for%20hugo&amp;summary=Handling%20images%20for%20hugo%2c%20by%20Demetre%20Badzgaradze%0a%0a%3cnil%3e%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Handling images for hugo&#34;,&#34;/en/posts/handling-images-for-hugo/&#34;,&#34;Handling images for hugo, by Demetre Badzgaradze\n\n\u003cnil\u003e\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+   </svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+   </svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="/en/posts/">Posts</a></li>
+			<li><a href="/en/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Dec 22, 2024</span></div>
+				<h1>Handling images for hugo</h1>
+			</header>
+			<div class="post-info"><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
+   <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+   <line x1="16" y1="8" x2="2" y2="22"></line>
+   <line x1="17.5" y1="15" x2="9" y2="15"></line>
+</svg><a href="#IDONTKNOW" target="_blank">Demetre Badzgaradze</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+      <line x1="7" y1="7" x2="7" y2="7"></line>
+   </svg><span class="tag"><a href="/en/tags/test">test</a></span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+   </svg>571 
+    as much as you would like
+    
+    
+    
+    2 Minutes, 35 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+   </svg>2024-12-22 04:00 &#43;0400</p></div>
+			<hr class="post-end">
+			<div class="content">
+				<h1 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>so what Hugo want&rsquo;s is to have all images that its gonna use in <code>static/images</code> also link needs to be appropriate.
+so for something this simple and easy I wrote a ==python script== that:</p>
+<ul>
+<li>reads all <code>.md</code> files in a directory</li>
+<li>finds all images in those files</li>
+<li>copies images to <code>static/image</code> files</li>
+<li>copes <code>.md</code> files into <code>content/posts</code></li>
+</ul>
+<p>here is script :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">shutil</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Paths (using raw strings to handle Windows backslashes correctly)</span>
+</span></span><span class="line"><span class="cl"><span class="n">posts_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Notes\Important\BlogPosts&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">images_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Notes\Important&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">static_images_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Projects\SecondBrain\static\images&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">md_output_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Projects\SecondBrain\content\Posts&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the updated image regex pattern to match both image formats:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. ![Alt Text](image-path)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. ![[image-path]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;!\[([^\]]*)\]\(([^)]+)\)|!\[\[([^\]]+)\]\]&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">find_and_process_images</span><span class="p">(</span><span class="n">md_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing file: </span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Read the content of the markdown file</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">md_file</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Find all image references in the Markdown file</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_references</span> <span class="o">=</span> <span class="n">image_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">image_references</span><span class="p">)</span><span class="si">}</span><span class="s2"> image references in </span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Process each image reference</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">match</span> <span class="ow">in</span> <span class="n">image_references</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="k">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Format: ![Alt Text](image-path)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">alt_text</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_path</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found image (Markdown format): Alt Text: &#39;</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">&#39;, Path: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="k">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>  <span class="c1"># Format: ![[image-path]]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">alt_text</span> <span class="o">=</span> <span class="s2">&#34;image&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_path</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found image (Custom format): Path: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># If the image path is an online URL, skip it</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">image_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;http&#34;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">image_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;https&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Skipping online image: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Determine if the image is a local file</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>  <span class="c1"># Get the file name from the path</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">image_filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image file name: </span><span class="si">{</span><span class="n">image_filename</span><span class="si">}</span><span class="s2">, Extension: </span><span class="si">{</span><span class="n">image_extension</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">image_new_filename</span> <span class="o">=</span> <span class="n">image_filename</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_new_filename</span> <span class="o">=</span> <span class="n">image_new_filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>  <span class="c1"># Replace spaces with underscores</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Updated image filename: </span><span class="si">{</span><span class="n">image_new_filename</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Build the full image path in the images directory</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">image_filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Checking for image in local folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">local_image_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image found in local folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1"># The image exists locally, copy it to the Hugo static images directory</span>
+</span></span><span class="line"><span class="cl">            <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">static_images_dir</span><span class="p">,</span> <span class="n">image_new_filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Copying image to Hugo static images folder: </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">destination_path</span><span class="p">):</span>  <span class="c1"># Only copy if not already copied</span>
+</span></span><span class="line"><span class="cl">                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">local_image_path</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully copied image: </span><span class="si">{</span><span class="n">image_filename</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image already exists in destination: </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Update the image reference in the Markdown file</span>
+</span></span><span class="line"><span class="cl">            <span class="n">new_image_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;/images/</span><span class="si">{</span><span class="n">image_new_filename</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;![[</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">]]&#34;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Updated image path in Markdown: </span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image not found in the images folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Save the modified content into the output folder, keeping the original filename</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_md_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">md_output_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">md_file</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Saving updated Markdown file to: </span><span class="si">{</span><span class="n">new_md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">new_md_file_path</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully updated and saved Markdown file: </span><span class="si">{</span><span class="n">new_md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Process all markdown files in the posts directory</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.md&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">md_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing Markdown file: </span><span class="si">{</span><span class="n">md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">find_and_process_images</span><span class="p">(</span><span class="n">md_file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing complete!&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h1 id="types-of-image-syntax-in-markdown-file">Types of image syntax in markdown file<a href="#types-of-image-syntax-in-markdown-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>in <code>.md</code> file there is many ways to insert image here is some:</p>
+<ol>
+<li><code>![Alt text](image_url)</code>
+this is simple when you copy file that online and after pasting it this is how its formatted. <code>image_url</code>  represents online URL of image like:  <a href="https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg">https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg</a>.
+and <code>Alt text</code> is just a label</li>
+<li><code>![Alt text](path/to/image.jpg)</code>
+now this is local and its a full path</li>
+<li><code>![Alt text](path/to/image%20with%20spaces.jpg)</code>
+this is also local but with spaces this is actually tricky one, because you cant actually have spaces in URI  so they are replaced with <code>%20</code>.</li>
+<li>
+<pre tabindex="0"><code>![A PNG Image](image.png) 
+![A JPEG Image](image.jpg) 
+![An SVG Logo](logo.svg)
+</code></pre>this is also local and this also means that it&rsquo;s in same directory</li>
+<li><code>![[image.png]]</code>
+this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
+</ol>
+
+			</div>
+			
+
+<div class="related-posts thin">
+	<h2></h2>
+	<ul>
+	
+	<li><a href="/en/posts/test-blog/">Test Blog</a></li>
+	
+	</ul>
+</div>
+
+		</article>
+		<div class="post-nav thin">
+			<a class="prev-post" href="/en/posts/test-blog/">
+				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+   </svg></span><br><span>Test Blog</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+	<p>
+		&copy; 2024 <a href="/">Demetre Badzgaradze</a>
+		&#183; Everything you say can and will be used aganst you.&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+			&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+		&#183; <a href="/en/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss">
+   <path d="M4 11a9 9 0 0 1 9 9"></path>
+   <path d="M4 4a16 16 0 0 1 16 16"></path>
+   <circle cx="5" cy="19" r="1"></circle>
+</svg></a></p>
+
+</footer>
+<script async src="/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+</body>
+
+</html>

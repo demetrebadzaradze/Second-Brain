@@ -1,89 +1,147 @@
-baseurl = "https://demetrebadzaradze.github.io/Second-Brain/"
+# THIS IS AN EXAMPLE ON HOW YOU SHOULD CONFIGURE YOUR hugo.toml
+# See this hugo.toml in action at https://github.com/1bl4z3r/hermit-V2/blob/staging/hugo.toml
+# Example Site is Staging branch, acessible at https://github.com/1bl4z3r/hermit-V2/tree/staging
+# To see what each config does, refer to https://1bl4z3r.github.io/hermit-V2/en/posts/explaining-configs/
+# Open Issue or Pull Request at https://github.com/1bl4z3r/hermit-V2
+
+baseURL = "/"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+theme = "hermit-v2"
+#enableRobotsTXT = true ## set to true to enable inbuilt robots.txt
+
+#[languages]
+#  [languages.en]
+#    title = 'CHANGE ME'
+#    [languages.en.params]
+#      homeSubtitle = "CHANGE ME"
+#    weight = 1
+#  [languages.fr]
+#    title = 'CHANGE ME(FR)'
+#    [languages.fr.params]
+#      homeSubtitle = "CHANGE ME"
+#    weight = 2
+#  [languages.it]
+#    title = 'CHANGE ME(IT)'
+#    [languages.it.params]
+#      homeSubtitle = "CHANGE ME"
+#    weight = 3
+ 
 languageCode = "en-us"
+
 title = "Second Brain"
-# Add it only if you keep the theme in the `themes` directory.
-# Remove it if you use the theme as a remote Hugo Module.
-theme = "terminal"
-paginate = 5
+enableGitInfo = true
+
+pygmentsCodefences  = true
+pygmentsUseClasses  = true
+#hasCJKLanguage = true
+
+rssLimit = 10
+
+copyright = "Everything you say can and will be used aganst you."
+enableEmoji = true
+
+#[services]
+#  [services.disqus]
+#    shortname = ''
+#  [services.googleAnalytics]
+#    id = ''
+
+[frontmatter]
+date = ["date", "publishDate", "lastmod"]
+lastmod = ["lastmod", ":git", "date", "publishDate"]
+publishDate = ["publishDate", "date"]
+expiryDate = ["expiryDate"]
+
+
+[params.author]
+  name = "Demetre Badzgaradze"
+  about = "#IDONTKNOW"
+
+[blackfriday]
+  # hrefTargetBlank = true
+  # noreferrerLinks = true
+  # nofollowLinks = true
+
+[taxonomies]
+  tag = "tags"
+  # Categories are disabled by default.
+  # category = "categories"
+
+# Enable to get proper Mathjax support
+#[markup]
+#  [markup.goldmark]
+#    [markup.goldmark.extensions]
+#      [markup.goldmark.extensions.passthrough]
+#        enable = true
+#        [markup.goldmark.extensions.passthrough.delimiters]
+#          block = [['\[', '\]'], ['$$', '$$']]
+#          inline = [['\(', '\)']]
+
 
 [params]
-  # dir name of your main content (default is `content/posts`).
-  # the list of set content will show up on your index page (baseurl).
-  contentTypeName = "posts"
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
 
-  # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
+  description = "this is my second brain"
+  # images = [""]
+  themeColor = "#494f5c"
 
-  # show selector to switch language
-  showLanguageSelector = false
+  #homeSubtitle = "CHANGE ME HOME SUBTITLE"
+  footerCopyright = "Everything you say can and will be used aganst you."
+  # footerHideThemeName = false
+  # bgImg = ""
+  gitUrl = "https://github.com/demetrebadzaradze"
 
-  # set theme to full screen width
-  fullWidthTheme = false
+  justifyContent = false
 
-  # center theme with default width
-  centerTheme = true
+  relatedPosts = true
+  code_copy_button = true
 
-  # if your resource directory contains an image called `cover.(jpg|png|webp)`,
-  # then the file will be used as a cover automatically.
-  # With this option you don't have to put the `cover` param in a front-matter.
-  autoCover = true
+  homeSubtitlePrinter = true
+  scrollToTop = true 
+  global_mathjax = false
+  readTime = true
+  readTimeSeparator = "as much as you would like"
+  # legacyLayout = false
+  shareSocial = true
+  # googleTagManager = "GTM-XXXXXXXX"
+  # tagSymbol = "#"
+  # categorySymbol = "⊲"
+  # pinned = "Pinned Posts"
+  # pinnedSVGname = "pin"
+  # descriptionInPosts= true
+  # initialPublish = "Initally Posted on: "
+  # human = ["single","posts"]
+  # noIndex = false
+  # denyRobots = "noindex, nofollow, noarchive"
+  # allowRobots = "index, follow"
+  # siteNoIndex = false
+  # noIndexPages = ["404 Page not found"]
+  # usesAnimation = true
+  
+  [[params.socialLinks]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/demetre-badzgaradze-b49153291/"
 
-  # set post to show the last updated
-  # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
-  showLastUpdated = false
+  [[params.socialLinks]]
+    name = "x"
+    url = "https://x.com/TG_3W3p"
 
-  # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
-  # updatedDatePrefix = "Updated"
+  [[params.socialLinks]]
+    name = "github"
+    url = "https://github.com/demetrebadzaradze"
 
-  # whether to show a page's estimated reading time
-  # readingTime = false # default
+[menu]
 
-  # whether to show a table of contents
-  # can be overridden in a page's front-matter
-  # Toc = false # default
+  [[menu.main]]
+    name = "Posts"
+    url = "posts/"
+    weight = 10
 
-  # set title for the table of contents
-  # can be overridden in a page's front-matter
-  # TocTitle = "Table of Contents" # default
-
-
-[params.twitter]
-  # set Twitter handles for Twitter cards
-  # see https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started#card-and-content-attribution
-  # do not include @
-  creator = ""
-  site = ""
-
-[languages]
-  [languages.en]
-    languageName = "English"
-    title = "Terminal"
-
-    [languages.en.params]
-      subtitle = "A simple, retro theme for Hugo"
-      owner = ""
-      keywords = ""
-      copyright = ""
-      menuMore = "Show more"
-      readMore = "Read more"
-      readOtherPosts = "Read other posts"
-      newerPosts = "Newer posts"
-      olderPosts = "Older posts"
-      missingContentMessage = "Page not found..."
-      missingBackButtonLabel = "Back to home page"
-      minuteReadingTime = "min read"
-      words = "words"
-
-      [languages.en.params.logo]
-        logoText = "Terminal"
-        logoHomeLink = "/"
-
-      [languages.en.menu]
-        [[languages.en.menu.main]]
-          identifier = "about"
-          name = "About"
-          url = "/about"
-        [[languages.en.menu.main]]
-          identifier = "showcase"
-          name = "Showcase"
-          url = "/showcase"
+  [[menu.main]]
+    name = "About"
+    url = "about/"
+    weight = 20

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>/en/posts/handling-images-for-hugo/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/posts/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/tags/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/tags/test/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/tags/firstblog/</loc>
+    <lastmod>2024-12-11T18:30:50+04:00</lastmod>
+  </url><url>
+    <loc>/en/posts/test-blog/</loc>
+    <lastmod>2024-12-11T18:30:50+04:00</lastmod>
+  </url><url>
+    <loc>/en/posts/testing/</loc>
+    <lastmod>2024-12-11T18:30:50+04:00</lastmod>
+  </url>
+</urlset>

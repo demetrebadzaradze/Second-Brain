@@ -7,6 +7,9 @@ draft: false
 # Testing
 this will be deleted soon but here is pic
 
-![[WIN_20240907_16_14_44_Pro.jpg]]
+
+![image](/images/WIN_20240907_16_14_44Pro.jpg)
 
 nice cable 
+
+![image](/images/black_king.png)

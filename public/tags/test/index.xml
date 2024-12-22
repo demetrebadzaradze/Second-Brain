@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Test on Terminal</title>
-    <link>https://demetrebadzaradze.github.io/Second-Brain/tags/test/</link>
+    <link>http://localhost:1313/Second-Brain/tags/test/</link>
     <description>Recent content in Test on Terminal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://demetrebadzaradze.github.io/Second-Brain/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/Second-Brain/tags/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test Blog</title>
-      <link>https://demetrebadzaradze.github.io/Second-Brain/posts/blogposts/test-blog/</link>
+      <link>http://localhost:1313/Second-Brain/posts/test-blog/</link>
       <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/blogposts/test-blog/</guid>
+      <guid>http://localhost:1313/Second-Brain/posts/test-blog/</guid>
       <description>&lt;h1 id=&#34;hello-gang&#34;&gt;Hello gang&lt;/h1&gt;
 &lt;p&gt;&lt;img alt=&#34;Image Description&#34; src=&#34;avatar.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;ayyy&#34; src=&#34;https://scontent.ftbs5-4.fna.fbcdn.net/v/t1.6435-9/65514695_638203609988985_9050996105705160704_n.jpg?stp=dst-jpg_p526x296_tt6&amp;_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=6ee11a&amp;_nc_ohc=MMKRNbgpPVAQ7kNvgFVjVGE&amp;_nc_zt=23&amp;_nc_ht=scontent.ftbs5-4.fna&amp;_nc_gid=AqSc1WV8KL_lvNwCzIT1zMu&amp;oh=00_AYAW_SYzmWgUNu3Ssb076K3bH4WT1tr4D_u7eG9YOHAydQ&amp;oe=677C0D7B&#34;&gt;&lt;/p&gt;
