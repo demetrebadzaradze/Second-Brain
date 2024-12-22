@@ -1,0 +1,176 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on Second Brain</title>
+		<link>/en/posts/</link>
+		<description>Recent content in Posts on Second Brain</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>en-us</language>
+		<copyright>Everything you say can and will be used aganst you.</copyright>
+		<lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
+		<atom:link href="/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Handling images for hugo</title>
+			<link>/en/posts/handling-images-for-hugo/</link>
+			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
+			
+			<guid>/en/posts/handling-images-for-hugo/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<h1 id="plan">Plan</h1>
+<p>so what Hugo want&rsquo;s is to have all images that its gonna use in <code>static/images</code> also link needs to be appropriate.
+so for something this simple and easy I wrote a ==python script== that:</p>
+<ul>
+<li>reads all <code>.md</code> files in a directory</li>
+<li>finds all images in those files</li>
+<li>copies images to <code>static/image</code> files</li>
+<li>copes <code>.md</code> files into <code>content/posts</code></li>
+</ul>
+<p>here is script :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">shutil</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Paths (using raw strings to handle Windows backslashes correctly)</span>
+</span></span><span class="line"><span class="cl"><span class="n">posts_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Notes\Important\BlogPosts&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">images_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Notes\Important&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">static_images_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Projects\SecondBrain\static\images&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">md_output_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Projects\SecondBrain\content\Posts&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the updated image regex pattern to match both image formats:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. ![Alt Text](image-path)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. ![[image-path]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;!\[([^\]]*)\]\(([^)]+)\)|!\[\[([^\]]+)\]\]&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">find_and_process_images</span><span class="p">(</span><span class="n">md_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing file: </span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Read the content of the markdown file</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">md_file</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Find all image references in the Markdown file</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_references</span> <span class="o">=</span> <span class="n">image_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">image_references</span><span class="p">)</span><span class="si">}</span><span class="s2"> image references in </span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Process each image reference</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">match</span> <span class="ow">in</span> <span class="n">image_references</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="k">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Format: ![Alt Text](image-path)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">alt_text</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_path</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found image (Markdown format): Alt Text: &#39;</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">&#39;, Path: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="k">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>  <span class="c1"># Format: ![[image-path]]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">alt_text</span> <span class="o">=</span> <span class="s2">&#34;image&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_path</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found image (Custom format): Path: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># If the image path is an online URL, skip it</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">image_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;http&#34;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">image_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;https&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Skipping online image: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Determine if the image is a local file</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>  <span class="c1"># Get the file name from the path</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">image_filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image file name: </span><span class="si">{</span><span class="n">image_filename</span><span class="si">}</span><span class="s2">, Extension: </span><span class="si">{</span><span class="n">image_extension</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">image_new_filename</span> <span class="o">=</span> <span class="n">image_filename</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_new_filename</span> <span class="o">=</span> <span class="n">image_new_filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>  <span class="c1"># Replace spaces with underscores</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Updated image filename: </span><span class="si">{</span><span class="n">image_new_filename</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Build the full image path in the images directory</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">image_filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Checking for image in local folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">local_image_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image found in local folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1"># The image exists locally, copy it to the Hugo static images directory</span>
+</span></span><span class="line"><span class="cl">            <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">static_images_dir</span><span class="p">,</span> <span class="n">image_new_filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Copying image to Hugo static images folder: </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">destination_path</span><span class="p">):</span>  <span class="c1"># Only copy if not already copied</span>
+</span></span><span class="line"><span class="cl">                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">local_image_path</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully copied image: </span><span class="si">{</span><span class="n">image_filename</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image already exists in destination: </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Update the image reference in the Markdown file</span>
+</span></span><span class="line"><span class="cl">            <span class="n">new_image_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;/images/</span><span class="si">{</span><span class="n">image_new_filename</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;![[</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">]]&#34;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Updated image path in Markdown: </span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image not found in the images folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Save the modified content into the output folder, keeping the original filename</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_md_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">md_output_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">md_file</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Saving updated Markdown file to: </span><span class="si">{</span><span class="n">new_md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">new_md_file_path</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully updated and saved Markdown file: </span><span class="si">{</span><span class="n">new_md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Process all markdown files in the posts directory</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.md&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">md_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing Markdown file: </span><span class="si">{</span><span class="n">md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">find_and_process_images</span><span class="p">(</span><span class="n">md_file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing complete!&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h1 id="types-of-image-syntax-in-markdown-file">Types of image syntax in markdown file</h1>
+<p>in <code>.md</code> file there is many ways to insert image here is some:</p>
+<ol>
+<li><code>![Alt text](image_url)</code>
+this is simple when you copy file that online and after pasting it this is how its formatted. <code>image_url</code>  represents online URL of image like:  <a href="https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg">https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg</a>.
+and <code>Alt text</code> is just a label</li>
+<li><code>![Alt text](path/to/image.jpg)</code>
+now this is local and its a full path</li>
+<li><code>![Alt text](path/to/image%20with%20spaces.jpg)</code>
+this is also local but with spaces this is actually tricky one, because you cant actually have spaces in URI  so they are replaced with <code>%20</code>.</li>
+<li>
+<pre tabindex="0"><code>![A PNG Image](image.png) 
+![A JPEG Image](image.jpg) 
+![An SVG Logo](logo.svg)
+</code></pre>this is also local and this also means that it&rsquo;s in same directory</li>
+<li><code>![[image.png]]</code>
+this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Test Blog</title>
+			<link>/en/posts/test-blog/</link>
+			<pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
+			
+			<guid>/en/posts/test-blog/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<h1 id="hello-gang">Hello gang</h1>
+<p><img src="/images/avatar.png" alt="image"></p>
+<p><img src="/images/Pasted_image_20241222125028.png" alt="image"></p>
+<p><img src="https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/466001138_9041429502556328_789849932317665491_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=833d8c&amp;_nc_ohc=ysJWFefniTEQ7kNvgERs5I_&amp;_nc_zt=23&amp;_nc_ht=scontent.ftbs5-3.fna&amp;_nc_gid=AVTr4jtkvCe_g5zi_f6uubg&amp;oh=00_AYD8_oQ1GtQMGTNXDPqpQ93AqudxOLYL1N8gGgqq6OCRIQ&amp;oe=676D8CA6" alt="image"></p>
+<p><img src="/images/pp.png" alt="image"></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Test Blog</title>
+			<link>/en/posts/testing/</link>
+			<pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
+			
+			<guid>/en/posts/testing/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<h1 id="testing">Testing</h1>
+<p>this will be deleted soon but here is pic</p>
+<p><img src="/images/WIN_20240907_16_14_44Pro.jpg" alt="image"></p>
+<p>nice cable</p>
+<p><img src="/images/black_king.png" alt="image"></p>
+]]></content>
+		</item>
+		
+	</channel>
+</rss>

@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/firstblog/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/test/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/blogposts/test-blog/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/categories/</loc>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>/en/sitemap.xml</loc>
+    
+      <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+    
+  </sitemap>
+  
+</sitemapindex>

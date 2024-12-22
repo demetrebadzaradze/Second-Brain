@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FirstBlog on Second Brain</title>
+    <link>/en/tags/firstblog/</link>
+    <description>Recent content in FirstBlog on Second Brain</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Everything you say can and will be used aganst you.</copyright>
+    <lastBuildDate>Wed, 11 Dec 2024 18:30:50 +0400</lastBuildDate>
+    <atom:link href="/en/tags/firstblog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Blog</title>
+      <link>/en/posts/test-blog/</link>
+      <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>/en/posts/test-blog/</guid>
+      <description>&lt;h1 id=&#34;hello-gang&#34;&gt;Hello gang&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/images/avatar.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/images/Pasted_image_20241222125028.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/466001138_9041429502556328_789849932317665491_n.jpg?_nc_cat=109&amp;amp;ccb=1-7&amp;amp;_nc_sid=833d8c&amp;amp;_nc_ohc=ysJWFefniTEQ7kNvgERs5I_&amp;amp;_nc_zt=23&amp;amp;_nc_ht=scontent.ftbs5-3.fna&amp;amp;_nc_gid=AVTr4jtkvCe_g5zi_f6uubg&amp;amp;oh=00_AYD8_oQ1GtQMGTNXDPqpQ93AqudxOLYL1N8gGgqq6OCRIQ&amp;amp;oe=676D8CA6&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/images/pp.png&#34; alt=&#34;image&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
