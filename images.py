@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import subprocess
 
 # Paths (using raw strings to handle Windows backslashes correctly)
 posts_dir = r"D:\Demetre Badzgaradze\Notes\Important\BlogPosts"
@@ -92,4 +93,41 @@ for filename in os.listdir(posts_dir):
         print(f"\nProcessing Markdown file: {md_file_path}")
         find_and_process_images(md_file_path)
 
-print("\nProcessing complete!")
+print("\n image and post Processing complete!")
+
+hugo_project_dir = r"D:\Demetre Badzgaradze\ProgramingProjects\SecondBrain"
+public_dir = os.path.join(hugo_project_dir, "public")
+commit_message = "new post "
+
+
+# Step 1: Run Hugo to build the site
+print("Building the Hugo site...")
+try:
+    subprocess.run(["hugo"], cwd=hugo_project_dir, check=True)
+    print("Hugo site built successfully.")
+except subprocess.CalledProcessError as e:
+    print(f"Error building Hugo site: {e}")
+    exit(1)
+
+# Step 2: Commit and push to the main branch
+print("Committing and pushing changes to the main branch...")
+try:
+    subprocess.run(["git", "add", "."], cwd=hugo_project_dir, check=True)
+    subprocess.run(["git", "commit", "-m", commit_message], cwd=hugo_project_dir, check=True)
+    subprocess.run(["git", "push", "origin", "master"], cwd=hugo_project_dir, check=True)
+    print("Changes pushed to the main branch successfully.")
+except subprocess.CalledProcessError as e:
+    print(f"Error pushing changes to the main branch: {e}")
+    exit(1)
+
+# Step 3: Push the 'public' directory to the hosting branch
+print("Pushing 'public' directory to the hosting branch...")
+try:
+    subprocess.run(
+        ["git", "subtree", "push", "--prefix", "public", "origin", "For-Hosting"],
+        cwd=hugo_project_dir, check=True
+    )
+    print("Public directory pushed to the hosting branch successfully.")
+except subprocess.CalledProcessError as e:
+    print(f"Error pushing 'public' directory: {e}")
+    exit(1)

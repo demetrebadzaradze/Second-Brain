@@ -19,7 +19,7 @@
 reads all .md files in a directory finds all images in those files copies images to static/image files copes .md files into content/posts here is script :
 import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;D:\USER\Notes\Important\BlogPosts&#34; images_dir = r&#34;D:\USER\Notes\Important&#34; static_images_dir = r&#34;D:\USER\Projects\SecondBrain\static\images&#34; md_output_dir = r&#34;D:\USER\Projects\SecondBrain\content\Posts&#34; # Define the updated image regex pattern to match both image formats: # 1. ![Alt Text](image-path) # 2. ![[image-path]] image_pattern = re.compile(r&#39;!\[([^\]]*)\]\(([^)]&#43;)\)|!\[\[([^\]]&#43;)\]\]&#39;) def find_and_process_images(md_file): print(f&#34;\nProcessing file: {md_file}&#34;) # Read the content of the markdown file with open(md_file, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Find all image references in the Markdown file image_references = image_pattern.findall(content) print(f&#34;Found {len(image_references)} image references in {md_file}&#34;) # Process each image reference for match in image_references: if match[1]: # Format: ![Alt Text](image-path) alt_text = match[0] image_path = match[1] print(f&#34;Found image (Markdown format): Alt Text: &#39;{alt_text}&#39;, Path: {image_path}&#34;) elif match[2]: # Format: ![[image-path]] alt_text = &#34;image&#34; image_path = match[2] print(f&#34;Found image (Custom format): Path: {image_path}&#34;) # If the image path is an online URL, skip it if image_path.startswith(&#34;http&#34;) or image_path.startswith(&#34;https&#34;): print(f&#34;Skipping online image: {image_path}&#34;) continue # Determine if the image is a local file image_filename = os.path.basename(image_path) # Get the file name from the path image_extension = os.path.splitext(image_filename)[1].lower() print(f&#34;Image file name: {image_filename}, Extension: {image_extension}&#34;) image_new_filename = image_filename image_new_filename = image_new_filename.replace(&#39; &#39;, &#39;_&#39;) # Replace spaces with underscores print(f&#34;Updated image filename: {image_new_filename}&#34;) # Build the full image path in the images directory local_image_path = os.path.join(images_dir, image_filename) print(f&#34;Checking for image in local folder: {local_image_path}&#34;) if os.path.exists(local_image_path): print(f&#34;Image found in local folder: {local_image_path}&#34;) # The image exists locally, copy it to the Hugo static images directory destination_path = os.path.join(static_images_dir, image_new_filename) print(f&#34;Copying image to Hugo static images folder: {destination_path}&#34;) if not os.path.exists(destination_path): # Only copy if not already copied shutil.copy(local_image_path, destination_path) print(f&#34;Successfully copied image: {image_filename}&#34;) else: print(f&#34;Image already exists in destination: {destination_path}&#34;) # Update the image reference in the Markdown file new_image_path = f&#34;Second-Brain/images/{image_new_filename}&#34; content = content.replace(f&#34;![{alt_text}]({image_path})&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) content = content.replace(f&#34;![[{image_path}]]&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) print(f&#34;Updated image path in Markdown: {new_image_path}&#34;) else: print(f&#34;Image not found in the images folder: {local_image_path}&#34;) # Save the modified content into the output folder, keeping the original filename new_md_file_path = os.path.join(md_output_dir, os.path.basename(md_file)) print(f&#34;Saving updated Markdown file to: {new_md_file_path}&#34;) with open(new_md_file_path, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(f&#34;Successfully updated and saved Markdown file: {new_md_file_path}&#34;) # Step 2: Process all markdown files in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): md_file_path = os.path.join(posts_dir, filename) print(f&#34;\nProcessing Markdown file: {md_file_path}&#34;) find_and_process_images(md_file_path) print(&#34;\nProcessing complete!&#34;) Types of image syntax in markdown file in .md file there is many ways to insert image here is some:">
   <meta itemprop="datePublished" content="2024-12-22T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-12-22T17:27:45+04:00">
+  <meta itemprop="dateModified" content="2024-12-22T18:35:43+04:00">
   <meta itemprop="wordCount" content="571">
   <meta itemprop="keywords" content="Test"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/">
   <meta property="og:site_name" content="Second Brain">
@@ -31,7 +31,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-12-22T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-12-22T17:27:45+04:00">
+    <meta property="article:modified_time" content="2024-12-22T18:35:43+04:00">
     <meta property="article:tag" content="Test">
 
   <meta name="twitter:card" content="summary">
@@ -52,7 +52,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
     "wordCount" : "571",
     "inLanguage": "en",
     "datePublished": "2024-12-22T00:00:00Z",
-    "dateModified": "2024-12-22T17:27:45+04:00",
+    "dateModified": "2024-12-22T18:35:43+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -189,7 +189,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
    </svg>571 
-    //
+    minutes 
     
     
     
