@@ -43,6 +43,7 @@ or something like in games directory what ever you would like just be careful wi
   rathena/terraria
 	```
 	now here there might be some **things to modify**
+	- `--name` is a name of container this will be used for starting and stopping it if you forget run `docker ps`
 	- `-p` shows witch ports to forward from container to real machine and `7777` is a default port for terraria server. if you are running more then one definitely change this. if not this is good.
 
 	- `-v` binds `/configs` folder on container to `~/opt/terraria/server1` on our server witch we initially crated, if you want to bind it somewhere else just change the `~/opt/terraria/server1` part to your desired path and again be careful with permeations.
@@ -61,6 +62,12 @@ or something like in games directory what ever you would like just be careful wi
 			- `-e PORT=7777`: Sets the server's port. again if you are running another server change the port witch it runs on here and port forwarded in `-p` flag
 		1.  `--restart unless-stopped` this ensures that after power out of restart or shut down server starts automatically if you don't want that, delete it.
 		2. and `  rathena/terraria` this you don't want to change, its a docker image witch container is created from.
+# managing server
+now at this point server is running and here are some useful command:
+- **Stop the server**: `docker stop terraria-server`
+- **Start the server**: `docker start terraria-server`
+- **Check logs**: `docker logs -f terraria-server`
+if its called different name check with `docker ps`
 
 # accessing the server
 now for me I'm using [tailscale](https://tailscale.com/) witch is kind like a [VPN](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-vpn) and works behind [CG-NAT](https://nfware.com/blog/what-is-the-difference-between-nat-and-cgnat) witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.
@@ -69,3 +76,18 @@ now for me I'm using [tailscale](https://tailscale.com/) witch is kind like a [V
 this is not recommended but you forward your server's terraria's port and then share your public IP address to people that want to join and port. this doesn't work for CG-NAT. 
 
 [how to forward ports on your router?](https://nordvpn.com/blog/open-ports-on-router/)
+
+# And if you are thief and have a cracked version of Terraria (or friend has)
+**first off all that violates Terraria's terms of service and if you can you should 100% support the developer and get the real licensed version. allowing cracked users  also is a bit risky because those users also bypass security checks.**
+
+but if your friend is cheap and won't buy it :
+1. locate the `serverconfig.txt` file, for us it will be here `~/opt/terraria/server1/serverconfig.txt` and open it up with some text editor:
+	```bash
+	nano ~/opt/terraria/server1/serverconfig.txt
+	```
+1. and change `ValidateSteam=` from `true` to `false`
+2. and restart the container:
+	```bash
+	docker restart terraria-server
+	```
+and it should work now for cracked players.
