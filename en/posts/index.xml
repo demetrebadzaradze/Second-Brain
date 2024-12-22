@@ -180,6 +180,9 @@ this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 </span></span></code></pre></div>now here there might be some <strong>things to modify</strong>
 <ul>
 <li>
+<p><code>--name</code> is a name of container this will be used for starting and stopping it if you forget run <code>docker ps</code></p>
+</li>
+<li>
 <p><code>-p</code> shows witch ports to forward from container to real machine and <code>7777</code> is a default port for terraria server. if you are running more then one definitely change this. if not this is good.</p>
 </li>
 <li>
@@ -213,11 +216,32 @@ change as you wish.</li>
 </ul>
 </li>
 </ul>
+<h1 id="managing-server">managing server</h1>
+<p>now at this point server is running and here are some useful command:</p>
+<ul>
+<li><strong>Stop the server</strong>: <code>docker stop terraria-server</code></li>
+<li><strong>Start the server</strong>: <code>docker start terraria-server</code></li>
+<li><strong>Check logs</strong>: <code>docker logs -f terraria-server</code>
+if its called different name check with <code>docker ps</code></li>
+</ul>
 <h1 id="accessing-the-server">accessing the server</h1>
 <p>now for me I&rsquo;m using <a href="https://tailscale.com/">tailscale</a> witch is kind like a <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-vpn">VPN</a> and works behind <a href="https://nfware.com/blog/what-is-the-difference-between-nat-and-cgnat">CG-NAT</a> witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.</p>
 <h3 id="if-you-are-not-using-tailscale">if you are not using tailscale</h3>
 <p>this is not recommended but you forward your server&rsquo;s terraria&rsquo;s port and then share your public IP address to people that want to join and port. this doesn&rsquo;t work for CG-NAT.</p>
 <p><a href="https://nordvpn.com/blog/open-ports-on-router/">how to forward ports on your router?</a></p>
+<h1 id="and-if-you-are-thief-and-have-a-cracked-version-of-terraria-or-friend-has">And if you are thief and have a cracked version of Terraria (or friend has)</h1>
+<p><strong>first off all that violates Terraria&rsquo;s terms of service and if you can you should 100% support the developer and get the real licensed version. allowing cracked users  also is a bit risky because those users also bypass security checks.</strong></p>
+<p>but if your friend is cheap and won&rsquo;t buy it :</p>
+<ol>
+<li>locate the <code>serverconfig.txt</code> file, for us it will be here <code>~/opt/terraria/server1/serverconfig.txt</code> and open it up with some text editor:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano ~/opt/terraria/server1/serverconfig.txt
+</span></span></code></pre></div></li>
+<li>and change <code>ValidateSteam=</code> from <code>true</code> to <code>false</code></li>
+<li>and restart the container:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker restart terraria-server
+</span></span></code></pre></div></li>
+</ol>
+<p>and it should work now for cracked players.</p>
 ]]></content>
 		</item>
 		

@@ -22,8 +22,8 @@ sudo apt install -y docker.io and enable sysctl:
 sudo systemctl enable --now docker pull and run image probably making new directory for server configs is a good idea:
 mkdir ~/opt/terraria/server1 or something like in games directory what ever you would like just be careful with perditions.">
   <meta itemprop="datePublished" content="2024-12-22T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-12-22T00:00:00+00:00">
-  <meta itemprop="wordCount" content="443"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/en/posts/host-terraria-server-on-linux-server/">
+  <meta itemprop="dateModified" content="2024-12-23T00:18:35+04:00">
+  <meta itemprop="wordCount" content="615"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/en/posts/host-terraria-server-on-linux-server/">
   <meta property="og:site_name" content="Second Brain">
   <meta property="og:title" content="Host terraria server on Linux server">
   <meta property="og:description" content="easiest and simplest way to do this is to run it on docker, because docker is pure magic and there docker image that handles all of what this needs called rathena/terraria.
@@ -36,7 +36,7 @@ mkdir ~/opt/terraria/server1 or something like in games directory what ever you 
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-12-22T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-12-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-23T00:18:35+04:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Host terraria server on Linux server">
@@ -55,11 +55,11 @@ mkdir ~/opt/terraria/server1 or something like in games directory what ever you 
     "name": "Host terraria server on Linux server",
     "description": "easiest and simplest way to do this is to run it on docker, because docker is pure magic and there docker image that handles all of what this needs called rathena/terraria.\ninstalling docker update repos:\nsudo apt update then install docker:\nsudo apt install -y docker.io and enable sysctl:\nsudo systemctl enable --now docker pull and run image probably making new directory for server configs is a good idea:\nmkdir ~/opt/terraria/server1 or something like in games directory what ever you would like just be careful with perditions.\n",
     "keywords": [],
-    "articleBody": "easiest and simplest way to do this is to run it on docker, because docker is pure magic and there docker image that handles all of what this needs called rathena/terraria.\ninstalling docker update repos:\nsudo apt update then install docker:\nsudo apt install -y docker.io and enable sysctl:\nsudo systemctl enable --now docker pull and run image probably making new directory for server configs is a good idea:\nmkdir ~/opt/terraria/server1 or something like in games directory what ever you would like just be careful with perditions.\npull the image docker pull rathena/terraria run the server docker run -d \\ --name=terraria-server \\ -p 7777:7777 \\ -v ~/opt/terraria/server1:/config \\ -e WORLD_NAME=\"MyWorld\" \\ -e MAX_PLAYERS=10 \\ -e DIFFICULTY=2 \\ --restart unless-stopped \\ rathena/terraria now here there might be some things to modify -p shows witch ports to forward from container to real machine and 7777 is a default port for terraria server. if you are running more then one definitely change this. if not this is good.\n-v binds /configs folder on container to ~/opt/terraria/server1 on our server witch we initially crated, if you want to bind it somewhere else just change the ~/opt/terraria/server1 part to your desired path and again be careful with permeations.\n-e makes environmental variables to configure server and thy are pretty self explanatory.\nWORD_NAME specifies name of the world. MAX_PLAYERS specifies max player count. DIFFICULTY specifies difficulty of the game like 0: Normal 1: Expert 2: Master 3: Journey Mode change as you wish. some other useful environmental variables are: -e PASSWORD=\"yourpassword\" specifies password for the server -e SEED=\"worldseed\": Specifies a seed for world generation. -e PORT=7777: Sets the server’s port. again if you are running another server change the port witch it runs on here and port forwarded in -p flag --restart unless-stopped this ensures that after power out of restart or shut down server starts automatically if you don’t want that, delete it. and rathena/terraria this you don’t want to change, its a docker image witch container is created from. accessing the server now for me I’m using tailscale witch is kind like a VPN and works behind CG-NAT witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.\nif you are not using tailscale this is not recommended but you forward your server’s terraria’s port and then share your public IP address to people that want to join and port. this doesn’t work for CG-NAT.\nhow to forward ports on your router?\n",
-    "wordCount" : "443",
+    "articleBody": "easiest and simplest way to do this is to run it on docker, because docker is pure magic and there docker image that handles all of what this needs called rathena/terraria.\ninstalling docker update repos:\nsudo apt update then install docker:\nsudo apt install -y docker.io and enable sysctl:\nsudo systemctl enable --now docker pull and run image probably making new directory for server configs is a good idea:\nmkdir ~/opt/terraria/server1 or something like in games directory what ever you would like just be careful with perditions.\npull the image docker pull rathena/terraria run the server docker run -d \\ --name=terraria-server \\ -p 7777:7777 \\ -v ~/opt/terraria/server1:/config \\ -e WORLD_NAME=\"MyWorld\" \\ -e MAX_PLAYERS=10 \\ -e DIFFICULTY=2 \\ --restart unless-stopped \\ rathena/terraria now here there might be some things to modify --name is a name of container this will be used for starting and stopping it if you forget run docker ps\n-p shows witch ports to forward from container to real machine and 7777 is a default port for terraria server. if you are running more then one definitely change this. if not this is good.\n-v binds /configs folder on container to ~/opt/terraria/server1 on our server witch we initially crated, if you want to bind it somewhere else just change the ~/opt/terraria/server1 part to your desired path and again be careful with permeations.\n-e makes environmental variables to configure server and thy are pretty self explanatory.\nWORD_NAME specifies name of the world. MAX_PLAYERS specifies max player count. DIFFICULTY specifies difficulty of the game like 0: Normal 1: Expert 2: Master 3: Journey Mode change as you wish. some other useful environmental variables are: -e PASSWORD=\"yourpassword\" specifies password for the server -e SEED=\"worldseed\": Specifies a seed for world generation. -e PORT=7777: Sets the server’s port. again if you are running another server change the port witch it runs on here and port forwarded in -p flag --restart unless-stopped this ensures that after power out of restart or shut down server starts automatically if you don’t want that, delete it. and rathena/terraria this you don’t want to change, its a docker image witch container is created from. managing server now at this point server is running and here are some useful command:\nStop the server: docker stop terraria-server Start the server: docker start terraria-server Check logs: docker logs -f terraria-server if its called different name check with docker ps accessing the server now for me I’m using tailscale witch is kind like a VPN and works behind CG-NAT witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.\nif you are not using tailscale this is not recommended but you forward your server’s terraria’s port and then share your public IP address to people that want to join and port. this doesn’t work for CG-NAT.\nhow to forward ports on your router?\nAnd if you are thief and have a cracked version of Terraria (or friend has) first off all that violates Terraria’s terms of service and if you can you should 100% support the developer and get the real licensed version. allowing cracked users also is a bit risky because those users also bypass security checks.\nbut if your friend is cheap and won’t buy it :\nlocate the serverconfig.txt file, for us it will be here ~/opt/terraria/server1/serverconfig.txt and open it up with some text editor: nano ~/opt/terraria/server1/serverconfig.txt and change ValidateSteam= from true to false and restart the container: docker restart terraria-server and it should work now for cracked players.\n",
+    "wordCount" : "615",
     "inLanguage": "en",
     "datePublished": "2024-12-22T00:00:00Z",
-    "dateModified": "2024-12-22T00:00:00Z",
+    "dateModified": "2024-12-23T00:18:35+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -190,12 +190,12 @@ mkdir ~/opt/terraria/server1 or something like in games directory what ever you 
       <line x1="16" y1="13" x2="8" y2="13"></line>
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
-   </svg>443 
+   </svg>615 
     minutes 
     
     
     
-    2 Minutes</p>
+    2 Minutes, 47 Seconds</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -236,6 +236,9 @@ mkdir ~/opt/terraria/server1 or something like in games directory what ever you 
 </span></span></code></pre></div>now here there might be some <strong>things to modify</strong>
 <ul>
 <li>
+<p><code>--name</code> is a name of container this will be used for starting and stopping it if you forget run <code>docker ps</code></p>
+</li>
+<li>
 <p><code>-p</code> shows witch ports to forward from container to real machine and <code>7777</code> is a default port for terraria server. if you are running more then one definitely change this. if not this is good.</p>
 </li>
 <li>
@@ -269,11 +272,32 @@ change as you wish.</li>
 </ul>
 </li>
 </ul>
+<h1 id="managing-server">managing server<a href="#managing-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>now at this point server is running and here are some useful command:</p>
+<ul>
+<li><strong>Stop the server</strong>: <code>docker stop terraria-server</code></li>
+<li><strong>Start the server</strong>: <code>docker start terraria-server</code></li>
+<li><strong>Check logs</strong>: <code>docker logs -f terraria-server</code>
+if its called different name check with <code>docker ps</code></li>
+</ul>
 <h1 id="accessing-the-server">accessing the server<a href="#accessing-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>now for me I&rsquo;m using <a href="https://tailscale.com/">tailscale</a> witch is kind like a <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-vpn">VPN</a> and works behind <a href="https://nfware.com/blog/what-is-the-difference-between-nat-and-cgnat">CG-NAT</a> witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.</p>
 <h3 id="if-you-are-not-using-tailscale">if you are not using tailscale<a href="#if-you-are-not-using-tailscale" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>this is not recommended but you forward your server&rsquo;s terraria&rsquo;s port and then share your public IP address to people that want to join and port. this doesn&rsquo;t work for CG-NAT.</p>
 <p><a href="https://nordvpn.com/blog/open-ports-on-router/">how to forward ports on your router?</a></p>
+<h1 id="and-if-you-are-thief-and-have-a-cracked-version-of-terraria-or-friend-has">And if you are thief and have a cracked version of Terraria (or friend has)<a href="#and-if-you-are-thief-and-have-a-cracked-version-of-terraria-or-friend-has" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p><strong>first off all that violates Terraria&rsquo;s terms of service and if you can you should 100% support the developer and get the real licensed version. allowing cracked users  also is a bit risky because those users also bypass security checks.</strong></p>
+<p>but if your friend is cheap and won&rsquo;t buy it :</p>
+<ol>
+<li>locate the <code>serverconfig.txt</code> file, for us it will be here <code>~/opt/terraria/server1/serverconfig.txt</code> and open it up with some text editor:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano ~/opt/terraria/server1/serverconfig.txt
+</span></span></code></pre></div></li>
+<li>and change <code>ValidateSteam=</code> from <code>true</code> to <code>false</code></li>
+<li>and restart the container:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker restart terraria-server
+</span></span></code></pre></div></li>
+</ol>
+<p>and it should work now for cracked players.</p>
 
 			</div>
 			
