@@ -1,20 +1,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Posts on Second Brain</title>
-		<link>/en/posts/</link>
+		<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/</link>
 		<description>Recent content in Posts on Second Brain</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
 		<lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
-		<atom:link href="/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
 			<title>Handling images for hugo</title>
-			<link>/en/posts/handling-images-for-hugo/</link>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/</link>
 			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
 			
-			<guid>/en/posts/handling-images-for-hugo/</guid>
+			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/</guid>
 			<description><![CDATA[%!s(<nil>)]]></description>
 			<content type="html"><![CDATA[<h1 id="plan">Plan</h1>
 <p>so what Hugo want&rsquo;s is to have all images that its gonna use in <code>static/images</code> also link needs to be appropriate.
@@ -144,10 +144,10 @@ this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 		
 		<item>
 			<title>Test Blog</title>
-			<link>/en/posts/test-blog/</link>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/test-blog/</link>
 			<pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
 			
-			<guid>/en/posts/test-blog/</guid>
+			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/test-blog/</guid>
 			<description><![CDATA[%!s(<nil>)]]></description>
 			<content type="html"><![CDATA[<h1 id="hello-gang">Hello gang</h1>
 <p><img src="/images/avatar.png" alt="image"></p>
@@ -159,10 +159,10 @@ this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 		
 		<item>
 			<title>Test Blog</title>
-			<link>/en/posts/testing/</link>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/testing/</link>
 			<pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
 			
-			<guid>/en/posts/testing/</guid>
+			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/testing/</guid>
 			<description><![CDATA[%!s(<nil>)]]></description>
 			<content type="html"><![CDATA[<h1 id="testing">Testing</h1>
 <p>this will be deleted soon but here is pic</p>
