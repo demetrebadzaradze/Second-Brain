@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
-    <lastBuildDate>Sun, 22 Dec 2024 17:27:45 +0400</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2024 18:40:55 +0400</lastBuildDate>
     <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/en/about/</link>
+      <pubDate>Sun, 22 Dec 2024 18:40:55 +0400</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/en/about/</guid>
+      <description>&lt;h1 id=&#34;welcome-to-my-blog-this-is-the-about-page&#34;&gt;Welcome to my blog! This is the About page.&lt;/h1&gt;</description>
+    </item>
     <item>
       <title>Handling images for hugo</title>
       <link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/</link>

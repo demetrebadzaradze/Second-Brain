@@ -2,20 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/</loc>
-    <lastmod>2024-12-22T17:27:45+04:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/</loc>
-    <lastmod>2024-12-22T17:27:45+04:00</lastmod>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/about/</loc>
+    <lastmod>2024-12-22T18:40:55+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/</loc>
-    <lastmod>2024-12-22T17:27:45+04:00</lastmod>
+    <lastmod>2024-12-22T18:40:55+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/</loc>
+    <lastmod>2024-12-22T18:35:43+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/</loc>
+    <lastmod>2024-12-22T18:35:43+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/</loc>
-    <lastmod>2024-12-22T17:27:45+04:00</lastmod>
+    <lastmod>2024-12-22T18:35:43+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/test/</loc>
-    <lastmod>2024-12-22T17:27:45+04:00</lastmod>
+    <lastmod>2024-12-22T18:35:43+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/firstblog/</loc>
     <lastmod>2024-12-22T17:27:45+04:00</lastmod>
