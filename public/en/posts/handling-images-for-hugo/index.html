@@ -5,23 +5,23 @@
 <head><meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><link rel="author" href="/humans.txt">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><link rel="author" href="/Second-Brain/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/Second-Brain/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Second-Brain/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Second-Brain/favicon-16x16.png">
+<link rel="manifest" href="/Second-Brain/site.webmanifest">
+<meta name="msapplication-TileImage" content="/Second-Brain/mstile-144x144.png">
 <meta name="theme-color" content="#494f5c">
 <meta name="msapplication-TileColor" content="#494f5c">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Demetre Badzgaradze"><meta name="description" content="this is my second brain">
+<link rel="mask-icon" href="/Second-Brain/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="Demetre Badzgaradze"><meta name="description" content="this is my second brain">
 
   <meta itemprop="name" content="Handling images for hugo">
   <meta itemprop="description" content="Plan so what Hugo want’s is to have all images that its gonna use in static/images also link needs to be appropriate. so for something this simple and easy I wrote a ==python script== that:
 reads all .md files in a directory finds all images in those files copies images to static/image files copes .md files into content/posts here is script :
 import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;D:\USER\Notes\Important\BlogPosts&#34; images_dir = r&#34;D:\USER\Notes\Important&#34; static_images_dir = r&#34;D:\USER\Projects\SecondBrain\static\images&#34; md_output_dir = r&#34;D:\USER\Projects\SecondBrain\content\Posts&#34; # Define the updated image regex pattern to match both image formats: # 1. ![Alt Text](image-path) # 2. ![[image-path]] image_pattern = re.compile(r&#39;!\[([^\]]*)\]\(([^)]&#43;)\)|!\[\[([^\]]&#43;)\]\]&#39;) def find_and_process_images(md_file): print(f&#34;\nProcessing file: {md_file}&#34;) # Read the content of the markdown file with open(md_file, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Find all image references in the Markdown file image_references = image_pattern.findall(content) print(f&#34;Found {len(image_references)} image references in {md_file}&#34;) # Process each image reference for match in image_references: if match[1]: # Format: ![Alt Text](image-path) alt_text = match[0] image_path = match[1] print(f&#34;Found image (Markdown format): Alt Text: &#39;{alt_text}&#39;, Path: {image_path}&#34;) elif match[2]: # Format: ![[image-path]] alt_text = &#34;image&#34; image_path = match[2] print(f&#34;Found image (Custom format): Path: {image_path}&#34;) # If the image path is an online URL, skip it if image_path.startswith(&#34;http&#34;) or image_path.startswith(&#34;https&#34;): print(f&#34;Skipping online image: {image_path}&#34;) continue # Determine if the image is a local file image_filename = os.path.basename(image_path) # Get the file name from the path image_extension = os.path.splitext(image_filename)[1].lower() print(f&#34;Image file name: {image_filename}, Extension: {image_extension}&#34;) image_new_filename = image_filename image_new_filename = image_new_filename.replace(&#39; &#39;, &#39;_&#39;) # Replace spaces with underscores print(f&#34;Updated image filename: {image_new_filename}&#34;) # Build the full image path in the images directory local_image_path = os.path.join(images_dir, image_filename) print(f&#34;Checking for image in local folder: {local_image_path}&#34;) if os.path.exists(local_image_path): print(f&#34;Image found in local folder: {local_image_path}&#34;) # The image exists locally, copy it to the Hugo static images directory destination_path = os.path.join(static_images_dir, image_new_filename) print(f&#34;Copying image to Hugo static images folder: {destination_path}&#34;) if not os.path.exists(destination_path): # Only copy if not already copied shutil.copy(local_image_path, destination_path) print(f&#34;Successfully copied image: {image_filename}&#34;) else: print(f&#34;Image already exists in destination: {destination_path}&#34;) # Update the image reference in the Markdown file new_image_path = f&#34;/images/{image_new_filename}&#34; content = content.replace(f&#34;![{alt_text}]({image_path})&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) content = content.replace(f&#34;![[{image_path}]]&#34;, f&#34;![{alt_text}]({new_image_path})&#34;) print(f&#34;Updated image path in Markdown: {new_image_path}&#34;) else: print(f&#34;Image not found in the images folder: {local_image_path}&#34;) # Save the modified content into the output folder, keeping the original filename new_md_file_path = os.path.join(md_output_dir, os.path.basename(md_file)) print(f&#34;Saving updated Markdown file to: {new_md_file_path}&#34;) with open(new_md_file_path, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(f&#34;Successfully updated and saved Markdown file: {new_md_file_path}&#34;) # Step 2: Process all markdown files in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): md_file_path = os.path.join(posts_dir, filename) print(f&#34;\nProcessing Markdown file: {md_file_path}&#34;) find_and_process_images(md_file_path) print(&#34;\nProcessing complete!&#34;) Types of image syntax in markdown file in .md file there is many ways to insert image here is some:">
   <meta itemprop="datePublished" content="2024-12-22T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-12-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-12-22T17:27:45+04:00">
   <meta itemprop="wordCount" content="571">
-  <meta itemprop="keywords" content="Test"><meta property="og:url" content="/en/posts/handling-images-for-hugo/">
+  <meta itemprop="keywords" content="Test"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/">
   <meta property="og:site_name" content="Second Brain">
   <meta property="og:title" content="Handling images for hugo">
   <meta property="og:description" content="Plan so what Hugo want’s is to have all images that its gonna use in static/images also link needs to be appropriate. so for something this simple and easy I wrote a ==python script== that:
@@ -31,7 +31,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-12-22T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-12-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-22T17:27:45+04:00">
     <meta property="article:tag" content="Test">
 
   <meta name="twitter:card" content="summary">
@@ -52,7 +52,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
     "wordCount" : "571",
     "inLanguage": "en",
     "datePublished": "2024-12-22T00:00:00Z",
-    "dateModified": "2024-12-22T00:00:00Z",
+    "dateModified": "2024-12-22T17:27:45+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -60,7 +60,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
         },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "/en/posts/handling-images-for-hugo/"
+      "@id": "https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/"
     },
     "publisher": {
       "@type": "Organization",
@@ -68,21 +68,21 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
       "description": "this is my second brain",
       "logo": {
         "@type": "ImageObject",
-        "url": "/favicon.ico"
+        "url": "https://demetrebadzaradze.github.io/Second-Brain/favicon.ico"
       }
     }
 }
 </script><title>Handling images for hugo</title>
-<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="/css/style.min.b5452571cf5fd282d330827d10902e9e19e247e854980f67cb526fd4d203c10b.css" integrity="sha256-tUUlcc9f0oLTMIJ9EJAunhniR+hUmA9ny1Jv1NIDwQs=" crossorigin="anonymous">
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://demetrebadzaradze.github.io/Second-Brain/css/style.min.b5452571cf5fd282d330827d10902e9e19e247e854980f67cb526fd4d203c10b.css" integrity="sha256-tUUlcc9f0oLTMIJ9EJAunhniR+hUmA9ny1Jv1NIDwQs=" crossorigin="anonymous">
 	</head>
 <body id="page">
 	<header id="site-header">
 		<div class="hdr-wrapper section-inner">
 			<div class="hdr-left">
 				<div class="site-branding">
-					<a href="/">Second Brain</a>
+					<a href="https://demetrebadzaradze.github.io/Second-Brain/">Second Brain</a>
 				</div>
-				<nav class="site-nav hide-in-mobile"><a href="/en/posts/">Posts</a><a href="/en/about/">About</a></nav>
+				<nav class="site-nav hide-in-mobile"><a href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/">Posts</a><a href="https://demetrebadzaradze.github.io/Second-Brain/en/about/">About</a></nav>
 			</div>
 			<div class="hdr-right hdr-icons">
 				<span class="hdr-links hide-in-mobile"><a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -114,26 +114,26 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
     
     <ul>
         <li>
-            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=%2fen%2fposts%2fhandling-images-for-hugo%2f&amp;text=Handling%20images%20for%20hugo" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fen%2fposts%2fhandling-images-for-hugo%2f&amp;text=Handling%20images%20for%20hugo" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
 </svg></a>
         </li>
         <li>
-            <a href="https://facebook.com/sharer/sharer.php?u=%2fen%2fposts%2fhandling-images-for-hugo%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fen%2fposts%2fhandling-images-for-hugo%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
 </svg></a>
         </li>
         <li>
-            <a href="mailto:?subject=Handling%20images%20for%20hugo&amp;body=%2fen%2fposts%2fhandling-images-for-hugo%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="mailto:?subject=Handling%20images%20for%20hugo&amp;body=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fen%2fposts%2fhandling-images-for-hugo%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
    <polyline points="22,6 12,13 2,6"></polyline>
 </svg></a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fen%2fposts%2fhandling-images-for-hugo%2f&amp;source=%2f&amp;title=Handling%20images%20for%20hugo&amp;summary=Handling%20images%20for%20hugo%2c%20by%20Demetre%20Badzgaradze%0a%0a%3cnil%3e%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fen%2fposts%2fhandling-images-for-hugo%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=Handling%20images%20for%20hugo&amp;summary=Handling%20images%20for%20hugo%2c%20by%20Demetre%20Badzgaradze%0a%0a%3cnil%3e%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
    <rect x="2" y="9" width="4" height="12"></rect>
@@ -141,7 +141,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
 </svg></a>
         </li>
         <li>
-            <a href="#" onclick="linkShare(&#34;Handling images for hugo&#34;,&#34;/en/posts/handling-images-for-hugo/&#34;,&#34;Handling images for hugo, by Demetre Badzgaradze\n\n\u003cnil\u003e\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            <a href="#" onclick="linkShare(&#34;Handling images for hugo&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/&#34;,&#34;Handling images for hugo, by Demetre Badzgaradze\n\n\u003cnil\u003e\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -159,8 +159,8 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
 	</header>
 	<div id="mobile-menu" class="animated fast">
 		<ul>
-			<li><a href="/en/posts/">Posts</a></li>
-			<li><a href="/en/about/">About</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/">Posts</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/en/about/">About</a></li>
 		</ul>
 	</div>
 
@@ -180,7 +180,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon">
       <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
       <line x1="7" y1="7" x2="7" y2="7"></line>
-   </svg><span class="tag"><a href="/en/tags/test">test</a></span></p>
+   </svg><span class="tag"><a href="https://demetrebadzaradze.github.io/Second-Brain/en/tags/test">test</a></span></p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -334,14 +334,14 @@ this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 	<h2></h2>
 	<ul>
 	
-	<li><a href="/en/posts/test-blog/">Test Blog</a></li>
+	<li><a href="/Second-Brain/en/posts/test-blog/">Test Blog</a></li>
 	
 	</ul>
 </div>
 
 		</article>
 		<div class="post-nav thin">
-			<a class="prev-post" href="/en/posts/test-blog/">
+			<a class="prev-post" href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/test-blog/">
 				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
       <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -354,18 +354,12 @@ this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 
 <footer id="site-footer" class="section-inner thin animated fadeIn faster">
 	<p>
-		&copy; 2024 <a href="/">Demetre Badzgaradze</a>
+		&copy; 2024 <a href="https://demetrebadzaradze.github.io/Second-Brain/">Demetre Badzgaradze</a>
 		&#183; Everything you say can and will be used aganst you.&#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
-			&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
-		&#183; <a href="/en/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss">
-   <path d="M4 11a9 9 0 0 1 9 9"></path>
-   <path d="M4 4a16 16 0 0 1 16 16"></path>
-   <circle cx="5" cy="19" r="1"></circle>
-</svg></a></p>
+			&#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a></p>
 
 </footer>
-<script async src="/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+<script async src="https://demetrebadzaradze.github.io/Second-Brain/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://demetrebadzaradze.github.io/Second-Brain/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
 </body>
 
 </html>
