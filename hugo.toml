@@ -8,6 +8,7 @@ baseURL = "https://demetrebadzaradze.github.io/Second-Brain/"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 theme = "hermit-v2"
+relativeURLs = true
 #enableRobotsTXT = true ## set to true to enable inbuilt robots.txt
 
 #[languages]
@@ -104,7 +105,7 @@ expiryDate = ["expiryDate"]
   scrollToTop = true 
   global_mathjax = false
   readTime = true
-  readTimeSeparator = "as much as you would like"
+  readTimeSeparator = "//"
   # legacyLayout = false
   shareSocial = true
   # googleTagManager = "GTM-XXXXXXXX"

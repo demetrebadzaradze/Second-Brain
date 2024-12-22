@@ -84,7 +84,7 @@ def find_and_process_images(md_file):
                 print(f"Image already exists in destination: {destination_path}")
 
             # Update the image reference in the Markdown file
-            new_image_path = f"/images/{image_new_filename}"
+            new_image_path = f"Second-Brain/images/{image_new_filename}"
 
             content = content.replace(f"![{alt_text}]({image_path})", f"![{alt_text}]({new_image_path})")
             content = content.replace(f"![[{image_path}]]", f"![{alt_text}]({new_image_path})")
