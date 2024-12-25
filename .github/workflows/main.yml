@@ -1,0 +1,64 @@
+name: Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - posts  # Trigger workflow when files are pushed to the 'posts' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all branches are available
+
+      # Step 2: Update Content on Master Branch
+      - name: Update Content on Master Branch
+        run: |
+          # Configure Git for commits
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          # Step 2.1: Fetch and check out the 'master' branch
+          git fetch origin master
+          git checkout master
+
+          # Step 2.2: Fetch and check out the 'posts' branch
+          git fetch origin posts
+          git checkout posts
+
+          # Step 2.3: Copy Markdown files from 'posts' to 'master'
+          cp *.md ../repo/content/posts/
+
+          # Step 2.4: Return to 'master' branch
+          git checkout master
+
+          # Step 2.5: Stage and commit the new/updated content
+          git add content/posts/
+          git commit -m "Updated content from 'posts' branch"
+          git push origin master
+
+      # Step 3: Setup Hugo
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.139.4+extended"  # Specify your Hugo version
+
+      # Step 4: Build the Site
+      - name: Build Hugo Site
+        run: |
+          git checkout master
+          hugo
+
+      # Step 5: Deploy to 'For-Hosting' Branch
+      - name: Deploy to For-Hosting
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git checkout For-Hosting  # Switch to 'For-Hosting' branch
+          
+          git subtree push --prefix public origin For-Hosting
