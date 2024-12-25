@@ -15,7 +15,7 @@
 			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
 			
 			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/</guid>
-			<description><![CDATA[%!s(<nil>)]]></description>
+			<description><![CDATA[how i handle images for docker]]></description>
 			<content type="html"><![CDATA[<h1 id="plan">Plan</h1>
 <p>so what Hugo want&rsquo;s is to have all images that its gonna use in <code>static/images</code> also link needs to be appropriate.
 so for something this simple and easy I wrote a ==python script== that:</p>
@@ -242,36 +242,6 @@ if its called different name check with <code>docker ps</code></li>
 </span></span></code></pre></div></li>
 </ol>
 <p>and it should work now for cracked players.</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Test Blog</title>
-			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/test-blog/</link>
-			<pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
-			
-			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/test-blog/</guid>
-			<description><![CDATA[%!s(<nil>)]]></description>
-			<content type="html"><![CDATA[<h1 id="hello-gang">Hello gang</h1>
-<p><img src="/images/avatar.png" alt="image"></p>
-<p><img src="/images/Pasted_image_20241222125028.png" alt="image"></p>
-<p><img src="https://scontent.ftbs5-3.fna.fbcdn.net/v/t39.30808-6/466001138_9041429502556328_789849932317665491_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=833d8c&amp;_nc_ohc=ysJWFefniTEQ7kNvgERs5I_&amp;_nc_zt=23&amp;_nc_ht=scontent.ftbs5-3.fna&amp;_nc_gid=AVTr4jtkvCe_g5zi_f6uubg&amp;oh=00_AYD8_oQ1GtQMGTNXDPqpQ93AqudxOLYL1N8gGgqq6OCRIQ&amp;oe=676D8CA6" alt="image"></p>
-<p><img src="/images/pp.png" alt="image"></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Test Blog</title>
-			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/testing/</link>
-			<pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
-			
-			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/testing/</guid>
-			<description><![CDATA[%!s(<nil>)]]></description>
-			<content type="html"><![CDATA[<h1 id="testing">Testing</h1>
-<p>this will be deleted soon but here is pic</p>
-<p><img src="/images/WIN_20240907_16_14_44Pro.jpg" alt="image"></p>
-<p>nice cable</p>
-<p><img src="/images/black_king.png" alt="image"></p>
 ]]></content>
 		</item>
 		

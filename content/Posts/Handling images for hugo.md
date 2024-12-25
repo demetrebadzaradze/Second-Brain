@@ -1,8 +1,9 @@
 ---
 title: Handling images for hugo
 date: 2024-12-22
-tags:
-  - test
+description : "how i handle images for docker"
+toc : true
+ShowLastmod : true
 ---
 # Plan
 so what Hugo want's is to have all images that its gonna use in `static/images` also link needs to be appropriate.
