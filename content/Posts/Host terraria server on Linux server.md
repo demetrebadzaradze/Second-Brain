@@ -7,7 +7,7 @@ ShowLastmod : true
 
 **easiest and simplest way** to do this is to run it on [docker](https://www.youtube.com/watch?v=oUnWU4Y4kSY), because docker is pure magic and there docker image that handles all of what this needs called `rathena/terraria`.
 
-# installing docker 
+## installing docker 
 update repos:
 ```bash
 sudo apt update 
@@ -21,7 +21,7 @@ and enable sysctl:
 sudo systemctl enable --now docker
 ```
 
-# pull and run image
+## pull and run image
 probably making new directory for server configs is a good idea:
 ```bash
 mkdir ~/opt/terraria/server1
@@ -64,14 +64,14 @@ or something like in games directory what ever you would like just be careful wi
 			- `-e PORT=7777`: Sets the server's port. again if you are running another server change the port witch it runs on here and port forwarded in `-p` flag
 		1.  `--restart unless-stopped` this ensures that after power out of restart or shut down server starts automatically if you don't want that, delete it.
 		2. and `  rathena/terraria` this you don't want to change, its a docker image witch container is created from.
-# managing server
+## managing server
 now at this point server is running and here are some useful command:
 - **Stop the server**: `docker stop terraria-server`
 - **Start the server**: `docker start terraria-server`
 - **Check logs**: `docker logs -f terraria-server`
 if its called different name check with `docker ps`
 
-# accessing the server
+## accessing the server
 now for me I'm using [tailscale](https://tailscale.com/) witch is kind like a [VPN](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-vpn) and works behind [CG-NAT](https://nfware.com/blog/what-is-the-difference-between-nat-and-cgnat) witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.
 
 ### if you are not using tailscale
@@ -79,7 +79,7 @@ this is not recommended but you forward your server's terraria's port and then s
 
 [how to forward ports on your router?](https://nordvpn.com/blog/open-ports-on-router/)
 
-# And if you are thief and have a cracked version of Terraria (or friend has)
+## And if you are thief and have a cracked version of Terraria (or friend has)
 **first off all that violates Terraria's terms of service and if you can you should 100% support the developer and get the real licensed version. allowing cracked users  also is a bit risky because those users also bypass security checks.**
 
 but if your friend is cheap and won't buy it :

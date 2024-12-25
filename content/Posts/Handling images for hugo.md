@@ -5,7 +5,7 @@ description : "how i handle images for hugo"
 toc : true
 ShowLastmod : true
 ---
-# Plan
+## Plan
 so what Hugo want's is to have all images that its gonna use in `static/images` also link needs to be appropriate.
 so for something this simple and easy I wrote a **python script** that:
 - reads all `.md` files in a directory 
@@ -113,7 +113,7 @@ print("\nProcessing complete!")
 ```
 
 
-# Types of image syntax in markdown file
+## Types of image syntax in markdown file
 in `.md` file there is many ways to insert image here is some:
 1. `![Alt text](image_url)`
 	this is simple when you copy file that online and after pasting it this is how its formatted. `image_url`  represents online URL of image like:  https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg.
