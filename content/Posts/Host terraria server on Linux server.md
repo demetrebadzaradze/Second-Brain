@@ -1,6 +1,8 @@
 ---
 title: Host terraria server on Linux server
 date: 2024-12-22
+toc : true
+ShowLastmod : true
 ---
 
 **easiest and simplest way** to do this is to run it on [docker](https://www.youtube.com/watch?v=oUnWU4Y4kSY), because docker is pure magic and there docker image that handles all of what this needs called `rathena/terraria`.
