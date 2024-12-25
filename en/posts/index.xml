@@ -15,10 +15,10 @@
 			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
 			
 			<guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/handling-images-for-hugo/</guid>
-			<description><![CDATA[how i handle images for docker]]></description>
+			<description><![CDATA[how i handle images for hugo]]></description>
 			<content type="html"><![CDATA[<h1 id="plan">Plan</h1>
 <p>so what Hugo want&rsquo;s is to have all images that its gonna use in <code>static/images</code> also link needs to be appropriate.
-so for something this simple and easy I wrote a ==python script== that:</p>
+so for something this simple and easy I wrote a <strong>python script</strong> that:</p>
 <ul>
 <li>reads all <code>.md</code> files in a directory</li>
 <li>finds all images in those files</li>
