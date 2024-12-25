@@ -1,13 +1,13 @@
 ---
 title: Handling images for hugo
 date: 2024-12-22
-description : "how i handle images for docker"
+description : "how i handle images for hugo"
 toc : true
 ShowLastmod : true
 ---
 # Plan
 so what Hugo want's is to have all images that its gonna use in `static/images` also link needs to be appropriate.
-so for something this simple and easy I wrote a ==python script== that:
+so for something this simple and easy I wrote a **python script** that:
 - reads all `.md` files in a directory 
 - finds all images in those files 
 - copies images to `static/image` files 
