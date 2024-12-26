@@ -35,6 +35,10 @@ jobs:
           git fetch origin posts
           git checkout posts
 
+          # some testing
+          ls
+          ls ..
+
           # Step 2.3: Copy Markdown files from 'posts' to 'master'
           cp *.md ../repo/content/Posts/
 
