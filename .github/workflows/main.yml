@@ -28,12 +28,15 @@ jobs:
           git fetch origin master
           git checkout master
 
+          # new way to copy files
+          # cd /
+
           # Step 2.2: Fetch and check out the 'posts' branch
           git fetch origin posts
           git checkout posts
 
           # Step 2.3: Copy Markdown files from 'posts' to 'master'
-          cp *.md ../repo/content/posts/
+          cp *.md ../repo/content/Posts/
 
           # Step 2.4: Return to 'master' branch
           git checkout master
