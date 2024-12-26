@@ -38,9 +38,10 @@ jobs:
           # some testing
           ls
           ls ..
+          ls ../Second-Brain
 
           # Step 2.3: Copy Markdown files from 'posts' to 'master'
-          cp *.md ../repo/content/Posts/
+          cp *.md ../Second-Brain/content/Posts/
 
           # Step 2.4: Return to 'master' branch
           git checkout master
