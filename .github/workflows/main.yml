@@ -33,9 +33,10 @@ jobs:
 
           # new way to copy files 
           cd content
-          ls
+          
           cd Posts
-          ls
+          echo "we are in folowing directory"
+          pwd
           git checkout posts -- /*
 
           # Step 2.2: Fetch and check out the 'posts' branch
