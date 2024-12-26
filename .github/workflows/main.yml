@@ -29,9 +29,11 @@ jobs:
           git checkout master
 
           git fetch origin posts
-          git checkout master
+          # here we on master
 
           # new way to copy files
+          ls
+          ls .. 
           cd /content/Posts/
           git checkout posts -- /*
 
