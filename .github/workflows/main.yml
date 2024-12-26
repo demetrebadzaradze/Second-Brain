@@ -31,10 +31,11 @@ jobs:
           git fetch origin posts
           # here we on master
 
-          # new way to copy files
+          # new way to copy files 
+          cd content
           ls
-          ls .. 
-          cd /content/Posts/
+          cd Posts
+          ls
           git checkout posts -- /*
 
           # Step 2.2: Fetch and check out the 'posts' branch
