@@ -1,6 +1,7 @@
 name: Deploy Hugo Site
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - posts  # Trigger workflow when files are pushed to the 'posts' branch
