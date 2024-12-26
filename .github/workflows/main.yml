@@ -28,26 +28,24 @@ jobs:
           git fetch origin master
           git checkout master
 
+          git fetch origin posts
+
           # new way to copy files
-          # cd /
+          cd /content/Posts/
+          git checkout posts -- /*
 
           # Step 2.2: Fetch and check out the 'posts' branch
-          git fetch origin posts
-          git checkout posts
+          # git fetch origin posts
+          # git checkout posts
 
-          # some testing
-          ls
-          ls ..
-          ls ../Second-Brain
-
-          # Step 2.3: Copy Markdown files from 'posts' to 'master'
-          cp *.md ../Second-Brain/content/Posts/
+          # # Step 2.3: Copy Markdown files from 'posts' to 'master'
+          # cp *.md ../Second-Brain/content/Posts/
 
           # Step 2.4: Return to 'master' branch
           git checkout master
 
           # Step 2.5: Stage and commit the new/updated content
-          git add content/posts/
+          git add content/Posts/
           git commit -m "Updated content from 'posts' branch"
           git push origin master
 
