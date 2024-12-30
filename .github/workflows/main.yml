@@ -81,6 +81,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git checkout For-Hosting  # Switch to 'For-Hosting' branch
+          git pull origin For-Hosting
           git fetch origin master
           git checkout master
 
