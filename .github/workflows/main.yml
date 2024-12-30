@@ -31,6 +31,8 @@ jobs:
           git checkout master
 
           # new way to copy files
+          cd content
+          cd Posts
 
           git checkout posts "*"
           git checkout master
@@ -45,18 +47,15 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-          git branch clean
-          git checkout clean
+          git fetch origin posts
+          git checkout posts
+          
+          # git branch clean
+          # git checkout clean
 
           git rm -r * 
           git add .
           git commit -m "cleared"
-          
-          git fetch origin posts
-          git checkout posts
-
-          git merge clean --allow-unrelated-histories
-          git branch -d clean
           git push origin posts
           
 
@@ -88,4 +87,4 @@ jobs:
           # git add .
           # git commit -m "backup the old version"
           
-          git subtree push --prefix public origin For-Hosting --force
+          git subtree push --prefix public origin For-Hosting
