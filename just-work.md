@@ -8,4 +8,6 @@ ShowLastmod : true
 
 ## omg just work im tired and its 2 am almost i hant to sleep
 
-## day 2 try 5
+## day 2 try 7
+
+### now new yare is 2 days away
