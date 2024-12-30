@@ -7,8 +7,29 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
-    <lastBuildDate>Wed, 25 Dec 2024 11:47:56 +0400</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2024 12:42:57 +0000</lastBuildDate>
     <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>testing from github posts branch</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/just-work/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/just-work/</guid>
+      <description>&lt;h2 id=&#34;omg-just-work-im-tired-and-its-2-am-almost-i-want-to-sleep&#34;&gt;omg just work im tired and its 2 am almost i want to sleep&lt;/h2&gt;&#xA;&lt;h2 id=&#34;day-2-try-22&#34;&gt;day 2 try 22&lt;/h2&gt;&#xA;&lt;h3 id=&#34;now-new-yare-is-2-days-away&#34;&gt;now new yare is 2 days away&lt;/h3&gt;</description>
+    </item>
+    <item>
+      <title>testing from github posts branch</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/posttest/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/posttest/</guid>
+      <description>&lt;h2 id=&#34;ok-if-this-works&#34;&gt;ok if this works&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;that ill be crazy it il be done with github actions&lt;/strong&gt;&#xA;i have never used it but it seems like a great tool i ill defenetly use it for tests and docker conteiners and secrets and stuff&lt;/p&gt;&#xA;&lt;p&gt;###try 3&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>testing from github posts branch</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/test_from_github/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/test_from_github/</guid>
+      <description>&lt;h2 id=&#34;ok-if-this-works&#34;&gt;ok if this works&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;that ill be crazy it il be done with github actions&lt;/strong&gt;&#xA;i have never used it but it seems like a great tool i ill defenetly use it for tests and docker conteiners and secrets and stuff&lt;/p&gt;&#xA;&lt;p&gt;###try 7&lt;/p&gt;</description>
+    </item>
     <item>
       <title>About</title>
       <link>https://demetrebadzaradze.github.io/Second-Brain/en/about/</link>
