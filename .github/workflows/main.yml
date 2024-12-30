@@ -81,4 +81,4 @@ jobs:
           git add .
           git commit -m "backup the old version"
           
-          git subtree push --prefix public origin For-Hosting
+          git subtree push --prefix public origin For-Hosting --force
