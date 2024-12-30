@@ -87,5 +87,7 @@ jobs:
 
           # git add .
           # git commit -m "backup the old version"
+
+          git pull
           
           git subtree push --prefix public origin For-Hosting
