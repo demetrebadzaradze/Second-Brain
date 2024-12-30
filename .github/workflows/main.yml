@@ -68,6 +68,8 @@ jobs:
         run: |
           git checkout master
           hugo
+          git add .
+          git commit -m "new build"
 
       # Step 5: Deploy to 'For-Hosting' Branch
       - name: Deploy to For-Hosting
@@ -75,5 +77,8 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git checkout For-Hosting  # Switch to 'For-Hosting' branch
+
+          git add .
+          git commit -m "backup the old version"
           
           git subtree push --prefix public origin For-Hosting
