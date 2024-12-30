@@ -35,7 +35,7 @@ jobs:
           
           echo "we are in folowing directory"
           pwd
-          git checkout posts "/*"
+          git checkout posts "*"
 
           # Step 2.2: Fetch and check out the 'posts' branch
           # git fetch origin posts
