@@ -1,0 +1,17 @@
+name: Hello-World
+
+on:
+  push:
+    branches:
+      - posts
+
+jobs:
+  Print-hello-world:
+    name: print hello
+    runs-on: ubuntu:latest
+    steps: 
+      - name: Checkout.
+        run: actions/checkout@v3
+      - name: hellooo
+        run: echo "hello world"
+

@@ -1,0 +1,24 @@
+name: Test Workflow
+  
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - posts
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all branches are available
+
+      - name: SEE THE FILE ARCHITECTURE
+        run: | 
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com" 
+          git fetch master
+          git checkout master
+          ls
+          ls .. 
