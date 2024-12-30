@@ -1,3 +1,0 @@
-User-agent: *
-Sitemap: https://demetrebadzaradze.github.io/Second-Brain/sitemap.xml
-Sitemap: https://demetrebadzaradze.github.io/Second-Brain/en/sitemap.xml
