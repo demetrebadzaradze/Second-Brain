@@ -30,30 +30,34 @@ jobs:
           git fetch origin master
           git checkout master
 
-          
-          # here we on master
-
           # new way to copy files
-          git branch -r
-          
+
           git checkout posts "*"
-
-          
-
-          # Step 2.2: Fetch and check out the 'posts' branch
-          # git fetch origin posts
-          # git checkout posts
-
-          # # Step 2.3: Copy Markdown files from 'posts' to 'master'
-          # cp *.md ../Second-Brain/content/Posts/
-
-          # Step 2.4: Return to 'master' branch
           git checkout master
 
           # Step 2.5: Stage and commit the new/updated content
           git add content/Posts/
           git commit -m "Updated content from 'posts' branch"
           git push origin master
+
+      - name: Clean up posts branch
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          git branch clean
+          git checkout clean
+
+          git rm .
+          git rm -r 
+          
+          git fetch origin posts
+          git checkout posts
+
+          git merge clean
+          git branch -d clean
+          git push origin posts
+          
 
       # Step 3: Setup Hugo
       - name: Setup Hugo
@@ -77,8 +81,10 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git checkout For-Hosting  # Switch to 'For-Hosting' branch
+          git fetch origin master
+          git checkout master
 
-          git add .
-          git commit -m "backup the old version"
+          # git add .
+          # git commit -m "backup the old version"
           
           git subtree push --prefix public origin For-Hosting --force
