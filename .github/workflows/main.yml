@@ -37,6 +37,9 @@ jobs:
           pwd
           git checkout posts "*"
 
+          git checkout master
+          git branch -r
+
           # Step 2.2: Fetch and check out the 'posts' branch
           # git fetch origin posts
           # git checkout posts
