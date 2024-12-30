@@ -35,7 +35,7 @@ jobs:
 
           git checkout posts "*.md"
           git checkout master
-          mv .*md content/Posts/
+          mv *.md content/Posts/
 
           # Step 2.5: Stage and commit the new/updated content
           git add content/Posts/
