@@ -6,8 +6,8 @@ toc : true
 ShowLastmod : true
 ---
 
-## omg just work im tired and its 2 am almost i hant to sleep
+## omg just work im tired and its 2 am almost i want to sleep
 
-## day 2 try 7
+## day 2 try 8
 
 ### now new yare is 2 days away
