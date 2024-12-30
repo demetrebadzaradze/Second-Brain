@@ -25,19 +25,16 @@ jobs:
           git config user.email "actions@github.com"
 
           # Step 2.1: Fetch and check out the 'master' branch
+          git fetch origin posts
+          git checkout posts
           git fetch origin master
           git checkout master
 
-          git fetch origin posts
+          
           # here we on master
 
-          # new way to copy files 
-
-          git checkout master
+          # new way to copy files
           git branch -r
-          
-          echo "we are in folowing directory"
-          pwd
           
           git checkout posts "*"
 
