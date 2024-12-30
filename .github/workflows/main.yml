@@ -48,8 +48,7 @@ jobs:
           git branch clean
           git checkout clean
 
-          git rm . -r
-          git rm -r 
+          git rm -r * 
           
           git fetch origin posts
           git checkout posts
