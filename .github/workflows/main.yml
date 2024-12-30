@@ -32,13 +32,16 @@ jobs:
           # here we on master
 
           # new way to copy files 
-          
-          echo "we are in folowing directory"
-          pwd
-          git checkout posts "*"
 
           git checkout master
           git branch -r
+          
+          echo "we are in folowing directory"
+          pwd
+          
+          git checkout posts "*"
+
+          
 
           # Step 2.2: Fetch and check out the 'posts' branch
           # git fetch origin posts
