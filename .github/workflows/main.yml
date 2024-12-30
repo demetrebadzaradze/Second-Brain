@@ -53,7 +53,7 @@ jobs:
           git fetch origin posts
           git checkout posts
 
-          git merge clean
+          git merge clean --allow-unrelated-histories
           git branch -d clean
           git push origin posts
           
