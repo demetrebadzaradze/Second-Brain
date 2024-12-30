@@ -49,6 +49,8 @@ jobs:
           git checkout clean
 
           git rm -r * 
+          git add .
+          git commit -m "cleared"
           
           git fetch origin posts
           git checkout posts
