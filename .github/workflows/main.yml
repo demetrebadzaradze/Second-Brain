@@ -32,9 +32,16 @@ jobs:
           # here we on master
 
           # new way to copy files 
+          echo "on master this is architecture"
+          ls
           cd content
+          echo "this is content folder"
+          ls
           
           cd Posts
+          echo "and this is Posts folder"
+          ls
+          
           echo "we are in folowing directory"
           pwd
           git checkout posts -- /*
