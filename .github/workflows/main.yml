@@ -30,8 +30,8 @@ jobs:
           git checkout posts
           mkdir -p ../temp-md-files
           mv *.md ../temp-md-files
-          # git add .
-          # git commit -m "posts moved to maaster"
+          git add .
+          git commit -m "posts moved to maaster"
           # git push origin posts
           
           git checkout master
