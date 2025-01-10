@@ -83,4 +83,8 @@ jobs:
           # git add .
           # git commit -m "backup the old version"
           
-          git subtree push --prefix public origin For-Hosting --force
+          # git subtree push --prefix public origin For-Hosting --force
+          git subtree split --prefix public -b hostinger-deploy
+          git push origin hostinger-deploy:For-Hosting --force
+          git branch -D hostinger-deploy
+
