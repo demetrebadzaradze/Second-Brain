@@ -49,7 +49,7 @@ jobs:
           
           find -mindepth 1 ! -path '*/.*' -exec rm -rf {} +   
           git add .
-          git commit -m "cleared"
+          # git commit -m "cleared"
           
           # git fetch origin posts
           # git checkout posts
