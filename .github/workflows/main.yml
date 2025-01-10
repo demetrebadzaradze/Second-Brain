@@ -23,43 +23,42 @@ jobs:
           # Configure Git for commits
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-
-          # Step 2.1: Fetch and check out the 'master' branch
           git fetch origin posts
           git checkout posts
           git fetch origin master
           git checkout master
-
-          # new way to copy files
-
-          git checkout posts "*"
+          git checkout posts
+          mkdir -p ../temp-md-files
+          mv *.md ../temp-md-files
+          git add .
+          git commit -m "posts moved to maaster"
+          git push origin posts
+          
           git checkout master
-
-          # Step 2.5: Stage and commit the new/updated content
-          git add content/Posts/
-          git commit -m "Updated content from 'posts' branch"
+          mv ../temp-md-files/*.md content/Posts
+          rm -rf ../temp-md-files/*.md
+          git add content/Posts/ 
+          git commit -m "recived new posts"/
           git push origin master
-
       - name: Clean up posts branch
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-
-          git branch clean
-          git checkout clean
-
+          git fetch origin posts
+          git checkout posts
+          
+          # git branch clean
+          # git checkout clean
           git rm -r * 
           git add .
           git commit -m "cleared"
           
-          git fetch origin posts
-          git checkout posts
-
-          git merge clean --allow-unrelated-histories
-          git branch -d clean
+          # git fetch origin posts
+          # git checkout posts
+          # git merge clean --allow-unrelated-histories
+          # git branch -d clean
           git push origin posts
           
-
       # Step 3: Setup Hugo
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -75,7 +74,6 @@ jobs:
           hugo
           git add .
           git commit -m "new build"
-
       # Step 5: Deploy to 'For-Hosting' Branch
       - name: Deploy to For-Hosting
         run: |
@@ -84,7 +82,6 @@ jobs:
           git checkout For-Hosting  # Switch to 'For-Hosting' branch
           git fetch origin master
           git checkout master
-
           # git add .
           # git commit -m "backup the old version"
           
