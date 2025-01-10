@@ -47,9 +47,7 @@ jobs:
           git fetch origin posts
           git checkout posts
           
-          # git branch clean
-          # git checkout clean
-          find . -mindepth 1 ! -name '.*' -exec rm -rf {} + 
+          find -mindepth 1 ! -path '*/.*' -exec rm -rf {} +   
           git add .
           git commit -m "cleared"
           
