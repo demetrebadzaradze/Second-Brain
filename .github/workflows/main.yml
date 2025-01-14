@@ -69,9 +69,11 @@ jobs:
       - name: Build Hugo Site
         run: |
           git checkout master
+          git submodule update --init --recursive
           hugo
           git add .
           git commit -m "new build"
+          git push origin master
       # Step 5: Deploy to 'For-Hosting' Branch
       - name: Deploy to For-Hosting
         run: |
@@ -84,7 +86,7 @@ jobs:
           # git commit -m "backup the old version"
           
           # git subtree push --prefix public origin For-Hosting --force
-          git subtree split --prefix public -b hostinger-deploy
-          git push origin hostinger-deploy:For-Hosting --force
-          git branch -D hostinger-deploy
+          git subtree split --prefix public -b deploy
+          git push origin deploy:For-Hosting --force
+          git branch -D deploy
 
