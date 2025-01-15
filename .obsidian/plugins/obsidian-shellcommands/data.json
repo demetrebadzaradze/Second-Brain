@@ -26,7 +26,7 @@
     {
       "id": "jwwxkyfz3d",
       "platform_specific_commands": {
-        "default": "cd {{vault_path}} && git add . && git commit -m \"Update from Obsidian\" && git push origin posts"
+        "default": "cd {{vault_path}} && git add . && git commit -m \"Update from Obsidian\" && git push origin posts "
       },
       "shells": {},
       "alias": "publish",

@@ -36,7 +36,8 @@
               "title": "testing whole site"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9b745691bb44e329",
@@ -199,11 +200,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "cd16ac8a6e7e9820",
+  "active": "40bcf52b8bfd2c46",
   "lastOpenFiles": [
-    "Adding custom templates for Hugo in Obsidian.md",
-    "README.md",
     "testing whole site.md",
+    "README.md",
+    "Adding custom templates for Hugo in Obsidian.md",
     "default-hugo-post-props.md",
     "testing.md",
     "test.md",
