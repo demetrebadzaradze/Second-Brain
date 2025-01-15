@@ -1,0 +1,11 @@
+{
+  "templater-obsidian:default-hugo-post-props.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "F"
+    }
+  ]
+}

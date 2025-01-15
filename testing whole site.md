@@ -7,11 +7,10 @@ ShowLastmod : true
 ---
 
 ### how does it works
-i am so tired,
-i made posts branch that is clear and gets cleared every time someone pushes to it with workflow that:
+I made posts branch that is clear and gets cleared every time someone pushes to it with workflow that:
 1. copies all .md files from posts branch into master
 1. build site with hugo+hermit-v2 and updates repo
-1. then takes `public` dir and copies it to `For-Hosting` branch
-1. and the github pages workflow is beeng runed and site is beeng published
+1. then takes `public` Dir and copies it to `For-Hosting` branch
+1. and the GitHub pages workflow is being ran and site is being published
 
-#### i will be updating this file about how things work in here, and some future stuff that i will be doing on this site.
+#### I will be updating this file about how things work in here, and some future stuff that I will be doing on this site.
