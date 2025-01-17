@@ -31,7 +31,21 @@ navigate to directory for download to go in and run:
 ```bash 
 wget http://<widnsows IP>:8000/<file-name-with-extention>
 ```
+if there is multiple files in folder and that what you want to download use:
+```bash
+wget -r -np -nH --cut-dirs=1 -A "episode*" http://<windows machine IP>/<url of folder>
+```
+- `-r` downloads content recursively
+- `-np` doesn't creates parent folder
+- `-nh` doesn't creates host directory
+- `--cur-dirs=1` ignores top level directory
+- `-A "episode*"` only accepts files that match this.
+pattern.
+
 and the wait.
+
+more on wget [here](https://www.gnu.org/software/wget/manual/wget.html).
+
 
 ### note 
 this might not work bc windows blocks any kind of incoming network for http and also ping. so what i did was go in **windows security>firewall & network protection** and turn of whichever has your network name in active networks list **temporally**.for me it was public one but it can be private too. and after download turn all of that on again to be protected.   
