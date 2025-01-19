@@ -4,56 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "f0a1689459eed3ac",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "cd16ac8a6e7e9820",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "default-hugo-post-props.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "default-hugo-post-props"
-            }
-          },
-          {
-            "id": "348745de779a4ce5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "How to send giant files from windows to Linux (fastest way, local network).md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "How to send giant files from windows to Linux (fastest way, local network)"
-            }
-          },
-          {
-            "id": "44479dcac9f59812",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "testing whole site.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "testing whole site"
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
         "id": "9b745691bb44e329",
         "type": "tabs",
         "children": [
@@ -63,12 +13,46 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "How to send giant files from windows to Linux (fastest way, local network).md",
-                "mode": "preview",
-                "source": false
+                "file": "README.md",
+                "mode": "source",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "How to send giant files from windows to Linux (fastest way, local network)"
+              "title": "README"
+            }
+          },
+          {
+            "id": "a642451a73e372ea",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Templates/default-hugo-post-props.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "default-hugo-post-props"
+            }
+          }
+        ]
+      },
+      {
+        "id": "6d1828b889ab9a89",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "238d92e4da60ca2c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -216,10 +200,13 @@
   },
   "active": "60155c59c9ef87f8",
   "lastOpenFiles": [
+    "Templates/default-hugo-post-props.md",
+    "README.md",
+    "How to send giant files from windows to Linux (fastest way, local network).md",
+    "helloo.md",
+    "Templates",
     "default-hugo-post-props.md",
     "0001-01-01.md",
-    "How to send giant files from windows to Linux (fastest way, local network).md",
-    "README.md",
     "testing whole site.md",
     "Adding custom templates for Hugo in Obsidian.md",
     "testing.md",
