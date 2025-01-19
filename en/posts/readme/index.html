@@ -17,8 +17,8 @@
   <meta itemprop="name" content="README.md">
   <meta itemprop="description" content="README from github">
   <meta itemprop="datePublished" content="2025-01-15T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-01-15T15:14:19+00:00">
-  <meta itemprop="wordCount" content="330"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/en/posts/readme/">
+  <meta itemprop="dateModified" content="2025-01-19T11:40:44+00:00">
+  <meta itemprop="wordCount" content="669"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/en/posts/readme/">
   <meta property="og:site_name" content="Second Brain">
   <meta property="og:title" content="README.md">
   <meta property="og:description" content="README from github">
@@ -26,7 +26,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-01-15T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-01-15T15:14:19+00:00">
+    <meta property="article:modified_time" content="2025-01-19T11:40:44+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="README.md">
@@ -40,11 +40,11 @@
     "name": "README.md",
     "description": "README from github",
     "keywords": [],
-    "articleBody": "Second Brain Second Brain is a blog witch lives on GitHub and posts can be added though git.\nHow does it work Base of this site is Hugo witch I use to turn .md files into Html’s and with help of theme Hermit-v2 I didn’t have to write any html/CSS or JavaScript and all of that made this beautiful site . Next was moving that to git for living, so I wont have to modify and tweak master branch manually or even build over and over again for that I have 3 different branches master, posts, For-Hosting witch have different proposes.\nmaster contain whole thing , that also where building site happens. posts is mostly clear branch but I might change that to contain all posts but what it does RN is with GitHub action when someone pushes to that branch, it moves every .md files to master branch in content/Posts, and then gets cleared. For-Hosting is what name suggests and it contains public folder from master witch is already built site How can you use it?? coming soon.\nwhat I’m planning to do this site will contain things I do in programing, so it will be portfolio like. I also am tryna make this as factionless as possible for other less experienced people to use and for me to, like I don’t want to resolve merge conflict hen I just want to write so here are some ideas for this: obsidian extension I use obsidian for note taking and I also will for writing this posts because it simple and I can mod it to add publishing from the obsidian so no terminal or web needed for that. usable for many OS currently it only works on my windows machine but I will try to make it for other people too if someone needs. **some posts ideas ** home server stuff. deep dive on how does this site works. and I need to make list for future projects too. ",
-    "wordCount" : "330",
+    "articleBody": "Second Brain Second Brain is a blog witch lives on GitHub and posts can be added though git. it is also intended to be used with obsidian.\nHow does it work Base of this site is Hugo witch I use to turn .md files into Html’s and with help of theme Hermit-v2 I didn’t have to write any html/CSS or JavaScript and all of that made this beautiful site . Next was moving that to git for living, so I wont have to modify and tweak master branch manually or even build over and over again for that I have 3 different branches master, posts, For-Hosting witch have different proposes.\nmaster contain whole thing , that also where building site happens. posts is mostly clear branch but I might change that to contain all posts but what it does RN is with GitHub action when someone pushes to that branch, it moves every .md files to master branch in content/Posts, and then gets cleared. For-Hosting is what name suggests and it contains public folder from master witch is already built site How can you use it?? first I made this because brain in not for containing ideas but for creating them and also knowledge should be shared and most importantly I kind of want to see what I did in past and look over what have I done.\nFork GitHub repository first make GitHub account here fork my repository from here , uncheck Copy the master branch only field. go over to actions tab and enable it. then setup GitHub pages in settings/pages tab and change the branch from None to For-Hosting and click on save. Edit hugo.toml file to your liking first thing to edit is baseURL=\"\", so it should be your URL in double quotes. your websites’ URL should be in settings/pages tab, Your site is live at so paste that link into baseURL. mine looks like this: baseURL = \"https://demetrebadzaradze.github.io/Second-Brain/\" in [params.author] change name and about as you would like. you can also change copyright, homeSubtitle, footerCopyright, giturl if you want. also change the [[params.socialLinks]] as you want. you can add some testing posts for changes to be applied and for that go to posts branch and just add .md file and commit. setup local repo go to the target directory on your windows machine and open CMD in there and clone your repo git clone and then open that folder as vault and don’t replace .obsidian folder with new one old one contains plugins and upon opening vault it will you if you trust those plugins witch are shell commands for publishing with git (you can do it with ctrl+p and the type publish and run that command) and also templer but no templates. I’m thinking of using core plugin templates for this (you can add template with making new folder and putting template like this in there: --- title: {{title}} description: Enter a description here date: {{date}} draft: false toc: true ShowLastmod: true --- and you are all setup. what I’m planning to do this site will contain things I do in programing, so it will be portfolio like. I also am tryna make this as factionless as possible for other less experienced people to use and for me to, like I don’t want to resolve merge conflict hen I just want to write so here are some ideas for this: obsidian extension I use obsidian for note taking and I also will for writing this posts because it simple and I can mod it to add publishing from the obsidian so no terminal or web needed for that. usable for many OS currently it only works on my windows machine but I will try to make it for other people too if someone needs. **some posts ideas ** home server stuff. deep dive on how does this site works. and I need to make list for future projects too. make something to make this configuration and setup for new users. ",
+    "wordCount" : "669",
     "inLanguage": "en",
     "datePublished": "2025-01-15T00:00:00Z",
-    "dateModified": "2025-01-15T15:14:19Z",
+    "dateModified": "2025-01-19T11:40:44Z",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -180,7 +180,7 @@
       <line x1="16" y1="13" x2="8" y2="13"></line>
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
-   </svg>330Words words, 1 Minute, 30 Seconds</p>
+   </svg>669Words words, 3 Minutes, 2 Seconds</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -193,7 +193,7 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradze8245f45fe57b439afec27505fb5f67d8cda412f2" target="_blank" rel="noopener">8245f45</a> @ 2025-01-15]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradzee4a7472c2fe283d2b3870235fd8fdd9e7c23c839" target="_blank" rel="noopener">e4a7472</a> @ 2025-01-19]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <h1 id="second-brain">Second Brain<a href="#second-brain" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -201,7 +201,7 @@
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h1>
-<p><strong>Second Brain is a blog</strong> witch lives on GitHub and posts can be added though git.</p>
+<p><strong>Second Brain is a blog</strong> witch lives on GitHub and posts can be added though git. it is also intended to be used with <a href="https://obsidian.md/">obsidian</a>.</p>
 <h3 id="how-does-it-work">How does it work<a href="#how-does-it-work" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -219,7 +219,44 @@ Next was moving that to git for living, so I wont have to modify and tweak maste
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>coming soon.</p>
+<p>first I made this because <strong>brain in not for containing ideas but for creating them</strong> and also <strong>knowledge should be shared</strong> and most importantly I kind of want to see what I did  in past and look over <strong>what have I done</strong>.</p>
+<ol>
+<li><strong>Fork GitHub repository</strong>
+<ul>
+<li>first make GitHub account <a href="https://github.com/signup">here</a></li>
+<li>fork my repository from <a href="https://github.com/demetrebadzaradze/Second-Brain/fork">here</a> , <strong>uncheck <code>Copy the master branch only</code> field</strong>.</li>
+<li>go over to <code>actions</code> tab and enable it.</li>
+<li>then setup GitHub pages in <code>settings/pages</code> tab and change the branch from <code>None</code> to <code>For-Hosting</code> and click on <code>save</code>.</li>
+</ul>
+</li>
+<li><strong>Edit <code>hugo.toml</code> file to your liking</strong>
+<ul>
+<li>first thing to edit is <code>baseURL=&quot;&lt;your url&gt;&quot;</code>, so it should be your URL in double quotes.
+your websites&rsquo; URL should be in <code>settings/pages</code> tab, <code>Your site is live at &lt;link&gt;</code> so paste that link into  <code>baseURL</code>.
+mine looks like this: <code>baseURL = &quot;https://demetrebadzaradze.github.io/Second-Brain/&quot;</code></li>
+<li>in <code>[params.author]</code> change <code>name</code> and <code>about</code> as you would like.</li>
+<li>you can also change <code>copyright</code>, <code>homeSubtitle</code>, <code>footerCopyright</code>, <code>giturl</code> if you want.</li>
+<li>also change the <code>[[params.socialLinks]]</code> as you want.
+you can add some testing posts for changes to be applied and for that go to posts branch and just add .md file and commit.</li>
+</ul>
+</li>
+<li><strong>setup local repo</strong>
+<ul>
+<li>go to the target directory on your windows machine and open CMD in there and clone your repo
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone &lt;your-repo-url.git&gt;
+</span></span></code></pre></div></li>
+<li>and then open that folder as vault and don&rsquo;t replace <code>.obsidian</code> folder with new one old one contains plugins and upon opening vault it will you if you trust those plugins witch are <a href="https://publish.obsidian.md/shellcommands/Index">shell commands</a> for publishing with git (you can do it with <code>ctrl+p</code> and the type <code>publish</code> and run that command) and also <code>templer</code> but no templates. I&rsquo;m thinking of using core plugin <code>templates</code> for this (you can add template with making new folder and putting  template like this in there:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">	---
+</span></span><span class="line"><span class="cl">		title: {{title}}
+</span></span><span class="line"><span class="cl">		description: Enter a description here
+</span></span><span class="line"><span class="cl">		date: {{date}}
+</span></span><span class="line"><span class="cl">		draft: false
+</span></span><span class="line"><span class="cl">		toc: true
+</span></span><span class="line"><span class="cl">		ShowLastmod: true
+</span></span><span class="line"><span class="cl">	---
+</span></span></code></pre></div>and you are all setup.</li>
+</ol>
 <h3 id="what-im-planning-to-do">what I&rsquo;m planning to do<a href="#what-im-planning-to-do" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -240,6 +277,7 @@ currently it only works on my windows machine but I will try to make it for othe
 <li>and I need to make list for future projects too.</li>
 </ol>
 </li>
+<li><strong>make something to make this configuration and setup for new users.</strong></li>
 </ul>
 </li>
 </ol>
@@ -284,7 +322,13 @@ currently it only works on my windows machine but I will try to make it for othe
 <footer id="site-footer" class="section-inner thin animated fadeIn faster">
 	<p>
 		&copy; 2025 <a href="https://demetrebadzaradze.github.io/Second-Brain/">Second Brain</a>
-		&#183; Everything you say can and will be used aganst you.</p>
+		&#183; Everything you say can and will be used aganst you.
+		&#183; <a href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss">
+   <path d="M4 11a9 9 0 0 1 9 9"></path>
+   <path d="M4 4a16 16 0 0 1 16 16"></path>
+   <circle cx="5" cy="19" r="1"></circle>
+</svg></a></p>
 
 </footer>
 <script async src="https://demetrebadzaradze.github.io/Second-Brain/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://demetrebadzaradze.github.io/Second-Brain/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
