@@ -77,7 +77,7 @@ pattern.</li>
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h1>
-<p><strong>Second Brain is a blog</strong> witch lives on GitHub and posts can be added though git.</p>
+<p><strong>Second Brain is a blog</strong> witch lives on GitHub and posts can be added though git. it is also intended to be used with <a href="https://obsidian.md/">obsidian</a>.</p>
 <h3 id="how-does-it-work">How does it work<a href="#how-does-it-work" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -95,7 +95,44 @@ Next was moving that to git for living, so I wont have to modify and tweak maste
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>coming soon.</p>
+<p>first I made this because <strong>brain in not for containing ideas but for creating them</strong> and also <strong>knowledge should be shared</strong> and most importantly I kind of want to see what I did  in past and look over <strong>what have I done</strong>.</p>
+<ol>
+<li><strong>Fork GitHub repository</strong>
+<ul>
+<li>first make GitHub account <a href="https://github.com/signup">here</a></li>
+<li>fork my repository from <a href="https://github.com/demetrebadzaradze/Second-Brain/fork">here</a> , <strong>uncheck <code>Copy the master branch only</code> field</strong>.</li>
+<li>go over to <code>actions</code> tab and enable it.</li>
+<li>then setup GitHub pages in <code>settings/pages</code> tab and change the branch from <code>None</code> to <code>For-Hosting</code> and click on <code>save</code>.</li>
+</ul>
+</li>
+<li><strong>Edit <code>hugo.toml</code> file to your liking</strong>
+<ul>
+<li>first thing to edit is <code>baseURL=&quot;&lt;your url&gt;&quot;</code>, so it should be your URL in double quotes.
+your websites&rsquo; URL should be in <code>settings/pages</code> tab, <code>Your site is live at &lt;link&gt;</code> so paste that link into  <code>baseURL</code>.
+mine looks like this: <code>baseURL = &quot;https://demetrebadzaradze.github.io/Second-Brain/&quot;</code></li>
+<li>in <code>[params.author]</code> change <code>name</code> and <code>about</code> as you would like.</li>
+<li>you can also change <code>copyright</code>, <code>homeSubtitle</code>, <code>footerCopyright</code>, <code>giturl</code> if you want.</li>
+<li>also change the <code>[[params.socialLinks]]</code> as you want.
+you can add some testing posts for changes to be applied and for that go to posts branch and just add .md file and commit.</li>
+</ul>
+</li>
+<li><strong>setup local repo</strong>
+<ul>
+<li>go to the target directory on your windows machine and open CMD in there and clone your repo
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone &lt;your-repo-url.git&gt;
+</span></span></code></pre></div></li>
+<li>and then open that folder as vault and don&rsquo;t replace <code>.obsidian</code> folder with new one old one contains plugins and upon opening vault it will you if you trust those plugins witch are <a href="https://publish.obsidian.md/shellcommands/Index">shell commands</a> for publishing with git (you can do it with <code>ctrl+p</code> and the type <code>publish</code> and run that command) and also <code>templer</code> but no templates. I&rsquo;m thinking of using core plugin <code>templates</code> for this (you can add template with making new folder and putting  template like this in there:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">	---
+</span></span><span class="line"><span class="cl">		title: {{title}}
+</span></span><span class="line"><span class="cl">		description: Enter a description here
+</span></span><span class="line"><span class="cl">		date: {{date}}
+</span></span><span class="line"><span class="cl">		draft: false
+</span></span><span class="line"><span class="cl">		toc: true
+</span></span><span class="line"><span class="cl">		ShowLastmod: true
+</span></span><span class="line"><span class="cl">	---
+</span></span></code></pre></div>and you are all setup.</li>
+</ol>
 <h3 id="what-im-planning-to-do">what I&rsquo;m planning to do<a href="#what-im-planning-to-do" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -116,6 +153,7 @@ currently it only works on my windows machine but I will try to make it for othe
 <li>and I need to make list for future projects too.</li>
 </ol>
 </li>
+<li><strong>make something to make this configuration and setup for new users.</strong></li>
 </ul>
 </li>
 </ol>
