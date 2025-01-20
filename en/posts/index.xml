@@ -7,9 +7,65 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 20 Jan 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
+		
+		<item>
+			<title>SSH into phone with termux</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/ssh-into-phone-with-termux/</link>
+			<pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/ssh-into-phone-with-termux/</guid>
+			<description><![CDATA[pretty simple setup, works in private network and such and phone doesn&#39;t needs to be rooted]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>have <a href="https://github.com/termux/termux-app">termux</a> on phone and we are going to get the IP, username and password and then run the server on termux and connect to if from phone.</p>
+<h3 id="get-the-local-ip-of-phone">get the local IP of phone<a href="#get-the-local-ip-of-phone" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>for this run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pkg install iproute2
+</span></span><span class="line"><span class="cl">ip a
+</span></span></code></pre></div><p>and get <code>wlan0</code> IP</p>
+<h3 id="get-the-username">get the username<a href="#get-the-username" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>username is simplest. you just run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">whoami
+</span></span></code></pre></div><p>pretty self-explanatory and it will output username.</p>
+<h3 id="get-password">get password<a href="#get-password" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>the password is for logging in and you probably don&rsquo;t have it set, so run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">passwd
+</span></span></code></pre></div><p>and set it.</p>
+<h3 id="start-ssh-server">start SSH server<a href="#start-ssh-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>first download <code>openssh</code> package:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pkg install openssh
+</span></span></code></pre></div><p>and then run the server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sshd
+</span></span></code></pre></div><p>also you can run <code>sshd &amp;</code> if you want ssh server to keep running in the background after closing termux.</p>
+<h3 id="connect-to-phone">connect to phone<a href="#connect-to-phone" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>to connect to that phone run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -p <span class="m">8022</span> &lt;username&gt;@&lt;phone IP&gt;
+</span></span></code></pre></div><p><code>-p</code> specifies the port for connection and <code>8022</code> is default on phone I think.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>How to send giant files from windows to Linux (fastest way, local network)</title>
