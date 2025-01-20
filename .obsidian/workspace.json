@@ -8,51 +8,37 @@
         "type": "tabs",
         "children": [
           {
-            "id": "60155c59c9ef87f8",
+            "id": "bb928d5e97f7445a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "SSH into phone with termux.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "a642451a73e372ea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Templates/default-hugo-post-props.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "default-hugo-post-props"
+              "title": "SSH into phone with termux"
             }
           }
         ]
       },
       {
-        "id": "6d1828b889ab9a89",
+        "id": "b6e7d08457050ec3",
         "type": "tabs",
         "children": [
           {
-            "id": "238d92e4da60ca2c",
+            "id": "c97d51e88c30d1be",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "SSH into phone with termux.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "SSH into phone with termux"
             }
           }
         ]
@@ -198,10 +184,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "60155c59c9ef87f8",
+  "active": "c97d51e88c30d1be",
   "lastOpenFiles": [
-    "Templates/default-hugo-post-props.md",
     "README.md",
+    "SSH into phone with termux.md",
+    "Templates/default-hugo-post-props.md",
     "How to send giant files from windows to Linux (fastest way, local network).md",
     "helloo.md",
     "Templates",
