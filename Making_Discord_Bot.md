@@ -5,11 +5,14 @@ date: 2025-03-13
 draft: false
 toc: true
 ShowLastmod: true
-tags: 
-	- python
-	- bot
-	- discord
+tags:
+  - python
+  - bot
+  - discord
 ---
+
+## WARNING
+**the hosting part of this article is not correct anymore**. turns out pinging already ran project in riple doesn't stays on because IP that pings the server get blocked and it is possible to bypass it but that's not what I will be showing here. 
 ## Plan
 plan is to have in bot that can do:
 1. say something as many times, as user want (edit: bad idea)
