@@ -190,5 +190,5 @@ for hosting I am going to us [riplit.](https://replit.com/) because its free for
 1. make new application choose python as template.
 2. copy your setup(there is helpful AI that can help)
 3. run the app and test it out.
-4. while running it you should see webview in the tabs so copy its URL and setup the [uptimerobot](https://uptimerobot.com/) with it 
+4. while running it you should see webview in the tabs so copy its URL and setup the [uptimerobot](https://uptimerobot.com/) with it .
 and you are done make some better ones though.
