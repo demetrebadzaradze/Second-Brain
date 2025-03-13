@@ -5,7 +5,10 @@ date: 2025-03-13
 draft: false
 toc: true
 ShowLastmod: true
-tags: python bot discord
+tags: 
+	- python
+	- bot
+	- discord
 ---
 ## Plan
 plan is to have in bot that can do:
