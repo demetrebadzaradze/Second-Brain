@@ -7,6 +7,28 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
+    <lastBuildDate>Thu, 13 Mar 2025 19:18:46 +0000</lastBuildDate>
     <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bot</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/en/tags/bot/</link>
+      <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/en/tags/bot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Discord</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/en/tags/discord/</link>
+      <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/en/tags/discord/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/en/tags/python/</link>
+      <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/en/tags/python/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
