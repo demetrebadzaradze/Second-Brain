@@ -15,7 +15,7 @@ for this run:
 pkg install iproute2
 ip a
 ```
-and get `wlan0` IP 
+and get `wlan0` IP or something similar like `wlan1` if phone is using Wi-Fi.
 
 ### get the username
 username is simplest. you just run:
@@ -47,4 +47,4 @@ to connect to that phone run:
 ```bash
 ssh -p 8022 <username>@<phone IP>
 ```
-`-p` specifies the port for connection and `8022` is default on phone I think. 
+`-p` specifies the port for connection and `8022` is default on phone I think.  

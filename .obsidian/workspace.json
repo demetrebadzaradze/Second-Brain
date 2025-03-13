@@ -4,41 +4,41 @@
     "type": "split",
     "children": [
       {
-        "id": "9b745691bb44e329",
+        "id": "b6e7d08457050ec3",
         "type": "tabs",
         "children": [
           {
-            "id": "bb928d5e97f7445a",
+            "id": "5aa04835b757b292",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SSH into phone with termux.md",
+                "file": "Making Discord Bot.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "SSH into phone with termux"
+              "title": "Making Discord Bot"
             }
           }
         ]
       },
       {
-        "id": "b6e7d08457050ec3",
+        "id": "32dab91de3ff08aa",
         "type": "tabs",
         "children": [
           {
-            "id": "c97d51e88c30d1be",
+            "id": "3b271a61bf3b4003",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SSH into phone with termux.md",
+                "file": "Making Discord Bot.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "SSH into phone with termux"
+              "title": "Making Discord Bot"
             }
           }
         ]
@@ -184,10 +184,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c97d51e88c30d1be",
+  "active": "3b271a61bf3b4003",
   "lastOpenFiles": [
-    "README.md",
+    "crypto transactions with Solana API(solnet) in C sharp.md",
+    "Making Discord Bot.md",
     "SSH into phone with termux.md",
+    "README.md",
     "Templates/default-hugo-post-props.md",
     "How to send giant files from windows to Linux (fastest way, local network).md",
     "helloo.md",
