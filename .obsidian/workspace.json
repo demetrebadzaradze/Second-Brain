@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Making Discord Bot.md",
+                "file": "Making_Discord_Bot.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Making Discord Bot"
+              "title": "Making_Discord_Bot"
             }
           }
         ]
@@ -33,12 +33,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Making Discord Bot.md",
+                "file": "Making_Discord_Bot.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Making Discord Bot"
+              "title": "Making_Discord_Bot"
             }
           }
         ]
@@ -184,10 +184,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "3b271a61bf3b4003",
+  "active": "5aa04835b757b292",
   "lastOpenFiles": [
     "crypto transactions with Solana API(solnet) in C sharp.md",
-    "Making Discord Bot.md",
+    "Making_Discord_Bot.md",
     "SSH into phone with termux.md",
     "README.md",
     "Templates/default-hugo-post-props.md",
