@@ -7,9 +7,103 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Thu, 13 Mar 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Tue, 18 Mar 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
+		
+		<item>
+			<title>NextCloud setup</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/nextcloud-setup/</link>
+			<pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/nextcloud-setup/</guid>
+			<description><![CDATA[Nextcloud is google drive if cloud was your server. at least thats wht i will be using for because i have a 500GB hardrive and im lacking storage on my devices.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="what-is-nextcloud">What is NextCloud?<a href="#what-is-nextcloud" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><a href="https://nextcloud.com/">Nextcloud</a> is a opensource self hosted app for data storage and here i will be using it for my home server because i am running out of storage on my devices and i have this 500GB Hardrive that is not in use for now so this project solves many problems.</p>
+<h2 id="plan">PLAN<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>follow this official <a href="https://github.com/nextcloud/all-in-one#nextcloud-all-in-one">repo</a> for docker installation(because docker is pure magic) and</p>
+<h2 id="setup">Setup<a href="#setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>to get this app started make <code>compose.yml</code> file and fill in like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">nextcloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">lscr.io/linuxserver/nextcloud:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PUID=1000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PGID=1000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TZ=Etc/UTC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/path/to/nextcloud/config:/config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/path/to/data:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">443</span><span class="p">:</span><span class="m">443</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span></code></pre></div><p>of course you can change the machine port and directories accordingly.</p>
+<ul>
+<li><code>data</code> is folder where all of the files and folders will be saved</li>
+<li><code>config</code> is self explanatory</li>
+<li><code>port</code> is the port on witch app  will be ran on.</li>
+<li>change the <code>TZ</code> time zone</li>
+<li>also change <code>puid</code> and <code>pgid</code> for your user. to check your ids type <code>id</code> in terminal
+<a href="https://docs.linuxserver.io/images/docker-nextcloud/#parameters">more</a> for this step</li>
+</ul>
+<p>after that run</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker compose up -d
+</span></span></code></pre></div><p>in a same directory as the compose file and after successful run 👇👇👇</p>
+<h2 id="login">Login<a href="#login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ol>
+<li>go on that website it should be <code>https://&lt;ip-addres-or-name-of-host&gt;:&lt;port&gt;</code></li>
+<li>make new admin account</li>
+<li>and you are done.</li>
+</ol>
+<h2 id="more-things-you-can-do">more things you can do<a href="#more-things-you-can-do" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I will use their phone app and and tailscale VPN for more accessibility.</p>
+<h2 id="manually-installing-docker-compose">manually Installing docker compose<a href="#manually-installing-docker-compose" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>for server I need docker compose plugin. <a href="https://docs.docker.com/compose/install/linux/">here</a> is how to to install it but basically its:</p>
+<ol>
+<li>making a variable:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">DOCKER_CONFIG</span><span class="o">=</span><span class="si">${</span><span class="nv">DOCKER_CONFIG</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.docker</span><span class="si">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>making a directory for installation:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p <span class="nv">$DOCKER_CONFIG</span>/cli-plugins
+</span></span></code></pre></div><ol start="3">
+<li>and getting the binary:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -SL https://github.com/docker/compose/releases/download/v2.34.0/docker-compose-linux-x86_64 -o <span class="nv">$DOCKER_CONFIG</span>/cli-plugins/docker-compose
+</span></span></code></pre></div><ol start="4">
+<li>and executing it</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x <span class="nv">$DOCKER_CONFIG</span>/cli-plugins/docker-compose
+</span></span></code></pre></div><p>so now I have docker compose as plugin:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose version
+</span></span><span class="line"><span class="cl">Docker Compose version v2.34.0
+</span></span></code></pre></div><p>but remember this is for the one user you are logged in as. for all users checkout <a href="https://docs.docker.com/compose/install/linux/">this</a></p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Making a Discord Bot</title>
@@ -741,13 +835,6 @@ if its called different name check with <code>docker ps</code></li>
 </ol>
 <p>and it should work now for cracked players.</p>
 ]]></content>
-		</item>
-		
-		<item>
-			<title>title</title>
-			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/default-hugo-post-props/</link>
-			<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/default-hugo-post-props/</guid>
-			<description><![CDATA[Enter a description here]]></description><content type="text/html" mode="escaped"><![CDATA[]]></content>
 		</item>
 		
 	</channel>

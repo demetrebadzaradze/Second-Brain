@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/homeserver/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/linux/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/localcloud/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/nextcloud-setup/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/ubuntu/</loc>
+    <lastmod>2025-03-21T17:19:55+00:00</lastmod>
+  </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/bot/</loc>
     <lastmod>2025-03-13T19:18:46+00:00</lastmod>
   </url><url>
@@ -11,16 +35,7 @@
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/making_discord_bot/</loc>
     <lastmod>2025-03-13T19:18:46+00:00</lastmod>
   </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/</loc>
-    <lastmod>2025-03-13T19:18:46+00:00</lastmod>
-  </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/python/</loc>
-    <lastmod>2025-03-13T19:18:46+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/</loc>
-    <lastmod>2025-03-13T19:18:46+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/</loc>
     <lastmod>2025-03-13T19:18:46+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</loc>
