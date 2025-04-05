@@ -12,7 +12,8 @@ tags:
 ---
 
 ## WARNING
-**the hosting part of this article is not correct anymore**. turns out pinging already ran project in riple doesn't stays on because IP that pings the server get blocked and it is possible to bypass it but that's not what I will be showing here. 
+**the hosting part of this article is not correct anymore**. turns out pinging already ran project in riple doesn't stays on because IP that pings the server get blocked and it is possible to bypass it but that's not what I will be showing here.
+But discord doesn't needs a publicly accessible server it could be behind CG-NAT, program on a PC or a any thing that is connected to a internet.   
 ## Plan
 plan is to have in bot that can do:
 1. say something as many times, as user want (edit: bad idea)
