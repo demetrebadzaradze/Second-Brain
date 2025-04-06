@@ -107,14 +107,15 @@
 		
 		<item>
 			<title>Making a Discord Bot</title>
-			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/making_discord_bot/</link>
-			<pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/making_discord_bot/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/making-a-discord-bot/</link>
+			<pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/making-a-discord-bot/</guid>
 			<description><![CDATA[i have never made a discord bot but now i will be making simple hello word kind of bot and maybe next time ill integrate it to unofficial Aternos API to start and stop a server]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="warning">WARNING<a href="#warning" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
-<p><strong>the hosting part of this article is not correct anymore</strong>. turns out pinging already ran project in riple doesn&rsquo;t stays on because IP that pings the server get blocked and it is possible to bypass it but that&rsquo;s not what I will be showing here.</p>
+<p><strong>the hosting part of this article is not correct anymore</strong>. turns out pinging already ran project in riple doesn&rsquo;t stays on because IP that pings the server get blocked and it is possible to bypass it but that&rsquo;s not what I will be showing here.
+But discord doesn&rsquo;t needs a publicly accessible server it could be behind CG-NAT, program on a PC or a any thing that is connected to a internet.</p>
 <h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
