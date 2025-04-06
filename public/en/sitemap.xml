@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/personal/</loc>
+    <lastmod>2025-04-06T17:54:36+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/resume/</loc>
+    <lastmod>2025-04-06T17:54:36+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/</loc>
+    <lastmod>2025-04-06T14:05:46+00:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/</loc>
+    <lastmod>2025-04-06T17:54:36+04:00</lastmod>
+  </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/homeserver/</loc>
     <lastmod>2025-03-21T17:19:55+00:00</lastmod>
   </url><url>
@@ -15,13 +27,7 @@
     <lastmod>2025-03-21T17:19:55+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/</loc>
-    <lastmod>2025-04-06T09:57:50+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/</loc>
-    <lastmod>2025-04-06T09:57:50+00:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/</loc>
-    <lastmod>2025-04-06T09:57:50+00:00</lastmod>
+    <lastmod>2025-04-06T14:05:46+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/tags/ubuntu/</loc>
     <lastmod>2025-03-21T17:19:55+00:00</lastmod>
@@ -65,7 +71,7 @@
     <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/host-terraria-server-on-linux-server/</loc>
     <lastmod>2024-12-25T14:30:01+04:00</lastmod>
   </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/default-hugo-post-props/</loc>
-    <lastmod>2025-01-15T15:16:13+00:00</lastmod>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/en/posts/the-end-and-a-beginning/</loc>
+    <lastmod>2025-04-06T14:05:46+00:00</lastmod>
   </url>
 </urlset>
