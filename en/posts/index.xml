@@ -7,9 +7,79 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Tue, 18 Mar 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
+		
+		<item>
+			<title>RESUME</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/me/</link>
+			<pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/me/</guid>
+			<description><![CDATA[My resume]]></description><content type="text/html" mode="escaped"><![CDATA[<h1 id="demetre-badzgaradze"><strong>Demetre Badzgaradze</strong><a href="#demetre-badzgaradze" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h1>
+<p>Tbilisi, Georgia • <a href="mailto:badzgaradzedemetre8@gmail.com">badzgaradzedemetre8@gmail.com</a> • +995 591 97 45 90<br>
+<a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/">LinkedIn</a> • <a href="https://github.com/demetrebadzaradze/">GitHub</a> • <a href="https://demetrebadzaradze.github.io/Second-Brain/en/">Portfolio</a></p>
+<hr>
+<h2 id="-projects">💻 Projects<a href="#-projects" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><strong>📚 Second-Brain</strong><br>
+<em>Technologies: HTML, Hugo, CI/CD, GitHub Actions</em><br>
+<a href="https://demetrebadzaradze.github.io/Second-Brain/en/posts">🌐 Website</a> • <a href="https://github.com/demetrebadzaradze/Second-Brain/">📦 GitHub Repo</a></p>
+<ul>
+<li>Built a fast, clean personal knowledge management blog using the <strong>Hugo</strong> static site generator.</li>
+<li>Deployed on <strong>GitHub Pages</strong>, with automatic publishing powered by <strong>GitHub Actions</strong>.</li>
+<li>Wrote content in <strong>Obsidian</strong>, where I created a custom command to publish notes directly from the editor.</li>
+<li>The average time from note to published blog is under 9 seconds thanks to automation.</li>
+</ul>
+<hr>
+<p><strong>⚙️ Effective-Giggle</strong><br>
+<em>Technologies: C#, .NET Core API, AMPL, TailwindCSS, HTMX</em><br>
+<a href="https://github.com/demetrebadzaradze/effective-giggle-Backend">🔙 Backend Repo</a> • <a href="https://demetrebadzaradze.github.io/effective-giggle/">🌐 Frontend Example</a></p>
+<ul>
+<li>Solves real-world product optimization problems using constraints and product properties.</li>
+<li>Built the backend using <strong>.NET Core Web API</strong> to generate and solve mathematical models using <strong>AMPL</strong>.</li>
+<li>Frontend uses <strong>HTMX</strong> for dynamic interaction and <strong>TailwindCSS</strong> for quick and responsive styling.</li>
+</ul>
+<hr>
+<p><strong>🏠 Home Server Setup</strong><br>
+<em>Technologies: Ubuntu Server, Docker, Jellyfin, Nextcloud, SQL Server, Tailscale VPN</em></p>
+<ul>
+<li>Repurposed and upgraded an old laptop into a reliable home server running 24/7.</li>
+<li>Hosts media (via <strong>Jellyfin</strong>), cloud storage (<strong>Nextcloud</strong>), private game servers, SQL databases, and a VPN.</li>
+<li>Configured remote access using <strong>Tailscale</strong> VPN to bypass CG-NAT limitations.</li>
+<li>Uses <strong>Docker</strong> to manage and deploy services cleanly and efficiently.</li>
+</ul>
+<hr>
+<h2 id="-skills">🛠️ Skills<a href="#-skills" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li><strong>Programming:</strong> C#, Python, HTML/CSS, Bash</li>
+<li><strong>Frameworks &amp; Tools:</strong> .NET Core, HTMX, TailwindCSS, Hugo, AMPL</li>
+<li><strong>DevOps &amp; Hosting:</strong> GitHub Actions, Docker, GitHub Pages, Tailscale VPN</li>
+<li><strong>Systems:</strong> Linux (Ubuntu Server), Git, SQL Server, Nextcloud, Jellyfin</li>
+<li><strong>Interests:</strong> Game Development, Automation, Self-Hosting, Optimization</li>
+</ul>
+<hr>
+<h2 id="-summary">🧠 Summary<a href="#-summary" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Self-taught developer with a passion for building fast, useful tools and solving real-world problems.<br>
+From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
+I specialize in making things work—efficiently, securely, and with minimal friction.<br>
+Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>NextCloud setup</title>
@@ -703,138 +773,6 @@ this is also local but with spaces this is actually tricky one, because you cant
 <li><code>![[image.png]]</code>
 this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 </ol>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Host terraria server on Linux server</title>
-			<link>https://demetrebadzaradze.github.io/Second-Brain/en/posts/host-terraria-server-on-linux-server/</link>
-			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/en/posts/host-terraria-server-on-linux-server/</guid>
-			<description><![CDATA[&lt;no value&gt;]]></description><content type="text/html" mode="escaped"><![CDATA[<p><strong>easiest and simplest way</strong> to do this is to run it on <a href="https://www.youtube.com/watch?v=oUnWU4Y4kSY">docker</a>, because docker is pure magic and there docker image that handles all of what this needs called <code>rathena/terraria</code>.</p>
-<h2 id="installing-docker">installing docker<a href="#installing-docker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h2>
-<p>update repos:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update 
-</span></span></code></pre></div><p>then install docker:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y docker.io
-</span></span></code></pre></div><p>and enable sysctl:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> --now docker
-</span></span></code></pre></div><h2 id="pull-and-run-image">pull and run image<a href="#pull-and-run-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h2>
-<p>probably making new directory for server configs is a good idea:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/opt/terraria/server1
-</span></span></code></pre></div><p>or something like in games directory what ever you would like just be careful with perditions.</p>
-<ul>
-<li>
-<h3 id="pull-the-image">pull the image<a href="#pull-the-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull rathena/terraria
-</span></span></code></pre></div></li>
-<li>
-<h3 id="run-the-server">run the server<a href="#run-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>--name<span class="o">=</span>terraria-server <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 7777:7777 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v ~/opt/terraria/server1:/config <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">WORLD_NAME</span><span class="o">=</span><span class="s2">&#34;MyWorld&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">MAX_PLAYERS</span><span class="o">=</span><span class="m">10</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">DIFFICULTY</span><span class="o">=</span><span class="m">2</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>--restart unless-stopped <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>rathena/terraria
-</span></span></code></pre></div>now here there might be some <strong>things to modify</strong>
-<ul>
-<li>
-<p><code>--name</code> is a name of container this will be used for starting and stopping it if you forget run <code>docker ps</code></p>
-</li>
-<li>
-<p><code>-p</code> shows witch ports to forward from container to real machine and <code>7777</code> is a default port for terraria server. if you are running more then one definitely change this. if not this is good.</p>
-</li>
-<li>
-<p><code>-v</code> binds <code>/configs</code> folder on container to <code>~/opt/terraria/server1</code> on our server witch we initially crated, if you want to bind it somewhere else just change the <code>~/opt/terraria/server1</code> part to your desired path and again be careful with permeations.</p>
-</li>
-<li>
-<p><code>-e</code> makes environmental variables to configure server and thy are pretty self explanatory.</p>
-<ol>
-<li><code>WORD_NAME</code> specifies name of the world.</li>
-<li><code>MAX_PLAYERS</code> specifies max player count.</li>
-<li><code>DIFFICULTY</code> specifies difficulty of the game like
-<ul>
-<li><code>0</code>: Normal</li>
-<li><code>1</code>: Expert</li>
-<li><code>2</code>: Master</li>
-<li><code>3</code>: Journey Mode
-change as you wish.</li>
-</ul>
-</li>
-<li><strong>some other useful environmental variables</strong> are:
-<ul>
-<li><code>-e PASSWORD=&quot;yourpassword&quot;</code> specifies password for the server</li>
-<li><code>-e SEED=&quot;worldseed&quot;</code>: Specifies a seed for world generation.</li>
-<li><code>-e PORT=7777</code>: Sets the server&rsquo;s port. again if you are running another server change the port witch it runs on here and port forwarded in <code>-p</code> flag</li>
-</ul>
-</li>
-<li><code>--restart unless-stopped</code> this ensures that after power out of restart or shut down server starts automatically if you don&rsquo;t want that, delete it.</li>
-<li>and <code>  rathena/terraria</code> this you don&rsquo;t want to change, its a docker image witch container is created from.</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="managing-server">managing server<a href="#managing-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h2>
-<p>now at this point server is running and here are some useful command:</p>
-<ul>
-<li><strong>Stop the server</strong>: <code>docker stop terraria-server</code></li>
-<li><strong>Start the server</strong>: <code>docker start terraria-server</code></li>
-<li><strong>Check logs</strong>: <code>docker logs -f terraria-server</code>
-if its called different name check with <code>docker ps</code></li>
-</ul>
-<h2 id="accessing-the-server">accessing the server<a href="#accessing-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h2>
-<p>now for me I&rsquo;m using <a href="https://tailscale.com/">tailscale</a> witch is kind like a <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-vpn">VPN</a> and works behind <a href="https://nfware.com/blog/what-is-the-difference-between-nat-and-cgnat">CG-NAT</a> witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.</p>
-<h3 id="if-you-are-not-using-tailscale">if you are not using tailscale<a href="#if-you-are-not-using-tailscale" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h3>
-<p>this is not recommended but you forward your server&rsquo;s terraria&rsquo;s port and then share your public IP address to people that want to join and port. this doesn&rsquo;t work for CG-NAT.</p>
-<p><a href="https://nordvpn.com/blog/open-ports-on-router/">how to forward ports on your router?</a></p>
-<h2 id="and-if-you-are-thief-and-have-a-cracked-version-of-terraria-or-friend-has">And if you are thief and have a cracked version of Terraria (or friend has)<a href="#and-if-you-are-thief-and-have-a-cracked-version-of-terraria-or-friend-has" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h2>
-<p><strong>first off all that violates Terraria&rsquo;s terms of service and if you can you should 100% support the developer and get the real licensed version. allowing cracked users  also is a bit risky because those users also bypass security checks.</strong></p>
-<p>but if your friend is cheap and won&rsquo;t buy it :</p>
-<ol>
-<li>locate the <code>serverconfig.txt</code> file, for us it will be here <code>~/opt/terraria/server1/serverconfig.txt</code> and open it up with some text editor:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano ~/opt/terraria/server1/serverconfig.txt
-</span></span></code></pre></div></li>
-<li>and change <code>ValidateSteam=</code> from <code>true</code> to <code>false</code></li>
-<li>and restart the container:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker restart terraria-server
-</span></span></code></pre></div></li>
-</ol>
-<p>and it should work now for cracked players.</p>
 ]]></content>
 		</item>
 		
