@@ -1,44 +1,20 @@
 {
   "main": {
-    "id": "22e7c3114ed536b9",
+    "id": "e88c7e4958b7b85d",
     "type": "split",
     "children": [
       {
-        "id": "b6e7d08457050ec3",
+        "id": "cd36491acafb6077",
         "type": "tabs",
         "children": [
           {
-            "id": "092c4592f7506c57",
+            "id": "3798148d5e9fe27e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "NextCloud setup.md",
-                "mode": "source",
-                "source": true
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "NextCloud setup"
-            }
-          }
-        ]
-      },
-      {
-        "id": "32dab91de3ff08aa",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "1c66bbd33bb3e97e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "NextCloud setup.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "NextCloud setup"
+              "title": "New tab"
             }
           }
         ]
@@ -47,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "0e81c768938aaf47",
+    "id": "557de5e53c9bfce2",
     "type": "split",
     "children": [
       {
-        "id": "ef6466ad22163182",
+        "id": "448cbd0c0867977e",
         "type": "tabs",
         "children": [
           {
-            "id": "89730959efb531cc",
+            "id": "a21a2a3bd808833d",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -67,7 +43,7 @@
             }
           },
           {
-            "id": "253d7e2e957a9216",
+            "id": "aed5f2b5afea33f9",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -84,7 +60,7 @@
             }
           },
           {
-            "id": "1ff7f8a7f5ddebcb",
+            "id": "519d5cce22d43cd5",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -100,20 +76,19 @@
     "width": 300
   },
   "right": {
-    "id": "0d28b053b4fcee7e",
+    "id": "b005266a4a8007ef",
     "type": "split",
     "children": [
       {
-        "id": "ac016cbfd930aff4",
+        "id": "1cd8d90459157af4",
         "type": "tabs",
         "children": [
           {
-            "id": "917e7e1dd7e91697",
+            "id": "ec27dbbbb8015a9c",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "default-hugo-post-props.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,25 +98,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for default-hugo-post-props"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "7746955ca44e3771",
+            "id": "e781f3ad0e5c39ed",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "default-hugo-post-props.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from default-hugo-post-props"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "fb1fea5015e252db",
+            "id": "062dacd22d098ce0",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -154,15 +128,15 @@
             }
           },
           {
-            "id": "a69bdd860f5f4527",
+            "id": "33bea355c021083c",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "default-hugo-post-props.md"
+                "file": "README.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of default-hugo-post-props"
+              "title": "Outline of README"
             }
           }
         ]
@@ -174,33 +148,22 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-shellcommands:Shell commands: Custom variables": false,
+      "templater-obsidian:Templater": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "obsidian-shellcommands:Shell commands: Custom variables": false,
-      "templater-obsidian:Templater": false
+      "command-palette:Open command palette": false
     }
   },
-  "active": "092c4592f7506c57",
+  "active": "a21a2a3bd808833d",
   "lastOpenFiles": [
-    "0001-01-01.md",
-    "NextCloud setup.md",
-    "Making_Discord_Bot.md",
-    "crypto transactions with Solana API(solnet) in C sharp.md",
-    "SSH into phone with termux.md",
-    "README.md",
+    "emulationstation2.pot",
+    "redit post.md",
+    "Batocera translate file.md",
     "Templates/default-hugo-post-props.md",
-    "How to send giant files from windows to Linux (fastest way, local network).md",
-    "helloo.md",
-    "Templates",
-    "default-hugo-post-props.md",
-    "testing whole site.md",
-    "Adding custom templates for Hugo in Obsidian.md",
-    "testing.md",
-    "test.md",
-    "balls.md"
+    "Templates"
   ]
 }
