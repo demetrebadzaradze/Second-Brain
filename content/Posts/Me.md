@@ -11,7 +11,7 @@ tags:
   - personal
 ---
 # **Demetre Badzgaradze**
-Tbilisi, Georgia • badzgaradzedemetre8@gmail.com • +995 591 97 45 90  
+Tbilisi, Georgia • badzgaradzedemetre8@gmail.com  
 [LinkedIn](https://www.linkedin.com/in/demetre-badzgaradze-b49153291/) • [GitHub](https://github.com/demetrebadzaradze/) • [Portfolio](https://demetrebadzaradze.github.io/Second-Brain/en/)
 
 ---
