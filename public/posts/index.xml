@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+	<channel>
+		<title>Posts on Second-Brain</title>
+		<link>https://demetrebadzaradze.github.io/Second-Brain/posts/</link>
+		<description>Recent content in Posts on Second-Brain</description>
+		<generator>Hugo -- 0.139.4</generator>
+		<language>en-us</language>
+		<copyright>Everything you say can and will be used aganst you.</copyright>
+		<lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
+		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		
+		<item>
+			<title>RESUME</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</link>
+			<pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</guid>
+			<description><![CDATA[My resume]]></description><content type="text/html" mode="escaped"><![CDATA[<h1 id="demetre-badzgaradze"><strong>Demetre Badzgaradze</strong><a href="#demetre-badzgaradze" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h1>
+<p>Tbilisi, Georgia • <a href="mailto:badzgaradzedemetre8@gmail.com">badzgaradzedemetre8@gmail.com</a><br>
+<a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/">LinkedIn</a> • <a href="https://github.com/demetrebadzaradze/">GitHub</a> • <a href="https://demetrebadzaradze.github.io/Second-Brain/en/">Portfolio</a></p>
+<hr>
+<h2 id="-projects">💻 Projects<a href="#-projects" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><strong>📚 Second-Brain</strong><br>
+<em>Technologies: HTML, Hugo, CI/CD, GitHub Actions</em><br>
+<a href="https://demetrebadzaradze.github.io/Second-Brain/en/posts">🌐 Website</a> • <a href="https://github.com/demetrebadzaradze/Second-Brain/">📦 GitHub Repo</a></p>
+<ul>
+<li>Built a fast, clean personal knowledge management blog using the <strong>Hugo</strong> static site generator.</li>
+<li>Deployed on <strong>GitHub Pages</strong>, with automatic publishing powered by <strong>GitHub Actions</strong>.</li>
+<li>Wrote content in <strong>Obsidian</strong>, where I created a custom command to publish notes directly from the editor.</li>
+<li>The average time from note to published blog is under 9 seconds thanks to automation.</li>
+</ul>
+<hr>
+<p><strong>⚙️ Effective-Giggle</strong><br>
+<em>Technologies: C#, .NET Core API, AMPL, TailwindCSS, HTMX</em><br>
+<a href="https://github.com/demetrebadzaradze/effective-giggle-Backend">🔙 Backend Repo</a> • <a href="https://demetrebadzaradze.github.io/effective-giggle/">🌐 Frontend Example</a></p>
+<ul>
+<li>Solves real-world product optimization problems using constraints and product properties.</li>
+<li>Built the backend using <strong>.NET Core Web API</strong> to generate and solve mathematical models using <strong>AMPL</strong>.</li>
+<li>Frontend uses <strong>HTMX</strong> for dynamic interaction and <strong>TailwindCSS</strong> for quick and responsive styling.</li>
+</ul>
+<hr>
+<p><strong>🏠 Home Server Setup</strong><br>
+<em>Technologies: Ubuntu Server, Docker, Jellyfin, Nextcloud, SQL Server, Tailscale VPN</em></p>
+<ul>
+<li>Repurposed and upgraded an old laptop into a reliable home server running 24/7.</li>
+<li>Hosts media (via <strong>Jellyfin</strong>), cloud storage (<strong>Nextcloud</strong>), private game servers, SQL databases, and a VPN.</li>
+<li>Configured remote access using <strong>Tailscale</strong> VPN to bypass CG-NAT limitations.</li>
+<li>Uses <strong>Docker</strong> to manage and deploy services cleanly and efficiently.</li>
+</ul>
+<hr>
+<h2 id="-skills">🛠️ Skills<a href="#-skills" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li><strong>Programming:</strong> C#, Python, HTML/CSS, Bash</li>
+<li><strong>Frameworks &amp; Tools:</strong> .NET Core, HTMX, TailwindCSS, Hugo, AMPL</li>
+<li><strong>DevOps &amp; Hosting:</strong> GitHub Actions, Docker, GitHub Pages, Tailscale VPN</li>
+<li><strong>Systems:</strong> Linux (Ubuntu Server), Git, SQL Server, Nextcloud, Jellyfin</li>
+<li><strong>Interests:</strong> Game Development, Automation, Self-Hosting, Optimization</li>
+</ul>
+<hr>
+<h2 id="-summary">🧠 Summary<a href="#-summary" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Self-taught developer with a passion for building fast, useful tools and solving real-world problems.<br>
+From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
+I specialize in making things work—efficiently, securely, and with minimal friction.<br>
+Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>fun git procedure</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/fun-git-procedure/</link>
+			<pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/fun-git-procedure/</guid>
+			<description><![CDATA[see history of git and what it actually means.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="fun-git-procedure">fun git procedure<a href="#fun-git-procedure" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>clone the git repo (might take a While)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/git/git.git
+</span></span></code></pre></div><p>get into it  and check it out. it the same one on the <a href="https://github.com/git/git">git on Github</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> git
+</span></span><span class="line"><span class="cl">ls
+</span></span></code></pre></div><p>see the most important commits or the starting points of git</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rev-list --max-parents<span class="o">=</span><span class="m">0</span> HEAD
+</span></span></code></pre></div><p>get the last one witch is actually the first one and checkout that commit</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git checkout e83c5163316f89bfbde7d9ab23ca2e25604af290
+</span></span></code></pre></div><p>and see its legendary message from <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> the creator of Linux kernel and git from 2005</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log
+</span></span></code></pre></div><p>also see how small the project was back in a day and quick look at the README.md file and observe what creator describes his creation as</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">notepad README.md
+</span></span></code></pre></div><p>or just <code>cat</code> it on Linux or <code>nano</code></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>NextCloud setup</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/nextcloud-setup/</link>
+			<pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/nextcloud-setup/</guid>
+			<description><![CDATA[Nextcloud is google drive if cloud was your server. at least thats wht i will be using for because i have a 500GB hardrive and im lacking storage on my devices.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="what-is-nextcloud">What is NextCloud?<a href="#what-is-nextcloud" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><a href="https://nextcloud.com/">Nextcloud</a> is a opensource self hosted app for data storage and here i will be using it for my home server because i am running out of storage on my devices and i have this 500GB Hardrive that is not in use for now so this project solves many problems.</p>
+<h2 id="plan">PLAN<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>follow this official <a href="https://github.com/nextcloud/all-in-one#nextcloud-all-in-one">repo</a> for docker installation(because docker is pure magic) and</p>
+<h2 id="setup">Setup<a href="#setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>to get this app started make <code>compose.yml</code> file and fill in like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">nextcloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">lscr.io/linuxserver/nextcloud:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">nextcloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PUID=1000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">PGID=1000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TZ=Etc/UTC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/path/to/nextcloud/config:/config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/path/to/data:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">443</span><span class="p">:</span><span class="m">443</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span></code></pre></div><p>of course you can change the machine port and directories accordingly.</p>
+<ul>
+<li><code>data</code> is folder where all of the files and folders will be saved</li>
+<li><code>config</code> is self explanatory</li>
+<li><code>port</code> is the port on witch app  will be ran on.</li>
+<li>change the <code>TZ</code> time zone</li>
+<li>also change <code>puid</code> and <code>pgid</code> for your user. to check your ids type <code>id</code> in terminal
+<a href="https://docs.linuxserver.io/images/docker-nextcloud/#parameters">more</a> for this step</li>
+</ul>
+<p>after that run</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker compose up -d
+</span></span></code></pre></div><p>in a same directory as the compose file and after successful run 👇👇👇</p>
+<h2 id="login">Login<a href="#login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ol>
+<li>go on that website it should be <code>https://&lt;ip-addres-or-name-of-host&gt;:&lt;port&gt;</code></li>
+<li>make new admin account</li>
+<li>and you are done.</li>
+</ol>
+<h2 id="more-things-you-can-do">more things you can do<a href="#more-things-you-can-do" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I will use their phone app and and tailscale VPN for more accessibility.</p>
+<h2 id="manually-installing-docker-compose">manually Installing docker compose<a href="#manually-installing-docker-compose" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>for server I need docker compose plugin. <a href="https://docs.docker.com/compose/install/linux/">here</a> is how to to install it but basically its:</p>
+<ol>
+<li>making a variable:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">DOCKER_CONFIG</span><span class="o">=</span><span class="si">${</span><span class="nv">DOCKER_CONFIG</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.docker</span><span class="si">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>making a directory for installation:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p <span class="nv">$DOCKER_CONFIG</span>/cli-plugins
+</span></span></code></pre></div><ol start="3">
+<li>and getting the binary:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -SL https://github.com/docker/compose/releases/download/v2.34.0/docker-compose-linux-x86_64 -o <span class="nv">$DOCKER_CONFIG</span>/cli-plugins/docker-compose
+</span></span></code></pre></div><ol start="4">
+<li>and executing it</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x <span class="nv">$DOCKER_CONFIG</span>/cli-plugins/docker-compose
+</span></span></code></pre></div><p>so now I have docker compose as plugin:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose version
+</span></span><span class="line"><span class="cl">Docker Compose version v2.34.0
+</span></span></code></pre></div><p>but remember this is for the one user you are logged in as. for all users checkout <a href="https://docs.docker.com/compose/install/linux/">this</a></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Making a Discord Bot</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/making-a-discord-bot/</link>
+			<pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/making-a-discord-bot/</guid>
+			<description><![CDATA[i have never made a discord bot but now i will be making simple hello word kind of bot and maybe next time ill integrate it to unofficial Aternos API to start and stop a server]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="warning">WARNING<a href="#warning" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><strong>the hosting part of this article is not correct anymore</strong>. turns out pinging already ran project in riple doesn&rsquo;t stays on because IP that pings the server get blocked and it is possible to bypass it but that&rsquo;s not what I will be showing here.
+But discord doesn&rsquo;t needs a publicly accessible server it could be behind CG-NAT, program on a PC or a any thing that is connected to a internet.</p>
+<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>plan is to have in bot that can do:</p>
+<ol>
+<li>say something as many times, as user want (edit: bad idea)</li>
+<li>say hello if someone says hello or hi</li>
+<li>and maybe integrate  unofficial Aternos API to start and stop a server</li>
+</ol>
+<h2 id="create-a-bot">Create a bot<a href="#create-a-bot" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>first have some kind of testing server and also be an owner of it.</p>
+<ol>
+<li>Turn on “Developer mode” in your Discord account.</li>
+<li>Click on “Discord API”.</li>
+<li>In the Developer portal, click on “Applications”. Log in again and then, back in the “Applications” menu, click on “New Application”.</li>
+<li>Name the bot and then click “Create”.</li>
+<li>Go to the “Bot” menu and generate a token using “Add Bot”.</li>
+<li>Program your bot using the bot token and save the file.</li>
+<li>Define other details for your bot under “General Information”.</li>
+<li>Click on “OAuth2”, activate “bot”, set the permissions, and then click on “Copy”.</li>
+<li>Select your server to add your bot to it.</li>
+</ol>
+<p>more detailed in <a href="https://www.ionos.com/digitalguide/server/know-how/creating-discord-bot/">here.</a></p>
+<h2 id="code-side">Code side<a href="#code-side" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>fore code setup we need some libraries:
+<code>discord</code>, <code>flask</code> and <code>python-dotenv</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install discord
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install python-dotenv
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install flask 
+</span></span></code></pre></div><h3 id="what-is-flask">what is flask<a href="#what-is-flask" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>flask is <strong>lightweight python framework</strong> for create web apps and API&rsquo;s more on them <a href="https://flask.palletsprojects.com/en/stable/">here</a>
+we will be using it to pint the web interface with <a href="https://uptimerobot.com/">uptimerobot</a> witch is simple tool that will be pinging our server so it doesn&rsquo;t dies out .</p>
+<h3 id="create-env-file">create <code>.env</code> file<a href="#create-env-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p><code>.env</code> is a file that is useful for containing sensitive information like API keys, for us that will be useful for <strong>saving your bot token witch can be found in bot section in discord developer platform</strong></p>
+<p>more on <code>.env</code> file <a href="https://upsun.com/blog/what-is-env-file/">here.</a></p>
+<p>make new file and name it:</p>
+<pre tabindex="0"><code>.env
+</code></pre><p>in that file save your bot token like a variable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="line"><span class="cl"><span class="nv">DISCORD_BOT_TOKEN</span><span class="o">=</span>&lt;your bot token&gt;
+</span></span></code></pre></div><p>replace <code>&lt;your bot token&gt;</code> with your actual bot token and save the file.</p>
+<h2 id="python-script">python script<a href="#python-script" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>make a <code>main.py</code> file with this content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Final</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">discord</span> <span class="kn">import</span> <span class="n">Intents</span><span class="p">,</span> <span class="n">Message</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">discord.ext</span> <span class="kn">import</span> <span class="n">commands</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">responce</span>  <span class="c1"># Assuming this is your custom response module</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a Flask web server</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Load environment variables</span>
+</span></span><span class="line"><span class="cl"><span class="n">load_dotenv</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">TOKEN</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;DISCORD_BOT_TOKEN&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set up intents</span>
+</span></span><span class="line"><span class="cl"><span class="n">intents</span><span class="p">:</span> <span class="n">Intents</span> <span class="o">=</span> <span class="n">Intents</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">intents</span><span class="o">.</span><span class="n">message_content</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Required to read messages</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a bot instance with a command prefix</span>
+</span></span><span class="line"><span class="cl"><span class="n">bot</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="n">command_prefix</span><span class="o">=</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="n">intents</span><span class="o">=</span><span class="n">intents</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">Send_Message</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">,</span> <span class="n">user_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">user_message</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Message is empty due to invalid setup&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">is_private</span> <span class="o">=</span> <span class="n">user_message</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;?&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">is_private</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">user_message</span> <span class="o">=</span> <span class="n">user_message</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># Remove &#39;?&#39; from message</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">response</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">responce</span><span class="o">.</span><span class="n">responde</span><span class="p">(</span><span class="n">user_message</span><span class="p">)</span>  <span class="c1"># Get response from custom module</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="s1">&#39;exit&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">is_private</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">message</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>  <span class="c1"># Send private message</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">message</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>  <span class="c1"># Send public message</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Event: Bot is ready</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.event</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">on_ready</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">bot</span><span class="o">.</span><span class="n">user</span><span class="si">}</span><span class="s2"> is online!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Event: Handle messages (Custom message responses)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.event</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">author</span> <span class="o">==</span> <span class="n">bot</span><span class="o">.</span><span class="n">user</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>  <span class="c1"># Ignore bot messages</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">author</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">channel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">: &#34;</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s1">&#34;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">Send_Message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">process_commands</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>  <span class="c1"># Ensure commands still work</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Example Command: /hello</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.command</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;Hello! 👋&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.command</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">spam</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">string</span><span class="p">:</span> <span class="nb">str</span> <span class="p">,</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Bot is running!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">keep_alive</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">TOKEN</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">keep_alive</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div><p>flask is just hosting a web server for us to ping.
+of course code is not perfect nor good, but good for quickly scribed script, plus it works.
+it does first two goals and for aternos starter that simple from now.
+and also response module:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span><span class="p">,</span> <span class="n">randint</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">responde</span><span class="p">(</span><span class="n">usr_msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Generates a response based on the user&#39;s message.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        usr_msg (str): The message sent by the user.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        str: The bot&#39;s response.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">greetings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;hey&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">usr_msg</span> <span class="ow">in</span> <span class="n">greetings</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">choice</span><span class="p">([</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;heyy&#39;</span><span class="p">,</span> <span class="s1">&#39;yooooo&#39;</span><span class="p">,</span> <span class="s1">&#39;whats up&#39;</span><span class="p">])</span>  <span class="c1"># Random greeting response</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="n">usr_msg</span> <span class="o">==</span> <span class="s1">&#39;gamble&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;Your number is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Simulate rolling a dice (1-6)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;exit&#39;</span>  <span class="c1"># If no valid command is recognized, return &#39;exit&#39;</span>
+</span></span></code></pre></div><h2 id="hosting">Hosting<a href="#hosting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>for hosting I am going to us <a href="https://replit.com/">riplit.</a> because its free for 3 projects and its pretty simple make an account and</p>
+<ol>
+<li>make new application choose python as template.</li>
+<li>copy your setup(there is helpful AI that can help)</li>
+<li>run the app and test it out.</li>
+<li>while running it you should see webview in the tabs so copy its URL and setup the <a href="https://uptimerobot.com/">uptimerobot</a> with it .
+and you are done make some better ones though.</li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>crypto transactions with Solana API(solnet) in C#</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</link>
+			<pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</guid>
+			<description><![CDATA[Im planing to use my solana token in web market app for transactions and walets and such.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="heading"><a href="#heading" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+]]></content>
+		</item>
+		
+		<item>
+			<title>SSH into phone with termux</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/ssh-into-phone-with-termux/</link>
+			<pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/ssh-into-phone-with-termux/</guid>
+			<description><![CDATA[pretty simple setup, works in private network and such and phone doesn&#39;t needs to be rooted]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>have <a href="https://github.com/termux/termux-app">termux</a> on phone and we are going to get the IP, username and password and then run the server on termux and connect to if from phone.</p>
+<h3 id="get-the-local-ip-of-phone">get the local IP of phone<a href="#get-the-local-ip-of-phone" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>for this run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pkg install iproute2
+</span></span><span class="line"><span class="cl">ip a
+</span></span></code></pre></div><p>and get <code>wlan0</code> IP or something similar like <code>wlan1</code> if phone is using Wi-Fi.</p>
+<h3 id="get-the-username">get the username<a href="#get-the-username" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>username is simplest. you just run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">whoami
+</span></span></code></pre></div><p>pretty self-explanatory and it will output username.</p>
+<h3 id="get-password">get password<a href="#get-password" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>the password is for logging in and you probably don&rsquo;t have it set, so run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">passwd
+</span></span></code></pre></div><p>and set it.</p>
+<h3 id="start-ssh-server">start SSH server<a href="#start-ssh-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>first download <code>openssh</code> package:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pkg install openssh
+</span></span></code></pre></div><p>and then run the server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sshd
+</span></span></code></pre></div><p>also you can run <code>sshd &amp;</code> if you want ssh server to keep running in the background after closing termux.</p>
+<h3 id="connect-to-phone">connect to phone<a href="#connect-to-phone" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>to connect to that phone run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -p <span class="m">8022</span> &lt;username&gt;@&lt;phone IP&gt;
+</span></span></code></pre></div><p><code>-p</code> specifies the port for connection and <code>8022</code> is default on phone I think.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>testing from obsidian on phone</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-from-obsidian-on-phone/</link>
+			<pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-from-obsidian-on-phone/</guid>
+			<description><![CDATA[i hope this will work and this is my second brain setup on phone]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="chalange">chalange<a href="#chalange" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>the shell command are not usable on mobile and developer is not planning to add that feature either so ill have to push this changes manually from termux but it alr for now</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>How to send giant files from windows to Linux (fastest way, local network)</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</link>
+			<pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</guid>
+			<description><![CDATA[of course it is not fastest for everyone but i only use one thing that needs downloading, python, to host and on Linux wget to receive it]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network">How to send giant files from windows to Linux (fastest way, local network)<a href="#how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I needed to sent some files to my server and I was on same network and fastest would probably be to transfer it via cable or something but the private network is also fast</p>
+<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<h3 id="on-windows"><strong>On windows</strong><a href="#on-windows" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>have <a href="https://www.python.org/downloads/">python</a>, you probably have that too.
+and then host target folder with <code>cmd</code>. go to path file is located in:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /path/to/directory/file is located/in
+</span></span></code></pre></div><p>run server with python:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python -m http.server <span class="m">8000</span>    
+</span></span></code></pre></div><p>and also get the IP of that machine to find file</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ipconfig 
+</span></span></code></pre></div><p>this will display network adapters and search for one you are using and get <code>IPv4 Address</code>.</p>
+<h3 id="on-linux"><strong>on Linux</strong><a href="#on-linux" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>navigate to directory for download to go in and run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget http://&lt;widnsows IP&gt;:8000/&lt;file-name-with-extention&gt;
+</span></span></code></pre></div><p>if there is multiple files in folder and that what you want to download use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget -r -np -nH --cut-dirs<span class="o">=</span><span class="m">1</span> -A <span class="s2">&#34;episode*&#34;</span> http://&lt;windows machine IP&gt;/&lt;url of folder&gt;
+</span></span></code></pre></div><ul>
+<li><code>-r</code> downloads content recursively</li>
+<li><code>-np</code> doesn&rsquo;t creates parent folder</li>
+<li><code>-nh</code> doesn&rsquo;t creates host directory</li>
+<li><code>--cur-dirs=1</code> ignores top level directory</li>
+<li><code>-A &quot;episode*&quot;</code> only accepts files that match this.
+pattern.</li>
+</ul>
+<p>and the wait.</p>
+<p>more on wget <a href="https://www.gnu.org/software/wget/manual/wget.html">here</a>.</p>
+<h3 id="note">note<a href="#note" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>this might not work bc windows blocks any kind of incoming network for http and also ping. so what i did was go in <strong>windows security&gt;firewall &amp; network protection</strong> and turn of whichever has your network name in active networks list <strong>temporally</strong>.for me it was public one but it can be private too. and after download turn all of that on again to be protected.</p>
+<p>and on classics programmer fashion  i wasted more time figuring all of this out then if i just uploaded it do cloud or something, but i hope there should be no error for  you and this will be fastest.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>README.md</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/readme/</link>
+			<pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/readme/</guid>
+			<description><![CDATA[README from github]]></description><content type="text/html" mode="escaped"><![CDATA[<h1 id="second-brain">Second Brain<a href="#second-brain" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h1>
+<p><strong>Second Brain is a blog</strong> witch lives on GitHub and posts can be added though git. it is also intended to be used with <a href="https://obsidian.md/">obsidian</a>.</p>
+<h3 id="how-does-it-work">How does it work<a href="#how-does-it-work" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>Base of this site is <a href="https://gohugo.io/">Hugo</a> witch I use to turn <code>.md</code> files into <code>Html</code>&rsquo;s and with help of theme <a href="https://themes.gohugo.io/themes/hermit-v2/">Hermit-v2</a> I didn&rsquo;t have to write any html/CSS or JavaScript  and all of that made this beautiful <a href="https://demetrebadzaradze.github.io/Second-Brain/en/">site</a> .
+Next was moving that to git for living, so I wont have to modify and tweak master branch manually or even build over and over again for that I have 3 different branches <code>master</code>, <code>posts</code>, <code>For-Hosting</code> witch have different proposes.</p>
+<ul>
+<li><code>master</code> contain whole thing , that also where building site happens.</li>
+<li><code>posts</code> is mostly clear branch but I might change that to contain all posts but what it does RN is with GitHub action when someone pushes to that branch, it moves every <code>.md</code> files to master branch in <code>content/Posts</code>, and then gets cleared.</li>
+<li><code>For-Hosting</code> is what name suggests and it contains <code>public</code> folder from <code>master</code> witch is already built site</li>
+</ul>
+<h3 id="how-can-you-use-it">How can you use it??<a href="#how-can-you-use-it" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>first I made this because <strong>brain in not for containing ideas but for creating them</strong> and also <strong>knowledge should be shared</strong> and most importantly I kind of want to see what I did  in past and look over <strong>what have I done</strong>.</p>
+<ol>
+<li><strong>Fork GitHub repository</strong>
+<ul>
+<li>first make GitHub account <a href="https://github.com/signup">here</a></li>
+<li>fork my repository from <a href="https://github.com/demetrebadzaradze/Second-Brain/fork">here</a> , <strong>uncheck <code>Copy the master branch only</code> field</strong>.</li>
+<li>go over to <code>actions</code> tab and enable it.</li>
+<li>then setup GitHub pages in <code>settings/pages</code> tab and change the branch from <code>None</code> to <code>For-Hosting</code> and click on <code>save</code>.</li>
+</ul>
+</li>
+<li><strong>Edit <code>hugo.toml</code> file to your liking</strong>
+<ul>
+<li>first thing to edit is <code>baseURL=&quot;&lt;your url&gt;&quot;</code>, so it should be your URL in double quotes.
+your websites&rsquo; URL should be in <code>settings/pages</code> tab, <code>Your site is live at &lt;link&gt;</code> so paste that link into  <code>baseURL</code>.
+mine looks like this: <code>baseURL = &quot;https://demetrebadzaradze.github.io/Second-Brain/&quot;</code></li>
+<li>in <code>[params.author]</code> change <code>name</code> and <code>about</code> as you would like.</li>
+<li>you can also change <code>copyright</code>, <code>homeSubtitle</code>, <code>footerCopyright</code>, <code>giturl</code> if you want.</li>
+<li>also change the <code>[[params.socialLinks]]</code> as you want.
+you can add some testing posts for changes to be applied and for that go to posts branch and just add .md file and commit.</li>
+</ul>
+</li>
+<li><strong>setup local repo</strong>
+<ul>
+<li>go to the target directory on your windows machine and open CMD in there and clone your repo
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone &lt;your-repo-url.git&gt;
+</span></span></code></pre></div></li>
+<li>and then open that folder as vault and don&rsquo;t replace <code>.obsidian</code> folder with new one old one contains plugins and upon opening vault it will you if you trust those plugins witch are <a href="https://publish.obsidian.md/shellcommands/Index">shell commands</a> for publishing with git (you can do it with <code>ctrl+p</code> and the type <code>publish</code> and run that command) and also <code>templer</code> but no templates. I&rsquo;m thinking of using core plugin <code>templates</code> for this (you can add template with making new folder and putting  template like this in there:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">	---
+</span></span><span class="line"><span class="cl">		title: {{title}}
+</span></span><span class="line"><span class="cl">		description: Enter a description here
+</span></span><span class="line"><span class="cl">		date: {{date}}
+</span></span><span class="line"><span class="cl">		draft: false
+</span></span><span class="line"><span class="cl">		toc: true
+</span></span><span class="line"><span class="cl">		ShowLastmod: true
+</span></span><span class="line"><span class="cl">	---
+</span></span></code></pre></div>and you are all setup.</li>
+</ol>
+<h3 id="what-im-planning-to-do">what I&rsquo;m planning to do<a href="#what-im-planning-to-do" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<ol>
+<li>this site will contain things I do in programing, so it will be portfolio like.</li>
+<li>I also am tryna make this as factionless as possible for other less experienced people to use and for me to, like I don&rsquo;t want to resolve merge conflict hen I just want to write so here are some ideas for this:
+<ul>
+<li><strong>obsidian extension</strong>
+I use obsidian for note taking and I also will for writing this posts because it simple and  I can mod it to add publishing from the obsidian so no terminal or web needed for that.</li>
+<li><strong>usable for many OS</strong>
+currently it only works on my windows machine but I will try to make it for other people too if someone needs.</li>
+<li>**some posts ideas **
+<ol>
+<li>home server stuff.</li>
+<li>deep dive on how does this site works.</li>
+<li>and I need to make list for future projects too.</li>
+</ol>
+</li>
+<li><strong>make something to make this configuration and setup for new users.</strong></li>
+</ul>
+</li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>testinn whole site</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-whole-site/</link>
+			<pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-whole-site/</guid>
+			<description><![CDATA[this site is hosted on github and i have some CI/CD stuff and this is testing it. so, is it working??]]></description><content type="text/html" mode="escaped"><![CDATA[<h3 id="how-does-it-works">how does it works<a href="#how-does-it-works" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>I made posts branch that is clear and gets cleared every time someone pushes to it with workflow that:</p>
+<ol>
+<li>copies all .md files from posts branch into master</li>
+<li>build site with hugo+hermit-v2 and updates repo</li>
+<li>then takes <code>public</code> Dir and copies it to <code>For-Hosting</code> branch</li>
+<li>and the GitHub pages workflow is being ran and site is being published</li>
+</ol>
+<h4 id="i-will-be-updating-this-file-about-how-things-work-in-here-and-some-future-stuff-that-i-will-be-doing-on-this-site">I will be updating this file about how things work in here, and some future stuff that I will be doing on this site.<a href="#i-will-be-updating-this-file-about-how-things-work-in-here-and-some-future-stuff-that-i-will-be-doing-on-this-site" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Handling images for hugo</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/handling-images-for-hugo/</link>
+			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/handling-images-for-hugo/</guid>
+			<description><![CDATA[how i handle images for hugo]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>so what Hugo want&rsquo;s is to have all images that its gonna use in <code>static/images</code> also link needs to be appropriate.
+so for something this simple and easy I wrote a <strong>python script</strong> that:</p>
+<ul>
+<li>reads all <code>.md</code> files in a directory</li>
+<li>finds all images in those files</li>
+<li>copies images to <code>static/image</code> files</li>
+<li>copes <code>.md</code> files into <code>content/posts</code></li>
+</ul>
+<p>here is script :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">shutil</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Paths (using raw strings to handle Windows backslashes correctly)</span>
+</span></span><span class="line"><span class="cl"><span class="n">posts_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Notes\Important\BlogPosts&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">images_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Notes\Important&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">static_images_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Projects\SecondBrain\static\images&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">md_output_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;D:\USER\Projects\SecondBrain\content\Posts&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the updated image regex pattern to match both image formats:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. ![Alt Text](image-path)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. ![[image-path]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">image_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;!\[([^\]]*)\]\(([^)]+)\)|!\[\[([^\]]+)\]\]&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">find_and_process_images</span><span class="p">(</span><span class="n">md_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing file: </span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Read the content of the markdown file</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">md_file</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Find all image references in the Markdown file</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_references</span> <span class="o">=</span> <span class="n">image_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">image_references</span><span class="p">)</span><span class="si">}</span><span class="s2"> image references in </span><span class="si">{</span><span class="n">md_file</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Process each image reference</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="k">match</span> <span class="ow">in</span> <span class="n">image_references</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="k">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># Format: ![Alt Text](image-path)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">alt_text</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_path</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found image (Markdown format): Alt Text: &#39;</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">&#39;, Path: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="k">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>  <span class="c1"># Format: ![[image-path]]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">alt_text</span> <span class="o">=</span> <span class="s2">&#34;image&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image_path</span> <span class="o">=</span> <span class="k">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found image (Custom format): Path: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># If the image path is an online URL, skip it</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">image_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;http&#34;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">image_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;https&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Skipping online image: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Determine if the image is a local file</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>  <span class="c1"># Get the file name from the path</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">image_filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image file name: </span><span class="si">{</span><span class="n">image_filename</span><span class="si">}</span><span class="s2">, Extension: </span><span class="si">{</span><span class="n">image_extension</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">image_new_filename</span> <span class="o">=</span> <span class="n">image_filename</span>
+</span></span><span class="line"><span class="cl">        <span class="n">image_new_filename</span> <span class="o">=</span> <span class="n">image_new_filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>  <span class="c1"># Replace spaces with underscores</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Updated image filename: </span><span class="si">{</span><span class="n">image_new_filename</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Build the full image path in the images directory</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">images_dir</span><span class="p">,</span> <span class="n">image_filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Checking for image in local folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">local_image_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image found in local folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1"># The image exists locally, copy it to the Hugo static images directory</span>
+</span></span><span class="line"><span class="cl">            <span class="n">destination_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">static_images_dir</span><span class="p">,</span> <span class="n">image_new_filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Copying image to Hugo static images folder: </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">destination_path</span><span class="p">):</span>  <span class="c1"># Only copy if not already copied</span>
+</span></span><span class="line"><span class="cl">                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">local_image_path</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully copied image: </span><span class="si">{</span><span class="n">image_filename</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image already exists in destination: </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Update the image reference in the Markdown file</span>
+</span></span><span class="line"><span class="cl">            <span class="n">new_image_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;Second-Brain/images/</span><span class="si">{</span><span class="n">image_new_filename</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;![[</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">]]&#34;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;![</span><span class="si">{</span><span class="n">alt_text</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Updated image path in Markdown: </span><span class="si">{</span><span class="n">new_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Image not found in the images folder: </span><span class="si">{</span><span class="n">local_image_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Save the modified content into the output folder, keeping the original filename</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_md_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">md_output_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">md_file</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Saving updated Markdown file to: </span><span class="si">{</span><span class="n">new_md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">new_md_file_path</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully updated and saved Markdown file: </span><span class="si">{</span><span class="n">new_md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Process all markdown files in the posts directory</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.md&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">md_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing Markdown file: </span><span class="si">{</span><span class="n">md_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">find_and_process_images</span><span class="p">(</span><span class="n">md_file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing complete!&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="types-of-image-syntax-in-markdown-file">Types of image syntax in markdown file<a href="#types-of-image-syntax-in-markdown-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>in <code>.md</code> file there is many ways to insert image here is some:</p>
+<ol>
+<li><code>![Alt text](image_url)</code>
+this is simple when you copy file that online and after pasting it this is how its formatted. <code>image_url</code>  represents online URL of image like:  <a href="https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg">https://m.media-amazon.com/images/I/61oJQApbXkL._AC_SL1002_.jpg</a>.
+and <code>Alt text</code> is just a label</li>
+<li><code>![Alt text](path/to/image.jpg)</code>
+now this is local and its a full path</li>
+<li><code>![Alt text](path/to/image%20with%20spaces.jpg)</code>
+this is also local but with spaces this is actually tricky one, because you cant actually have spaces in URI  so they are replaced with <code>%20</code>.</li>
+<li>
+<pre tabindex="0"><code>![A PNG Image](image.png) 
+![A JPEG Image](image.jpg) 
+![An SVG Logo](logo.svg)
+</code></pre>this is also local and this also means that it&rsquo;s in same directory</li>
+<li><code>![[image.png]]</code>
+this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
+</ol>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Host terraria server on Linux server</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/host-terraria-server-on-linux-server/</link>
+			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/host-terraria-server-on-linux-server/</guid>
+			<description><![CDATA[&lt;no value&gt;]]></description><content type="text/html" mode="escaped"><![CDATA[<p><strong>easiest and simplest way</strong> to do this is to run it on <a href="https://www.youtube.com/watch?v=oUnWU4Y4kSY">docker</a>, because docker is pure magic and there docker image that handles all of what this needs called <code>rathena/terraria</code>.</p>
+<h2 id="installing-docker">installing docker<a href="#installing-docker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>update repos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update 
+</span></span></code></pre></div><p>then install docker:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y docker.io
+</span></span></code></pre></div><p>and enable sysctl:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> --now docker
+</span></span></code></pre></div><h2 id="pull-and-run-image">pull and run image<a href="#pull-and-run-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>probably making new directory for server configs is a good idea:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/opt/terraria/server1
+</span></span></code></pre></div><p>or something like in games directory what ever you would like just be careful with perditions.</p>
+<ul>
+<li>
+<h3 id="pull-the-image">pull the image<a href="#pull-the-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull rathena/terraria
+</span></span></code></pre></div></li>
+<li>
+<h3 id="run-the-server">run the server<a href="#run-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--name<span class="o">=</span>terraria-server <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 7777:7777 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v ~/opt/terraria/server1:/config <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">WORLD_NAME</span><span class="o">=</span><span class="s2">&#34;MyWorld&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">MAX_PLAYERS</span><span class="o">=</span><span class="m">10</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-e <span class="nv">DIFFICULTY</span><span class="o">=</span><span class="m">2</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--restart unless-stopped <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>rathena/terraria
+</span></span></code></pre></div>now here there might be some <strong>things to modify</strong>
+<ul>
+<li>
+<p><code>--name</code> is a name of container this will be used for starting and stopping it if you forget run <code>docker ps</code></p>
+</li>
+<li>
+<p><code>-p</code> shows witch ports to forward from container to real machine and <code>7777</code> is a default port for terraria server. if you are running more then one definitely change this. if not this is good.</p>
+</li>
+<li>
+<p><code>-v</code> binds <code>/configs</code> folder on container to <code>~/opt/terraria/server1</code> on our server witch we initially crated, if you want to bind it somewhere else just change the <code>~/opt/terraria/server1</code> part to your desired path and again be careful with permeations.</p>
+</li>
+<li>
+<p><code>-e</code> makes environmental variables to configure server and thy are pretty self explanatory.</p>
+<ol>
+<li><code>WORD_NAME</code> specifies name of the world.</li>
+<li><code>MAX_PLAYERS</code> specifies max player count.</li>
+<li><code>DIFFICULTY</code> specifies difficulty of the game like
+<ul>
+<li><code>0</code>: Normal</li>
+<li><code>1</code>: Expert</li>
+<li><code>2</code>: Master</li>
+<li><code>3</code>: Journey Mode
+change as you wish.</li>
+</ul>
+</li>
+<li><strong>some other useful environmental variables</strong> are:
+<ul>
+<li><code>-e PASSWORD=&quot;yourpassword&quot;</code> specifies password for the server</li>
+<li><code>-e SEED=&quot;worldseed&quot;</code>: Specifies a seed for world generation.</li>
+<li><code>-e PORT=7777</code>: Sets the server&rsquo;s port. again if you are running another server change the port witch it runs on here and port forwarded in <code>-p</code> flag</li>
+</ul>
+</li>
+<li><code>--restart unless-stopped</code> this ensures that after power out of restart or shut down server starts automatically if you don&rsquo;t want that, delete it.</li>
+<li>and <code>  rathena/terraria</code> this you don&rsquo;t want to change, its a docker image witch container is created from.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="managing-server">managing server<a href="#managing-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>now at this point server is running and here are some useful command:</p>
+<ul>
+<li><strong>Stop the server</strong>: <code>docker stop terraria-server</code></li>
+<li><strong>Start the server</strong>: <code>docker start terraria-server</code></li>
+<li><strong>Check logs</strong>: <code>docker logs -f terraria-server</code>
+if its called different name check with <code>docker ps</code></li>
+</ul>
+<h2 id="accessing-the-server">accessing the server<a href="#accessing-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>now for me I&rsquo;m using <a href="https://tailscale.com/">tailscale</a> witch is kind like a <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-vpn">VPN</a> and works behind <a href="https://nfware.com/blog/what-is-the-difference-between-nat-and-cgnat">CG-NAT</a> witch is my problem too, but its solved and for me and my friend it will work just fine, all they need to do is use my server as they exit node turn the connection on and write in its tailscale IP and then port.</p>
+<h3 id="if-you-are-not-using-tailscale">if you are not using tailscale<a href="#if-you-are-not-using-tailscale" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>this is not recommended but you forward your server&rsquo;s terraria&rsquo;s port and then share your public IP address to people that want to join and port. this doesn&rsquo;t work for CG-NAT.</p>
+<p><a href="https://nordvpn.com/blog/open-ports-on-router/">how to forward ports on your router?</a></p>
+<h2 id="and-if-you-are-thief-and-have-a-cracked-version-of-terraria-or-friend-has">And if you are thief and have a cracked version of Terraria (or friend has)<a href="#and-if-you-are-thief-and-have-a-cracked-version-of-terraria-or-friend-has" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><strong>first off all that violates Terraria&rsquo;s terms of service and if you can you should 100% support the developer and get the real licensed version. allowing cracked users  also is a bit risky because those users also bypass security checks.</strong></p>
+<p>but if your friend is cheap and won&rsquo;t buy it :</p>
+<ol>
+<li>locate the <code>serverconfig.txt</code> file, for us it will be here <code>~/opt/terraria/server1/serverconfig.txt</code> and open it up with some text editor:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano ~/opt/terraria/server1/serverconfig.txt
+</span></span></code></pre></div></li>
+<li>and change <code>ValidateSteam=</code> from <code>true</code> to <code>false</code></li>
+<li>and restart the container:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker restart terraria-server
+</span></span></code></pre></div></li>
+</ol>
+<p>and it should work now for cracked players.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>The end and a beginning</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/the-end-and-a-beginning/</link>
+			<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/the-end-and-a-beginning/</guid>
+			<description><![CDATA[depending on the way look at this is ether a first file or last, start or a finish, beginning or end.]]></description><content type="text/html" mode="escaped"><![CDATA[]]></content>
+		</item>
+		
+	</channel>
+</rss>
