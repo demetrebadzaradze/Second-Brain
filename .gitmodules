@@ -1,3 +1,4 @@
 [submodule "themes/hermit-V2"]
 	path = themes/hermit-V2
 	url = https://github.com/1bl4z3r/hermit-V2.git
+	branch = main
