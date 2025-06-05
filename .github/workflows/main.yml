@@ -70,8 +70,29 @@ jobs:
         run: |
           git switch master
           git submodule sync --recursive
+
+          echo "content in themes"
+          ls themes
+
+          echo "content in themes/hermit-V2"
+          ls themes/hermit-V2
+          
           git submodule update --remote themes/hermit-V2
+          
+          echo "content in themes"
+          ls themes
+
+          echo "content in themes/hermit-V2"
+          ls themes/hermit-V2
+          
           git submodule update --init --recursive --force
+          
+          echo "content in themes"
+          ls themes
+
+          echo "content in themes/hermit-V2"
+          ls themes/hermit-V2
+          
           hugo
           git add .
           git commit -m "new build"
