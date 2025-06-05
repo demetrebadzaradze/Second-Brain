@@ -69,12 +69,13 @@ jobs:
       - name: Build Hugo Site
         run: |
           git switch master
-          git submodule deinit -f themes/hermit-V2
-          git submodule update --init --recursive
+          git submodule sync --recursive  # Synchronize configuration
+          git submodule update --init --recursive --force  # Initialize/update submodules
           hugo
           git add .
           git commit -m "new build"
           git push origin master
+          
       # Step 5: Deploy to 'For-Hosting' Branch
       - name: Deploy to For-Hosting
         run: |
