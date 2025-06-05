@@ -24,17 +24,17 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin posts
-          git checkout posts
+          git switch posts
           git fetch origin master
-          git checkout master
-          git checkout posts
+          git switch master
+          git switch posts
           mkdir -p ../temp-md-files
           mv *.md ../temp-md-files
           git add .
           git commit -m "posts moved to maaster"
           # git push origin posts
           
-          git checkout master
+          git switch master
           mv ../temp-md-files/*.md content/Posts
           rm -r ../temp-md-files/
           git add content/Posts/ 
@@ -45,14 +45,14 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin posts
-          git checkout posts
+          git switch posts
           
           find -mindepth 1 ! -path '*/.*' -exec rm -rf {} +   
           git add .
           # git commit -m "cleared"
           
           # git fetch origin posts
-          # git checkout posts
+          # git switch posts
           # git merge clean --allow-unrelated-histories
           # git branch -d clean
           git push origin posts
@@ -68,7 +68,8 @@ jobs:
       # Step 4: Build the Site
       - name: Build Hugo Site
         run: |
-          git checkout master
+          git switch master
+          git submodule deinit -f themes/hermit-V2
           git submodule update --init --recursive
           hugo
           git add .
@@ -79,9 +80,9 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git checkout For-Hosting  # Switch to 'For-Hosting' branch
+          git switch For-Hosting  # Switch to 'For-Hosting' branch
           git fetch origin master
-          git checkout master
+          git switch master
           # git add .
           # git commit -m "backup the old version"
           
