@@ -1,7 +1,7 @@
 baseURL = 'https://demetrebadzaradze.github.io/Second-Brain/'
 languageCode = 'en-us'
 title = 'Second-Brain'
-theme = "hermit-v2"
+theme = "hermit-V2"
 
 enableGitInfo = true
 
