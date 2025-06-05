@@ -69,8 +69,9 @@ jobs:
       - name: Build Hugo Site
         run: |
           git switch master
-          git submodule sync --recursive  # Synchronize configuration
-          git submodule update --init --recursive --force  # Initialize/update submodules
+          git submodule sync --recursive
+          git submodule update --remote themes/hermit-V2
+          git submodule update --init --recursive --force
           hugo
           git add .
           git commit -m "new build"
