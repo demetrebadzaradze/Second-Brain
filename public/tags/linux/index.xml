@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Second-Brain</title>
-    <link>//localhost:1313/tags/linux/</link>
+    <link>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</link>
     <description>Recent content in Linux on Second-Brain</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
     <lastBuildDate>Fri, 30 May 2025 18:05:31 +0400</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NextCloud setup</title>
-      <link>//localhost:1313/posts/nextcloud-setup/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/posts/nextcloud-setup/</link>
       <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/nextcloud-setup/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/nextcloud-setup/</guid>
       <description>&lt;h2 id=&#34;what-is-nextcloud&#34;&gt;What is NextCloud?&lt;a href=&#34;#what-is-nextcloud&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xD;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xD;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xD;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xD;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;&lt;a href=&#34;https://nextcloud.com/&#34;&gt;Nextcloud&lt;/a&gt; is a opensource self hosted app for data storage and here i will be using it for my home server because i am running out of storage on my devices and i have this 500GB Hardrive that is not in use for now so this project solves many problems.&lt;/p&gt;</description>
     </item>
   </channel>

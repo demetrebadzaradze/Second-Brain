@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Second-Brain</title>
-    <link>//localhost:1313/tags/</link>
+    <link>https://demetrebadzaradze.github.io/Second-Brain/tags/</link>
     <description>Recent content in Tags on Second-Brain</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
-    <lastBuildDate>Fri, 30 May 2025 18:05:31 +0400</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 May 2025 18:42:40 +0400</lastBuildDate>
+    <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Personal</title>
-      <link>//localhost:1313/tags/personal/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/personal/</link>
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/personal/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/personal/</guid>
       <description></description>
     </item>
     <item>
       <title>HomeServer</title>
-      <link>//localhost:1313/tags/homeserver/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</link>
       <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/homeserver/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>//localhost:1313/tags/linux/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</link>
       <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/linux/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>LocalCloud</title>
-      <link>//localhost:1313/tags/localcloud/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/localcloud/</link>
       <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/localcloud/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/localcloud/</guid>
       <description></description>
     </item>
     <item>
       <title>Ubuntu</title>
-      <link>//localhost:1313/tags/ubuntu/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/ubuntu/</link>
       <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/ubuntu/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/ubuntu/</guid>
       <description></description>
     </item>
     <item>
       <title>Bot</title>
-      <link>//localhost:1313/tags/bot/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/bot/</link>
       <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/bot/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/bot/</guid>
       <description></description>
     </item>
     <item>
       <title>Discord</title>
-      <link>//localhost:1313/tags/discord/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/discord/</link>
       <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/discord/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/discord/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>//localhost:1313/tags/python/</link>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/python/</link>
       <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/python/</guid>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/python/</guid>
       <description></description>
     </item>
   </channel>

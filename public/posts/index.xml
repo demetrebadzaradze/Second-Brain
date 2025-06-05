@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
 	<channel>
 		<title>Posts on Second-Brain</title>
-		<link>//localhost:1313/posts/</link>
+		<link>https://demetrebadzaradze.github.io/Second-Brain/posts/</link>
 		<description>Recent content in Posts on Second-Brain</description>
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
 		<lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
-		<atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
 		<item>
 			<title>RESUME</title>
-			<link>//localhost:1313/posts/me/</link>
-			<pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/me/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</link>
+			<pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</guid>
 			<description><![CDATA[My resume]]></description><content type="text/html" mode="escaped"><![CDATA[<h1 id="demetre-badzgaradze"><strong>Demetre Badzgaradze</strong><a href="#demetre-badzgaradze" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -83,8 +83,8 @@ Always exploring new technologies and learning by doing.</p>
 		
 		<item>
 			<title>NextCloud setup</title>
-			<link>//localhost:1313/posts/nextcloud-setup/</link>
-			<pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/nextcloud-setup/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/nextcloud-setup/</link>
+			<pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/nextcloud-setup/</guid>
 			<description><![CDATA[Nextcloud is google drive if cloud was your server. at least thats wht i will be using for because i have a 500GB hardrive and im lacking storage on my devices.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="what-is-nextcloud">What is NextCloud?<a href="#what-is-nextcloud" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -177,8 +177,8 @@ Always exploring new technologies and learning by doing.</p>
 		
 		<item>
 			<title>Making a Discord Bot</title>
-			<link>//localhost:1313/posts/making-a-discord-bot/</link>
-			<pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/making-a-discord-bot/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/making-a-discord-bot/</link>
+			<pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/making-a-discord-bot/</guid>
 			<description><![CDATA[i have never made a discord bot but now i will be making simple hello word kind of bot and maybe next time ill integrate it to unofficial Aternos API to start and stop a server]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="warning">WARNING<a href="#warning" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -386,8 +386,8 @@ and you are done make some better ones though.</li>
 		
 		<item>
 			<title>crypto transactions with Solana API(solnet) in C#</title>
-			<link>//localhost:1313/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</link>
-			<pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</link>
+			<pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</guid>
 			<description><![CDATA[Im planing to use my solana token in web market app for transactions and walets and such.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="heading"><a href="#heading" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -398,8 +398,8 @@ and you are done make some better ones though.</li>
 		
 		<item>
 			<title>SSH into phone with termux</title>
-			<link>//localhost:1313/posts/ssh-into-phone-with-termux/</link>
-			<pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/ssh-into-phone-with-termux/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/ssh-into-phone-with-termux/</link>
+			<pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/ssh-into-phone-with-termux/</guid>
 			<description><![CDATA[pretty simple setup, works in private network and such and phone doesn&#39;t needs to be rooted]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -454,8 +454,8 @@ and you are done make some better ones though.</li>
 		
 		<item>
 			<title>testing from obsidian on phone</title>
-			<link>//localhost:1313/posts/testing-from-obsidian-on-phone/</link>
-			<pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/testing-from-obsidian-on-phone/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-from-obsidian-on-phone/</link>
+			<pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-from-obsidian-on-phone/</guid>
 			<description><![CDATA[i hope this will work and this is my second brain setup on phone]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="chalange">chalange<a href="#chalange" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -467,8 +467,8 @@ and you are done make some better ones though.</li>
 		
 		<item>
 			<title>How to send giant files from windows to Linux (fastest way, local network)</title>
-			<link>//localhost:1313/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</link>
-			<pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</link>
+			<pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</guid>
 			<description><![CDATA[of course it is not fastest for everyone but i only use one thing that needs downloading, python, to host and on Linux wget to receive it]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network">How to send giant files from windows to Linux (fastest way, local network)<a href="#how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -524,8 +524,8 @@ pattern.</li>
 		
 		<item>
 			<title>README.md</title>
-			<link>//localhost:1313/posts/readme/</link>
-			<pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/readme/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/readme/</link>
+			<pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/readme/</guid>
 			<description><![CDATA[README from github]]></description><content type="text/html" mode="escaped"><![CDATA[<h1 id="second-brain">Second Brain<a href="#second-brain" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -616,8 +616,8 @@ currently it only works on my windows machine but I will try to make it for othe
 		
 		<item>
 			<title>testinn whole site</title>
-			<link>//localhost:1313/posts/testing-whole-site/</link>
-			<pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/testing-whole-site/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-whole-site/</link>
+			<pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-whole-site/</guid>
 			<description><![CDATA[this site is hosted on github and i have some CI/CD stuff and this is testing it. so, is it working??]]></description><content type="text/html" mode="escaped"><![CDATA[<h3 id="how-does-it-works">how does it works<a href="#how-does-it-works" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -640,8 +640,8 @@ currently it only works on my windows machine but I will try to make it for othe
 		
 		<item>
 			<title>Handling images for hugo</title>
-			<link>//localhost:1313/posts/handling-images-for-hugo/</link>
-			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/handling-images-for-hugo/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/handling-images-for-hugo/</link>
+			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/handling-images-for-hugo/</guid>
 			<description><![CDATA[how i handle images for hugo]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -778,8 +778,8 @@ this doesn&rsquo;t one is same as 4 but it doesn&rsquo;t has label</li>
 		
 		<item>
 			<title>Host terraria server on Linux server</title>
-			<link>//localhost:1313/posts/host-terraria-server-on-linux-server/</link>
-			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/host-terraria-server-on-linux-server/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/host-terraria-server-on-linux-server/</link>
+			<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/host-terraria-server-on-linux-server/</guid>
 			<description><![CDATA[&lt;no value&gt;]]></description><content type="text/html" mode="escaped"><![CDATA[<p><strong>easiest and simplest way</strong> to do this is to run it on <a href="https://www.youtube.com/watch?v=oUnWU4Y4kSY">docker</a>, because docker is pure magic and there docker image that handles all of what this needs called <code>rathena/terraria</code>.</p>
 <h2 id="installing-docker">installing docker<a href="#installing-docker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -910,8 +910,8 @@ if its called different name check with <code>docker ps</code></li>
 		
 		<item>
 			<title>The end and a beginning</title>
-			<link>//localhost:1313/posts/the-end-and-a-beginning/</link>
-			<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>//localhost:1313/posts/the-end-and-a-beginning/</guid>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/the-end-and-a-beginning/</link>
+			<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/the-end-and-a-beginning/</guid>
 			<description><![CDATA[depending on the way look at this is ether a first file or last, start or a finish, beginning or end.]]></description><content type="text/html" mode="escaped"><![CDATA[]]></content>
 		</item>
 		

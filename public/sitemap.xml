@@ -2,78 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/posts/me/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</loc>
+    <lastmod>2025-05-30T18:42:40+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/personal/</loc>
+    <lastmod>2025-05-30T18:42:40+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/</loc>
+    <lastmod>2025-05-30T18:42:40+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/</loc>
+    <lastmod>2025-05-30T18:42:40+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/</loc>
+    <lastmod>2025-05-30T18:42:40+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/personal/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/localcloud/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/nextcloud-setup/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/ubuntu/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/homeserver/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/bot/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/linux/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/discord/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/localcloud/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/making-a-discord-bot/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/nextcloud-setup/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/python/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/ubuntu/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/bot/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/ssh-into-phone-with-termux/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/discord/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-from-obsidian-on-phone/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/making-a-discord-bot/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/python/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/readme/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-whole-site/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/ssh-into-phone-with-termux/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/about/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/testing-from-obsidian-on-phone/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/handling-images-for-hugo/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/how-to-send-giant-files-from-windows-to-linux-fastest-way-local-network/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/host-terraria-server-on-linux-server/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/readme/</loc>
-    <lastmod>2025-05-30T18:05:31+04:00</lastmod>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/categories/</loc>
   </url><url>
-    <loc>//localhost:1313/posts/testing-whole-site/</loc>
-    <lastmod>2025-05-30T18:05:31+04:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/about/</loc>
-    <lastmod>2025-05-30T18:05:31+04:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/posts/handling-images-for-hugo/</loc>
-    <lastmod>2025-05-30T18:05:31+04:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/posts/host-terraria-server-on-linux-server/</loc>
-    <lastmod>2025-05-30T18:05:31+04:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/categories/</loc>
-  </url><url>
-    <loc>//localhost:1313/posts/the-end-and-a-beginning/</loc>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/the-end-and-a-beginning/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url>
 </urlset>

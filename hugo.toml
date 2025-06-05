@@ -1,4 +1,4 @@
-baseURL = 'https:0.0.0.0:1313/'
+baseURL = 'https://demetrebadzaradze.github.io/Second-Brain/'
 languageCode = 'en-us'
 title = 'Second-Brain'
 theme = "hermit-v2"
