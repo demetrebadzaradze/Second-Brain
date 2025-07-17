@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><meta name="author" content="Demetre Badzgaradze">
+<meta name="description" content="I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.">
+<link rel="author" type="text/plain" href="/Second-Brain/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/Second-Brain/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Second-Brain/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Second-Brain/favicon-16x16.png">
+<link rel="manifest" href="/Second-Brain/site.webmanifest">
+<meta name="msapplication-TileImage" content="/Second-Brain/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/Second-Brain/safari-pinned-tab.svg" color="#494f5c">
+
+  <meta itemprop="name" content="Recovering corrupted USB drive">
+  <meta itemprop="description" content="I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.">
+  <meta itemprop="datePublished" content="2025-07-16T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-07-17T14:03:52+00:00">
+  <meta itemprop="wordCount" content="725"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/">
+  <meta property="og:site_name" content="Second-Brain">
+  <meta property="og:title" content="Recovering corrupted USB drive">
+  <meta property="og:description" content="I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-17T14:03:52+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Recovering corrupted USB drive">
+  <meta name="twitter:description" content="I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Recovering corrupted USB drive",
+    "name": "Recovering corrupted USB drive",
+    "description": "I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.",
+    "keywords": [],
+    "articleBody": " WARNING: STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION\nPlan since working with F2FS(Flash-Friendly File System) Linux is more feasible since it’s is supported on there and these tools that i will use are on Linux and are free. for this i will setup a VM(virtual machine) with kali (iso i have but any will do). the tools used here support other popular formats too. download tools or a tool testdisk witch also comes with photorec. powerful and free tools for recovering data. backup the disk image of that corrupted drive so if we screw something up we have a backup or do the recovering on the image while drive is being fixed, but i will be saving that compressed so i wont have to use that much storage. using the tools downloaded, recover the data. NOTE: if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.\nBackup the raw data of the drive(optional but recommended) plug in the USB drive or the device you are recovering and do:\nlsblk this lists out all the storage devices accessible(should not be mounted and sizes of drive are sometimes different than what they are branded as). find the one needed and like sdb in my case and run the disk image creation command with dd:\nsudo dd if=/dev/sdb of=/home/user/backup.img status=progress replace sdb and destination on the backup disk image file according to your needs and if you want to compress it run:\nsudo dd if=/dev/sdb status=progress | gzip -c \u003e /home/user/backup.img.gz again fill in the sdb and path for file. destination should have enough.\nDownload tool the tool is testdisk soo:\nsudo apt install -y testdisk and doing this this will also downloads the photorec.\nRecover data i will be using photorec so just run:\nsudo photorec chouse the correct drive(must be plugged in at this point). an then select partition and hot search this will take some time, i waited for 5 hours for 64 GB drive but it will be different for different environments. after it finishes you should have some directories named: recup_dir.1 recup_dir.2 recup_dir.3 these are recovered files and photorec doesn’t keeps the folder structure or any names. soo that is on you to fix manually but there are some other ways I’m sure but i want to see what is going on in the there. if you want to recover from image do:\nsudo photorec /home/user/backup.img edit path to the drive image wit was dove with [[Recovering corrupted USB drive#Backup the raw data of the drive(optional but recommended)]].\nif its image file is compressed decompress it first with gunzip first and than start photorec:\ngunzip /home/user/backup.img.gz enter correct path to file.\nWrite back the image to the drive (if wanted) NOTE: the image will be same so it contains corrupted data\ndone with dd command once again run:\nsudo dd if=/home/user/backup.img of=/dev/sdb bs=4M status=progress if=/home/user/backup.img: Path to your backup image. of=/dev/sdb: The thumb drive’s device name (not a partition like /dev/sdb1). bs=4M: Block size for faster transfer. if image is compressed run: gunzip -c /home/user/backup.img.gz | sudo dd of=/dev/sdb bs=4M status=progress gunzip -c : decompresses the image and pipes it to dd. Fixing the USB i will still be using the F2FS format for this but you are welcome to chouse any that you would like.\nso lets try to fix it by installing the tools for this format:\nsudo apt install f2fs-tools and then try to fix it by:\nsudo fsck.f2fs /dev/sdb1 change the path accordingly and again use lsblk to identify it.\nin my case fixing it like this didn’t work so i will just reformat it:\nsudo fsck.f2fs /dev/sdb this will delete all data on there but then i will just move recovered files on there and its done.\nTesting USB make a folder in /mnt directory and mount it on there:\nsudo mkdir /mnt/thumb sudo mount /dev/sdb /mnt/thumb and this should give no errors and we should be able to read and write on that path and also once we unmount/disconnect all should disappear.\n",
+    "wordCount" : "725",
+    "inLanguage": "en",
+    "datePublished": "2025-07-16T00:00:00Z",
+    "dateModified": "2025-07-17T14:03:52Z",
+    "author":{
+        "@type": "Person",
+        "name": "Demetre Badzgaradze",
+        "url": "#IDONTKNOW"
+        },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Second-Brain",
+      "description": "this is my second brain",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://demetrebadzaradze.github.io/Second-Brain/favicon.ico"
+      }
+    }
+}
+</script><title>Recovering corrupted USB drive</title><link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" media="screen" href="https://demetrebadzaradze.github.io/Second-Brain/css/style.min.e35485697bea161bd9286f02a0271c1e69c14730c1b195466c5f7dc757cf0213.css" integrity="sha256-41SFaXvqFhvZKG8CoCccHmnBRzDBsZVGbF99x1fPAhM=" crossorigin="anonymous">
+	</head>
+
+<body id="page">
+	<header id="site-header">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="toc-btn" class="hdr-btn desktop-only-ib" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+      <line x1="8" y1="6" x2="21" y2="6"></line>
+      <line x1="8" y1="12" x2="21" y2="12"></line>
+      <line x1="8" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="3" y2="6"></line>
+      <line x1="3" y1="12" x2="3" y2="12"></line>
+      <line x1="3" y1="18" x2="3" y2="18"></line>
+   </svg></button><span class="hdr-links hide-in-mobile"><a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a><a href="https://github.com/demetrebadzaradze" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path
+      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+   </path>
+</svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+   </svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frecovering-corrupted-usb-drive%2f&amp;text=Recovering%20corrupted%20USB%20drive" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
+</svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frecovering-corrupted-usb-drive%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Recovering%20corrupted%20USB%20drive&amp;body=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frecovering-corrupted-usb-drive%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+   <polyline points="22,6 12,13 2,6"></polyline>
+</svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frecovering-corrupted-usb-drive%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=Recovering%20corrupted%20USB%20drive&amp;summary=Recovering%20corrupted%20USB%20drive%2c%20by%20Demetre%20Badzgaradze%0a%0aI%20have%20an%20USB%20drive%20that%20my%20friend%20gave%20me%20it%20is%2064%20GB%20drive%20and%20USB%202.0%20so%20so%20nothing%20crazy%20but%20solid.%20I%20tested%20it%20with%20validrive%20and%20it%20was%20pretty%20slow%20but%20truly%2064%20GB%20and%20no%20error.%20little%20did%20i%20knew%20i%20would%20have%20quite%20some%20time%20with%20it.%20at%20first%20i%20wanted%20to%20mount%20it%20on%20my%20server%20but%20formatting%20it%20as%20FAT32%20NTFS%20or%20exFAT%20would%20not%20work%20i%20would%20get%20some%20errors%20and%20nothing%20else%2c%20so%20i%20went%20%20with%20F2FS%20witch%20is%20format%20made%20for%20flash%20storage%20and%20support%20for%20it%20is%20not%20much%20but%20whatever%20it%20worked%20fine%20for%20holding%20media%20for%20my%20Jellyfin%20media%20server%20until%20it%20just%20started%20giving%20I%2fO%20error%20and%20now%20i%20will%20try%20to%20fix.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Recovering corrupted USB drive&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/&#34;,&#34;Recovering corrupted USB drive, by Demetre Badzgaradze\n\nI have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+   </svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+   </svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-date"><span>Jul 16, 2025</span></div>
+				<h1>Recovering corrupted USB drive</h1>
+			</header>
+			<div class="post-description"><p>I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
+   <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+   <line x1="16" y1="8" x2="2" y2="22"></line>
+   <line x1="17.5" y1="15" x2="9" y2="15"></line>
+</svg><a href="#IDONTKNOW" target="_blank">Demetre Badzgaradze</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+   </svg>725&nbspWords words, 3 Minutes, 17 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+   </svg>2025-07-16 00:00 &#43;0000
+[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit">
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="1.05" y1="12" x2="7" y2="12"></line>
+      <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
+   </svg><a href="https://github.com/demetrebadzaradze212f13c93c96f0a3c1fe4a95882e26bc4c426c34" target="_blank" rel="noopener">212f13c</a> @ 2025-07-17]</p></div>
+			<hr class="post-end">
+			<div class="content">
+				 <blockquote>
+<p><strong>WARNING</strong>: STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION</p>
+</blockquote>
+<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ol>
+<li>since working with <a href="https://docs.kernel.org/filesystems/f2fs.html">F2FS</a>(Flash-Friendly File System) Linux is more feasible since it&rsquo;s is supported on there and these tools that i will use are on Linux and are free. for this i will setup a VM(virtual machine) with kali (iso i have but any will do). the tools used here support other popular formats too.</li>
+<li>download tools or a tool <a href="https://www.cgsecurity.org/wiki/TestDisk"><code>testdisk</code></a> witch also comes with <a href="https://www.cgsecurity.org/wiki/PhotoRec"><code>photorec</code></a>. powerful and free tools for recovering data.</li>
+<li>backup the disk image of that corrupted drive so if we screw something up we have a backup or do the recovering on the image while drive is being fixed, but i will be saving that compressed so i wont have to use that much storage.</li>
+<li>using the tools downloaded, recover the data.</li>
+</ol>
+<blockquote>
+<p><strong><em>NOTE:</em></strong>  if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.</p>
+</blockquote>
+<h2 id="backup-the-raw-data-of-the-driveoptional-but-recommended">Backup the raw data of the drive(optional but recommended)<a href="#backup-the-raw-data-of-the-driveoptional-but-recommended" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>plug in the USB drive or the device you are recovering and do:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lsblk
+</span></span></code></pre></div><p>this lists out all the storage devices accessible(should not be mounted and sizes of drive are sometimes different than what they are branded as). find the one needed and like <code>sdb</code> in my case and run the disk image creation command with <code>dd</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">of</span><span class="o">=</span>/home/user/backup.img <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><p>replace <code>sdb</code> and destination on the backup disk image file according to your needs and if you want to compress it run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">status</span><span class="o">=</span>progress <span class="p">|</span> gzip -c &gt; /home/user/backup.img.gz
+</span></span></code></pre></div><p>again  fill in the <code>sdb</code> and path for file. destination should have enough.</p>
+<h2 id="download-tool">Download tool<a href="#download-tool" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>the tool is <code>testdisk</code> soo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y testdisk
+</span></span></code></pre></div><p>and doing this this will also downloads the <code>photorec</code>.</p>
+<h2 id="recover-data">Recover data<a href="#recover-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>i will be using <code>photorec</code> so just run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo photorec
+</span></span></code></pre></div><ol>
+<li>chouse the correct drive(must be plugged in at this point).</li>
+<li>an then select partition and hot search this will take some time, i waited for 5 hours for 64 GB drive but it will be different for different environments.</li>
+<li>after it finishes you should have some directories named:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">recup_dir.1
+</span></span><span class="line"><span class="cl">recup_dir.2
+</span></span><span class="line"><span class="cl">recup_dir.3
+</span></span></code></pre></div>these are recovered files and <code>photorec</code> doesn&rsquo;t keeps the folder structure or any names. soo that is on you to fix manually but there are some other ways I&rsquo;m sure but i want to see what is going on in the there.</li>
+</ol>
+<h3 id="if-you-want-to-recover-from-image">if you want to recover from image<a href="#if-you-want-to-recover-from-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>do:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo photorec /home/user/backup.img
+</span></span></code></pre></div><p>edit path to the drive image wit was dove with [[Recovering corrupted USB drive#Backup the raw data of the drive(optional but recommended)]].</p>
+<h3 id="if-its-image-file-is-compressed">if its image file is compressed<a href="#if-its-image-file-is-compressed" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>decompress it first with <code>gunzip</code> first and than start <code>photorec</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gunzip /home/user/backup.img.gz
+</span></span></code></pre></div><p>enter correct path to file.</p>
+<h2 id="write-back-the-image-to-the-drive-if-wanted">Write back the image to the drive (if wanted)<a href="#write-back-the-image-to-the-drive-if-wanted" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<blockquote>
+<p><strong><em>NOTE</em></strong>:  the image will be same so it contains corrupted data</p>
+</blockquote>
+<p>done with <code>dd</code> command once again run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/home/user/backup.img <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><ul>
+<li><code>if=/home/user/backup.img</code>: Path to your backup image.</li>
+<li><code>of=/dev/sdb</code>: The thumb drive’s device name (not a partition like <code>/dev/sdb1</code>).</li>
+<li><code>bs=4M</code>: Block size for faster transfer.
+if image is compressed run:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gunzip -c /home/user/backup.img.gz <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><ul>
+<li><code>gunzip -c </code> : decompresses the image and pipes it to <code>dd</code>.</li>
+</ul>
+<h2 id="fixing-the-usb">Fixing the USB<a href="#fixing-the-usb" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>i will still be using the <code>F2FS</code> format for this but you are welcome to chouse any that you would like.</p>
+<p>so lets try to fix it by installing the tools for this format:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install f2fs-tools
+</span></span></code></pre></div><p>and then try to fix it by:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fsck.f2fs /dev/sdb1
+</span></span></code></pre></div><p>change the path accordingly and again use <code>lsblk</code> to identify it.</p>
+<p>in my case fixing it like this didn&rsquo;t work so i will just reformat it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fsck.f2fs /dev/sdb
+</span></span></code></pre></div><p>this will delete all data on there but then i will just move recovered files on there and its done.</p>
+<h3 id="testing-usb">Testing USB<a href="#testing-usb" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>make a folder in <code>/mnt</code> directory and mount it on there:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir /mnt/thumb
+</span></span><span class="line"><span class="cl">sudo mount /dev/sdb /mnt/thumb
+</span></span></code></pre></div><p>and this should give no errors and we should be able to read and write on that path and also once we unmount/disconnect all should disappear.</p>
+
+			</div>
+			
+
+		</article>
+		<aside id="toc">
+			<div class="toc-title">Table of Contents</div>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#plan">Plan</a></li>
+    <li><a href="#backup-the-raw-data-of-the-driveoptional-but-recommended">Backup the raw data of the drive(optional but recommended)</a></li>
+    <li><a href="#download-tool">Download tool</a></li>
+    <li><a href="#recover-data">Recover data</a>
+      <ul>
+        <li><a href="#if-you-want-to-recover-from-image">if you want to recover from image</a></li>
+        <li><a href="#if-its-image-file-is-compressed">if its image file is compressed</a></li>
+      </ul>
+    </li>
+    <li><a href="#write-back-the-image-to-the-drive-if-wanted">Write back the image to the drive (if wanted)</a></li>
+    <li><a href="#fixing-the-usb">Fixing the USB</a>
+      <ul>
+        <li><a href="#testing-usb">Testing USB</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+		</aside>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+   </svg>&nbsp;Newer</span><br><span>RESUME</span>
+			</a>
+			<a class="prev-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/fun-git-procedure/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+   </svg></span><br><span>fun git procedure</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<p>
+	&copy; 2025 <a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+	&#183; Everything you say can and will be used aganst you.</p></footer>
+<script async src="https://demetrebadzaradze.github.io/Second-Brain/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://demetrebadzaradze.github.io/Second-Brain/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script></body>
+</html>

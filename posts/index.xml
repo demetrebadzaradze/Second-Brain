@@ -7,7 +7,7 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -78,6 +78,125 @@
 From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
 I specialize in making things work—efficiently, securely, and with minimal friction.<br>
 Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Recovering corrupted USB drive</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/</link>
+			<pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/</guid>
+			<description><![CDATA[I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.]]></description><content type="text/html" mode="escaped"><![CDATA[<blockquote>
+<p><strong>WARNING</strong>: STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION</p>
+</blockquote>
+<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ol>
+<li>since working with <a href="https://docs.kernel.org/filesystems/f2fs.html">F2FS</a>(Flash-Friendly File System) Linux is more feasible since it&rsquo;s is supported on there and these tools that i will use are on Linux and are free. for this i will setup a VM(virtual machine) with kali (iso i have but any will do). the tools used here support other popular formats too.</li>
+<li>download tools or a tool <a href="https://www.cgsecurity.org/wiki/TestDisk"><code>testdisk</code></a> witch also comes with <a href="https://www.cgsecurity.org/wiki/PhotoRec"><code>photorec</code></a>. powerful and free tools for recovering data.</li>
+<li>backup the disk image of that corrupted drive so if we screw something up we have a backup or do the recovering on the image while drive is being fixed, but i will be saving that compressed so i wont have to use that much storage.</li>
+<li>using the tools downloaded, recover the data.</li>
+</ol>
+<blockquote>
+<p><strong><em>NOTE:</em></strong>  if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.</p>
+</blockquote>
+<h2 id="backup-the-raw-data-of-the-driveoptional-but-recommended">Backup the raw data of the drive(optional but recommended)<a href="#backup-the-raw-data-of-the-driveoptional-but-recommended" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>plug in the USB drive or the device you are recovering and do:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lsblk
+</span></span></code></pre></div><p>this lists out all the storage devices accessible(should not be mounted and sizes of drive are sometimes different than what they are branded as). find the one needed and like <code>sdb</code> in my case and run the disk image creation command with <code>dd</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">of</span><span class="o">=</span>/home/user/backup.img <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><p>replace <code>sdb</code> and destination on the backup disk image file according to your needs and if you want to compress it run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/dev/sdb <span class="nv">status</span><span class="o">=</span>progress <span class="p">|</span> gzip -c &gt; /home/user/backup.img.gz
+</span></span></code></pre></div><p>again  fill in the <code>sdb</code> and path for file. destination should have enough.</p>
+<h2 id="download-tool">Download tool<a href="#download-tool" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>the tool is <code>testdisk</code> soo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y testdisk
+</span></span></code></pre></div><p>and doing this this will also downloads the <code>photorec</code>.</p>
+<h2 id="recover-data">Recover data<a href="#recover-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>i will be using <code>photorec</code> so just run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo photorec
+</span></span></code></pre></div><ol>
+<li>chouse the correct drive(must be plugged in at this point).</li>
+<li>an then select partition and hot search this will take some time, i waited for 5 hours for 64 GB drive but it will be different for different environments.</li>
+<li>after it finishes you should have some directories named:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">recup_dir.1
+</span></span><span class="line"><span class="cl">recup_dir.2
+</span></span><span class="line"><span class="cl">recup_dir.3
+</span></span></code></pre></div>these are recovered files and <code>photorec</code> doesn&rsquo;t keeps the folder structure or any names. soo that is on you to fix manually but there are some other ways I&rsquo;m sure but i want to see what is going on in the there.</li>
+</ol>
+<h3 id="if-you-want-to-recover-from-image">if you want to recover from image<a href="#if-you-want-to-recover-from-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>do:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo photorec /home/user/backup.img
+</span></span></code></pre></div><p>edit path to the drive image wit was dove with [[Recovering corrupted USB drive#Backup the raw data of the drive(optional but recommended)]].</p>
+<h3 id="if-its-image-file-is-compressed">if its image file is compressed<a href="#if-its-image-file-is-compressed" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>decompress it first with <code>gunzip</code> first and than start <code>photorec</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gunzip /home/user/backup.img.gz
+</span></span></code></pre></div><p>enter correct path to file.</p>
+<h2 id="write-back-the-image-to-the-drive-if-wanted">Write back the image to the drive (if wanted)<a href="#write-back-the-image-to-the-drive-if-wanted" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<blockquote>
+<p><strong><em>NOTE</em></strong>:  the image will be same so it contains corrupted data</p>
+</blockquote>
+<p>done with <code>dd</code> command once again run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/home/user/backup.img <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><ul>
+<li><code>if=/home/user/backup.img</code>: Path to your backup image.</li>
+<li><code>of=/dev/sdb</code>: The thumb drive’s device name (not a partition like <code>/dev/sdb1</code>).</li>
+<li><code>bs=4M</code>: Block size for faster transfer.
+if image is compressed run:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gunzip -c /home/user/backup.img.gz <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><ul>
+<li><code>gunzip -c </code> : decompresses the image and pipes it to <code>dd</code>.</li>
+</ul>
+<h2 id="fixing-the-usb">Fixing the USB<a href="#fixing-the-usb" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>i will still be using the <code>F2FS</code> format for this but you are welcome to chouse any that you would like.</p>
+<p>so lets try to fix it by installing the tools for this format:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install f2fs-tools
+</span></span></code></pre></div><p>and then try to fix it by:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fsck.f2fs /dev/sdb1
+</span></span></code></pre></div><p>change the path accordingly and again use <code>lsblk</code> to identify it.</p>
+<p>in my case fixing it like this didn&rsquo;t work so i will just reformat it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fsck.f2fs /dev/sdb
+</span></span></code></pre></div><p>this will delete all data on there but then i will just move recovered files on there and its done.</p>
+<h3 id="testing-usb">Testing USB<a href="#testing-usb" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>make a folder in <code>/mnt</code> directory and mount it on there:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir /mnt/thumb
+</span></span><span class="line"><span class="cl">sudo mount /dev/sdb /mnt/thumb
+</span></span></code></pre></div><p>and this should give no errors and we should be able to read and write on that path and also once we unmount/disconnect all should disappear.</p>
 ]]></content>
 		</item>
 		
