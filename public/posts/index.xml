@@ -7,7 +7,7 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -78,6 +78,101 @@
 From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
 I specialize in making things work—efficiently, securely, and with minimal friction.<br>
 Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Rooting a TV Box via UART and Arduino</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/</link>
+			<pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/</guid>
+			<description><![CDATA[A deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="background">Background<a href="#background" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>This post documents how I explored rooting a <strong>TV Star HD Digital DVB-T2/T model T2 535M HD</strong> using UART serial access. This box runs on a mysterious <strong>MStar MSD7T01-Z00-NA0</strong> chip, likely a MIPS-based SoC used in budget digital TV devices. Here&rsquo;s how I uncovered the internals, accessed the UART shell, and what I learned along the way.</p>
+<hr>
+<h2 id="step-1-disassembly--finding-the-uart-pins">Step 1: Disassembly &amp; Finding the UART Pins<a href="#step-1-disassembly--finding-the-uart-pins" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Upon opening the box, I inspected the motherboard and identified a 4-pin header likely corresponding to UART (GND, TX, RX, VCC). With some probing and research, I was able to identify the UART pinout. UART is the debug serial interface often left by manufacturers for development.</p>
+<hr>
+<h2 id="step-2-connecting-via-arduino-as-a-serial-adapter">Step 2: Connecting via Arduino (as a Serial Adapter)<a href="#step-2-connecting-via-arduino-as-a-serial-adapter" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I didn’t have a USB-to-TTL adapter, so I used a <strong>clone Arduino Uno</strong> as a USB-to-serial bridge.</p>
+<h3 id="-wiring">🔌 Wiring:<a href="#-wiring" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>TV Box UART</th>
+          <th>Arduino Pin</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>TX</td>
+          <td>Pin 0 (RX)</td>
+      </tr>
+      <tr>
+          <td>RX</td>
+          <td>Pin 1 (TX)</td>
+      </tr>
+      <tr>
+          <td>GND</td>
+          <td>GND</td>
+      </tr>
+  </tbody>
+</table>
+<p>⚠️ Note: Arduino&rsquo;s TX is 5V, so use a voltage divider to step it down to 3.3V to avoid damaging the TV box but mine was working at 5-12v so it was alright.</p>
+<hr>
+<h2 id="step-3-serial-communication-troubleshooting">Step 3: Serial Communication Troubleshooting<a href="#step-3-serial-communication-troubleshooting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I tested the Arduino’s hardware serial using a simple loopback sketch:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Bridge started&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>After confirming it worked, but to fully utilize RX and TX pins i had to disable the main chip on the Arduino on regular one you just take out the atmega chip but on mine i had to shorten reset and ground pins  then I connected it to the TV box and launched <strong>PuTTY</strong> at <code>115200</code> baud (bc i tested the other bauds but this was where i would get the output), right serial port 3 in my case, no flow control, parity none, stop bits 1 and data bits 8.</p>
+<hr>
+<h2 id="step-4-catching-the-u-boot-shell">Step 4: Catching the U-Boot Shell<a href="#step-4-catching-the-u-boot-shell" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>The TV box booted and printed debug logs:</p>
+<pre tabindex="0"><code>BOOTSPI
+BIST0_OK
+_OK!decomp
+_done
+done
+
+Hello U-Boot
+
+U-Boot 1.1.6 (Mar 18 2015 - 21:31:58)
+...
+Hit any key to stop autoboot: 0
+</code></pre><p>By rapidly pressing keys (or shorting TX/RX during boot that what worked for me), I eventually landed in the U-Boot prompt:</p>
+<pre tabindex="0"><code>&lt;&lt; MStar &gt;&gt;#
+</code></pre><p>&ldquo;I typed <code>help</code> and confirmed command execution was working!&rdquo; is what i would have said if something didn&rsquo;t go wrong and wouldn&rsquo;t you guess it it was that clone Arduino board turns  out the RX and TX fins were &ldquo;broken&rdquo; i would get the output but i couldn&rsquo;t input anything that&rsquo;s why shorting the pins worked as an input. i could write some  script to get the input on another pins and make they act as the TX and RX but this already took sleepiness night soo i will end it here until i get a proper adapter.</p>
 ]]></content>
 		</item>
 		

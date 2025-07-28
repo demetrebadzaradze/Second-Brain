@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><meta name="author" content="Demetre Badzgaradze">
+<meta name="description" content="A deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi">
+<link rel="author" type="text/plain" href="/Second-Brain/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/Second-Brain/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Second-Brain/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Second-Brain/favicon-16x16.png">
+<link rel="manifest" href="/Second-Brain/site.webmanifest">
+<meta name="msapplication-TileImage" content="/Second-Brain/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/Second-Brain/safari-pinned-tab.svg" color="#494f5c">
+
+  <meta itemprop="name" content="Rooting a TV Box via UART and Arduino">
+  <meta itemprop="description" content="A deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi">
+  <meta itemprop="datePublished" content="2025-07-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-07-28T07:55:22+00:00">
+  <meta itemprop="wordCount" content="473"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/">
+  <meta property="og:site_name" content="Second-Brain">
+  <meta property="og:title" content="Rooting a TV Box via UART and Arduino">
+  <meta property="og:description" content="A deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-28T07:55:22+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rooting a TV Box via UART and Arduino">
+  <meta name="twitter:description" content="A deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Rooting a TV Box via UART and Arduino",
+    "name": "Rooting a TV Box via UART and Arduino",
+    "description": "A deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi",
+    "keywords": [],
+    "articleBody": "Background This post documents how I explored rooting a TV Star HD Digital DVB-T2/T model T2 535M HD using UART serial access. This box runs on a mysterious MStar MSD7T01-Z00-NA0 chip, likely a MIPS-based SoC used in budget digital TV devices. Here’s how I uncovered the internals, accessed the UART shell, and what I learned along the way.\nStep 1: Disassembly \u0026 Finding the UART Pins Upon opening the box, I inspected the motherboard and identified a 4-pin header likely corresponding to UART (GND, TX, RX, VCC). With some probing and research, I was able to identify the UART pinout. UART is the debug serial interface often left by manufacturers for development.\nStep 2: Connecting via Arduino (as a Serial Adapter) I didn’t have a USB-to-TTL adapter, so I used a clone Arduino Uno as a USB-to-serial bridge.\n🔌 Wiring: TV Box UART Arduino Pin TX Pin 0 (RX) RX Pin 1 (TX) GND GND ⚠️ Note: Arduino’s TX is 5V, so use a voltage divider to step it down to 3.3V to avoid damaging the TV box but mine was working at 5-12v so it was alright.\nStep 3: Serial Communication Troubleshooting I tested the Arduino’s hardware serial using a simple loopback sketch:\nvoid setup() { Serial.begin(9600); Serial.println(\"Bridge started\"); } void loop() { if (Serial.available()) { char c = Serial.read(); Serial.write(c); } } After confirming it worked, but to fully utilize RX and TX pins i had to disable the main chip on the Arduino on regular one you just take out the atmega chip but on mine i had to shorten reset and ground pins then I connected it to the TV box and launched PuTTY at 115200 baud (bc i tested the other bauds but this was where i would get the output), right serial port 3 in my case, no flow control, parity none, stop bits 1 and data bits 8.\nStep 4: Catching the U-Boot Shell The TV box booted and printed debug logs:\nBOOTSPI BIST0_OK _OK!decomp _done done Hello U-Boot U-Boot 1.1.6 (Mar 18 2015 - 21:31:58) ... Hit any key to stop autoboot: 0 By rapidly pressing keys (or shorting TX/RX during boot that what worked for me), I eventually landed in the U-Boot prompt:\n\u003c\u003c MStar \u003e\u003e# “I typed help and confirmed command execution was working!” is what i would have said if something didn’t go wrong and wouldn’t you guess it it was that clone Arduino board turns out the RX and TX fins were “broken” i would get the output but i couldn’t input anything that’s why shorting the pins worked as an input. i could write some script to get the input on another pins and make they act as the TX and RX but this already took sleepiness night soo i will end it here until i get a proper adapter.\n",
+    "wordCount" : "473",
+    "inLanguage": "en",
+    "datePublished": "2025-07-28T00:00:00Z",
+    "dateModified": "2025-07-28T07:55:22Z",
+    "author":{
+        "@type": "Person",
+        "name": "Demetre Badzgaradze",
+        "url": "#IDONTKNOW"
+        },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Second-Brain",
+      "description": "this is my second brain",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://demetrebadzaradze.github.io/Second-Brain/favicon.ico"
+      }
+    }
+}
+</script><title>Rooting a TV Box via UART and Arduino</title><link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" media="screen" href="https://demetrebadzaradze.github.io/Second-Brain/css/style.min.e35485697bea161bd9286f02a0271c1e69c14730c1b195466c5f7dc757cf0213.css" integrity="sha256-41SFaXvqFhvZKG8CoCccHmnBRzDBsZVGbF99x1fPAhM=" crossorigin="anonymous">
+	</head>
+
+<body id="page">
+	<header id="site-header">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="toc-btn" class="hdr-btn desktop-only-ib" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+      <line x1="8" y1="6" x2="21" y2="6"></line>
+      <line x1="8" y1="12" x2="21" y2="12"></line>
+      <line x1="8" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="3" y2="6"></line>
+      <line x1="3" y1="12" x2="3" y2="12"></line>
+      <line x1="3" y1="18" x2="3" y2="18"></line>
+   </svg></button><span class="hdr-links hide-in-mobile"><a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a><a href="https://github.com/demetrebadzaradze" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path
+      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+   </path>
+</svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+   </svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frooting-a-tv-box-via-uart-and-arduino%2f&amp;text=Rooting%20a%20TV%20Box%20via%20UART%20and%20Arduino" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
+</svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frooting-a-tv-box-via-uart-and-arduino%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Rooting%20a%20TV%20Box%20via%20UART%20and%20Arduino&amp;body=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frooting-a-tv-box-via-uart-and-arduino%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+   <polyline points="22,6 12,13 2,6"></polyline>
+</svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2frooting-a-tv-box-via-uart-and-arduino%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=Rooting%20a%20TV%20Box%20via%20UART%20and%20Arduino&amp;summary=Rooting%20a%20TV%20Box%20via%20UART%20and%20Arduino%2c%20by%20Demetre%20Badzgaradze%0a%0aA%20deep%20dive%20into%20hacking%20a%20cheap%20DVB-T2%20set-top%20box%20using%20UART%20and%20an%20Arduino%20board%20to%20unlock%20hidden%20firmware%20access.%20so%20how%20i%20got%20this%20idea%20is%20i%20found%20this%20at%20my%20grandparents%20house%20and%20thought%20nothing%20of%20it%20until%20i%20took%20it%20apart%20looked%20like%20a%20very%20weak%20redberry%20pi%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Rooting a TV Box via UART and Arduino&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/&#34;,&#34;Rooting a TV Box via UART and Arduino, by Demetre Badzgaradze\n\nA deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+   </svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+   </svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-date"><span>Jul 28, 2025</span></div>
+				<h1>Rooting a TV Box via UART and Arduino</h1>
+			</header>
+			<div class="post-description"><p>A deep dive into hacking a cheap DVB-T2 set-top box using UART and an Arduino board to unlock hidden firmware access. so how i got this idea is i found this at my grandparents house and thought nothing of it until i took it apart looked like a very weak redberry pi</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
+   <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+   <line x1="16" y1="8" x2="2" y2="22"></line>
+   <line x1="17.5" y1="15" x2="9" y2="15"></line>
+</svg><a href="#IDONTKNOW" target="_blank">Demetre Badzgaradze</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+   </svg>473&nbspWords words, 2 Minutes, 9 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+   </svg>2025-07-28 00:00 &#43;0000
+[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit">
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="1.05" y1="12" x2="7" y2="12"></line>
+      <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
+   </svg><a href="https://github.com/demetrebadzaradzea3324178af2e83a4cafd0a55d8d4d387816a3aff" target="_blank" rel="noopener">a332417</a> @ 2025-07-28]</p></div>
+			<hr class="post-end">
+			<div class="content">
+				 <h2 id="background">Background<a href="#background" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>This post documents how I explored rooting a <strong>TV Star HD Digital DVB-T2/T model T2 535M HD</strong> using UART serial access. This box runs on a mysterious <strong>MStar MSD7T01-Z00-NA0</strong> chip, likely a MIPS-based SoC used in budget digital TV devices. Here&rsquo;s how I uncovered the internals, accessed the UART shell, and what I learned along the way.</p>
+<hr>
+<h2 id="step-1-disassembly--finding-the-uart-pins">Step 1: Disassembly &amp; Finding the UART Pins<a href="#step-1-disassembly--finding-the-uart-pins" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Upon opening the box, I inspected the motherboard and identified a 4-pin header likely corresponding to UART (GND, TX, RX, VCC). With some probing and research, I was able to identify the UART pinout. UART is the debug serial interface often left by manufacturers for development.</p>
+<hr>
+<h2 id="step-2-connecting-via-arduino-as-a-serial-adapter">Step 2: Connecting via Arduino (as a Serial Adapter)<a href="#step-2-connecting-via-arduino-as-a-serial-adapter" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I didn’t have a USB-to-TTL adapter, so I used a <strong>clone Arduino Uno</strong> as a USB-to-serial bridge.</p>
+<h3 id="-wiring">🔌 Wiring:<a href="#-wiring" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>TV Box UART</th>
+          <th>Arduino Pin</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>TX</td>
+          <td>Pin 0 (RX)</td>
+      </tr>
+      <tr>
+          <td>RX</td>
+          <td>Pin 1 (TX)</td>
+      </tr>
+      <tr>
+          <td>GND</td>
+          <td>GND</td>
+      </tr>
+  </tbody>
+</table>
+<p>⚠️ Note: Arduino&rsquo;s TX is 5V, so use a voltage divider to step it down to 3.3V to avoid damaging the TV box but mine was working at 5-12v so it was alright.</p>
+<hr>
+<h2 id="step-3-serial-communication-troubleshooting">Step 3: Serial Communication Troubleshooting<a href="#step-3-serial-communication-troubleshooting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I tested the Arduino’s hardware serial using a simple loopback sketch:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Bridge started&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>After confirming it worked, but to fully utilize RX and TX pins i had to disable the main chip on the Arduino on regular one you just take out the atmega chip but on mine i had to shorten reset and ground pins  then I connected it to the TV box and launched <strong>PuTTY</strong> at <code>115200</code> baud (bc i tested the other bauds but this was where i would get the output), right serial port 3 in my case, no flow control, parity none, stop bits 1 and data bits 8.</p>
+<hr>
+<h2 id="step-4-catching-the-u-boot-shell">Step 4: Catching the U-Boot Shell<a href="#step-4-catching-the-u-boot-shell" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>The TV box booted and printed debug logs:</p>
+<pre tabindex="0"><code>BOOTSPI
+BIST0_OK
+_OK!decomp
+_done
+done
+
+Hello U-Boot
+
+U-Boot 1.1.6 (Mar 18 2015 - 21:31:58)
+...
+Hit any key to stop autoboot: 0
+</code></pre><p>By rapidly pressing keys (or shorting TX/RX during boot that what worked for me), I eventually landed in the U-Boot prompt:</p>
+<pre tabindex="0"><code>&lt;&lt; MStar &gt;&gt;#
+</code></pre><p>&ldquo;I typed <code>help</code> and confirmed command execution was working!&rdquo; is what i would have said if something didn&rsquo;t go wrong and wouldn&rsquo;t you guess it it was that clone Arduino board turns  out the RX and TX fins were &ldquo;broken&rdquo; i would get the output but i couldn&rsquo;t input anything that&rsquo;s why shorting the pins worked as an input. i could write some  script to get the input on another pins and make they act as the TX and RX but this already took sleepiness night soo i will end it here until i get a proper adapter.</p>
+
+			</div>
+			
+
+		</article>
+		<aside id="toc">
+			<div class="toc-title">Table of Contents</div>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#step-1-disassembly--finding-the-uart-pins">Step 1: Disassembly &amp; Finding the UART Pins</a></li>
+    <li><a href="#step-2-connecting-via-arduino-as-a-serial-adapter">Step 2: Connecting via Arduino (as a Serial Adapter)</a>
+      <ul>
+        <li><a href="#-wiring">🔌 Wiring:</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-3-serial-communication-troubleshooting">Step 3: Serial Communication Troubleshooting</a></li>
+    <li><a href="#step-4-catching-the-u-boot-shell">Step 4: Catching the U-Boot Shell</a></li>
+  </ul>
+</nav>
+		</aside>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+   </svg>&nbsp;Newer</span><br><span>RESUME</span>
+			</a>
+			<a class="prev-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+   </svg></span><br><span>Recovering corrupted USB drive</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<p>
+	&copy; 2025 <a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+	&#183; Everything you say can and will be used aganst you.</p></footer>
+<script async src="https://demetrebadzaradze.github.io/Second-Brain/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://demetrebadzaradze.github.io/Second-Brain/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script></body>
+</html>
