@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
-    <lastBuildDate>Mon, 28 Jul 2025 07:55:22 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Jul 2025 16:01:36 +0000</lastBuildDate>
     <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESUME</title>
@@ -22,6 +22,13 @@
       <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/</guid>
       <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;a href=&#34;#background&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;This post documents how I explored rooting a &lt;strong&gt;TV Star HD Digital DVB-T2/T model T2 535M HD&lt;/strong&gt; using UART serial access. This box runs on a mysterious &lt;strong&gt;MStar MSD7T01-Z00-NA0&lt;/strong&gt; chip, likely a MIPS-based SoC used in budget digital TV devices. Here&amp;rsquo;s how I uncovered the internals, accessed the UART shell, and what I learned along the way.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Self-Hosted Mumble Voice Server with Docker, Lightweight Discord Alternative</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/posts/self-hosted-mumble-voice-server-with-docker-lightweight-discord-alternative/</link>
+      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/self-hosted-mumble-voice-server-with-docker-lightweight-discord-alternative/</guid>
+      <description>&lt;p&gt;Mumble is an open-source, low-latency voice chat system that&amp;rsquo;s perfect for gaming and bad networks. Here&amp;rsquo;s how I deployed it using Docker, plus some fun and useful ways to customize it!&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-setting-up-mumble-in-docker&#34;&gt;🐳 Setting Up Mumble in Docker&lt;a href=&#34;#-setting-up-mumble-in-docker&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;all of this will be done with docker compose because it the best thing ever.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Recovering corrupted USB drive</title>

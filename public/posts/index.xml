@@ -177,6 +177,113 @@ Hit any key to stop autoboot: 0
 		</item>
 		
 		<item>
+			<title>Self-Hosted Mumble Voice Server with Docker, Lightweight Discord Alternative</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/self-hosted-mumble-voice-server-with-docker-lightweight-discord-alternative/</link>
+			<pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/self-hosted-mumble-voice-server-with-docker-lightweight-discord-alternative/</guid>
+			<description><![CDATA[so as of many other blog description i hade a problem, my friend wanted to play some games but his internet is so bad that discord and Minecraft would take up all the bandwidth, witch he found out while experimenting. so i got on it and fount this thing called mumble, self hosted discord but extremely lightweight, here i will be setting that up.]]></description><content type="text/html" mode="escaped"><![CDATA[<p>Mumble is an open-source, low-latency voice chat system that&rsquo;s perfect for gaming and bad networks. Here&rsquo;s how I deployed it using Docker, plus some fun and useful ways to customize it!</p>
+<hr>
+<h2 id="-setting-up-mumble-in-docker">🐳 Setting Up Mumble in Docker<a href="#-setting-up-mumble-in-docker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>all of this will be done with docker compose because it the best thing ever.</p>
+<p>Here&rsquo;s our simple <code>docker-compose.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mumble-server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mumblevoip/mumble-server:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">mumble-server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">TG_3w3p</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="kc">on</span>-<span class="l">failure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">64738</span><span class="p">:</span><span class="m">64738</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">64738</span><span class="p">:</span><span class="m">64738</span><span class="l">/udp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./data/:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MUMBLE_CONFIG_WELCOMETEXT</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&lt;b&gt;Welcome to TG_3w3p&#39;s Mumble!&lt;/b&gt;&lt;br /&gt;Have fun.&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MUMBLE_CONFIG_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">64738</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MUMBLE_CONFIG_USERS</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MUMBLE_CONFIG_SERVERPASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;password&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MUMBLE_SUPERUSER_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">```</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">This runs the official Mumble server image and exposes the necessary ports for voice traffic. All configuration is handled via environment variables or through the mumble_server_config.ini file in ./data. you can see more on this [here](https://github.com/mumble-voip/mumble-docker), documentation is kind of all over soo this is  great start. </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">so just run that with </span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">```bash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">sudo docker compose up -d</span><span class="w">
+</span></span></span></code></pre></div><p>or no <code>-d</code> if you want to look at it</p>
+<hr>
+<h2 id="-persistent-data">📁 Persistent Data<a href="#-persistent-data" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>The <code>./data</code> folder stores:</p>
+<ul>
+<li><code>mumble_server_config.ini</code>: Your config file</li>
+<li><code>mumble-server.sqlite</code>: Database for channels, users, etc.</li>
+</ul>
+<p>Edit the config manually or let Docker handle it via environment variables.
+but in case of editing it manually for me it gets overridden by env variables even if i don&rsquo;t have them configured so add this in the compose file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">/usr/bin/mumble-server -fg -ini /data/mumble_server_config.ini</span><span class="w">
+</span></span></span></code></pre></div><p>and this should work but i will stick to the env variables in the compose file.</p>
+<hr>
+<h2 id="-connect-to-the-server">✅ Connect to the Server<a href="#-connect-to-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Use the <a href="https://www.mumble.info/">Mumble client</a> and connect using:</p>
+<ul>
+<li>Address: your public IP, LAN IP, or Tailscale IP</li>
+<li>Port: 64738</li>
+<li>Username: anything you want</li>
+<li>Password: password
+for me i don&rsquo;t really  have a public IP address but what i have is <a href="https://tailscale.com/">Tailscale</a> VPN and all i did wat to just share out my server or the device that has <code>mumble</code> hosted and they will just use may Tailnet IP and done.</li>
+</ul>
+<hr>
+<h2 id="-custom-banner--welcome-message">📜 Custom Banner / Welcome Message<a href="#-custom-banner--welcome-message" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Mumble supports rich HTML in the welcome message:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="line"><span class="cl">MUMBLE_CONFIG_WELCOMETEXT: <span class="p">|</span>
+</span></span><span class="line"><span class="cl">  &lt;center&gt;&lt;b&gt;🔥 Welcome to TG_3w3p<span class="err">&#39;</span>s Mumble 🔥&lt;/b&gt;&lt;br/&gt;
+</span></span><span class="line"><span class="cl">  &lt;img <span class="nv">src</span><span class="o">=</span>&lt;link&gt; <span class="nv">height</span><span class="o">=</span><span class="s2">&#34;100&#34;</span>/&gt;&lt;br/&gt;
+</span></span><span class="line"><span class="cl">  Join <span class="c1">#Gaming or #Chill rooms to start!&lt;/center&gt;</span>
+</span></span></code></pre></div><p>and whatever image is on the link will be displayed.</p>
+<hr>
+<h2 id="login-as-superuser">login as <code>SuperUser</code><a href="#login-as-superuser" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>in the environmental variables we have set the <code>SuperUser</code> password witch as the name suggests is like an admin to connect to the server with that, in <code>username</code> field you must enter <code>SuperUser</code> and this will prompt you to enter super user password that you set in the compose file and you are in.
+once you are a super user you can then manage channels and whatnot</p>
+<hr>
+<h2 id="-ideas-for-the-future">💡 Ideas for the Future<a href="#-ideas-for-the-future" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>add some bots — a channel where no one has voice permission 😄</li>
+<li>Game event channels with custom join sounds</li>
+<li>and it has an API witch can do a lot of things but i won&rsquo;t be using that</li>
+</ul>
+<hr>
+<h2 id="-final-thoughts">✅ Final Thoughts<a href="#-final-thoughts" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Mumble is an amazing tool — even more so when self-hosted. It&rsquo;s fast, secure, light on resources, and perfect for friends with weak internet who still want to game and chat. With Docker, the setup is incredibly simple, and customization possibilities are endless and add on Tailscale and it can be hosted on anywhere. of course you could make it public but i didn&rsquo;t since it for me and friends but in future i guess</p>
+<p>If you&rsquo;re tired of Discord hogging your bandwidth or just want full control, give Mumble a shot!</p>
+]]></content>
+		</item>
+		
+		<item>
 			<title>Recovering corrupted USB drive</title>
 			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/</link>
 			<pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/</guid>
