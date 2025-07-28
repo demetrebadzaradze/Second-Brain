@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
-    <lastBuildDate>Thu, 17 Jul 2025 14:03:52 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Jul 2025 07:55:22 +0000</lastBuildDate>
     <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESUME</title>
@@ -15,6 +15,13 @@
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</guid>
       <description>&lt;h1 id=&#34;demetre-badzgaradze&#34;&gt;&lt;strong&gt;Demetre Badzgaradze&lt;/strong&gt;&lt;a href=&#34;#demetre-badzgaradze&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;Tbilisi, Georgia • &lt;a href=&#34;mailto:badzgaradzedemetre8@gmail.com&#34;&gt;badzgaradzedemetre8@gmail.com&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://www.linkedin.com/in/demetre-badzgaradze-b49153291/&#34;&gt;LinkedIn&lt;/a&gt; • &lt;a href=&#34;https://github.com/demetrebadzaradze/&#34;&gt;GitHub&lt;/a&gt; • &lt;a href=&#34;https://demetrebadzaradze.github.io/Second-Brain/en/&#34;&gt;Portfolio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-projects&#34;&gt;💻 Projects&lt;a href=&#34;#-projects&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;📚 Second-Brain&lt;/strong&gt;&lt;br&gt;&#xA;&lt;em&gt;Technologies: HTML, Hugo, CI/CD, GitHub Actions&lt;/em&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://demetrebadzaradze.github.io/Second-Brain/en/posts&#34;&gt;🌐 Website&lt;/a&gt; • &lt;a href=&#34;https://github.com/demetrebadzaradze/Second-Brain/&#34;&gt;📦 GitHub Repo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rooting a TV Box via UART and Arduino</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/</link>
+      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;a href=&#34;#background&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;This post documents how I explored rooting a &lt;strong&gt;TV Star HD Digital DVB-T2/T model T2 535M HD&lt;/strong&gt; using UART serial access. This box runs on a mysterious &lt;strong&gt;MStar MSD7T01-Z00-NA0&lt;/strong&gt; chip, likely a MIPS-based SoC used in budget digital TV devices. Here&amp;rsquo;s how I uncovered the internals, accessed the UART shell, and what I learned along the way.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Recovering corrupted USB drive</title>
