@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><meta name="author" content="Demetre Badzgaradze">
+<meta name="description" content="this is a readme file for my project &#34;super-spork&#34; on github">
+<link rel="author" type="text/plain" href="/Second-Brain/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/Second-Brain/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Second-Brain/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Second-Brain/favicon-16x16.png">
+<link rel="manifest" href="/Second-Brain/site.webmanifest">
+<meta name="msapplication-TileImage" content="/Second-Brain/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/Second-Brain/safari-pinned-tab.svg" color="#494f5c">
+
+  <meta itemprop="name" content="Super-Spork">
+  <meta itemprop="description" content="this is a readme file for my project &#34;super-spork&#34; on github">
+  <meta itemprop="datePublished" content="2025-08-01T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-01T11:37:04+00:00">
+  <meta itemprop="wordCount" content="719"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/super-spork/">
+  <meta property="og:site_name" content="Second-Brain">
+  <meta property="og:title" content="Super-Spork">
+  <meta property="og:description" content="this is a readme file for my project &#34;super-spork&#34; on github">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-01T11:37:04+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Super-Spork">
+  <meta name="twitter:description" content="this is a readme file for my project &#34;super-spork&#34; on github">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Super-Spork",
+    "name": "Super-Spork",
+    "description": "this is a readme file for my project \"super-spork\" on github",
+    "keywords": [],
+    "articleBody": "https://github.com/demetrebadzaradze/super-spork\nSuper-Spork This project provides a bot that forwards text messages from Mumble server running in the docker with compose (version 1.5.735) to a Discord server. it is not a plug and play like just adding the bot to Discord and be done. it is more of making your own discord bot and running this project as docker to use the bot as a one way bridge for now.\nthis is very bare bone project as you can tell and will improve lattes if gets any users.\nFeatures Mumble-to-Discord: Forwards messages from Mumble channels to a Discord channel, including the sender’s name and channel name (e.g., TG_3W3p in Minecraft: Hello from Mumble!).\nBasic Discord Commands: Responds to simple commands like ?hello or hi with responses like yooooo or whats up (via the responce.py cog), and can gamble too.\nPrerequisites System: Ubuntu 24.04.1 LTS (or compatible Linux distribution), but since it runs in the docker you could make it work anywhere. Docker: Docker and Docker Compose installed (sudo apt install docker.io docker-compose). Mumble Server: Version 1.5.735 running in a Docker container. Python: Version 3.12 (included in the bot’s Docker image). Dependencies: Listed in requirements.txt (e.g., discord.py, zeroc-ice for Ice communication). Discord Bot Token: create your own discord bot and Obtain its token from the Discord Developer Portal. Mumble Ice Password: this should be same as MUMBLE_CONFIG_SERVERPASSWORD from mumble server. Discord Channel ID: The ID of the Discord channel where Mumble messages are forwarded (e.g., 1349705376263418589). Setup Instructions Directory Structure should look like this\n├── .env (same file as in super-spork) ├── docker-compose.yml ├── data/ ├── logs/ └── super-spork/ ├── .env ├── cogs/ │ ├── mumble.py │ ├── responce.py ├── Dockerfile ├── MumbleServer_ice.py ├── main.py └── requirements.txt for that:\nclone the super-spork directory where mumble server compose file is. go to the correct directory(e.g. cd /mnt/silver-64/opt/mumble/) and clone the repo git clone https://github.com/demetrebadzaradze/super-spork.git make a discord bot 1. go to discord developer portal 2. create new application and give it a name 3. configure it as you would like in general (e.g. add a picture, description, etc.) 4. go over in the bot section and note the bot token (reset if not present) 5. then add the bot to the server with a generated link, for permeations it should work with: View Channels, Send Messages , Manage Messages, Read Message History. I checked admin witch is not recommended but it works if you cant get it working other way. and also you can send this link to owner of another server and they could add it to server that you don’t own.\nConfigure the Mumble Server Ensure the Mumble server is running in a Docker container with Ice enabled: **template compose.yml file for mumbe server and super-spork bot **\nservices: mumble-server: image: mumblevoip/mumble-server:latest container_name: mumble-server hostname: restart: on-failure ports: - 64738:64738 - 64738:64738/udp - 6502:6502 volumes: - ./data/:/data environment: MUMBLE_CONFIG_WELCOMETEXT: MUMBLE_CONFIG_PORT: 64738 MUMBLE_CONFIG_USERS: MUMBLE_CONFIG_ICE: \"tcp -h 0.0.0.0 -p 6502\" MUMBLE_CONFIG_SERVERPASSWORD: MUMBLE_SUPERUSER_PASSWORD: expose: - 6502 networks: - mumble-network super-spork-bot: build: context: ./super-spork/. dockerfile: Dockerfile container_name: super-spork-bot restart: on-failure environment: - TOKEN=${TOKEN} - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID} - MUMBLE_ICE_PASSWORD=${MUMBLE_ICE_PASSWORD} volumes: - ./super-spork:/app - ./logs:/app/logs depends_on: - mumble-server networks: - mumble-network networks: mumble-network: driver: bridge configure .env file this env file should be in the super-spork directory and where compose.yml file is and this is how it should look like: (replace descriptions in quotes with actual values) TOKEN=\"this should be set to your discord bot's token\" DISCORD_CHANNEL_ID=\"id of a channel where messages will be sent bot should be added in that server too\" MUMBLE_ICE_PASSWORD=\"whatever is configured as MUMBLE_CONFIG_SERVERPASSWORD in mumble configuration\" Build and run the container go to directory where compose.yml file is and run: sudo docker compose up --build use -d for detached mode. Test when any message is sent in the mumble text chat it will also be send in the discord channel like this : **TG_3W3p** in **Minecraft**: hello world Contributing Add new features by creating cogs in super-spork/cogs/ and updating main.py. Report issues or suggest improvements by modifying the code. License This project is licensed under the MIT License. See the LICENSE file for details.\n",
+    "wordCount" : "719",
+    "inLanguage": "en",
+    "datePublished": "2025-08-01T00:00:00Z",
+    "dateModified": "2025-08-01T11:37:04Z",
+    "author":{
+        "@type": "Person",
+        "name": "Demetre Badzgaradze",
+        "url": "#IDONTKNOW"
+        },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://demetrebadzaradze.github.io/Second-Brain/posts/super-spork/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Second-Brain",
+      "description": "this is my second brain",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://demetrebadzaradze.github.io/Second-Brain/favicon.ico"
+      }
+    }
+}
+</script><title>Super-Spork</title><link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" media="screen" href="https://demetrebadzaradze.github.io/Second-Brain/css/style.min.e35485697bea161bd9286f02a0271c1e69c14730c1b195466c5f7dc757cf0213.css" integrity="sha256-41SFaXvqFhvZKG8CoCccHmnBRzDBsZVGbF99x1fPAhM=" crossorigin="anonymous">
+	</head>
+
+<body id="page">
+	<header id="site-header">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="toc-btn" class="hdr-btn desktop-only-ib" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+      <line x1="8" y1="6" x2="21" y2="6"></line>
+      <line x1="8" y1="12" x2="21" y2="12"></line>
+      <line x1="8" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="3" y2="6"></line>
+      <line x1="3" y1="12" x2="3" y2="12"></line>
+      <line x1="3" y1="18" x2="3" y2="18"></line>
+   </svg></button><span class="hdr-links hide-in-mobile"><a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a><a href="https://github.com/demetrebadzaradze" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path
+      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+   </path>
+</svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+   </svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fsuper-spork%2f&amp;text=Super-Spork" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
+</svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fsuper-spork%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Super-Spork&amp;body=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fsuper-spork%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+   <polyline points="22,6 12,13 2,6"></polyline>
+</svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fsuper-spork%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=Super-Spork&amp;summary=Super-Spork%2c%20by%20Demetre%20Badzgaradze%0a%0athis%20is%20a%20readme%20file%20for%20my%20project%20%22super-spork%22%20on%20github%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Super-Spork&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/posts/super-spork/&#34;,&#34;Super-Spork, by Demetre Badzgaradze\n\nthis is a readme file for my project \&#34;super-spork\&#34; on github\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+   </svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+   </svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-date"><span>Aug 1, 2025</span></div>
+				<h1>Super-Spork</h1>
+			</header>
+			<div class="post-description"><p>this is a readme file for my project &#34;super-spork&#34; on github</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
+   <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+   <line x1="16" y1="8" x2="2" y2="22"></line>
+   <line x1="17.5" y1="15" x2="9" y2="15"></line>
+</svg><a href="#IDONTKNOW" target="_blank">Demetre Badzgaradze</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+   </svg>719&nbspWords words, 3 Minutes, 16 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+   </svg>2025-08-01 00:00 &#43;0000
+[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit">
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="1.05" y1="12" x2="7" y2="12"></line>
+      <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
+   </svg><a href="https://github.com/demetrebadzaradze05f640acc45c908e8c29258c5fa754712919a462" target="_blank" rel="noopener">05f640a</a> @ 2025-08-01]</p></div>
+			<hr class="post-end">
+			<div class="content">
+				 <p><a href="https://github.com/demetrebadzaradze/super-spork">https://github.com/demetrebadzaradze/super-spork</a></p>
+<h2 id="super-spork">Super-Spork<a href="#super-spork" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>This project provides a bot that forwards text messages from Mumble server running in the docker with compose (version 1.5.735) to a Discord server. it is not a plug and play like just adding the bot to Discord and be done. it is more of making your own discord bot and running this project as docker to use the bot as a one way bridge for now.</p>
+<p>this is very bare bone project as you can tell and will improve lattes if gets any users.</p>
+<h2 id="features">Features<a href="#features" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>
+<p>Mumble-to-Discord: Forwards messages from Mumble channels to a Discord channel, including the sender&rsquo;s name and channel name (e.g., <strong>TG_3W3p</strong> in <strong>Minecraft</strong>: Hello from Mumble!).</p>
+</li>
+<li>
+<p>Basic Discord Commands: Responds to simple commands like ?hello or hi with responses like <code>yooooo</code> or <code>whats</code> up (via the responce.py cog), and can gamble too.</p>
+</li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a href="#prerequisites" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>System: Ubuntu 24.04.1 LTS (or compatible Linux distribution), but since it runs in the docker you could make it work anywhere.</li>
+<li>Docker: Docker and Docker Compose installed (<code>sudo apt install docker.io docker-compose</code>).</li>
+<li>Mumble Server: Version 1.5.735 running in a Docker container.</li>
+<li>Python: Version 3.12 (included in the bot&rsquo;s Docker image).</li>
+<li>Dependencies: Listed in requirements.txt (e.g., <code>discord.py</code>, <code>zeroc-ice</code> for Ice communication).</li>
+<li>Discord Bot Token: create your own discord bot and Obtain its token from the Discord Developer Portal.</li>
+<li>Mumble Ice Password: this should be same as <code>MUMBLE_CONFIG_SERVERPASSWORD</code> from mumble server.</li>
+<li>Discord Channel ID: The ID of the Discord channel where Mumble messages are forwarded (e.g., <code>1349705376263418589</code>).</li>
+</ul>
+<h2 id="setup-instructions">Setup Instructions<a href="#setup-instructions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Directory Structure should look like this</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">├── .env (same file as in super-spork)
+</span></span><span class="line"><span class="cl">├── docker-compose.yml
+</span></span><span class="line"><span class="cl">├── data/
+</span></span><span class="line"><span class="cl">├── logs/
+</span></span><span class="line"><span class="cl">└── super-spork/
+</span></span><span class="line"><span class="cl">    ├── .env
+</span></span><span class="line"><span class="cl">    ├── cogs/
+</span></span><span class="line"><span class="cl">    │   ├── mumble.py
+</span></span><span class="line"><span class="cl">    │   ├── responce.py
+</span></span><span class="line"><span class="cl">    ├── Dockerfile
+</span></span><span class="line"><span class="cl">    ├── MumbleServer_ice.py
+</span></span><span class="line"><span class="cl">    ├── main.py
+</span></span><span class="line"><span class="cl">    └── requirements.txt
+</span></span></code></pre></div><p>for that:</p>
+<ol>
+<li>clone the <code>super-spork</code> directory where  mumble server compose file is. go to the correct directory(e.g. <code>cd /mnt/silver-64/opt/mumble/</code>) and clone the repo</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">	  git clone https://github.com/demetrebadzaradze/super-spork.git
+</span></span></code></pre></div><ol start="2">
+<li>
+<p><strong>make a discord bot</strong>
+  1. go to <a href="https://discord.com/developers/applications">discord developer portal</a>
+  2. create new application and give it a name
+  3. configure it as you would like in general (e.g. add a picture, description, etc.)
+  4. go over in the <code>bot</code> section and note the bot token (reset if not present)
+  5. then add the bot to the server with a <a href="https://discordjs.guide/preparations/adding-your-bot-to-servers.html#creating-and-using-your-invite-link">generated link,</a>   for permeations it should work with:
+  <code>View Channels</code>, <code>Send Messages</code> , <code>Manage Messages</code>, <code>Read Message History</code>.
+  I checked <code>admin</code> witch is not recommended but it works if you cant get it working other way.  and also you can send this link to owner of another server and they could add it to server that you don&rsquo;t own.</p>
+</li>
+<li>
+<p><strong>Configure the Mumble Server</strong>
+Ensure the Mumble server is running in a Docker container with Ice enabled:
+**template <code>compose.yml</code> file for <code>mumbe</code> server and <code>super-spork</code> bot **</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">mumble-server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mumblevoip/mumble-server:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">mumble-server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;replace this with your hostname&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="kc">on</span>-<span class="l">failure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="m">64738</span><span class="p">:</span><span class="m">64738</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="m">64738</span><span class="p">:</span><span class="m">64738</span><span class="l">/udp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="m">6502</span><span class="p">:</span><span class="m">6502</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">./data/:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">MUMBLE_CONFIG_WELCOMETEXT</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;replace this with your welcome text&gt; </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">MUMBLE_CONFIG_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">64738</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">MUMBLE_CONFIG_USERS</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;replace this with max users for server&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">MUMBLE_CONFIG_ICE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;tcp -h 0.0.0.0 -p 6502&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">MUMBLE_CONFIG_SERVERPASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;replace this with your server password witch will be also needed in .env file&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">MUMBLE_SUPERUSER_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;replace this with your SuperUser password&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">expose</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="m">6502</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">mumble-network</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">super-spork-bot</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">./super-spork/.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l">Dockerfile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">super-spork-bot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="kc">on</span>-<span class="l">failure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">TOKEN=${TOKEN}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">MUMBLE_ICE_PASSWORD=${MUMBLE_ICE_PASSWORD}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">./super-spork:/app</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">./logs:/app/logs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">mumble-server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">mumble-network</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">mumble-network</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">bridge</span><span class="w">
+</span></span></span></code></pre></div><ol start="4">
+<li><strong>configure <code>.env</code> file</strong>
+  this env file should be in the <code>super-spork</code> directory and where <code>compose.yml</code> file is and this is how it should look like: (replace descriptions in quotes with actual values)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="line"><span class="cl">	  <span class="nv">TOKEN</span><span class="o">=</span><span class="s2">&#34;this should be set to your discord bot&#39;s token&#34;</span>
+</span></span><span class="line"><span class="cl">	  <span class="nv">DISCORD_CHANNEL_ID</span><span class="o">=</span><span class="s2">&#34;id of a channel where messages will be sent bot should be added in that server too&#34;</span>
+</span></span><span class="line"><span class="cl">	  <span class="nv">MUMBLE_ICE_PASSWORD</span><span class="o">=</span><span class="s2">&#34;whatever is configured as MUMBLE_CONFIG_SERVERPASSWORD in mumble configuration&#34;</span>
+</span></span></code></pre></div><ol start="5">
+<li><strong>Build and run the container</strong>
+go to directory where <code>compose.yml</code> file is and run:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker compose up --build
+</span></span></code></pre></div>use <code>-d</code> for detached mode.</li>
+<li><strong>Test</strong>
+when any message is sent in the <code>mumble</code> text chat it will also be send in the <code>discord</code> channel like this :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">**TG_3W3p** in <span class="gs">**Minecraft**</span>: hello world
+</span></span></code></pre></div><h2 id="contributing">Contributing<a href="#contributing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>Add new features by creating cogs in super-spork/cogs/ and updating main.py.</li>
+<li>Report issues or suggest improvements by modifying the code.</li>
+</ul>
+<h2 id="license">License<a href="#license" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>This project is licensed under the MIT License. See the LICENSE file for details.</p>
+
+			</div>
+			
+
+		</article>
+		<aside id="toc">
+			<div class="toc-title">Table of Contents</div>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#super-spork">Super-Spork</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#setup-instructions">Setup Instructions</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+  </ul>
+</nav>
+		</aside>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+   </svg>&nbsp;Newer</span><br><span>RESUME</span>
+			</a>
+			<a class="prev-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/rooting-a-tv-box-via-uart-and-arduino/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+   </svg></span><br><span>Rooting a TV Box via UART and Arduino</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<p>
+	&copy; 2025 <a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+	&#183; Everything you say can and will be used aganst you.</p></footer>
+<script async src="https://demetrebadzaradze.github.io/Second-Brain/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://demetrebadzaradze.github.io/Second-Brain/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script></body>
+</html>
