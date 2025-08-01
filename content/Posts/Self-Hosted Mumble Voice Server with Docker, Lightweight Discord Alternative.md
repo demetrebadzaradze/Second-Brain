@@ -15,7 +15,6 @@ ShowLastmod: true
 Mumble is an open-source, low-latency voice chat system that's perfect for gaming and bad networks. Here's how I deployed it using Docker, plus some fun and useful ways to customize it!
 
 ---
-
 ## 🐳 Setting Up Mumble in Docker
 all of this will be done with docker compose because it the best thing ever.
 
