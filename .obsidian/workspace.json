@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Super-Spork.md",
+                "file": "Instaswarm.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Super-Spork"
+              "title": "Instaswarm"
             }
           }
         ]
@@ -35,12 +35,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Super-Spork.md",
-                "mode": "preview",
+                "file": "Instaswarm.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Super-Spork"
+              "title": "Instaswarm"
             }
           }
         ]
@@ -187,6 +187,7 @@
   },
   "active": "9fc802ac70661d40",
   "lastOpenFiles": [
+    "Instaswarm.md",
     "Super-Spork.md",
     "Recovering corrupted USB drive.md",
     "Self-Hosted Mumble Voice Server with Docker, Lightweight Discord Alternative.md",
