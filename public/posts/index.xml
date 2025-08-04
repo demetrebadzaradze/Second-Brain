@@ -7,7 +7,7 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Fri, 01 Aug 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 04 Aug 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -78,6 +78,176 @@
 From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
 I specialize in making things work—efficiently, securely, and with minimal friction.<br>
 Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Instaswarm</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/instaswarm/</link>
+			<pubDate>Mon, 04 Aug 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/instaswarm/</guid>
+			<description><![CDATA[Private repo demo from my github]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="instaswarm">Instaswarm<a href="#instaswarm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><strong>Instaswarm is an Instagram content publishing bot cluster, that can be managed from one account.</strong> for now application is container based .NET app that has endpoint for Instagram webhook and based on that it uploads reels to multiple accounts.</p>
+<h2 id="how-does-it-works-at-its-core">How does it works at its core<a href="#how-does-it-works-at-its-core" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>At its base its just a .NET docker Container that runs an endpoint for Instagram webhook.</li>
+<li>when the request app ignores everything that is not a message from admin user, must have an Reel attachment and must have a needed post count.</li>
+<li>then it goes on the link that attachment is from, downloads it.</li>
+<li>fixes name and recaptions it if available.</li>
+<li>then uploads on each account.</li>
+</ul>
+<h2 id="install">Install<a href="#install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>first there list of stuff needed</p>
+<h3 id="prerequisite">prerequisite<a href="#prerequisite" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<ol>
+<li>server where this container can live at. could be anything and with help of the <a href="https://tailscale.com/">Tailscale VPN</a> funneling it is a breeze, also anything that can get app endpoint and a video directory online will work but i will not cover that. i will only cover Linux server.</li>
+<li><code>Tailscale</code> VPN is needed for getting endpoint and video directory online and accessible for whole internet.</li>
+<li><code>git</code> to clone the repo.</li>
+<li><code>docker compose</code> for building and running the container.</li>
+</ol>
+<h3 id="setup">Setup<a href="#setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<h4 id="clone-this-repo-with-git">clone this repo with git<a href="#clone-this-repo-with-git" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/demetrebadzaradze/InstaSwarm.git
+</span></span></code></pre></div><p>and also have directory for videos, this must be outside of the project directory like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ../videos
+</span></span><span class="line"><span class="cl">sudo chown <span class="m">1000</span> ../videos
+</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> ../videos
+</span></span></code></pre></div><p>make sure you own the directory and use proper permissions <code>777</code> might be overkill but this is what worked for me.</p>
+<h4 id="get-tailscale">Get Tailscale<a href="#get-tailscale" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<ol>
+<li>download it from <a href="https://tailscale.com/download/linux">here</a> and go thru setup process.</li>
+<li>enable funnel. learn <a href="https://tailscale.com/kb/1223/funnel">here.</a></li>
+<li>and funnel the needed videos directory path
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tailscale funnel --bg <span class="s2">&#34;~/videos&#34;</span>
+</span></span></code></pre></div>and also the port where app is living (HTTPS port)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tailscale funnel --https <span class="m">10000</span> https+insecure://127.0.0.1:5001
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="make-facebookmeta-app">Make Facebook/Meta app<a href="#make-facebookmeta-app" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<ol>
+<li>for this go over to <a href="https://developers.facebook.com/">Facebook for developer website</a> and sign up.</li>
+<li>make and <a href="https://developers.facebook.com/apps/">app</a>
+<ul>
+<li>name it and enter your E-mal.</li>
+<li>is use case chouse <code>other</code>.</li>
+<li>app type <code>business</code>.</li>
+<li>then add product <code>Instagram</code></li>
+<li>go over to the <code>API Setup with Instagram login</code></li>
+<li>and add an account or accounts that will be posting from App roles -&gt; Roles -&gt; Add people. and sent a invitation as <code>Instagram tester</code> with username (account needs to be converted as creator). then on that account accept invitation from profile -&gt; gear icon -&gt; apps and websites -&gt; tester Invites and accept</li>
+<li>now generate access token on <code>Instagram</code> -&gt; <code>API Setup with Instagram login</code> page click on generate token on each account and save them for latter. (tip: sometimes it will give error after login if account is recently added so wait for like a hour or two and then retry)</li>
+<li>also whichever account you will be using as admin account( meaning messaging reels) enable webhooks for that account</li>
+<li>for the configure webhooks as callback URL enter whatever Tailscale funnel gave you (Link) and add <code>/webhook/instagram</code> at the end.</li>
+<li>for <code>verify token</code> this is like a password for webhook for verification so enter something save and save that for later too.</li>
+<li>also here subscribe to messages.</li>
+<li>and after app is running hit <code>verify and save</code> (at tis point this is not ready).</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>also set the <code>App Mode</code> to <code>Live</code></li>
+</ul>
+<h4 id="make-env-file">make <code>.env</code> file<a href="#make-env-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<p>in the cloned repo add <code>.env</code> file and configure it as needed. in the repo there is example <code>.env</code> file and just copy that and replace descriptions with actual things. there is more info about them [[Instaswarm#.ENV guide]]</p>
+<h4 id="running-the-app">Running the app<a href="#running-the-app" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<p>app does comes with <code>compose.yaml</code> file you can either run that after changing the video directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></div><p>or run with Dockerfile directly:</p>
+<ul>
+<li>build
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker build .
+</span></span></code></pre></div></li>
+<li>run
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker run --rm --env-file .env -v ~/opt/videos:/app/video -p 5000:8080 -p 5001:8081 --name Instaswarm &lt;last container id from build command&gt;
+</span></span></code></pre></div></li>
+</ul>
+<p>you can of course tweak this.</p>
+<h2 id="how-does-it-works-on-user-side">How does it works on user side<a href="#how-does-it-works-on-user-side" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Once app is running and is configured, when you or admin user sends a reel to the admin bot it will get that Reel and then reupload that reel to all accounts it manages.</p>
+<h2 id="env-guide">.ENV guide<a href="#env-guide" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>in this project environmental variables are most important thin for app to work for other individuals. <code>.env.example</code> is the example file and this is what it contains:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="line"><span class="cl"><span class="nv">INSTAGRAM_USER_TOKENS</span><span class="o">=</span>IGJHHTDMHNBVMHY, more...	 
+</span></span><span class="line"><span class="cl"><span class="nv">YTDLP_PATH</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">VIDEO_DOWNLOAD_PATH</span><span class="o">=</span>./video
+</span></span><span class="line"><span class="cl"><span class="nv">HTTPS_CERT_PASSWORD</span><span class="o">=</span>pass123
+</span></span><span class="line"><span class="cl"><span class="nv">PUBLIC_BASE_URL</span><span class="o">=</span>https://test.taile6d42d.ts.net/
+</span></span><span class="line"><span class="cl"><span class="nv">WEBHOOKK_VERIFY_TOKEN</span><span class="o">=</span>VERIFY_TOKEN
+</span></span><span class="line"><span class="cl"><span class="nv">ADMIN_INSTAGRAM_USER_ID</span><span class="o">=</span><span class="m">12456789</span>
+</span></span></code></pre></div><ol>
+<li><code>INSTAGRAM_USER_TOKEN</code> is Instagram users token from meta app dashboard and it is used for fetching data about user and also for uploading on their profile. in the future there will be many like this for clustering like <code>INSTAGRAM_USER_TOKEN_1</code>, <code>INSTAGRAM_USER_TOKEN_2</code> or <code>INSTAGRAM_USER_TOKEN_ADMIN</code> and such.</li>
+<li><code>YTDLP_PATH</code> this is the path where your <code>Yt-dlp</code> tool executable is located at. since container OS is Linux and <code>.exe</code> don&rsquo;t work once Dockerfile downloads the tool it also makes a link from its binary and exe file in the app directory:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -s /usr/local/bin/yt-dlp /app/yt-dlp.exe
+</span></span></code></pre></div>so no need for <code>yt-dlp</code> path if this is not edited and everything is &lsquo;stock&rsquo;.</li>
+<li><code>VIDEO_DOWNLOAD_PATH</code> is a path where the apps will be downloaded in. by default this is set to the <code>./video</code> folder inside the <code>app</code> directory and is also  a volume for Tailscale to host on host machine set this as default too but the Tailscale could be moved into a container in the future. if you need to change the destination path you will also need to edit volumes and folder creation in the Dockerfile.</li>
+<li><code>HTTPS_CERT_PASSWORD</code> is a password for your HTTPS Dev certificate creatin that is explained in [[Instaswarm#make your own HTTPS certificate]] without this on Linux  HTTPS won&rsquo;t work and that is required for Instagram webhook to work.</li>
+<li><code>PUBLIC_BASE_URL</code> is from Tailscale so when you funnel the app what URL is it accessible on (Eg.<code>https://test.taile6d42d.ts.net/</code>) so a
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">HTTPS://<span class="o">{</span>MACHINE_NAME<span class="o">}</span>.<span class="o">{</span>TAILNET_NAME<span class="o">}</span>.ts.ent/
+</span></span></code></pre></div><strong>it must have a slash at the end</strong>
+this could be fount in Tailscale admin console. also for testing you could just funnel something and it will output URL like this and end the funnel.</li>
+<li><code>WEBHOOKK_VERIFY_TOKEN</code> is a token that is used for verifying the webhook. so once you set it in the <code>.env</code> file it also will be used in meta dashboard.</li>
+<li><code>ADMIN_INSTAGRAM_USER_ID</code> is and id of an user where app accepts messages from, at first you can set this to <code>2123123</code> or something and then send the message to account and check the webhook in the logs with:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker logs &lt;container name&gt;
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="make-your-own-https-certificate">Make your own HTTPS certificate<a href="#make-your-own-https-certificate" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>according to <a href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-dev-certs">this</a>  dotnet can make the https certificate but if you don&rsquo;t have it run a container that app uses to run like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -v <span class="s2">&#34;~/opt/certs:/output&#34;</span> mcr.microsoft.com/dotnet/sdk:8.0 bash -c <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  dotnet dev-certs https --export-path /output/https-dev.pfx --password &#39;&lt;your strong password&gt;&#39; &amp;&amp;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  chown 1000:1000 /output/https-dev.pfx &amp;&amp;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  chmod 644 /output/https-dev.pfx
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span></code></pre></div><p>replace the password and after running this it will make HTTPS certificate in ~/opt/certs directory i thing you can also enter the working directory here too and that will work too.
+after that move that certificate to the app redirect and enter password in <code>.env</code> file</p>
 ]]></content>
 		</item>
 		

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><meta name="author" content="Demetre Badzgaradze">
+<meta name="description" content="Private repo demo from my github">
+<link rel="author" type="text/plain" href="/Second-Brain/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/Second-Brain/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Second-Brain/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Second-Brain/favicon-16x16.png">
+<link rel="manifest" href="/Second-Brain/site.webmanifest">
+<meta name="msapplication-TileImage" content="/Second-Brain/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/Second-Brain/safari-pinned-tab.svg" color="#494f5c">
+
+  <meta itemprop="name" content="Instaswarm">
+  <meta itemprop="description" content="Private repo demo from my github">
+  <meta itemprop="datePublished" content="2025-08-04T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-04T18:02:53+00:00">
+  <meta itemprop="wordCount" content="1148"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/instaswarm/">
+  <meta property="og:site_name" content="Second-Brain">
+  <meta property="og:title" content="Instaswarm">
+  <meta property="og:description" content="Private repo demo from my github">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-04T18:02:53+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Instaswarm">
+  <meta name="twitter:description" content="Private repo demo from my github">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Instaswarm",
+    "name": "Instaswarm",
+    "description": "Private repo demo from my github",
+    "keywords": [],
+    "articleBody": "Instaswarm Instaswarm is an Instagram content publishing bot cluster, that can be managed from one account. for now application is container based .NET app that has endpoint for Instagram webhook and based on that it uploads reels to multiple accounts.\nHow does it works at its core At its base its just a .NET docker Container that runs an endpoint for Instagram webhook. when the request app ignores everything that is not a message from admin user, must have an Reel attachment and must have a needed post count. then it goes on the link that attachment is from, downloads it. fixes name and recaptions it if available. then uploads on each account. Install first there list of stuff needed\nprerequisite server where this container can live at. could be anything and with help of the Tailscale VPN funneling it is a breeze, also anything that can get app endpoint and a video directory online will work but i will not cover that. i will only cover Linux server. Tailscale VPN is needed for getting endpoint and video directory online and accessible for whole internet. git to clone the repo. docker compose for building and running the container. Setup clone this repo with git git clone https://github.com/demetrebadzaradze/InstaSwarm.git and also have directory for videos, this must be outside of the project directory like:\nmkdir ../videos sudo chown 1000 ../videos chmod 777 ../videos make sure you own the directory and use proper permissions 777 might be overkill but this is what worked for me.\nGet Tailscale download it from here and go thru setup process. enable funnel. learn here. and funnel the needed videos directory path tailscale funnel --bg \"~/videos\" and also the port where app is living (HTTPS port) tailscale funnel --https 10000 https+insecure://127.0.0.1:5001 Make Facebook/Meta app for this go over to Facebook for developer website and sign up. make and app name it and enter your E-mal. is use case chouse other. app type business. then add product Instagram go over to the API Setup with Instagram login and add an account or accounts that will be posting from App roles -\u003e Roles -\u003e Add people. and sent a invitation as Instagram tester with username (account needs to be converted as creator). then on that account accept invitation from profile -\u003e gear icon -\u003e apps and websites -\u003e tester Invites and accept now generate access token on Instagram -\u003e API Setup with Instagram login page click on generate token on each account and save them for latter. (tip: sometimes it will give error after login if account is recently added so wait for like a hour or two and then retry) also whichever account you will be using as admin account( meaning messaging reels) enable webhooks for that account for the configure webhooks as callback URL enter whatever Tailscale funnel gave you (Link) and add /webhook/instagram at the end. for verify token this is like a password for webhook for verification so enter something save and save that for later too. also here subscribe to messages. and after app is running hit verify and save (at tis point this is not ready). also set the App Mode to Live make .env file in the cloned repo add .env file and configure it as needed. in the repo there is example .env file and just copy that and replace descriptions with actual things. there is more info about them [[Instaswarm#.ENV guide]]\nRunning the app app does comes with compose.yaml file you can either run that after changing the video directory:\ndocker compose up -d or run with Dockerfile directly:\nbuild sudo docker build . run sudo docker run --rm --env-file .env -v ~/opt/videos:/app/video -p 5000:8080 -p 5001:8081 --name Instaswarm you can of course tweak this.\nHow does it works on user side Once app is running and is configured, when you or admin user sends a reel to the admin bot it will get that Reel and then reupload that reel to all accounts it manages.\n.ENV guide in this project environmental variables are most important thin for app to work for other individuals. .env.example is the example file and this is what it contains:\nINSTAGRAM_USER_TOKENS=IGJHHTDMHNBVMHY, more...\tYTDLP_PATH= VIDEO_DOWNLOAD_PATH=./video HTTPS_CERT_PASSWORD=pass123 PUBLIC_BASE_URL=https://test.taile6d42d.ts.net/ WEBHOOKK_VERIFY_TOKEN=VERIFY_TOKEN ADMIN_INSTAGRAM_USER_ID=12456789 INSTAGRAM_USER_TOKEN is Instagram users token from meta app dashboard and it is used for fetching data about user and also for uploading on their profile. in the future there will be many like this for clustering like INSTAGRAM_USER_TOKEN_1, INSTAGRAM_USER_TOKEN_2 or INSTAGRAM_USER_TOKEN_ADMIN and such. YTDLP_PATH this is the path where your Yt-dlp tool executable is located at. since container OS is Linux and .exe don’t work once Dockerfile downloads the tool it also makes a link from its binary and exe file in the app directory: ln -s /usr/local/bin/yt-dlp /app/yt-dlp.exe so no need for yt-dlp path if this is not edited and everything is ‘stock’. VIDEO_DOWNLOAD_PATH is a path where the apps will be downloaded in. by default this is set to the ./video folder inside the app directory and is also a volume for Tailscale to host on host machine set this as default too but the Tailscale could be moved into a container in the future. if you need to change the destination path you will also need to edit volumes and folder creation in the Dockerfile. HTTPS_CERT_PASSWORD is a password for your HTTPS Dev certificate creatin that is explained in [[Instaswarm#make your own HTTPS certificate]] without this on Linux HTTPS won’t work and that is required for Instagram webhook to work. PUBLIC_BASE_URL is from Tailscale so when you funnel the app what URL is it accessible on (Eg.https://test.taile6d42d.ts.net/) so a HTTPS://{MACHINE_NAME}.{TAILNET_NAME}.ts.ent/ it must have a slash at the end this could be fount in Tailscale admin console. also for testing you could just funnel something and it will output URL like this and end the funnel. WEBHOOKK_VERIFY_TOKEN is a token that is used for verifying the webhook. so once you set it in the .env file it also will be used in meta dashboard. ADMIN_INSTAGRAM_USER_ID is and id of an user where app accepts messages from, at first you can set this to 2123123 or something and then send the message to account and check the webhook in the logs with: docker logs Make your own HTTPS certificate according to this dotnet can make the https certificate but if you don’t have it run a container that app uses to run like this:\ndocker run --rm -v \"~/opt/certs:/output\" mcr.microsoft.com/dotnet/sdk:8.0 bash -c \" dotnet dev-certs https --export-path /output/https-dev.pfx --password '' \u0026\u0026 chown 1000:1000 /output/https-dev.pfx \u0026\u0026 chmod 644 /output/https-dev.pfx \" replace the password and after running this it will make HTTPS certificate in ~/opt/certs directory i thing you can also enter the working directory here too and that will work too. after that move that certificate to the app redirect and enter password in .env file\n",
+    "wordCount" : "1148",
+    "inLanguage": "en",
+    "datePublished": "2025-08-04T00:00:00Z",
+    "dateModified": "2025-08-04T18:02:53Z",
+    "author":{
+        "@type": "Person",
+        "name": "Demetre Badzgaradze",
+        "url": "#IDONTKNOW"
+        },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://demetrebadzaradze.github.io/Second-Brain/posts/instaswarm/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Second-Brain",
+      "description": "this is my second brain",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://demetrebadzaradze.github.io/Second-Brain/favicon.ico"
+      }
+    }
+}
+</script><title>Instaswarm</title><link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" media="screen" href="https://demetrebadzaradze.github.io/Second-Brain/css/style.min.e35485697bea161bd9286f02a0271c1e69c14730c1b195466c5f7dc757cf0213.css" integrity="sha256-41SFaXvqFhvZKG8CoCccHmnBRzDBsZVGbF99x1fPAhM=" crossorigin="anonymous">
+	</head>
+
+<body id="page">
+	<header id="site-header">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="toc-btn" class="hdr-btn desktop-only-ib" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+      <line x1="8" y1="6" x2="21" y2="6"></line>
+      <line x1="8" y1="12" x2="21" y2="12"></line>
+      <line x1="8" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="3" y2="6"></line>
+      <line x1="3" y1="12" x2="3" y2="12"></line>
+      <line x1="3" y1="18" x2="3" y2="18"></line>
+   </svg></button><span class="hdr-links hide-in-mobile"><a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a><a href="https://github.com/demetrebadzaradze" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path
+      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+   </path>
+</svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+   </svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2finstaswarm%2f&amp;text=Instaswarm" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
+</svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2finstaswarm%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Instaswarm&amp;body=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2finstaswarm%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+   <polyline points="22,6 12,13 2,6"></polyline>
+</svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2finstaswarm%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=Instaswarm&amp;summary=Instaswarm%2c%20by%20Demetre%20Badzgaradze%0a%0aPrivate%20repo%20demo%20from%20my%20github%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Instaswarm&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/posts/instaswarm/&#34;,&#34;Instaswarm, by Demetre Badzgaradze\n\nPrivate repo demo from my github\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+   </svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+   </svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-date"><span>Aug 4, 2025</span></div>
+				<h1>Instaswarm</h1>
+			</header>
+			<div class="post-description"><p>Private repo demo from my github</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
+   <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+   <line x1="16" y1="8" x2="2" y2="22"></line>
+   <line x1="17.5" y1="15" x2="9" y2="15"></line>
+</svg><a href="#IDONTKNOW" target="_blank">Demetre Badzgaradze</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+   </svg>1148&nbspWords words, 5 Minutes, 13 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+   </svg>2025-08-04 00:00 &#43;0000
+[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit">
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="1.05" y1="12" x2="7" y2="12"></line>
+      <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
+   </svg><a href="https://github.com/demetrebadzaradze4afea9b5eaf44f402d4ff0ea3304c388b4dc84b3" target="_blank" rel="noopener">4afea9b</a> @ 2025-08-04]</p></div>
+			<hr class="post-end">
+			<div class="content">
+				 <h2 id="instaswarm">Instaswarm<a href="#instaswarm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><strong>Instaswarm is an Instagram content publishing bot cluster, that can be managed from one account.</strong> for now application is container based .NET app that has endpoint for Instagram webhook and based on that it uploads reels to multiple accounts.</p>
+<h2 id="how-does-it-works-at-its-core">How does it works at its core<a href="#how-does-it-works-at-its-core" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>At its base its just a .NET docker Container that runs an endpoint for Instagram webhook.</li>
+<li>when the request app ignores everything that is not a message from admin user, must have an Reel attachment and must have a needed post count.</li>
+<li>then it goes on the link that attachment is from, downloads it.</li>
+<li>fixes name and recaptions it if available.</li>
+<li>then uploads on each account.</li>
+</ul>
+<h2 id="install">Install<a href="#install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>first there list of stuff needed</p>
+<h3 id="prerequisite">prerequisite<a href="#prerequisite" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<ol>
+<li>server where this container can live at. could be anything and with help of the <a href="https://tailscale.com/">Tailscale VPN</a> funneling it is a breeze, also anything that can get app endpoint and a video directory online will work but i will not cover that. i will only cover Linux server.</li>
+<li><code>Tailscale</code> VPN is needed for getting endpoint and video directory online and accessible for whole internet.</li>
+<li><code>git</code> to clone the repo.</li>
+<li><code>docker compose</code> for building and running the container.</li>
+</ol>
+<h3 id="setup">Setup<a href="#setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<h4 id="clone-this-repo-with-git">clone this repo with git<a href="#clone-this-repo-with-git" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/demetrebadzaradze/InstaSwarm.git
+</span></span></code></pre></div><p>and also have directory for videos, this must be outside of the project directory like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ../videos
+</span></span><span class="line"><span class="cl">sudo chown <span class="m">1000</span> ../videos
+</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> ../videos
+</span></span></code></pre></div><p>make sure you own the directory and use proper permissions <code>777</code> might be overkill but this is what worked for me.</p>
+<h4 id="get-tailscale">Get Tailscale<a href="#get-tailscale" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<ol>
+<li>download it from <a href="https://tailscale.com/download/linux">here</a> and go thru setup process.</li>
+<li>enable funnel. learn <a href="https://tailscale.com/kb/1223/funnel">here.</a></li>
+<li>and funnel the needed videos directory path
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tailscale funnel --bg <span class="s2">&#34;~/videos&#34;</span>
+</span></span></code></pre></div>and also the port where app is living (HTTPS port)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tailscale funnel --https <span class="m">10000</span> https+insecure://127.0.0.1:5001
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="make-facebookmeta-app">Make Facebook/Meta app<a href="#make-facebookmeta-app" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<ol>
+<li>for this go over to <a href="https://developers.facebook.com/">Facebook for developer website</a> and sign up.</li>
+<li>make and <a href="https://developers.facebook.com/apps/">app</a>
+<ul>
+<li>name it and enter your E-mal.</li>
+<li>is use case chouse <code>other</code>.</li>
+<li>app type <code>business</code>.</li>
+<li>then add product <code>Instagram</code></li>
+<li>go over to the <code>API Setup with Instagram login</code></li>
+<li>and add an account or accounts that will be posting from App roles -&gt; Roles -&gt; Add people. and sent a invitation as <code>Instagram tester</code> with username (account needs to be converted as creator). then on that account accept invitation from profile -&gt; gear icon -&gt; apps and websites -&gt; tester Invites and accept</li>
+<li>now generate access token on <code>Instagram</code> -&gt; <code>API Setup with Instagram login</code> page click on generate token on each account and save them for latter. (tip: sometimes it will give error after login if account is recently added so wait for like a hour or two and then retry)</li>
+<li>also whichever account you will be using as admin account( meaning messaging reels) enable webhooks for that account</li>
+<li>for the configure webhooks as callback URL enter whatever Tailscale funnel gave you (Link) and add <code>/webhook/instagram</code> at the end.</li>
+<li>for <code>verify token</code> this is like a password for webhook for verification so enter something save and save that for later too.</li>
+<li>also here subscribe to messages.</li>
+<li>and after app is running hit <code>verify and save</code> (at tis point this is not ready).</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>also set the <code>App Mode</code> to <code>Live</code></li>
+</ul>
+<h4 id="make-env-file">make <code>.env</code> file<a href="#make-env-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<p>in the cloned repo add <code>.env</code> file and configure it as needed. in the repo there is example <code>.env</code> file and just copy that and replace descriptions with actual things. there is more info about them [[Instaswarm#.ENV guide]]</p>
+<h4 id="running-the-app">Running the app<a href="#running-the-app" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h4>
+<p>app does comes with <code>compose.yaml</code> file you can either run that after changing the video directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></div><p>or run with Dockerfile directly:</p>
+<ul>
+<li>build
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker build .
+</span></span></code></pre></div></li>
+<li>run
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker run --rm --env-file .env -v ~/opt/videos:/app/video -p 5000:8080 -p 5001:8081 --name Instaswarm &lt;last container id from build command&gt;
+</span></span></code></pre></div></li>
+</ul>
+<p>you can of course tweak this.</p>
+<h2 id="how-does-it-works-on-user-side">How does it works on user side<a href="#how-does-it-works-on-user-side" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Once app is running and is configured, when you or admin user sends a reel to the admin bot it will get that Reel and then reupload that reel to all accounts it manages.</p>
+<h2 id="env-guide">.ENV guide<a href="#env-guide" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>in this project environmental variables are most important thin for app to work for other individuals. <code>.env.example</code> is the example file and this is what it contains:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="line"><span class="cl"><span class="nv">INSTAGRAM_USER_TOKENS</span><span class="o">=</span>IGJHHTDMHNBVMHY, more...	 
+</span></span><span class="line"><span class="cl"><span class="nv">YTDLP_PATH</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">VIDEO_DOWNLOAD_PATH</span><span class="o">=</span>./video
+</span></span><span class="line"><span class="cl"><span class="nv">HTTPS_CERT_PASSWORD</span><span class="o">=</span>pass123
+</span></span><span class="line"><span class="cl"><span class="nv">PUBLIC_BASE_URL</span><span class="o">=</span>https://test.taile6d42d.ts.net/
+</span></span><span class="line"><span class="cl"><span class="nv">WEBHOOKK_VERIFY_TOKEN</span><span class="o">=</span>VERIFY_TOKEN
+</span></span><span class="line"><span class="cl"><span class="nv">ADMIN_INSTAGRAM_USER_ID</span><span class="o">=</span><span class="m">12456789</span>
+</span></span></code></pre></div><ol>
+<li><code>INSTAGRAM_USER_TOKEN</code> is Instagram users token from meta app dashboard and it is used for fetching data about user and also for uploading on their profile. in the future there will be many like this for clustering like <code>INSTAGRAM_USER_TOKEN_1</code>, <code>INSTAGRAM_USER_TOKEN_2</code> or <code>INSTAGRAM_USER_TOKEN_ADMIN</code> and such.</li>
+<li><code>YTDLP_PATH</code> this is the path where your <code>Yt-dlp</code> tool executable is located at. since container OS is Linux and <code>.exe</code> don&rsquo;t work once Dockerfile downloads the tool it also makes a link from its binary and exe file in the app directory:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -s /usr/local/bin/yt-dlp /app/yt-dlp.exe
+</span></span></code></pre></div>so no need for <code>yt-dlp</code> path if this is not edited and everything is &lsquo;stock&rsquo;.</li>
+<li><code>VIDEO_DOWNLOAD_PATH</code> is a path where the apps will be downloaded in. by default this is set to the <code>./video</code> folder inside the <code>app</code> directory and is also  a volume for Tailscale to host on host machine set this as default too but the Tailscale could be moved into a container in the future. if you need to change the destination path you will also need to edit volumes and folder creation in the Dockerfile.</li>
+<li><code>HTTPS_CERT_PASSWORD</code> is a password for your HTTPS Dev certificate creatin that is explained in [[Instaswarm#make your own HTTPS certificate]] without this on Linux  HTTPS won&rsquo;t work and that is required for Instagram webhook to work.</li>
+<li><code>PUBLIC_BASE_URL</code> is from Tailscale so when you funnel the app what URL is it accessible on (Eg.<code>https://test.taile6d42d.ts.net/</code>) so a
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">HTTPS://<span class="o">{</span>MACHINE_NAME<span class="o">}</span>.<span class="o">{</span>TAILNET_NAME<span class="o">}</span>.ts.ent/
+</span></span></code></pre></div><strong>it must have a slash at the end</strong>
+this could be fount in Tailscale admin console. also for testing you could just funnel something and it will output URL like this and end the funnel.</li>
+<li><code>WEBHOOKK_VERIFY_TOKEN</code> is a token that is used for verifying the webhook. so once you set it in the <code>.env</code> file it also will be used in meta dashboard.</li>
+<li><code>ADMIN_INSTAGRAM_USER_ID</code> is and id of an user where app accepts messages from, at first you can set this to <code>2123123</code> or something and then send the message to account and check the webhook in the logs with:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker logs &lt;container name&gt;
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="make-your-own-https-certificate">Make your own HTTPS certificate<a href="#make-your-own-https-certificate" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>according to <a href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-dev-certs">this</a>  dotnet can make the https certificate but if you don&rsquo;t have it run a container that app uses to run like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -v <span class="s2">&#34;~/opt/certs:/output&#34;</span> mcr.microsoft.com/dotnet/sdk:8.0 bash -c <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  dotnet dev-certs https --export-path /output/https-dev.pfx --password &#39;&lt;your strong password&gt;&#39; &amp;&amp;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  chown 1000:1000 /output/https-dev.pfx &amp;&amp;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  chmod 644 /output/https-dev.pfx
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span></code></pre></div><p>replace the password and after running this it will make HTTPS certificate in ~/opt/certs directory i thing you can also enter the working directory here too and that will work too.
+after that move that certificate to the app redirect and enter password in <code>.env</code> file</p>
+
+			</div>
+			
+
+		</article>
+		<aside id="toc">
+			<div class="toc-title">Table of Contents</div>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#instaswarm">Instaswarm</a></li>
+    <li><a href="#how-does-it-works-at-its-core">How does it works at its core</a></li>
+    <li><a href="#install">Install</a>
+      <ul>
+        <li><a href="#prerequisite">prerequisite</a></li>
+        <li><a href="#setup">Setup</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-does-it-works-on-user-side">How does it works on user side</a></li>
+    <li><a href="#env-guide">.ENV guide</a></li>
+    <li><a href="#make-your-own-https-certificate">Make your own HTTPS certificate</a></li>
+  </ul>
+</nav>
+		</aside>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+   </svg>&nbsp;Newer</span><br><span>RESUME</span>
+			</a>
+			<a class="prev-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/super-spork/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+   </svg></span><br><span>Super-Spork</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<p>
+	&copy; 2025 <a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+	&#183; Everything you say can and will be used aganst you.</p></footer>
+<script async src="https://demetrebadzaradze.github.io/Second-Brain/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://demetrebadzaradze.github.io/Second-Brain/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script></body>
+</html>
