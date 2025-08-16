@@ -7,7 +7,7 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Mon, 04 Aug 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 16 Aug 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -79,6 +79,109 @@ From creating a personal blog system powered by GitHub Actions to deploying back
 I specialize in making things work—efficiently, securely, and with minimal friction.<br>
 Always exploring new technologies and learning by doing.</p>
 ]]></content>
+		</item>
+		
+		<item>
+			<title>Making SSH-Keys</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/making-ssh-keys/</link>
+			<pubDate>Sat, 16 Aug 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/making-ssh-keys/</guid>
+			<description><![CDATA[here i will be setting up ssh keys for my server bc im tired of entering my password aggain and aggain and aggain and it is more secure.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="what-are-ssh-keys">What are SSH Keys<a href="#what-are-ssh-keys" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>normally if one needs to connect to remote server/machine they would use <code>secure shell</code> this is a go to way it is secure as the name implies but this way is not protected against brute force attacks. SSH keys does something different to get you connected, it makes keys one for client (private) and one for server (public). once you share the public one to the server, it sends &lsquo;puzzle&rsquo; based on that public key to you and if your private key can solve that than you are authenticated. so it is basically a if server and client have valid key pair than it lets you in.</p>
+<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ol>
+<li>we need a key pair (public and private)</li>
+<li>share public kay to the server test it out</li>
+<li>optionally disable password login</li>
+</ol>
+<h2 id="making-key-pair">Making key pair<a href="#making-key-pair" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> <code>SSH</code> is installed on Windows mac OS and most Linux&rsquo;s by default and it will be needed off course.</p>
+</blockquote>
+<p>key gen is is pretty simple run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
+</span></span></code></pre></div><ul>
+<li>it will ask for a file name for keys and these must be inside <code>.ssh</code> folder. it makes key with default name if input is empty. could use that but naming it better practice.</li>
+<li>it also will ask for a <code>passphrase</code> witch is an extra layer of protection and is recommended to set but could be done with this empty too.</li>
+<li>this command than saves one files with he name you entered that&rsquo;s private key and one with <code>.pub</code> extension the public key.</li>
+<li>and output should look like this:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\u</span>ser&gt;ssh-keygen
+</span></span><span class="line"><span class="cl">Generating public/private ed25519 key pair.
+</span></span><span class="line"><span class="cl">Enter file in which to save the key <span class="o">(</span>C:<span class="se">\U</span>sers<span class="se">\u</span>ser/.ssh/id_ed25519<span class="o">)</span>: <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">Enter same passphrase again:
+</span></span><span class="line"><span class="cl">Your identification has been saved in <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">Your public key has been saved in test.pub
+</span></span><span class="line"><span class="cl">The key fingerprint is:
+</span></span><span class="line"><span class="cl">SHA256:********/******+****+****/*/************ user@host
+</span></span><span class="line"><span class="cl">The keys randomart image is:
+</span></span><span class="line"><span class="cl">+--<span class="o">[</span>ED25519 256<span class="o">]</span>--+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>          +      <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>         . E     <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>        .   .    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     . . o      .<span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>      <span class="o">=</span> S +    ..<span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       <span class="o">=</span> + o o +.<span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>  .     <span class="nv">o</span> <span class="o">=</span> BoTm <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   .     + X +BX+<span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     .    o *e<span class="nv">$@</span>+<span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="share-public-key-to-server">Share public key to server<a href="#share-public-key-to-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>The server should have a <code>~/.ssh/authorized_keys</code> file (if not make it) and your public key (the contents of the generated file that has .pub extension) should be copied there as new line.</p>
+<p>All of this is is easily done with this command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-copy-id -i &lt;path to your public key file&gt; &lt;username <span class="k">for</span> server&gt;@&lt;server ip or domain name&gt;
+</span></span></code></pre></div><p>But sometimes <code>ssh-copy-id</code> command is not available by default especially on Windows so you need do all of what that command does manually like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat &lt;path to public key file&gt; <span class="p">|</span> ssh &lt;server username&gt;@&lt;server ip or domain&gt; <span class="s2">&#34;mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys&#34;</span>
+</span></span></code></pre></div><p>or from Windows replace first host <code>cat</code> command to <code>type</code> like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">type</span> &lt;path to public key file&gt; <span class="p">|</span> ssh user@your-server <span class="s2">&#34;mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys&#34;</span>
+</span></span></code></pre></div><p>Or just do it manually. (what i did)</p>
+<h3 id="testing">Testing<a href="#testing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>to test if this works you just try  to connect to server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;username&gt;@&lt;server ip or domain&gt;
+</span></span></code></pre></div><p>and it should not ask for password.</p>
+<h2 id="disable-password-login">Disable password login<a href="#disable-password-login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>at this point if you just want to do an auto login this is not required, as you see in testing, but if you want users to only connect with keys you add as an administrator and make server more secure disabling password based login.</p>
+<p>the configuration for <code>SSH</code> as server is at <code>/etc/ssh/sshd_config</code> so you would just edit that like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/ssh/sshd_config
+</span></span></code></pre></div><p>and disable some stuff like:</p>
+<ul>
+<li><code>PermitRootLogin</code> to <code>no</code> - this allows users to login as <code>root</code> as username. and we are disabling that with <code>no</code>.</li>
+<li><code>PasswordAuthentication</code> to <code>no</code> - this will disable password authentication.</li>
+<li><code>PermitEmptyPasswords</code> to <code>no</code> - so empty passwords cant come in.</li>
+<li><code>Use PAM</code> to <code>no</code>
+also could use</li>
+<li><code>AuthenticationMethod</code> to <code>publickey</code> - this sets public key as only Authentication method.</li>
+<li><code>AllowUsers</code> to users you want to to be able to connect with <code>SSH</code>
+so appley ones that you want.</li>
+</ul>
+<p>and restart <code>ssh</code> services with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart ssh
+</span></span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
