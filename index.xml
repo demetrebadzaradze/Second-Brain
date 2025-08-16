@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Everything you say can and will be used aganst you.</copyright>
-    <lastBuildDate>Mon, 04 Aug 2025 18:02:53 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 16 Aug 2025 17:31:55 +0000</lastBuildDate>
     <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESUME</title>
@@ -15,6 +15,13 @@
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</guid>
       <description>&lt;h1 id=&#34;demetre-badzgaradze&#34;&gt;&lt;strong&gt;Demetre Badzgaradze&lt;/strong&gt;&lt;a href=&#34;#demetre-badzgaradze&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;Tbilisi, Georgia • &lt;a href=&#34;mailto:badzgaradzedemetre8@gmail.com&#34;&gt;badzgaradzedemetre8@gmail.com&lt;/a&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://www.linkedin.com/in/demetre-badzgaradze-b49153291/&#34;&gt;LinkedIn&lt;/a&gt; • &lt;a href=&#34;https://github.com/demetrebadzaradze/&#34;&gt;GitHub&lt;/a&gt; • &lt;a href=&#34;https://demetrebadzaradze.github.io/Second-Brain/en/&#34;&gt;Portfolio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-projects&#34;&gt;💻 Projects&lt;a href=&#34;#-projects&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;📚 Second-Brain&lt;/strong&gt;&lt;br&gt;&#xA;&lt;em&gt;Technologies: HTML, Hugo, CI/CD, GitHub Actions&lt;/em&gt;&lt;br&gt;&#xA;&lt;a href=&#34;https://demetrebadzaradze.github.io/Second-Brain/en/posts&#34;&gt;🌐 Website&lt;/a&gt; • &lt;a href=&#34;https://github.com/demetrebadzaradze/Second-Brain/&#34;&gt;📦 GitHub Repo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Making SSH-Keys</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/posts/making-ssh-keys/</link>
+      <pubDate>Sat, 16 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/posts/making-ssh-keys/</guid>
+      <description>&lt;h2 id=&#34;what-are-ssh-keys&#34;&gt;What are SSH Keys&lt;a href=&#34;#what-are-ssh-keys&#34; class=&#34;anchor&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&#xA;      stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&#xA;      &lt;path d=&#34;M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3&#34;&gt;&lt;/path&gt;&#xA;      &lt;line x1=&#34;8&#34; y1=&#34;12&#34; x2=&#34;16&#34; y2=&#34;12&#34;&gt;&lt;/line&gt;&#xA;   &lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;normally if one needs to connect to remote server/machine they would use &lt;code&gt;secure shell&lt;/code&gt; this is a go to way it is secure as the name implies but this way is not protected against brute force attacks. SSH keys does something different to get you connected, it makes keys one for client (private) and one for server (public). once you share the public one to the server, it sends &amp;lsquo;puzzle&amp;rsquo; based on that public key to you and if your private key can solve that than you are authenticated. so it is basically a if server and client have valid key pair than it lets you in.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Instaswarm</title>
