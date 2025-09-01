@@ -9,6 +9,9 @@ ShowLastmod: true
 
 ## What are SSH Keys
 normally if one needs to connect to remote server/machine they would use `secure shell` this is a go to way it is secure as the name implies but this way is not protected against brute force attacks. SSH keys does something different to get you connected, it makes keys one for client (private) and one for server (public). once you share the public one to the server, it sends 'puzzle' based on that public key to you and if your private key can solve that than you are authenticated. so it is basically a if server and client have valid key pair than it lets you in.    
+
+
+
 ## Plan
 1. we need a key pair (public and private)
 2. share public kay to the server test it out 
