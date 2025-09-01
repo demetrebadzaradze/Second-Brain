@@ -7,7 +7,7 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Sat, 16 Aug 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -78,6 +78,95 @@
 From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
 I specialize in making things work—efficiently, securely, and with minimal friction.<br>
 Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Setting up PI-Hole</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/setting-up-pi-hole/</link>
+			<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/setting-up-pi-hole/</guid>
+			<description><![CDATA[Are you also tired of ads, I certainly am so don&#39;t i get the network wide ad blocker like  PI-Hole. It looks like a  cool piece of software and i kind of want an ad blocker and it will be better if its network wide thing and added my VPN its a strong combo despite my CG-NAT limitations]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="my-setup">My setup<a href="#my-setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Currently I have small low end server witch is behind a <code>CG-NAT</code>, but I have a VPN so this ad blocker should work if I&rsquo;m away.
+Also i want it as a container, so I will use <a href="https://github.com/pi-hole/docker-pi-hole">pi-hole docker version</a>. Reason why I went for container is little influenced by <a href="https://github.com/mrjackwills/oxker">this</a> project. It is really cool, it displays docker containers and logs and info about them in a terminal.</p>
+<hr>
+<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ol>
+<li>Read the docs and get familiar with the tool</li>
+<li>Install it on the server</li>
+<li>Update per device DNS settings or the router DNS settings</li>
+</ol>
+<hr>
+<h2 id="docs-and-helpful-information">Docs and helpful information<a href="#docs-and-helpful-information" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p><a href="https://pi-hole.net/">pi-hole website</a>
+<a href="https://docs.pi-hole.net/">pi-hole docs website</a>
+<a href="https://www.youtube.com/watch?v=KBXTnrD_Zs4">Linus&rsquo;s video about pi-hole</a>
+<a href="https://github.com/pi-hole">pi-hole Github</a></p>
+<hr>
+<h2 id="installation-on-the-server">Installation on the server<a href="#installation-on-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Install as container is pretty simple from <a href="https://github.com/pi-hole/docker-pi-hole">this repo</a> as they have nice compose file in a <a href="https://github.com/pi-hole/docker-pi-hole/blob/master/README.md#quick-start">Readme</a>. But it will not work for my setup, Because my DNS, HTTPS and HTTP ports are already in use. HTTP/HTTPS in no problem but DNS ports are different. I don&rsquo;t want to stop one that&rsquo;s in use already so my <code>compose.yml</code> file looks like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pihole</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">pihole</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">pihole/pihole:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;53:53/tcp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;53:53/udp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;9000:80/tcp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;9443:443/tcp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Etc/GMT&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FTLCONF_webserver_api_password</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;ExTrAeXtRa__STRONG__PaSsWoRd&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FTLCONF_dns_listeningMode</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;all&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s1">&#39;./etc-pihole:/etc/pihole&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">SYS_NICE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span></code></pre></div><hr>
+<h2 id="making-pi-hole-host-use-pi-hole">Making Pi-hole host use Pi-hole<a href="#making-pi-hole-host-use-pi-hole" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>and since I&rsquo;m on ubuntu server i still need some modifications, like adding this:</p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">static domain_name_servers=127.0.0.1
+</code></pre><p>to this file <code>/etc/dhcpcd.conf</code>.
+And also stopping and disabling <code>systemd-resolved.service</code> service:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl stop systemd-resolved.service
+</span></span><span class="line"><span class="cl">sudo systemctl disable systemd-resolved.service
+</span></span></code></pre></div><p>and make sure that inside <code>/etc/resolv.conf</code> <code>nameserver</code> is not something local set it to google as DNS provider:</p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">nameserver=8.8.8.8
+</code></pre><hr>
+<h2 id="making-your-network-take-advantage-of-pi-hole">Making your network take advantage of Pi-hole<a href="#making-your-network-take-advantage-of-pi-hole" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>So here we need to configure router to use my servers pi-hole as DNS server and the app will block malicious sites, ads and unwanted sites.
+Each router is different but generally its under <code>Advanced &gt; IP Adrresing &gt; DHCP Settings</code>. there are many docs for understanding this further like <a href="https://docs.pi-hole.net/main/post-install/#making-your-network-take-advantage-of-pi-hole">here</a></p>
+<hr>
+<h2 id="accessing-web-ui-of-pi-hole">Accessing web UI of Pi-Hole<a href="#accessing-web-ui-of-pi-hole" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>The settings and whole dashboard is web based so go to your server&rsquo;s IP address and application&rsquo;s port and enter the password for login. If you didn&rsquo;t set the password it will generate a random one and print that in logs, be sure to change it afterwards. after that you have full accesses to this powerful application.</p>
 ]]></content>
 		</item>
 		
