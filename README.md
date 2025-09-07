@@ -1,14 +1,44 @@
----
-title: README.md
-description: README from github
-date: 2025-01-15
-draft: false
-toc: true
-ShowLastmod: true
----
-
 # Second Brain
+
+![Second Brain Logo](/Logo.png)
+
+<p align="center">
+  <a href="https://github.com/demetrebadzaradze/Second-Brain/actions">
+    <img src="https://github.com/demetrebadzaradze/Second-Brain/actions/workflows/main.yml/badge.svg?branch=posts" />
+  </a>
+  <a href="https://github.com/demetrebadzaradze/Second-Brain">
+    <img src="https://img.shields.io/github/last-commit/demetrebadzaradze/Second-Brain?style=flat-square)" />
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg" />
+  </a>
+  <a href="content/Posts/LICENCE">
+    <img src="https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg" />
+  </a>
+  <a href="https://github.com/demetrebadzaradze/Second-Brain/actions/workflows/pages/pages-build-deployment">
+    <img src="https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" />
+  </a>
+  <a href="https://gohugo.io/">
+    <img src="https://img.shields.io/badge/Hugo-FF4088?style=flat-square&logo=hugo&logoColor=white" />
+  </a>
+  <a href="https://www.markdownguide.org/">
+    <img src="https://img.shields.io/badge/Markdown-000000?style=flat-square&logo=markdown&logoColor=white" />
+  </a>
+  <a href="https://obsidian.md/">
+    <img src="https://img.shields.io/badge/Obsidian-483699?style=flat-square&logo=obsidian&logoColor=white" />
+  </a>
+</p>
+
 A dynamic **blogging** platform **powered by Hugo, GitHub, and Obsidian** for **seamless content creation and publishing.**
+
+## Table of Contents
+- [Overview](#overview)
+- [How it works](#how-it-works)
+- [Getting Started](#getting-started)
+- [Why Use Second Brain?](#why-use-second-brain)
+- [Future Plans](#future-plans)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Overview
 Second Brain is a streamlined blogging platform hosted on GitHub, designed for creating and sharing knowledge effortlessly. It leverages Hugo for static site generation, the Hermit-v2 theme for a polished look, and Obsidian for intuitive content creation. Posts are written in Markdown and managed through Git, enabling a frictionless workflow for writers and developers alike.
