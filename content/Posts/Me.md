@@ -12,18 +12,29 @@ tags:
 ---
 # **Demetre Badzgaradze**
 Tbilisi, Georgia • badzgaradzedemetre8@gmail.com  
-[LinkedIn](https://www.linkedin.com/in/demetre-badzgaradze-b49153291/) • [GitHub](https://github.com/demetrebadzaradze/) • [Portfolio](https://demetrebadzaradze.github.io/Second-Brain/en/)
+[LinkedIn](https://www.linkedin.com/in/demetre-badzgaradze-b49153291/) • [GitHub](https://github.com/demetrebadzaradze/) • [Portfolio](https://demetrebadzaradze.github.io/Second-Brain/)
 
 ---
 
 ## 💻 Projects
 
+**🐝 InstaSwarm**
+*Technologies: C#, .NET API, Docker, IG-API, yt-dlp*
+[📦 GitHub Repo](https://github.com/demetrebadzaradze/InstaSwarm)
+- Send reel that you like to and Admin account and upload it to others.
+- Designed a distributed bot cluster system to automate Instagram content re-uploading/upluading across multiple accounts.
+- Built in .NET and Docker for containerized deployment.
+- Integrated Indtagram API and yt-dlp for flexible media ingestion pipelines.
+- Architecture is extensible to other platforms (TikTok, YouTube) for future scaling.
+
+---
+
 **📚 Second-Brain**  
 *Technologies: HTML, Hugo, CI/CD, GitHub Actions*  
-[🌐 Website](https://demetrebadzaradze.github.io/Second-Brain/en/posts) • [📦 GitHub Repo](https://github.com/demetrebadzaradze/Second-Brain/)  
+[🌐 Website](https://demetrebadzaradze.github.io/Second-Brain/posts) • [📦 GitHub Repo](https://github.com/demetrebadzaradze/Second-Brain/)  
 - Built a fast, clean personal knowledge management blog using the **Hugo** static site generator.  
 - Deployed on **GitHub Pages**, with automatic publishing powered by **GitHub Actions**.  
-- Wrote content in **Obsidian**, where I created a custom command to publish notes directly from the editor.  
+- Write content in **Obsidian**, where custom command publishes notes directly from the editor.  
 - The average time from note to published blog is under 9 seconds thanks to automation.
 
 ---
@@ -38,9 +49,9 @@ Tbilisi, Georgia • badzgaradzedemetre8@gmail.com
 ---
 
 **🏠 Home Server Setup**  
-*Technologies: Ubuntu Server, Docker, Jellyfin, Nextcloud, SQL Server, Tailscale VPN*  
+*Technologies: Ubuntu Server, Docker, Jellyfin, Nextcloud, SQL Server, Tailscale VPN, *  
 - Repurposed and upgraded an old laptop into a reliable home server running 24/7.  
-- Hosts media (via **Jellyfin**), cloud storage (**Nextcloud**), private game servers, SQL databases, and a VPN.  
+- Hosts media (via **Jellyfin**), cloud storage (**Nextcloud**), private game servers, SQL databases, DNS server and a VPN.  
 - Configured remote access using **Tailscale** VPN to bypass CG-NAT limitations.  
 - Uses **Docker** to manage and deploy services cleanly and efficiently.
 
