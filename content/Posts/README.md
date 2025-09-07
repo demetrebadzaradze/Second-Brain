@@ -103,4 +103,5 @@ Contributions are welcome! To suggest improvements or report issues:
 leave posts untouched.
 
 ## License
-© 2025 Second Brain. Licensed under the Personal License.
+- **Code**: The source code, including Hugo configurations, themes, and scripts, is licensed under the [MIT License](LICENSE).
+- **Blog Posts**: The content in the `content/Posts` directory is licensed under [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).
