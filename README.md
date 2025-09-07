@@ -8,58 +8,100 @@ ShowLastmod: true
 ---
 
 # Second Brain
- **Second Brain is a blog** witch lives on GitHub and posts can be added though git. it is also intended to be used with [obsidian](https://obsidian.md/).
+A dynamic **blogging** platform **powered by Hugo, GitHub, and Obsidian** for **seamless content creation and publishing.**
+
+## Overview
+Second Brain is a streamlined blogging platform hosted on GitHub, designed for creating and sharing knowledge effortlessly. It leverages Hugo for static site generation, the Hermit-v2 theme for a polished look, and Obsidian for intuitive content creation. Posts are written in Markdown and managed through Git, enabling a frictionless workflow for writers and developers alike.
+
+## How It Works
+Second Brain uses a combination of [Hugo](https://gohugo.io/), GitHub, and custom Git branches to manage and deploy content:
+- Hugo: Converts Markdown (.md) files into `HTML`, powered by the [Hermit-v2](https://themes.gohugo.io/themes/hermit-v2/), eliminating the need for custom `HTML`, `CSS`, or `JavaScript`.
+- GitHub Workflow:
+	- `Master` Branch: Contains the entire project, including the Hugo site source and build pipeline.
+	- `Posts` Branch: A clean branch for submitting new Markdown posts. A GitHub Action automatically moves posts to the `content/Posts` directory in the master branch and clears the `posts` branch.
+	- `For-Hosting` Branch: Hosts the built static site (`public` folder from `master`) for deployment via GitHub Pages.
+ - [Obsidian](https://obsidian.md/) Integration: The `posts` branch also includes an `.obsidian` configuration, enabling a custom `publish` command. This allows content to be pushed directly from Obsidian. A Templates folder provides pre-defined front matter for consistent, well-formatted posts.
  
- ### How does it work
-  Base of this site is [Hugo](https://gohugo.io/) witch I use to turn `.md` files into `Html`'s and with help of theme [Hermit-v2](https://themes.gohugo.io/themes/hermit-v2/) I didn't have to write any html/CSS or JavaScript  and all of that made this beautiful [site](https://demetrebadzaradze.github.io/Second-Brain/en/) .
-  Next was moving that to git for living, so I wont have to modify and tweak master branch manually or even build over and over again for that I have 3 different branches `master`, `posts`, `For-Hosting` witch have different proposes.
-  - `master` contain whole thing , that also where building site happens.
-  - `posts` is mostly clear branch but I might change that to contain all posts but what it does RN is with GitHub action when someone pushes to that branch, it moves every `.md` files to master branch in `content/Posts`, and then gets cleared.
-  - `For-Hosting` is what name suggests and it contains `public` folder from `master` witch is already built site
-  
-  ### How can you use it??
-  first I made this because **brain in not for containing ideas but for creating them** and also **knowledge should be shared** and most importantly I kind of want to see what I did  in past and look over **what have I done**. 
-1. **Fork GitHub repository**
-   - first make GitHub account [here](https://github.com/signup)
-   - fork my repository from [here](https://github.com/demetrebadzaradze/Second-Brain/fork) , **uncheck `Copy the master branch only` field**.
-   - go over to `actions` tab and enable it.
-   - then setup GitHub pages in `settings/pages` tab and change the branch from `None` to `For-Hosting` and click on `save`.
-1. **Edit `hugo.toml` file to your liking**
-   - first thing to edit is `baseURL="<your url>"`, so it should be your URL in double quotes.
-    your websites' URL should be in `settings/pages` tab, `Your site is live at <link>` so paste that link into  `baseURL`.
-    mine looks like this: `baseURL = "https://demetrebadzaradze.github.io/Second-Brain/"`
-    - in `[params.author]` change `name` and `about` as you would like.
-    - you can also change `copyright`, `homeSubtitle`, `footerCopyright`, `giturl` if you want.
-    - also change the `[[params.socialLinks]]` as you want.
-    you can add some testing posts for changes to be applied and for that go to posts branch and just add .md file and commit.
-3. **setup local repo**
-   - go to the target directory on your windows machine and open CMD in there and clone your repo
-     ```bash
-     git clone <your-repo-url.git>
-		```
-	- and then open that folder as vault and don't replace `.obsidian` folder with new one old one contains plugins and upon opening vault it will you if you trust those plugins witch are [shell commands](https://publish.obsidian.md/shellcommands/Index) for publishing with git (you can do it with `ctrl+p` and the type `publish` and run that command) and also `templer` but no templates. I'm thinking of using core plugin `templates` for this (you can add template with making new folder and putting  template like this in there:
-	```md
-		---
-			title: {{title}}
-			description: Enter a description here
-			date: {{date}}
-			draft: false
-			toc: true
-			ShowLastmod: true
-		---
+## Getting Started
+Follow these steps to set up your own Second Brain blog:
+### Prerequisites
+- A GitHub account (sign up [here](https://github.com/signup).
+- Basic familiarity with Git and Markdown.
+- Optional: Obsidian for local note-taking, content creation and predefined configuration, templates and commands.
+
+### Setup Instructions
+1. Fork the Repository:
+	- Navigate to the Second Brain repository.
+	- Fork the repository, ensuring all branches are copied (uncheck "Copy the master branch only").
+	- Delete contents of `posts` directory to ensure you my blogs are not on your site. 
+	- Enable GitHub Actions in the Actions tab of your forked repository.
+1. Configure GitHub Pages:
+	- Go to Settings > Pages in your repository.
+	- Set the branch to For-Hosting and save. Your site will be live at the URL provided (e.g., https://<username>.github.io/Second-Brain/).
+1. Edit Configuration:
+	- Open the hugo.toml file in the master branch.
+	- Update the baseURL to your GitHub Pages URL (e.g., baseURL = "https://<username>.github.io/Second-Brain/").
+	- Customize [params.author] (name and about) and [[params.socialLinks]] as desired.
+	- Optionally modify copyright, homeSubtitle, footerCopyright, or giturl. more configuretion option [here](https://gohugo.io/configuration/params/) and [here](https://1bl4z3r.github.io/hermit-V2/en/posts/explaining-configs/) and example `hugo.toml` files [here](https://github.com/1bl4z3r/hermit-V2/blob/main/hugo.toml.example) and [here](https://github.com/1bl4z3r/hermit-V2/blob/staging/hugo.toml) and also [here](https://github.com/demetrebadzaradze/Second-Brain/blob/master/hugo.toml).
+1. Add a Test Post:
+	- Switch to the posts branch.
+	- Create a new .md file with the following front matter:
+	```bash
+	---
+	title: Your Post Title
+	description: Enter a description here
+	date: 2025-01-15
+	draft: false
+	toc: true
+	ShowLastmod: true
+	---
 	```
-	and you are all setup.
+	- Commit and push the file. The GitHub Action will move it to the master branch and trigger a site rebuild.
 
+1. Set Up Locally with Obsidian:
+	- Clone your forked repository:
+	```bash
+ 	git clone <your-repo-url.git>
+ 	```
+	- Open the repository in Obsidian.
+	- Retain the existing `.obsidian` folder, which includes plugins for publishing (e.g., `shell commands` for Git integration).
+ 	- to publish a post, use Obsidian’s command palette (`Ctrl+P`), type `publish`, and run the command.
+	- Optionally, create templates in a `Templates` folder for consistent post formatting:
+	```bash
+ 	---
+	title: {{title}}
+	description: Enter a description here
+	date: {{date}}
+	draft: false
+	toc: true
+	ShowLastmod: true
+	---
+    ```
 
-  ### what I'm planning to do
-  1. this site will contain things I do in programing, so it will be portfolio like.
-  2. I also am tryna make this as factionless as possible for other less experienced people to use and for me to, like I don't want to resolve merge conflict hen I just want to write so here are some ideas for this:
-	  - **obsidian extension**
-		  I use obsidian for note taking and I also will for writing this posts because it simple and  I can mod it to add publishing from the obsidian so no terminal or web needed for that.  
-	 - **usable for many OS** 
-		 currently it only works on my windows machine but I will try to make it for other people too if someone needs.
-	  - **some posts ideas **
-		   1. home server stuff.
-		   2. deep dive on how does this site works.
-		   3. and I need to make list for future projects too.
-	 - **make something to make this configuration and setup for new users.**
+## Why Use Second Brain?
+Second Brain is designed to:
+- Foster Creativity: Focus on generating ideas rather than storing them, exactly what brain is for.
+- Share Knowledge: Make your insights accessible to others.
+- Track Progress: Reflect on past work and projects.
+It’s ideal for developers, writers, and anyone looking to maintain a portfolio or blog with minimal setup.
+
+## Future Plans
+- Portfolio Expansion: Showcase programming projects and technical deep dives.
+- Obsidian Integration: Develop a custom Obsidian plugin for seamless post publishing without terminal or web interactions.
+- Cross-Platform Support: Extend compatibility beyond Windows to macOS and Linux.
+- Simplified Setup: Streamline configuration for non-technical users, reducing setup friction and merge conflicts.
+- Content Ideas:
+	- Tutorials on home server setups.
+	- In-depth guide on Second Brain’s architecture.
+	- A roadmap for future projects.
+
+## Contributing
+Contributions are welcome! To suggest improvements or report issues:
+- Fork the repository.
+- Create a new branch for your changes.
+- Submit a pull request to the master branch.
+leave posts untouched.
+
+## License
+- **Code**: The source code, including Hugo configurations, themes, and scripts, is licensed under the [MIT License](LICENSE).
+- **Blog Posts**: The content in the `content/Posts` directory is licensed under [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).
