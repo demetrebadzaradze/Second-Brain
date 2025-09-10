@@ -129,4 +129,4 @@ docker run --rm -v "~/opt/certs:/output" mcr.microsoft.com/dotnet/sdk:8.0 bash -
 "
 ```
 replace the password and after running this it will make HTTPS certificate in ~/opt/certs directory i thing you can also enter the working directory here too and that will work too.
-after that move that certificate to the app redirect and enter password in `.env` file 
+after that move that certificate to the app redirect and enter password in `.env` file
