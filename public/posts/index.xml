@@ -6,8 +6,8 @@
 		<description>Recent content in Posts on Second-Brain</description>
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
-		<copyright>Everything you say can and will be used aganst you.</copyright>
-		<lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
+		<copyright>The actual content on this site other then code is under [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) licence</copyright>
+		<lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -21,20 +21,31 @@
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h1>
 <p>Tbilisi, Georgia • <a href="mailto:badzgaradzedemetre8@gmail.com">badzgaradzedemetre8@gmail.com</a><br>
-<a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/">LinkedIn</a> • <a href="https://github.com/demetrebadzaradze/">GitHub</a> • <a href="https://demetrebadzaradze.github.io/Second-Brain/en/">Portfolio</a></p>
+<a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/">LinkedIn</a> • <a href="https://github.com/demetrebadzaradze/">GitHub</a> • <a href="https://demetrebadzaradze.github.io/Second-Brain/">Portfolio</a></p>
 <hr>
 <h2 id="-projects">💻 Projects<a href="#-projects" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
+<p><strong>🐝 InstaSwarm</strong>
+<em>Technologies: C#, .NET API, Docker, IG-API, yt-dlp</em>
+<a href="https://github.com/demetrebadzaradze/InstaSwarm">📦 GitHub Repo</a></p>
+<ul>
+<li>Send reel that you like to and Admin account and upload it to others.</li>
+<li>Designed a distributed bot cluster system to automate Instagram content re-uploading/upluading across multiple accounts.</li>
+<li>Built in .NET and Docker for containerized deployment.</li>
+<li>Integrated Indtagram API and yt-dlp for flexible media ingestion pipelines.</li>
+<li>Architecture is extensible to other platforms (TikTok, YouTube) for future scaling.</li>
+</ul>
+<hr>
 <p><strong>📚 Second-Brain</strong><br>
 <em>Technologies: HTML, Hugo, CI/CD, GitHub Actions</em><br>
-<a href="https://demetrebadzaradze.github.io/Second-Brain/en/posts">🌐 Website</a> • <a href="https://github.com/demetrebadzaradze/Second-Brain/">📦 GitHub Repo</a></p>
+<a href="https://demetrebadzaradze.github.io/Second-Brain/posts">🌐 Website</a> • <a href="https://github.com/demetrebadzaradze/Second-Brain/">📦 GitHub Repo</a></p>
 <ul>
 <li>Built a fast, clean personal knowledge management blog using the <strong>Hugo</strong> static site generator.</li>
 <li>Deployed on <strong>GitHub Pages</strong>, with automatic publishing powered by <strong>GitHub Actions</strong>.</li>
-<li>Wrote content in <strong>Obsidian</strong>, where I created a custom command to publish notes directly from the editor.</li>
+<li>Write content in <strong>Obsidian</strong>, where custom command publishes notes directly from the editor.</li>
 <li>The average time from note to published blog is under 9 seconds thanks to automation.</li>
 </ul>
 <hr>
@@ -48,10 +59,10 @@
 </ul>
 <hr>
 <p><strong>🏠 Home Server Setup</strong><br>
-<em>Technologies: Ubuntu Server, Docker, Jellyfin, Nextcloud, SQL Server, Tailscale VPN</em></p>
+*Technologies: Ubuntu Server, Docker, Jellyfin, Nextcloud, SQL Server, Tailscale VPN, *</p>
 <ul>
 <li>Repurposed and upgraded an old laptop into a reliable home server running 24/7.</li>
-<li>Hosts media (via <strong>Jellyfin</strong>), cloud storage (<strong>Nextcloud</strong>), private game servers, SQL databases, and a VPN.</li>
+<li>Hosts media (via <strong>Jellyfin</strong>), cloud storage (<strong>Nextcloud</strong>), private game servers, SQL databases, DNS server and a VPN.</li>
 <li>Configured remote access using <strong>Tailscale</strong> VPN to bypass CG-NAT limitations.</li>
 <li>Uses <strong>Docker</strong> to manage and deploy services cleanly and efficiently.</li>
 </ul>
@@ -78,6 +89,184 @@
 From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
 I specialize in making things work—efficiently, securely, and with minimal friction.<br>
 Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>How to change theme for Hugo</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-change-theme-for-hugo/</link>
+			<pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-change-theme-for-hugo/</guid>
+			<description><![CDATA[ Step-by-step guide to updating the Hugo theme for your Second Brain blog]]></description><content type="text/html" mode="escaped"><![CDATA[<p><a href="https://github.com/demetrebadzaradze/Second-Brain/">Second Brain</a> uses the Hermit-v2 theme by default to provide a clean, modern look for your blog. However, you can easily switch to a different Hugo theme to customize the appearance of your site. This guide provides step-by-step instructions to update the theme by modifying the Git submodule and Hugo configuration.</p>
+<h2 id="prerequisites">Prerequisites<a href="#prerequisites" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>A forked and cloned copy of the Second Brain repository.</li>
+<li>Git installed on your local machine.</li>
+<li>Basic familiarity with Hugo and Git submodules.</li>
+<li>Access to the repository’s <code>master</code> branch for configuration changes.</li>
+</ul>
+<h2 id="steps-to-change-the-theme">Steps to Change the Theme<a href="#steps-to-change-the-theme" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Follow these steps to replace the Hermit-v2 theme with a new Hugo theme:</p>
+<ol>
+<li>
+<p><strong>Select a New Theme</strong>:</p>
+<ul>
+<li>Browse the Hugo Themes directory to find a theme that suits your needs.</li>
+<li>Note the theme’s Git repository URL and the recommended branch (usually <code>main</code> or <code>master</code>). For example, if you choose the Ananke theme, the repository URL is <code>https://github.com/theNewDynamic/gohugo-theme-ananke</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update the Git Submodule</strong>:</p>
+<ul>
+<li>
+<p>Open the <code>.gitmodules</code> file in the root of your repository.</p>
+</li>
+<li>
+<p>Replace the existing submodule configuration with the new theme’s details. The file should follow this format:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[submodule &#34;themes/&lt;theme-name&gt;&#34;]</span>
+</span></span><span class="line"><span class="cl"> <span class="na">path</span> <span class="o">=</span> <span class="s">themes/&lt;theme-name&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">     url = &lt;theme-git-repo-url&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">     branch = &lt;theme-branch&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s"> ```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">Example for the Ananke theme:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">```ini</span>
+</span></span><span class="line"><span class="cl"><span class="k">[submodule &#34;themes/gohugo-theme-ananke&#34;]</span>
+</span></span><span class="line"><span class="cl"> <span class="na">path</span> <span class="o">=</span> <span class="s">themes/gohugo-theme-ananke
+</span></span></span><span class="line"><span class="cl"><span class="s"> url = https://github.com/theNewDynamic/gohugo-theme-ananke
+</span></span></span><span class="line"><span class="cl"><span class="s"> branch = main</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Save and commit the updated <code>.gitmodules</code> file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add .gitmodules
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;Update .gitmodules to use new theme&#34;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Sync and Update the Submodule</strong>:</p>
+<ul>
+<li>
+<p>Remove the existing theme’s submodule data:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rm -r themes/hermit-v2
+</span></span></code></pre></div></li>
+<li>
+<p>Add and initialize the new theme’s submodule:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule add --force &lt;theme-git-repo-url&gt; themes/&lt;theme-name&gt;
+</span></span></code></pre></div><p>Example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule add --force https://github.com/theNewDynamic/gohugo-theme-ananke themes/gohugo-theme-ananke
+</span></span></code></pre></div></li>
+<li>
+<p>Ensure the submodule is initialized and updated:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule update --init --recursive
+</span></span></code></pre></div></li>
+<li>
+<p>Commit the changes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add themes/&lt;theme-name&gt;
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;Add new theme submodule&#34;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Update Hugo Configuration</strong>:</p>
+<ul>
+<li>
+<p>Open the <code>hugo.toml</code> file in the root of your repository.</p>
+</li>
+<li>
+<p>Update the <code>theme</code> parameter to match the new theme’s directory name:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;&lt;theme-name&gt;&#34;</span>
+</span></span></code></pre></div><p>Example for Ananke:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;gohugo-theme-ananke&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Review the theme’s documentation (usually in its <code>README.md</code>) for additional configuration options, such as custom parameters or assets. Update <code>hugo.toml</code> accordingly.</p>
+</li>
+<li>
+<p>Example for Ananke:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">favicon</span> <span class="p">=</span> <span class="s2">&#34;images/favicon.ico&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">site_logo</span> <span class="p">=</span> <span class="s2">&#34;images/logo.png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">background_image</span> <span class="p">=</span> <span class="s2">&#34;/images/background.jpg&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Save and commit the changes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add hugo.toml
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;Update hugo.toml for new theme&#34;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Test the Theme Locally</strong>:</p>
+<ul>
+<li>
+<p>Run the Hugo development server to preview the site with the new theme:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server
+</span></span></code></pre></div></li>
+<li>
+<p>Open <code>http://localhost:1313</code> in your browser to verify the theme is applied correctly.</p>
+</li>
+<li>
+<p>Check for errors or missing assets, and consult the theme’s documentation for troubleshooting.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Push Changes to GitHub</strong>:</p>
+<ul>
+<li>
+<p>Push the updated <code>master</code> branch to your repository:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push origin master
+</span></span></code></pre></div></li>
+<li>
+<p>The GitHub Action will trigger, rebuilding the site and deploying it to the <code>For-Hosting</code> branch for GitHub Pages.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Verify the Live Site</strong>:</p>
+<ul>
+<li>Visit your site (e.g., <code>https://&lt;username&gt;.github.io/Second-Brain/</code>) to ensure the new theme is live.</li>
+<li>Test navigation, responsiveness, and content rendering on multiple devices.</li>
+</ul>
+</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting<a href="#troubleshooting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li><strong>Submodule Errors</strong>: If the submodule doesn’t load, run <code>git submodule sync</code> followed by <code>git submodule update --init --recursive</code>.</li>
+<li><strong>Theme Configuration</strong>: Ensure all required parameters are set in <code>hugo.toml</code>. Check the theme’s documentation for mandatory settings.</li>
+<li><strong>Broken Styles</strong>: If the site looks incorrect, verify that theme assets (e.g., CSS, images) are correctly placed in <code>themes/&lt;theme-name&gt;</code> or <code>static/</code>.</li>
+<li><strong>GitHub Actions Failure</strong>: Check the Actions tab in your repository for build errors, such as missing dependencies or incorrect paths.</li>
+</ul>
+<h2 id="additional-tips">Additional Tips<a href="#additional-tips" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li><strong>Backup Your Repository</strong>: Before making changes, create a backup branch (<code>git branch backup</code>) to preserve your current setup.</li>
+<li><strong>Test Theme Compatibility</strong>: Some themes may require specific Hugo versions. Check your Hugo version (<code>hugo version</code>) and the theme’s requirements.</li>
+<li><strong>Customize the Theme</strong>: After switching, customize the theme’s colors, fonts, or layout in <code>hugo.toml</code> or by adding custom CSS in <code>static/css/</code>.</li>
+<li><strong>Document Changes</strong>: Update your README or a changelog to note the new theme and any specific configuration steps.</li>
+</ul>
+<h2 id="need-help">Need Help?<a href="#need-help" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>If you encounter issues or need assistance selecting a theme, check the Hugo Themes directory or open an issue in the Second Brain repository. Contributions to improve theme support are welcome!</p>
 ]]></content>
 		</item>
 		
@@ -1399,86 +1588,168 @@ pattern.</li>
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h1>
-<p><strong>Second Brain is a blog</strong> witch lives on GitHub and posts can be added though git. it is also intended to be used with <a href="https://obsidian.md/">obsidian</a>.</p>
-<h3 id="how-does-it-work">How does it work<a href="#how-does-it-work" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+<p>A dynamic <strong>blogging</strong> platform <strong>powered by Hugo, GitHub, and Obsidian</strong> for <strong>seamless content creation and publishing.</strong></p>
+<h2 id="overview">Overview<a href="#overview" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h3>
-<p>Base of this site is <a href="https://gohugo.io/">Hugo</a> witch I use to turn <code>.md</code> files into <code>Html</code>&rsquo;s and with help of theme <a href="https://themes.gohugo.io/themes/hermit-v2/">Hermit-v2</a> I didn&rsquo;t have to write any html/CSS or JavaScript  and all of that made this beautiful <a href="https://demetrebadzaradze.github.io/Second-Brain/en/">site</a> .
-Next was moving that to git for living, so I wont have to modify and tweak master branch manually or even build over and over again for that I have 3 different branches <code>master</code>, <code>posts</code>, <code>For-Hosting</code> witch have different proposes.</p>
+   </svg></a></h2>
+<p>Second Brain is a streamlined blogging platform hosted on GitHub, designed for creating and sharing knowledge effortlessly. It leverages Hugo for static site generation, the Hermit-v2 theme for a polished look, and Obsidian for intuitive content creation. Posts are written in Markdown and managed through Git, enabling a frictionless workflow for writers and developers alike.</p>
+<h2 id="how-it-works">How It Works<a href="#how-it-works" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Second Brain uses a combination of <a href="https://gohugo.io/">Hugo</a>, GitHub, and custom Git branches to manage and deploy content:</p>
 <ul>
-<li><code>master</code> contain whole thing , that also where building site happens.</li>
-<li><code>posts</code> is mostly clear branch but I might change that to contain all posts but what it does RN is with GitHub action when someone pushes to that branch, it moves every <code>.md</code> files to master branch in <code>content/Posts</code>, and then gets cleared.</li>
-<li><code>For-Hosting</code> is what name suggests and it contains <code>public</code> folder from <code>master</code> witch is already built site</li>
+<li>Hugo: Converts Markdown (.md) files into <code>HTML</code>, powered by the <a href="https://themes.gohugo.io/themes/hermit-v2/">Hermit-v2</a>, eliminating the need for custom <code>HTML</code>, <code>CSS</code>, or <code>JavaScript</code>.</li>
+<li>GitHub Workflow:
+<ul>
+<li><code>Master</code> Branch: Contains the entire project, including the Hugo site source and build pipeline.</li>
+<li><code>Posts</code> Branch: A clean branch for submitting new Markdown posts. A GitHub Action automatically moves posts to the <code>content/Posts</code> directory in the master branch and clears the <code>posts</code> branch.</li>
+<li><code>For-Hosting</code> Branch: Hosts the built static site (<code>public</code> folder from <code>master</code>) for deployment via GitHub Pages.</li>
 </ul>
-<h3 id="how-can-you-use-it">How can you use it??<a href="#how-can-you-use-it" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+</li>
+<li><a href="https://obsidian.md/">Obsidian</a> Integration: The <code>posts</code> branch also includes an <code>.obsidian</code> configuration, enabling a custom <code>publish</code> command. This allows content to be pushed directly from Obsidian. A Templates folder provides pre-defined front matter for consistent, well-formatted posts.</li>
+</ul>
+<h2 id="getting-started">Getting Started<a href="#getting-started" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Follow these steps to set up your own Second Brain blog:</p>
+<h3 id="prerequisites">Prerequisites<a href="#prerequisites" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>first I made this because <strong>brain in not for containing ideas but for creating them</strong> and also <strong>knowledge should be shared</strong> and most importantly I kind of want to see what I did  in past and look over <strong>what have I done</strong>.</p>
+<ul>
+<li>A GitHub account (sign up <a href="https://github.com/signup">here</a>.</li>
+<li>Basic familiarity with Git and Markdown.</li>
+<li>Optional: Obsidian for local note-taking, content creation and predefined configuration, templates and commands.</li>
+</ul>
+<h3 id="setup-instructions">Setup Instructions<a href="#setup-instructions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
 <ol>
-<li><strong>Fork GitHub repository</strong>
+<li>
+<p>Fork the Repository:</p>
 <ul>
-<li>first make GitHub account <a href="https://github.com/signup">here</a></li>
-<li>fork my repository from <a href="https://github.com/demetrebadzaradze/Second-Brain/fork">here</a> , <strong>uncheck <code>Copy the master branch only</code> field</strong>.</li>
-<li>go over to <code>actions</code> tab and enable it.</li>
-<li>then setup GitHub pages in <code>settings/pages</code> tab and change the branch from <code>None</code> to <code>For-Hosting</code> and click on <code>save</code>.</li>
+<li>Navigate to the Second Brain repository.</li>
+<li>Fork the repository, ensuring all branches are copied (uncheck &ldquo;Copy the master branch only&rdquo;).</li>
+<li>Delete contents of <code>posts</code> directory to ensure you my blogs are not on your site.</li>
+<li>Enable GitHub Actions in the Actions tab of your forked repository.</li>
 </ul>
 </li>
-<li><strong>Edit <code>hugo.toml</code> file to your liking</strong>
+<li>
+<p>Configure GitHub Pages:</p>
 <ul>
-<li>first thing to edit is <code>baseURL=&quot;&lt;your url&gt;&quot;</code>, so it should be your URL in double quotes.
-your websites&rsquo; URL should be in <code>settings/pages</code> tab, <code>Your site is live at &lt;link&gt;</code> so paste that link into  <code>baseURL</code>.
-mine looks like this: <code>baseURL = &quot;https://demetrebadzaradze.github.io/Second-Brain/&quot;</code></li>
-<li>in <code>[params.author]</code> change <code>name</code> and <code>about</code> as you would like.</li>
-<li>you can also change <code>copyright</code>, <code>homeSubtitle</code>, <code>footerCopyright</code>, <code>giturl</code> if you want.</li>
-<li>also change the <code>[[params.socialLinks]]</code> as you want.
-you can add some testing posts for changes to be applied and for that go to posts branch and just add .md file and commit.</li>
+<li>Go to Settings &gt; Pages in your repository.</li>
+<li>Set the branch to For-Hosting and save. Your site will be live at the URL provided (e.g., https://<!-- raw HTML omitted -->.github.io/Second-Brain/).</li>
 </ul>
 </li>
-<li><strong>setup local repo</strong>
+<li>
+<p>Edit Configuration:</p>
 <ul>
-<li>go to the target directory on your windows machine and open CMD in there and clone your repo
+<li>Open the hugo.toml file in the master branch.</li>
+<li>Update the baseURL to your GitHub Pages URL (e.g., baseURL = &ldquo;https://<!-- raw HTML omitted -->.github.io/Second-Brain/&rdquo;).</li>
+<li>Customize [params.author] (name and about) and [[params.socialLinks]] as desired.</li>
+<li>Optionally modify copyright, homeSubtitle, footerCopyright, or giturl. more configuretion option <a href="https://gohugo.io/configuration/params/">here</a> and <a href="https://1bl4z3r.github.io/hermit-V2/en/posts/explaining-configs/">here</a> and example <code>hugo.toml</code> files <a href="https://github.com/1bl4z3r/hermit-V2/blob/main/hugo.toml.example">here</a> and <a href="https://github.com/1bl4z3r/hermit-V2/blob/staging/hugo.toml">here</a> and also <a href="https://github.com/demetrebadzaradze/Second-Brain/blob/master/hugo.toml">here</a>.</li>
+</ul>
+</li>
+<li>
+<p>Add a Test Post:</p>
+<ul>
+<li>Switch to the posts branch.</li>
+<li>Create a new .md file with the following front matter:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: Your Post Title
+</span></span><span class="line"><span class="cl">description: Enter a description here
+</span></span><span class="line"><span class="cl">date: 2025-01-15
+</span></span><span class="line"><span class="cl">draft: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl">toc: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">ShowLastmod: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">---
+</span></span></code></pre></div><ul>
+<li>Commit and push the file. The GitHub Action will move it to the master branch and trigger a site rebuild.</li>
+</ul>
+</li>
+<li>
+<p>Set Up Locally with Obsidian:</p>
+<ul>
+<li>Clone your forked repository:</li>
+</ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone &lt;your-repo-url.git&gt;
-</span></span></code></pre></div></li>
-<li>and then open that folder as vault and don&rsquo;t replace <code>.obsidian</code> folder with new one old one contains plugins and upon opening vault it will you if you trust those plugins witch are <a href="https://publish.obsidian.md/shellcommands/Index">shell commands</a> for publishing with git (you can do it with <code>ctrl+p</code> and the type <code>publish</code> and run that command) and also <code>templer</code> but no templates. I&rsquo;m thinking of using core plugin <code>templates</code> for this (you can add template with making new folder and putting  template like this in there:</li>
+</span></span></code></pre></div><ul>
+<li>Open the repository in Obsidian.</li>
+<li>Retain the existing <code>.obsidian</code> folder, which includes plugins for publishing (e.g., <code>shell commands</code> for Git integration).</li>
+<li>to publish a post, use Obsidian’s command palette (<code>Ctrl+P</code>), type <code>publish</code>, and run the command.</li>
+<li>Optionally, create templates in a <code>Templates</code> folder for consistent post formatting:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">	---
-</span></span><span class="line"><span class="cl">		title: {{title}}
-</span></span><span class="line"><span class="cl">		description: Enter a description here
-</span></span><span class="line"><span class="cl">		date: {{date}}
-</span></span><span class="line"><span class="cl">		draft: false
-</span></span><span class="line"><span class="cl">		toc: true
-</span></span><span class="line"><span class="cl">		ShowLastmod: true
-</span></span><span class="line"><span class="cl">	---
-</span></span></code></pre></div>and you are all setup.</li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: <span class="o">{{</span>title<span class="o">}}</span>
+</span></span><span class="line"><span class="cl">description: Enter a description here
+</span></span><span class="line"><span class="cl">date: <span class="o">{{</span>date<span class="o">}}</span>
+</span></span><span class="line"><span class="cl">draft: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl">toc: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">ShowLastmod: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">---
+</span></span></code></pre></div></li>
 </ol>
-<h3 id="what-im-planning-to-do">what I&rsquo;m planning to do<a href="#what-im-planning-to-do" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+<h2 id="why-use-second-brain">Why Use Second Brain?<a href="#why-use-second-brain" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h3>
-<ol>
-<li>this site will contain things I do in programing, so it will be portfolio like.</li>
-<li>I also am tryna make this as factionless as possible for other less experienced people to use and for me to, like I don&rsquo;t want to resolve merge conflict hen I just want to write so here are some ideas for this:
+   </svg></a></h2>
+<p>Second Brain is designed to:</p>
 <ul>
-<li><strong>obsidian extension</strong>
-I use obsidian for note taking and I also will for writing this posts because it simple and  I can mod it to add publishing from the obsidian so no terminal or web needed for that.</li>
-<li><strong>usable for many OS</strong>
-currently it only works on my windows machine but I will try to make it for other people too if someone needs.</li>
-<li>**some posts ideas **
-<ol>
-<li>home server stuff.</li>
-<li>deep dive on how does this site works.</li>
-<li>and I need to make list for future projects too.</li>
-</ol>
-</li>
-<li><strong>make something to make this configuration and setup for new users.</strong></li>
+<li>Foster Creativity: Focus on generating ideas rather than storing them, exactly what brain is for.</li>
+<li>Share Knowledge: Make your insights accessible to others.</li>
+<li>Track Progress: Reflect on past work and projects.
+It’s ideal for developers, writers, and anyone looking to maintain a portfolio or blog with minimal setup.</li>
+</ul>
+<h2 id="future-plans">Future Plans<a href="#future-plans" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li>Portfolio Expansion: Showcase programming projects and technical deep dives.</li>
+<li>Obsidian Integration: Develop a custom Obsidian plugin for seamless post publishing without terminal or web interactions.</li>
+<li>Cross-Platform Support: Extend compatibility beyond Windows to macOS and Linux.</li>
+<li>Simplified Setup: Streamline configuration for non-technical users, reducing setup friction and merge conflicts.</li>
+<li>Content Ideas:
+<ul>
+<li>Tutorials on home server setups.</li>
+<li>In-depth guide on Second Brain’s architecture.</li>
+<li>A roadmap for future projects.</li>
 </ul>
 </li>
-</ol>
+</ul>
+<h2 id="contributing">Contributing<a href="#contributing" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Contributions are welcome! To suggest improvements or report issues:</p>
+<ul>
+<li>Fork the repository.</li>
+<li>Create a new branch for your changes.</li>
+<li>Submit a pull request to the master branch.
+leave posts untouched.</li>
+</ul>
+<h2 id="license">License<a href="#license" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<ul>
+<li><strong>Code</strong>: The source code, including Hugo configurations, themes, and scripts, is licensed under the <a href="LICENSE">MIT License</a>.</li>
+<li><strong>Blog Posts</strong>: The content in the <code>content/Posts</code> directory is licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</li>
+</ul>
 ]]></content>
 		</item>
 		

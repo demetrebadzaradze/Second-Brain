@@ -3,13 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/me/</loc>
-    <lastmod>2025-05-30T18:42:40+04:00</lastmod>
+    <lastmod>2025-09-07T16:07:04+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-change-theme-for-hugo/</loc>
+    <lastmod>2025-09-10T19:34:40+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/</loc>
-    <lastmod>2025-09-01T19:48:15+00:00</lastmod>
+    <lastmod>2025-09-10T19:34:40+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/</loc>
-    <lastmod>2025-09-01T19:48:15+00:00</lastmod>
+    <lastmod>2025-09-10T19:34:40+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/setting-up-pi-hole/</loc>
     <lastmod>2025-09-01T19:48:15+00:00</lastmod>
@@ -18,7 +21,7 @@
     <lastmod>2025-09-01T19:48:15+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/instaswarm/</loc>
-    <lastmod>2025-08-04T18:02:53+00:00</lastmod>
+    <lastmod>2025-09-10T19:34:40+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/super-spork/</loc>
     <lastmod>2025-08-01T11:37:04+00:00</lastmod>
@@ -42,7 +45,7 @@
     <lastmod>2025-08-01T11:37:04+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/</loc>
-    <lastmod>2025-08-01T11:37:04+00:00</lastmod>
+    <lastmod>2025-09-07T16:07:04+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/voice-chat/</loc>
     <lastmod>2025-08-01T11:37:04+00:00</lastmod>
@@ -54,7 +57,7 @@
     <lastmod>2025-06-05T17:01:53+00:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/personal/</loc>
-    <lastmod>2025-05-30T18:42:40+04:00</lastmod>
+    <lastmod>2025-09-07T16:07:04+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
@@ -96,12 +99,9 @@
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/readme/</loc>
-    <lastmod>2025-05-30T18:05:31+04:00</lastmod>
+    <lastmod>2025-09-07T14:15:02+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/testing-whole-site/</loc>
-    <lastmod>2025-05-30T18:05:31+04:00</lastmod>
-  </url><url>
-    <loc>https://demetrebadzaradze.github.io/Second-Brain/about/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/handling-images-for-hugo/</loc>
@@ -109,6 +109,9 @@
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/posts/host-terraria-server-on-linux-server/</loc>
     <lastmod>2025-05-30T18:05:31+04:00</lastmod>
+  </url><url>
+    <loc>https://demetrebadzaradze.github.io/Second-Brain/about/</loc>
+    <lastmod>2025-09-09T20:52:36+04:00</lastmod>
   </url><url>
     <loc>https://demetrebadzaradze.github.io/Second-Brain/categories/</loc>
   </url><url>
