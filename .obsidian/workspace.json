@@ -13,12 +13,40 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Setting up PI-Hole.md",
+                "file": "How to change theme for Hugo.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "How to change theme for Hugo"
+            }
+          },
+          {
+            "id": "18df08573b6abe20",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Instaswarm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Setting up PI-Hole"
+              "title": "Instaswarm"
+            }
+          },
+          {
+            "id": "cc7aa66a5dab3f57",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "How to change theme for Hugo.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "How to change theme for Hugo"
             }
           }
         ]
@@ -153,6 +181,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "obsidian-shellcommands:Shell commands: Custom variables": false,
       "templater-obsidian:Templater": false,
       "switcher:Open quick switcher": false,
@@ -166,8 +195,9 @@
   "active": "552176342bc74eb0",
   "lastOpenFiles": [
     "Instaswarm.md",
-    "Making SSH-Keys.md",
     "Setting up PI-Hole.md",
+    "How to change theme for Hugo.md",
+    "Making SSH-Keys.md",
     "Super-Spork.md",
     "Recovering corrupted USB drive.md",
     "Self-Hosted Mumble Voice Server with Docker, Lightweight Discord Alternative.md",
