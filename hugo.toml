@@ -8,7 +8,7 @@ enableGitInfo = true
 pygmentsCodefences  = true
 pygmentsUseClasses  = true
 
-copyright = "The actual content on this site other then code is under [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) licence"
+copyright = "The actual content on this site other then code is under CC BY-NC 4.0 licence"
 
 [frontmatter]
 date = ["date", "publishDate", "lastmod"]
@@ -33,7 +33,7 @@ ShowLastmod = true
   themeColor = "#494f5c"
 
   homeSubtitle = "Brain is not for containing ideas, But coming up with them. That's why I got second one."
-  footerCopyright = "The actual content on this site other then code is under [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) licence"
+  footerCopyright = "The actual content on this site other then code is under CC BY-NC 4.0 licence"
   footerHideThemeName = true
   # bgImg = ""
   gitUrl = "https://github.com/demetrebadzaradze"
