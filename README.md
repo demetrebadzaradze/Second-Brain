@@ -36,6 +36,7 @@ A dynamic **blogging** platform **powered by Hugo, GitHub, and Obsidian** for **
 - [How it works](#how-it-works)
 - [Getting Started](#getting-started)
 - [Why Use Second Brain?](#why-use-second-brain)
+- [Docs](https://github.com/demetrebadzaradze/Second-Brain/blob/master/docs/)
 - [Future Plans](#future-plans)
 - [Contributing](#contributing)
 - [License](#license)
