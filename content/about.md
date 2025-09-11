@@ -1,8 +1,5 @@
 ## What is Second Brain
 
-
-What is Second Brain
-
 Second brain is a eye opening concept (least for me), Witch underlines the fact that **human brain is for creating ideas not for storing them.** This really makes sence, who knows how many ideas one had but got forgotten in a day. So the solution is to put your newborn ideas somewere accessible, to come back to and that gave born to all of this. 
 
 ---
@@ -46,7 +43,3 @@ Whether you’re a developer documenting technical projects or a writer sharing 
 ## Get Involved
 
 Explore the [GitHub repository](https://github.com/demetrebadzaradze/Second-Brain/) to set up your own **Second Brain** or contribute to the project. Check out the [README](https://github.com/demetrebadzaradze/Second-Brain/blob/master/README.md) for setup instructions and join the community to share your ideas!
-
---- 
-
-License: The code for Second Brain is licensed under the MIT License. Blog content is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. See [LICENSE.md](https://github.com/demetrebadzaradze/Second-Brain/blob/master/content/Posts/LICENCE) for details.
