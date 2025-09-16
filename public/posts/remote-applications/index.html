@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><meta name="author" content="Demetre Badzgaradze">
+<meta name="description" content="Dockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.">
+<link rel="author" type="text/plain" href="/Second-Brain/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/Second-Brain/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Second-Brain/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Second-Brain/favicon-16x16.png">
+<link rel="manifest" href="/Second-Brain/site.webmanifest">
+<meta name="msapplication-TileImage" content="/Second-Brain/mstile-144x144.png">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/Second-Brain/safari-pinned-tab.svg" color="#494f5c">
+
+  <meta itemprop="name" content="Remote Applications">
+  <meta itemprop="description" content="Dockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.">
+  <meta itemprop="datePublished" content="2025-09-16T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-09-16T08:28:19+00:00">
+  <meta itemprop="wordCount" content="785"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/remote-applications/">
+  <meta property="og:site_name" content="Second-Brain">
+  <meta property="og:title" content="Remote Applications">
+  <meta property="og:description" content="Dockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-16T08:28:19+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Remote Applications">
+  <meta name="twitter:description" content="Dockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Remote Applications",
+    "name": "Remote Applications",
+    "description": "Dockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.",
+    "keywords": [],
+    "articleBody": "What Are Remote Apps? In the traditional software world, installing an application meant dealing with dependencies, OS differences, or compatibility issues. But modern computing gives us a better option: remote applications.\nBy “remote,” I mean apps that are not tied to your local machine but instead run through Docker containers. With Docker, you no longer care whether you’re on Ubuntu, Fedora, macOS, or even Windows—if Docker runs there, the app runs there.\nThe difference is: instead of thinking of them as “local installs,” you start treating them as on-demand tools that live in the cloud or on a server.\nThis approach unlocks portability, reliability, and ease of use across environments.\nA Practical Example: Oxker Take Oxker, a simple TUI that displays Docker containers on your machine. To run it, they provide a one-liner:\ndocker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro --pull=always mrjackwills/oxker This is great—it spins up Oxker instantly, always with the latest version. But typing this every time? Not very friendly.\nInstead, imagine simply running:\noxker That feels like a native application, even though it’s actually a remote container. Smooth, minimal, and intuitive.\nThe Power of Aliases This magic happens through something as simple as a Linux alias. By creating an alias that maps oxker to the full docker run command, you get the best of both worlds:\nNo installation headaches Always up to date (since it pulls the latest container) Works anywhere Docker runs Feels like a real, local command This is a small trick, but it changes your workflow dramatically. Suddenly, remote containerized apps behave like first-class citizens on your machine.\nHow to Set Up Aliases for Remote Apps Here’s how you can turn any Docker command into a native-feeling app:\nOpen your shell configuration file (depending on what you use): For Bash: nano ~/.bashrc - For Zsh: nano ~/.zshrc Add an alias for your Dockerized app. For Oxker, paste:\nalias oxker=\"docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro --pull=always mrjackwills/oxker\" Apply the changes without restarting:\nsource ~/.bashrc # or for Zsh source ~/.zshrc Run it just like a native app:\noxker That’s it! You’ve created a remote app experience.\nWhy This Matters Think about the implications:\nLightweight Device Support\nHave a weaker laptop and don’t want to download apps No problem. Let a server host the applications, while your device just runs containers from server.\nNo More Setup Hell\nHow many times have you wasted hours setting up dev tools or debugging dependencies? With remote apps, you bypass all of that.\nCollaboration Made Simple\nYou don’t even need your own server. Publish the container to Docker Hub, and anyone can run the exact same version instantly. Consistency for teams, zero friction for users.\nThis is not just about convenience—it’s a paradigm shift in how we think about software distribution.\nThe Downsides of Remote Apps As powerful as remote applications are, they do come with trade-offs worth keeping in mind:\nPerformance Overhead\nRunning apps in Docker and pulling them on-demand is not as fast as having them installed natively. For heavy tools, this can mean longer startup times. Network Dependency\nIf your alias depends on pulling images from Docker Hub or another registry, you need a stable internet connection. Offline use is limited unless you cache the images locally. Storage Usage\nEach image still takes up disk space after the first pull. Over time, unused containers and images can clutter your system if you don’t prune them. Security Considerations\nRunning third-party containers always carries some risk. You need to trust the publisher or audit the Dockerfile to ensure the container is safe. Learning Curve\nFor people new to Docker, the setup can feel unfamiliar compared to a simple apt install or brew install. While aliases simplify usage, the underlying concepts still require some understanding. but I’m sure there is many use cases for this kind of setup.\nThe Future of Remote Apps I believe this should be the standard way we think about applications: remote, containerized, and alias-driven.\nInstead of bloating our systems with installs and configs, we can adopt a lightweight, cloud-first approach:\nDefine apps as containers Publish them for universal access Alias them into our local workflow The end result? A system where your local machine feels infinite, powered by remote applications.\nFinal Thoughts Remote applications are not just a technical trick—they represent a new mindset:\nApps that run anywhere Apps that are always up-to-date Apps that feel local, but are powered remotely If you start adopting this approach in your workflow, you’ll notice how much friction disappears. Suddenly, your environment is cleaner, your setup is faster, and your tools are more reliable.\nIt’s not just about saving keystrokes. It’s about building a future where software is portable, accessible, and remote by default.\n",
+    "wordCount" : "785",
+    "inLanguage": "en",
+    "datePublished": "2025-09-16T00:00:00Z",
+    "dateModified": "2025-09-16T08:28:19Z",
+    "author":{
+        "@type": "Person",
+        "name": "Demetre Badzgaradze",
+        "url": "#IDONTKNOW"
+        },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://demetrebadzaradze.github.io/Second-Brain/posts/remote-applications/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Second-Brain",
+      "description": "this is my second brain",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://demetrebadzaradze.github.io/Second-Brain/favicon.ico"
+      }
+    }
+}
+</script><title>Remote Applications</title><link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" media="screen" href="https://demetrebadzaradze.github.io/Second-Brain/css/style.min.4ec14edf0f2567d5a3bb6ba4eff29c7650934df04ad3eb6be8612c60c85b3aee.css" integrity="sha256-TsFO3w8lZ9Wju2uk7/KcdlCTTfBK0+tr6GEsYMhbOu4=" crossorigin="anonymous">
+	</head>
+
+<body id="page">
+	<header id="site-header">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="toc-btn" class="hdr-btn desktop-only-ib" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+      <line x1="8" y1="6" x2="21" y2="6"></line>
+      <line x1="8" y1="12" x2="21" y2="12"></line>
+      <line x1="8" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="3" y2="6"></line>
+      <line x1="3" y1="12" x2="3" y2="12"></line>
+      <line x1="3" y1="18" x2="3" y2="18"></line>
+   </svg></button><span class="hdr-links hide-in-mobile"><a href="https://www.linkedin.com/in/demetre-badzgaradze-b49153291/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a><a href="https://github.com/demetrebadzaradze" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path
+      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+   </path>
+</svg></a></span><button id="share-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2">
+      <circle cx="18" cy="5" r="3"></circle>
+      <circle cx="6" cy="12" r="3"></circle>
+      <circle cx="18" cy="19" r="3"></circle>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+   </svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fremote-applications%2f&amp;text=Remote%20Applications" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
+</svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fremote-applications%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Remote%20Applications&amp;body=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fremote-applications%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+   <polyline points="22,6 12,13 2,6"></polyline>
+</svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fremote-applications%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=Remote%20Applications&amp;summary=Remote%20Applications%2c%20by%20Demetre%20Badzgaradze%0a%0aDockerized%20applications%20can%20run%20remotely%20and%20feel%20native%20on%20your%20system.%20By%20combining%20them%20with%20simple%20aliases%2c%20you%20can%20make%20these%20tools%20behave%20like%20local%20apps%20while%20actually%20being%20powered%20from%20the%20cloud.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+   <rect x="2" y="9" width="4" height="12"></rect>
+   <circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Remote Applications&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/posts/remote-applications/&#34;,&#34;Remote Applications, by Demetre Badzgaradze\n\nDockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+   </svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+   </svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">RESUME</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/posts/">Posts</a></li>
+			<li><a href="https://demetrebadzaradze.github.io/Second-Brain/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
+			<header class="post-header">
+				<div class="post-date"><span>Sep 16, 2025</span></div>
+				<h1>Remote Applications</h1>
+			</header>
+			<div class="post-description"><p>Dockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
+   <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+   <line x1="16" y1="8" x2="2" y2="22"></line>
+   <line x1="17.5" y1="15" x2="9" y2="15"></line>
+</svg><a href="#IDONTKNOW" target="_blank">Demetre Badzgaradze</a></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line>
+      <line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+   </svg>785&nbspWords words, 3 Minutes, 34 Seconds</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+   </svg>2025-09-16 00:00 &#43;0000
+[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-git-commit">
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="1.05" y1="12" x2="7" y2="12"></line>
+      <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
+   </svg><a href="https://github.com/demetrebadzaradze93decd1714ecf5825ee07e62fe8c6f2f6dade285" target="_blank" rel="noopener">93decd1</a> @ 2025-09-16]</p></div>
+			<hr class="post-end">
+			<div class="content">
+				 <h2 id="what-are-remote-apps">What Are Remote Apps?<a href="#what-are-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>In the traditional software world, installing an application meant dealing with dependencies, OS differences, or compatibility issues. But modern computing gives us a better option: <strong>remote applications</strong>.</p>
+<p>By &ldquo;remote,&rdquo; I mean apps that are not tied to your local machine but instead run through <strong>Docker containers</strong>. With Docker, you no longer care whether you’re on Ubuntu, Fedora, macOS, or even Windows—if Docker runs there, the app runs there.</p>
+<p>The difference is: instead of thinking of them as &ldquo;local installs,&rdquo; you start treating them as <strong>on-demand tools</strong> that live in the cloud or on a server.</p>
+<p>This approach unlocks <strong>portability</strong>, <strong>reliability</strong>, and <strong>ease of use</strong> across environments.</p>
+<hr>
+<h2 id="a-practical-example-oxker">A Practical Example: Oxker<a href="#a-practical-example-oxker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Take <a href="https://github.com/mrjackwills/oxker">Oxker</a>, a simple TUI that displays Docker containers on your machine. To run it, they provide a one-liner:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro --pull<span class="o">=</span>always mrjackwills/oxker
+</span></span></code></pre></div><p>This is great—it spins up Oxker instantly, always with the latest version. But typing this every time? Not very friendly.</p>
+<p>Instead, imagine simply running:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oxker
+</span></span></code></pre></div><p>That feels like a <strong>native application</strong>, even though it’s actually a <strong>remote container</strong>. Smooth, minimal, and intuitive.</p>
+<hr>
+<h2 id="the-power-of-aliases">The Power of Aliases<a href="#the-power-of-aliases" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>This magic happens through something as simple as a Linux <a href="https://phoenixnap.com/kb/linux-alias-command">alias</a>. By creating an alias that maps <code>oxker</code> to the full <code>docker run</code> command, you get the best of both worlds:</p>
+<ul>
+<li>No installation headaches</li>
+<li>Always up to date (since it pulls the latest container)</li>
+<li>Works anywhere Docker runs</li>
+<li>Feels like a real, local command</li>
+<li></li>
+</ul>
+<p>This is a small trick, but it changes your workflow dramatically. Suddenly, remote containerized apps behave like first-class citizens on your machine.</p>
+<hr>
+<h2 id="how-to-set-up-aliases-for-remote-apps">How to Set Up Aliases for Remote Apps<a href="#how-to-set-up-aliases-for-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Here’s how you can turn any Docker command into a native-feeling app:</p>
+<ol>
+<li><strong>Open your shell configuration file</strong> (depending on what you use):
+<ul>
+<li>For Bash:</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">		nano ~/.bashrc
+</span></span></code></pre></div><pre><code>- For Zsh:
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">		nano ~/.zshrc
+</span></span></code></pre></div><ol start="2">
+<li>
+<p><strong>Add an alias for your Dockerized app.</strong> For Oxker, paste:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">oxker</span><span class="o">=</span><span class="s2">&#34;docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro --pull=always mrjackwills/oxker&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Apply the changes</strong> without restarting:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> ~/.bashrc 
+</span></span><span class="line"><span class="cl"><span class="c1"># or for Zsh </span>
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Run it just like a native app:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oxker
+</span></span></code></pre></div></li>
+</ol>
+<p>That’s it! You’ve created a remote app experience.</p>
+<hr>
+<h2 id="why-this-matters">Why This Matters<a href="#why-this-matters" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Think about the implications:</p>
+<ul>
+<li>
+<p><strong>Lightweight Device Support</strong><br>
+Have a weaker laptop and don&rsquo;t want to download apps No problem. Let a server host the applications, while your device just runs containers from server.</p>
+</li>
+<li>
+<p><strong>No More Setup Hell</strong><br>
+How many times have you wasted hours setting up dev tools or debugging dependencies? With remote apps, you bypass all of that.</p>
+</li>
+<li>
+<p><strong>Collaboration Made Simple</strong><br>
+You don’t even need your own server. Publish the container to Docker Hub, and anyone can run the exact same version instantly. Consistency for teams, zero friction for users.</p>
+</li>
+</ul>
+<p>This is not just about convenience—it’s a <strong>paradigm shift in how we think about software distribution</strong>.</p>
+<hr>
+<h2 id="the-downsides-of-remote-apps">The Downsides of Remote Apps<a href="#the-downsides-of-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>As powerful as remote applications are, they do come with trade-offs worth keeping in mind:</p>
+<ul>
+<li><strong>Performance Overhead</strong><br>
+Running apps in Docker and pulling them on-demand is not as fast as having them installed natively. For heavy tools, this can mean longer startup times.</li>
+<li><strong>Network Dependency</strong><br>
+If your alias depends on pulling images from Docker Hub or another registry, you need a stable internet connection. Offline use is limited unless you cache the images locally.</li>
+<li><strong>Storage Usage</strong><br>
+Each image still takes up disk space after the first pull. Over time, unused containers and images can clutter your system if you don’t prune them.</li>
+<li><strong>Security Considerations</strong><br>
+Running third-party containers always carries some risk. You need to trust the publisher or audit the Dockerfile to ensure the container is safe.</li>
+<li><strong>Learning Curve</strong><br>
+For people new to Docker, the setup can feel unfamiliar compared to a simple <code>apt install</code> or <code>brew install</code>. While aliases simplify usage, the underlying concepts still require some understanding.</li>
+</ul>
+<p>but I&rsquo;m sure there is many use cases for this kind of setup.</p>
+<hr>
+<h2 id="the-future-of-remote-apps">The Future of Remote Apps<a href="#the-future-of-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I believe this should be the standard way we think about applications: <strong>remote, containerized, and alias-driven</strong>.</p>
+<p>Instead of bloating our systems with installs and configs, we can adopt a lightweight, cloud-first approach:</p>
+<ul>
+<li>Define apps as containers</li>
+<li>Publish them for universal access</li>
+<li>Alias them into our local workflow</li>
+</ul>
+<p>The end result? A system where your local machine feels infinite, powered by remote applications.</p>
+<hr>
+<h2 id="final-thoughts">Final Thoughts<a href="#final-thoughts" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Remote applications are not just a technical trick—they represent a <strong>new mindset</strong>:</p>
+<ul>
+<li>Apps that run anywhere</li>
+<li>Apps that are always up-to-date</li>
+<li>Apps that feel local, but are powered remotely</li>
+</ul>
+<p>If you start adopting this approach in your workflow, you’ll notice how much friction disappears. Suddenly, your environment is cleaner, your setup is faster, and your tools are more reliable.</p>
+<p>It’s not just about saving keystrokes. It’s about <strong>building a future where software is portable, accessible, and remote by default.</strong></p>
+
+			</div>
+			
+
+		</article>
+		<aside id="toc">
+			<div class="toc-title">Table of Contents</div>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-are-remote-apps">What Are Remote Apps?</a></li>
+    <li><a href="#a-practical-example-oxker">A Practical Example: Oxker</a></li>
+    <li><a href="#the-power-of-aliases">The Power of Aliases</a></li>
+    <li><a href="#how-to-set-up-aliases-for-remote-apps">How to Set Up Aliases for Remote Apps</a></li>
+    <li><a href="#why-this-matters">Why This Matters</a></li>
+    <li><a href="#the-downsides-of-remote-apps">The Downsides of Remote Apps</a></li>
+    <li><a href="#the-future-of-remote-apps">The Future of Remote Apps</a></li>
+    <li><a href="#final-thoughts">Final Thoughts</a></li>
+  </ul>
+</nav>
+		</aside>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/me/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+   </svg>&nbsp;Newer</span><br><span>RESUME</span>
+			</a>
+			<a class="prev-post" href="https://demetrebadzaradze.github.io/Second-Brain/posts/how-to-change-theme-for-hugo/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+   </svg></span><br><span>How to change theme for Hugo</span>
+			</a>
+		</div>
+		<div id="comments" class="thin"></div>
+	</main>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<p>
+	&copy; 2025 <a href="https://demetrebadzaradze.github.io/Second-Brain/">Second-Brain</a>
+	&#183; The actual content on this site other then code is under CC BY-NC 4.0 licence</p></footer>
+<script async src="https://demetrebadzaradze.github.io/Second-Brain/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://demetrebadzaradze.github.io/Second-Brain/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script></body>
+</html>
