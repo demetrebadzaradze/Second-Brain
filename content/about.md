@@ -1,3 +1,11 @@
+---
+title: About Second-Brain
+description: Everything about this site ↓↓↓
+draft: false
+toc: true
+ShowLastmod: false
+---
+
 ## What is Second Brain
 
 Second brain is a eye opening concept (least for me), Witch underlines the fact that **human brain is for creating ideas not for storing them.** This really makes sence, who knows how many ideas one had but got forgotten in a day. So the solution is to put your newborn ideas somewere accessible, to come back to and that gave born to all of this. 
