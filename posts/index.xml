@@ -6,8 +6,8 @@
 		<description>Recent content in Posts on Second-Brain</description>
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
-		<copyright>The actual content on this site other then code is under [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) licence</copyright>
-		<lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate>
+		<copyright>The actual content on this site other then code is under CC BY-NC 4.0 licence</copyright>
+		<lastBuildDate>Tue, 16 Sep 2025 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -89,6 +89,154 @@
 From creating a personal blog system powered by GitHub Actions to deploying backend optimization APIs,<br>
 I specialize in making things work—efficiently, securely, and with minimal friction.<br>
 Always exploring new technologies and learning by doing.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Remote Applications</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/remote-applications/</link>
+			<pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/remote-applications/</guid>
+			<description><![CDATA[Dockerized applications can run remotely and feel native on your system. By combining them with simple aliases, you can make these tools behave like local apps while actually being powered from the cloud.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="what-are-remote-apps">What Are Remote Apps?<a href="#what-are-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>In the traditional software world, installing an application meant dealing with dependencies, OS differences, or compatibility issues. But modern computing gives us a better option: <strong>remote applications</strong>.</p>
+<p>By &ldquo;remote,&rdquo; I mean apps that are not tied to your local machine but instead run through <strong>Docker containers</strong>. With Docker, you no longer care whether you’re on Ubuntu, Fedora, macOS, or even Windows—if Docker runs there, the app runs there.</p>
+<p>The difference is: instead of thinking of them as &ldquo;local installs,&rdquo; you start treating them as <strong>on-demand tools</strong> that live in the cloud or on a server.</p>
+<p>This approach unlocks <strong>portability</strong>, <strong>reliability</strong>, and <strong>ease of use</strong> across environments.</p>
+<hr>
+<h2 id="a-practical-example-oxker">A Practical Example: Oxker<a href="#a-practical-example-oxker" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Take <a href="https://github.com/mrjackwills/oxker">Oxker</a>, a simple TUI that displays Docker containers on your machine. To run it, they provide a one-liner:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro --pull<span class="o">=</span>always mrjackwills/oxker
+</span></span></code></pre></div><p>This is great—it spins up Oxker instantly, always with the latest version. But typing this every time? Not very friendly.</p>
+<p>Instead, imagine simply running:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oxker
+</span></span></code></pre></div><p>That feels like a <strong>native application</strong>, even though it’s actually a <strong>remote container</strong>. Smooth, minimal, and intuitive.</p>
+<hr>
+<h2 id="the-power-of-aliases">The Power of Aliases<a href="#the-power-of-aliases" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>This magic happens through something as simple as a Linux <a href="https://phoenixnap.com/kb/linux-alias-command">alias</a>. By creating an alias that maps <code>oxker</code> to the full <code>docker run</code> command, you get the best of both worlds:</p>
+<ul>
+<li>No installation headaches</li>
+<li>Always up to date (since it pulls the latest container)</li>
+<li>Works anywhere Docker runs</li>
+<li>Feels like a real, local command</li>
+<li></li>
+</ul>
+<p>This is a small trick, but it changes your workflow dramatically. Suddenly, remote containerized apps behave like first-class citizens on your machine.</p>
+<hr>
+<h2 id="how-to-set-up-aliases-for-remote-apps">How to Set Up Aliases for Remote Apps<a href="#how-to-set-up-aliases-for-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Here’s how you can turn any Docker command into a native-feeling app:</p>
+<ol>
+<li><strong>Open your shell configuration file</strong> (depending on what you use):
+<ul>
+<li>For Bash:</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">		nano ~/.bashrc
+</span></span></code></pre></div><pre><code>- For Zsh:
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">		nano ~/.zshrc
+</span></span></code></pre></div><ol start="2">
+<li>
+<p><strong>Add an alias for your Dockerized app.</strong> For Oxker, paste:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">oxker</span><span class="o">=</span><span class="s2">&#34;docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro --pull=always mrjackwills/oxker&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Apply the changes</strong> without restarting:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> ~/.bashrc 
+</span></span><span class="line"><span class="cl"><span class="c1"># or for Zsh </span>
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Run it just like a native app:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">oxker
+</span></span></code></pre></div></li>
+</ol>
+<p>That’s it! You’ve created a remote app experience.</p>
+<hr>
+<h2 id="why-this-matters">Why This Matters<a href="#why-this-matters" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Think about the implications:</p>
+<ul>
+<li>
+<p><strong>Lightweight Device Support</strong><br>
+Have a weaker laptop and don&rsquo;t want to download apps No problem. Let a server host the applications, while your device just runs containers from server.</p>
+</li>
+<li>
+<p><strong>No More Setup Hell</strong><br>
+How many times have you wasted hours setting up dev tools or debugging dependencies? With remote apps, you bypass all of that.</p>
+</li>
+<li>
+<p><strong>Collaboration Made Simple</strong><br>
+You don’t even need your own server. Publish the container to Docker Hub, and anyone can run the exact same version instantly. Consistency for teams, zero friction for users.</p>
+</li>
+</ul>
+<p>This is not just about convenience—it’s a <strong>paradigm shift in how we think about software distribution</strong>.</p>
+<hr>
+<h2 id="the-downsides-of-remote-apps">The Downsides of Remote Apps<a href="#the-downsides-of-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>As powerful as remote applications are, they do come with trade-offs worth keeping in mind:</p>
+<ul>
+<li><strong>Performance Overhead</strong><br>
+Running apps in Docker and pulling them on-demand is not as fast as having them installed natively. For heavy tools, this can mean longer startup times.</li>
+<li><strong>Network Dependency</strong><br>
+If your alias depends on pulling images from Docker Hub or another registry, you need a stable internet connection. Offline use is limited unless you cache the images locally.</li>
+<li><strong>Storage Usage</strong><br>
+Each image still takes up disk space after the first pull. Over time, unused containers and images can clutter your system if you don’t prune them.</li>
+<li><strong>Security Considerations</strong><br>
+Running third-party containers always carries some risk. You need to trust the publisher or audit the Dockerfile to ensure the container is safe.</li>
+<li><strong>Learning Curve</strong><br>
+For people new to Docker, the setup can feel unfamiliar compared to a simple <code>apt install</code> or <code>brew install</code>. While aliases simplify usage, the underlying concepts still require some understanding.</li>
+</ul>
+<p>but I&rsquo;m sure there is many use cases for this kind of setup.</p>
+<hr>
+<h2 id="the-future-of-remote-apps">The Future of Remote Apps<a href="#the-future-of-remote-apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I believe this should be the standard way we think about applications: <strong>remote, containerized, and alias-driven</strong>.</p>
+<p>Instead of bloating our systems with installs and configs, we can adopt a lightweight, cloud-first approach:</p>
+<ul>
+<li>Define apps as containers</li>
+<li>Publish them for universal access</li>
+<li>Alias them into our local workflow</li>
+</ul>
+<p>The end result? A system where your local machine feels infinite, powered by remote applications.</p>
+<hr>
+<h2 id="final-thoughts">Final Thoughts<a href="#final-thoughts" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Remote applications are not just a technical trick—they represent a <strong>new mindset</strong>:</p>
+<ul>
+<li>Apps that run anywhere</li>
+<li>Apps that are always up-to-date</li>
+<li>Apps that feel local, but are powered remotely</li>
+</ul>
+<p>If you start adopting this approach in your workflow, you’ll notice how much friction disappears. Suddenly, your environment is cleaner, your setup is faster, and your tools are more reliable.</p>
+<p>It’s not just about saving keystrokes. It’s about <strong>building a future where software is portable, accessible, and remote by default.</strong></p>
 ]]></content>
 		</item>
 		
