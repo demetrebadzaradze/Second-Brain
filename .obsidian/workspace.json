@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "367a683448f6f750",
+        "id": "d4265ee8c9b67859",
         "type": "tabs",
         "children": [
           {
-            "id": "18df08573b6abe20",
+            "id": "16962415b3d73cc1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Instaswarm.md",
+                "file": "New Server Setup (Debian).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Instaswarm"
-            }
-          },
-          {
-            "id": "480a8bae59cd57c0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Remote Applications.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "Remote Applications"
+              "title": "New Server Setup (Debian)"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -179,12 +164,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "480a8bae59cd57c0",
+  "active": "16962415b3d73cc1",
   "lastOpenFiles": [
+    "Over-Engineering, oh man....md",
     "Remote Applications.md",
-    "How to change theme for Hugo.md",
-    "Instaswarm.md",
     "Setting up PI-Hole.md",
+    "New Server Setup (Debian).md",
+    "Instaswarm.md",
+    "How to change theme for Hugo.md",
     "Making SSH-Keys.md",
     "Super-Spork.md",
     "Recovering corrupted USB drive.md",
