@@ -6,9 +6,37 @@
     <description>Recent content in Tags on Second-Brain</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <copyright>The actual content on this site other then code is under CC BY-NC 4.0 licence</copyright>
-    <lastBuildDate>Sun, 07 Sep 2025 16:07:04 +0400</lastBuildDate>
+    <copyright>The actual content on this site other than code is under CC BY-NC 4.0 licence</copyright>
+    <lastBuildDate>Sun, 12 Oct 2025 13:22:13 +0000</lastBuildDate>
     <atom:link href="https://demetrebadzaradze.github.io/Second-Brain/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/debian/</link>
+      <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HomeServer</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</link>
+      <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</link>
+      <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LocalCloud</title>
+      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/localcloud/</link>
+      <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/localcloud/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Docker</title>
       <link>https://demetrebadzaradze.github.io/Second-Brain/tags/docker/</link>
@@ -49,27 +77,6 @@
       <link>https://demetrebadzaradze.github.io/Second-Brain/tags/personal/</link>
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/personal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>HomeServer</title>
-      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</link>
-      <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/homeserver/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</link>
-      <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>LocalCloud</title>
-      <link>https://demetrebadzaradze.github.io/Second-Brain/tags/localcloud/</link>
-      <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://demetrebadzaradze.github.io/Second-Brain/tags/localcloud/</guid>
       <description></description>
     </item>
     <item>
