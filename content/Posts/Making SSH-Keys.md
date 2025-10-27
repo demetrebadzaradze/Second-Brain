@@ -26,7 +26,7 @@ ssh-keygen
 ```
 - it will ask for a file name for keys and these must be inside `.ssh` folder. it makes key with default name if input is empty. could use that but naming it better practice.
 - it also will ask for a `passphrase` witch is an extra layer of protection and is recommended to set but could be done with this empty too. 
-- this command than saves one files with he name you entered that's private key and one with `.pub` extension the public key.
+- than saves one files with the name you entered that's private key and one with `.pub` extension the public key.
 - and output should look like this:
 	```bash
 	C:\Users\user>ssh-keygen
@@ -51,6 +51,27 @@ ssh-keygen
 	|     .    o *e$@+|
 	+----[SHA256]-----+
 	```
+
+ ### SSH Config file
+In order to use this named file, we must set up the `config` file to declare this use case, because SSH skips non-default named files, and if you have many or just one named, it becomes necessary. 
+Make a file named `config` in the SSH directory, `C:\Users\user\.ssh` by default, and then fill in like this:
+```config
+Host <name of the host>
+    HostName <ip addres or a domain name of the host>
+    User <username>
+    IdentityFile <path the private key>
+```
+example:
+```config
+Host atlas
+    HostName 192.168.1.79
+    User atlas
+    IdentityFile C:\Users\TG_3W3p\.ssh\atlas_ssh_key
+```
+and i can login with `Host`, like this:
+```bash
+ssh atlas
+```
 
 ## Share public key to server
 The server should have a `~/.ssh/authorized_keys` file (if not make it) and your public key (the contents of the generated file that has .pub extension) should be copied there as new line.
