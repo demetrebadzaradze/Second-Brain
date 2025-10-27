@@ -77,6 +77,15 @@ to test if this works you just try  to connect to server:
 ssh <username>@<server ip or domain>
 ```
 and it should not ask for password.
+If that failed check ssh config `/etc/ssh/sshd_config` and mae sure these lines are present and uncommmented:
+```config
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+```
+then restart SSH service:
+```bash
+sudo systemctl restart ssh
+```
 
 ## Disable password login
 at this point if you just want to do an auto login this is not required, as you see in testing, but if you want users to only connect with keys you add as an administrator and make server more secure disabling password based login.
