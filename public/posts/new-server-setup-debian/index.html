@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index, follow"><meta name="author" content="Demetre Badzgaradze">
-<meta name="description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,">
+<meta name="description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole">
 <link rel="author" type="text/plain" href="/Second-Brain/humans.txt">
 <link rel="apple-touch-icon" sizes="180x180" href="/Second-Brain/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Second-Brain/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/Second-Brain/favicon-16x16.png">
@@ -16,19 +16,19 @@
 <link rel="mask-icon" href="/Second-Brain/safari-pinned-tab.svg" color="#494f5c">
 
   <meta itemprop="name" content="New Server Setup (Debian)">
-  <meta itemprop="description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,">
+  <meta itemprop="description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole">
   <meta itemprop="datePublished" content="2025-10-05T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-12T13:22:13+00:00">
+  <meta itemprop="dateModified" content="2025-11-11T01:53:20+04:00">
   <meta itemprop="wordCount" content="1471">
   <meta itemprop="keywords" content="HomeServer,LocalCloud,Debian,Linux"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/">
   <meta property="og:site_name" content="Second-Brain">
   <meta property="og:title" content="New Server Setup (Debian)">
-  <meta property="og:description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,">
+  <meta property="og:description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-10-05T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-10-12T13:22:13+00:00">
+    <meta property="article:modified_time" content="2025-11-11T01:53:20+04:00">
     <meta property="article:tag" content="HomeServer">
     <meta property="article:tag" content="LocalCloud">
     <meta property="article:tag" content="Debian">
@@ -36,7 +36,7 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="New Server Setup (Debian)">
-  <meta name="twitter:description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,">
+  <meta name="twitter:description" content="Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole">
 
 <script type="application/ld+json">
 {
@@ -44,13 +44,13 @@
     "@type": "BlogPosting",
     "headline": "New Server Setup (Debian)",
     "name": "New Server Setup (Debian)",
-    "description": "Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,",
+    "description": "Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole",
     "keywords": ["HomeServer", "LocalCloud", "Debian", "linux"],
-    "articleBody": "Plan plan is extremally simple:\nInstall Debian on server. Install the media Drive. Install Nextcloud and monitoring/displaying software to make it all pretty. Debian Install This step i thought would take somewhere around a hour but i was stuck here for 3 days. the thing was that i didn’t had beefy enough USB drive, but as always i would realize that far into the project, after i would try every possible configuration starting from Rufus all the way to the custom made ISOs, but nothing worked other than most bizarre solution:\nInstall Arch(BTW) on a USB drive since it is so lite. Get Arch running. Install the media SSD. mount the internal storage, since live USB has limited storage. Install and flash Debian ISO in media Drive. Boot from that drive and install Debian. and i had that working just fine, other than some packages straight up not working. Configuration Coming from Ubuntu server Debian is not as defaulted in terms of configurations, even the aliases are commented out so there was a a plenty things to setup way i like it.\nsudo and su Also no sudo by default, witch was surprising until i found out the reason, that sudo is just su do, so telling the superuser to do one thing and for authorization it uses the current users password. so using su is better for security and I’m getting along with it quite nicely.\n.bashrc Also I wanted this server to resemble the Debian setup that i have in termux on my phone so kind of like a station so had to display some ASCII art,fastfetch and micro instead of nano. Custom PS1, but nothing fancy just red colored root for super user and green for others.\nSoftware Install Monitoring/Always On Display This new top child called btop looks cool and is actually useful and feature dense and just look at it: this one is not mine though, but i will be experimenting with it and the themes look so good too.\nfor monitoring i will be using btop looks nice and is displaying some useful general info that i need.\nNextcloud setup Easiest way to run Nextcloud is with container, but since I’m using btop i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the official manual witch uses LAMP Stackhttps://www.ibm.com/think/topics/lamp-stack.\nPHP Install Recommended PHP version, for now, is v8.3 and in Debian repos there is only the newest version that can be installed like this:\napt install -y php libapache2-mod-php php-mysql php-mbstring so for specific version, i added sury.org repository: first install tools, get the sign and add repo:\napt install -y apt-transport-https lsb-release ca-certificates curl curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg echo \"deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main\" | tee /etc/apt/sources.list.d/php.list update apt repos\napt update and now install specific versions\napt install php8.3 libapache2-mod-php8.3 php8.3-mysql php8.3-mbstring test PHP First check the version to see if its even installed:\nphp -v Then add new php file in apache directory with your editor of choice:\nmicro /var/www/html/test.php and add test PHP code like:\n\u003c?php phpinfo(); ?\u003e save the changes. then restart apache2\nsystemctl restart apache2 and from browser navigate to the newly added page http://",
+    "articleBody": "Plan plan is extremally simple:\nInstall Debian on server. Install the media Drive. Install Nextcloud and monitoring/displaying software to make it all pretty. Debian Install This step i thought would take somewhere around a hour but i was stuck here for 3 days. the thing was that i didn’t had beefy enough USB drive, but as always i would realize that far into the project, after i would try every possible configuration starting from Rufus all the way to the custom made ISOs, but nothing worked other than most bizarre solution:\nInstall Arch(BTW) on a USB drive since it is so lite. Get Arch running. Install the media SSD. mount the internal storage, since live USB has limited storage. Install and flash Debian ISO in media Drive. Boot from that drive and install Debian. and i had that working just fine, other than some packages straight up not working. Configuration Coming from Ubuntu server Debian is not as defaulted in terms of configurations, even the aliases are commented out so there was a a plenty things to setup way i like it.\nsudo and su Also no sudo by default, witch was surprising until i found out the reason, that sudo is just su do, so telling the superuser to do one thing and for authorization it uses the current users password. so using su is better for security and I’m getting along with it quite nicely.\n.bashrc Also I wanted this server to resemble the Debian setup that i have in termux on my phone so kind of like a station so had to display some ASCII art,fastfetch and micro instead of nano. Custom PS1, but nothing fancy just red colored root for super user and green for others.\nSoftware Install Monitoring/Always On Display This new top child called btop looks cool and is actually useful and feature dense and just look at it: this one is not mine though, but i will be experimenting with it and the themes look so good too.\nfor monitoring i will be using btop looks nice and is displaying some useful general info that i need.\nNextcloud setup Easiest way to run Nextcloud is with container, but since I’m using btop i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the official manual witch uses LAMP Stack.\nPHP Install Recommended PHP version, for now, is v8.3 and in Debian repos there is only the newest version that can be installed like this:\napt install -y php libapache2-mod-php php-mysql php-mbstring so for specific version, i added sury.org repository: first install tools, get the sign and add repo:\napt install -y apt-transport-https lsb-release ca-certificates curl curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg echo \"deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main\" | tee /etc/apt/sources.list.d/php.list update apt repos\napt update and now install specific versions\napt install php8.3 libapache2-mod-php8.3 php8.3-mysql php8.3-mbstring test PHP First check the version to see if its even installed:\nphp -v Then add new php file in apache directory with your editor of choice:\nmicro /var/www/html/test.php and add test PHP code like:\n\u003c?php phpinfo(); ?\u003e save the changes. then restart apache2\nsystemctl restart apache2 and from browser navigate to the newly added page http://",
     "wordCount" : "1471",
     "inLanguage": "en",
     "datePublished": "2025-10-05T00:00:00Z",
-    "dateModified": "2025-10-12T13:22:13Z",
+    "dateModified": "2025-11-11T01:53:20+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -136,7 +136,7 @@
 </svg></a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fnew-server-setup-debian%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=New%20Server%20Setup%20%28Debian%29&amp;summary=New%20Server%20Setup%20%28Debian%29%2c%20by%20Demetre%20Badzgaradze%0a%0aGiving%20second%20life%20to%20another%20old%20laptop.%20This%20one%20has%20an%20SATA%20port%20with%20I%20populated%20with%20256GB%20SSD%20also%20has%20an%20intel%20atom%20x5-E8000%20CPU%20%40%201.04GHz%204%20cores%20and%204GB%20of%20RAM.%20Dedicated%20for%20running%20Nextcloud%2c%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2fposts%2fnew-server-setup-debian%2f&amp;source=https%3a%2f%2fdemetrebadzaradze.github.io%2fSecond-Brain%2f&amp;title=New%20Server%20Setup%20%28Debian%29&amp;summary=New%20Server%20Setup%20%28Debian%29%2c%20by%20Demetre%20Badzgaradze%0a%0aGiving%20second%20life%20to%20another%20old%20laptop.%20This%20one%20has%20an%20SATA%20port%20with%20I%20populated%20with%20256GB%20SSD%20also%20has%20an%20intel%20atom%20x5-E8000%20CPU%20%40%201.04GHz%204%20cores%20and%204GB%20of%20RAM.%20Dedicated%20for%20running%20Nextcloud%20and%20maybe%20pihole%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
    <rect x="2" y="9" width="4" height="12"></rect>
@@ -144,7 +144,7 @@
 </svg></a>
         </li>
         <li>
-            <a href="#" onclick="linkShare(&#34;New Server Setup (Debian)&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/&#34;,&#34;New Server Setup (Debian), by Demetre Badzgaradze\n\nGiving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            <a href="#" onclick="linkShare(&#34;New Server Setup (Debian)&#34;,&#34;https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/&#34;,&#34;New Server Setup (Debian), by Demetre Badzgaradze\n\nGiving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -174,7 +174,7 @@
 				<div class="post-date"><span>Oct 5, 2025</span></div>
 				<h1>New Server Setup (Debian)</h1>
 			</header>
-			<div class="post-description"><p>Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+			<div class="post-description"><p>Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
    <line x1="16" y1="8" x2="2" y2="22"></line>
@@ -205,7 +205,7 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradze1061a6254c731678e1590221c2fc83ad6752c1c7" target="_blank" rel="noopener">1061a62</a> @ 2025-10-12]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradzec8e0c945eb558bb013815e7a9de34e3291800fd5" target="_blank" rel="noopener">c8e0c94</a> @ 2025-11-10]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -274,7 +274,7 @@ this one is not mine though, but i will be experimenting with it and the themes 
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>Easiest way to run Nextcloud is with container, but since I&rsquo;m using <code>btop</code> i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> witch uses <a href="">LAMP Stack</a><a href="https://www.ibm.com/think/topics/lamp-stack">https://www.ibm.com/think/topics/lamp-stack</a>.</p>
+<p>Easiest way to run Nextcloud is with container, but since I&rsquo;m using <code>btop</code> i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> witch uses <a href="https://www.ibm.com/think/topics/lamp-stack">LAMP Stack</a>.</p>
 <h4 id="php-install">PHP Install<a href="#php-install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>

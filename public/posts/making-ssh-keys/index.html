@@ -18,8 +18,8 @@
   <meta itemprop="name" content="Making SSH-Keys">
   <meta itemprop="description" content="here i will be setting up ssh keys for my server bc im tired of entering my password aggain and aggain and aggain and it is more secure.">
   <meta itemprop="datePublished" content="2025-08-16T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-09-01T19:48:15+00:00">
-  <meta itemprop="wordCount" content="693"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/making-ssh-keys/">
+  <meta itemprop="dateModified" content="2025-10-27T20:50:52+04:00">
+  <meta itemprop="wordCount" content="818"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/making-ssh-keys/">
   <meta property="og:site_name" content="Second-Brain">
   <meta property="og:title" content="Making SSH-Keys">
   <meta property="og:description" content="here i will be setting up ssh keys for my server bc im tired of entering my password aggain and aggain and aggain and it is more secure.">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-08-16T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-09-01T19:48:15+00:00">
+    <meta property="article:modified_time" content="2025-10-27T20:50:52+04:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Making SSH-Keys">
@@ -41,11 +41,11 @@
     "name": "Making SSH-Keys",
     "description": "here i will be setting up ssh keys for my server bc im tired of entering my password aggain and aggain and aggain and it is more secure.",
     "keywords": [],
-    "articleBody": "What are SSH Keys normally if one needs to connect to remote server/machine they would use secure shell this is a go to way it is secure as the name implies but this way is not protected against brute force attacks. SSH keys does something different to get you connected, it makes keys one for client (private) and one for server (public). once you share the public one to the server, it sends ‘puzzle’ based on that public key to you and if your private key can solve that than you are authenticated. so it is basically a if server and client have valid key pair than it lets you in.\nPlan we need a key pair (public and private) share public kay to the server test it out optionally disable password login Making key pair NOTE: SSH is installed on Windows mac OS and most Linux’s by default and it will be needed off course.\nkey gen is is pretty simple run:\nssh-keygen it will ask for a file name for keys and these must be inside .ssh folder. it makes key with default name if input is empty. could use that but naming it better practice. it also will ask for a passphrase witch is an extra layer of protection and is recommended to set but could be done with this empty too. this command than saves one files with he name you entered that’s private key and one with .pub extension the public key. and output should look like this: C:\\Users\\user\u003essh-keygen Generating public/private ed25519 key pair. Enter file in which to save the key (C:\\Users\\user/.ssh/id_ed25519): test Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in test Your public key has been saved in test.pub The key fingerprint is: SHA256:********/******+****+****/*/************ user@host The keys randomart image is: +--[ED25519 256]--+ | + | | . E | | . . | | . . o .| | = S + ..| | = + o o +.| | . o = BoTm | | . + X +BX+| | . o *e$@+| +----[SHA256]-----+ Share public key to server The server should have a ~/.ssh/authorized_keys file (if not make it) and your public key (the contents of the generated file that has .pub extension) should be copied there as new line.\nAll of this is is easily done with this command:\nssh-copy-id -i ",
-    "wordCount" : "693",
+    "articleBody": "What are SSH Keys normally if one needs to connect to remote server/machine they would use secure shell this is a go to way it is secure as the name implies but this way is not protected against brute force attacks. SSH keys does something different to get you connected, it makes keys one for client (private) and one for server (public). once you share the public one to the server, it sends ‘puzzle’ based on that public key to you and if your private key can solve that than you are authenticated. so it is basically a if server and client have valid key pair than it lets you in.\nPlan we need a key pair (public and private) share public kay to the server test it out optionally disable password login Making key pair NOTE: SSH is installed on Windows mac OS and most Linux’s by default and it will be needed off course.\nkey gen is is pretty simple run:\nssh-keygen it will ask for a file name for keys and these must be inside .ssh folder. it makes key with default name if input is empty. could use that but naming it better practice. it also will ask for a passphrase witch is an extra layer of protection and is recommended to set but could be done with this empty too. than saves one files with the name you entered that’s private key and one with .pub extension the public key. and output should look like this: C:\\Users\\user\u003essh-keygen Generating public/private ed25519 key pair. Enter file in which to save the key (C:\\Users\\user/.ssh/id_ed25519): test Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in test Your public key has been saved in test.pub The key fingerprint is: SHA256:********/******+****+****/*/************ user@host The keys randomart image is: +--[ED25519 256]--+ | + | | . E | | . . | | . . o .| | = S + ..| | = + o o +.| | . o = BoTm | | . + X +BX+| | . o *e$@+| +----[SHA256]-----+ SSH Config file In order to use this named file, we must set up the config file to declare this use case, because SSH skips non-default named files, and if you have many or just one named, it becomes necessary. Make a file named config in the SSH directory, C:\\Users\\user\\.ssh by default, and then fill in like this:\nHost HostName User IdentityFile example:\nHost atlas HostName 192.168.1.79 User atlas IdentityFile C:\\Users\\TG_3W3p\\.ssh\\atlas_ssh_key and i can login with Host, like this:\nssh atlas Share public key to server The server should have a ~/.ssh/authorized_keys file (if not make it) and your public key (the contents of the generated file that has .pub extension) should be copied there as new line.\nAll of this is is easily done with this command:\nssh-copy-id -i ",
+    "wordCount" : "818",
     "inLanguage": "en",
     "datePublished": "2025-08-16T00:00:00Z",
-    "dateModified": "2025-09-01T19:48:15Z",
+    "dateModified": "2025-10-27T20:50:52+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -182,7 +182,7 @@
       <line x1="16" y1="13" x2="8" y2="13"></line>
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
-   </svg>693&nbspWords words, 3 Minutes, 9 Seconds</p>
+   </svg>818&nbspWords words, 3 Minutes, 43 Seconds</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -195,7 +195,7 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradzee67285ecc11c9a3c4602a5eb13ab2bd7eb73b75d" target="_blank" rel="noopener">e67285e</a> @ 2025-09-01]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradze77765beb07e8a4b7ba8bd1915b5f651f1280d442" target="_blank" rel="noopener">77765be</a> @ 2025-10-27]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <h2 id="what-are-ssh-keys">What are SSH Keys<a href="#what-are-ssh-keys" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -227,7 +227,7 @@
 </span></span></code></pre></div><ul>
 <li>it will ask for a file name for keys and these must be inside <code>.ssh</code> folder. it makes key with default name if input is empty. could use that but naming it better practice.</li>
 <li>it also will ask for a <code>passphrase</code> witch is an extra layer of protection and is recommended to set but could be done with this empty too.</li>
-<li>this command than saves one files with he name you entered that&rsquo;s private key and one with <code>.pub</code> extension the public key.</li>
+<li>than saves one files with the name you entered that&rsquo;s private key and one with <code>.pub</code> extension the public key.</li>
 <li>and output should look like this:
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\u</span>ser&gt;ssh-keygen
 </span></span><span class="line"><span class="cl">Generating public/private ed25519 key pair.
@@ -252,7 +252,25 @@
 </span></span><span class="line"><span class="cl">+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
 </span></span></code></pre></div></li>
 </ul>
-<h2 id="share-public-key-to-server">Share public key to server<a href="#share-public-key-to-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+<h3 id="ssh-config-file">SSH Config file<a href="#ssh-config-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>In order to use this named file, we must set up the <code>config</code> file to declare this use case, because SSH skips non-default named files, and if you have many or just one named, it becomes necessary.
+Make a file named <code>config</code> in the SSH directory, <code>C:\Users\user\.ssh</code> by default, and then fill in like this:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">Host &lt;name of the host&gt;
+    HostName &lt;ip addres or a domain name of the host&gt;
+    User &lt;username&gt;
+    IdentityFile &lt;path the private key&gt;
+</code></pre><p>example:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">Host atlas
+    HostName 192.168.1.79
+    User atlas
+    IdentityFile C:\Users\TG_3W3p\.ssh\atlas_ssh_key
+</code></pre><p>and i can login with <code>Host</code>, like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh atlas
+</span></span></code></pre></div><h2 id="share-public-key-to-server">Share public key to server<a href="#share-public-key-to-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -272,8 +290,13 @@
    </svg></a></h3>
 <p>to test if this works you just try  to connect to server:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;username&gt;@&lt;server ip or domain&gt;
-</span></span></code></pre></div><p>and it should not ask for password.</p>
-<h2 id="disable-password-login">Disable password login<a href="#disable-password-login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+</span></span></code></pre></div><p>and it should not ask for password.
+If that failed check ssh config <code>/etc/ssh/sshd_config</code> and mae sure these lines are present and uncommmented:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+</code></pre><p>then restart SSH service:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart ssh
+</span></span></code></pre></div><h2 id="disable-password-login">Disable password login<a href="#disable-password-login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -305,7 +328,11 @@ so appley ones that you want.</li>
   <ul>
     <li><a href="#what-are-ssh-keys">What are SSH Keys</a></li>
     <li><a href="#plan">Plan</a></li>
-    <li><a href="#making-key-pair">Making key pair</a></li>
+    <li><a href="#making-key-pair">Making key pair</a>
+      <ul>
+        <li><a href="#ssh-config-file">SSH Config file</a></li>
+      </ul>
+    </li>
     <li><a href="#share-public-key-to-server">Share public key to server</a>
       <ul>
         <li><a href="#testing">Testing</a></li>
