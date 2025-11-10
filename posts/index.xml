@@ -96,7 +96,7 @@ Always exploring new technologies and learning by doing.</p>
 			<title>New Server Setup (Debian)</title>
 			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/</link>
 			<pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/</guid>
-			<description><![CDATA[Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+			<description><![CDATA[Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -162,7 +162,7 @@ this one is not mine though, but i will be experimenting with it and the themes 
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>Easiest way to run Nextcloud is with container, but since I&rsquo;m using <code>btop</code> i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> witch uses <a href="">LAMP Stack</a><a href="https://www.ibm.com/think/topics/lamp-stack">https://www.ibm.com/think/topics/lamp-stack</a>.</p>
+<p>Easiest way to run Nextcloud is with container, but since I&rsquo;m using <code>btop</code> i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> witch uses <a href="https://www.ibm.com/think/topics/lamp-stack">LAMP Stack</a>.</p>
 <h4 id="php-install">PHP Install<a href="#php-install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -836,7 +836,7 @@ Each router is different but generally its under <code>Advanced &gt; IP Adrresin
 </span></span></code></pre></div><ul>
 <li>it will ask for a file name for keys and these must be inside <code>.ssh</code> folder. it makes key with default name if input is empty. could use that but naming it better practice.</li>
 <li>it also will ask for a <code>passphrase</code> witch is an extra layer of protection and is recommended to set but could be done with this empty too.</li>
-<li>this command than saves one files with he name you entered that&rsquo;s private key and one with <code>.pub</code> extension the public key.</li>
+<li>than saves one files with the name you entered that&rsquo;s private key and one with <code>.pub</code> extension the public key.</li>
 <li>and output should look like this:
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\u</span>ser&gt;ssh-keygen
 </span></span><span class="line"><span class="cl">Generating public/private ed25519 key pair.
@@ -861,7 +861,25 @@ Each router is different but generally its under <code>Advanced &gt; IP Adrresin
 </span></span><span class="line"><span class="cl">+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
 </span></span></code></pre></div></li>
 </ul>
-<h2 id="share-public-key-to-server">Share public key to server<a href="#share-public-key-to-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+<h3 id="ssh-config-file">SSH Config file<a href="#ssh-config-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>In order to use this named file, we must set up the <code>config</code> file to declare this use case, because SSH skips non-default named files, and if you have many or just one named, it becomes necessary.
+Make a file named <code>config</code> in the SSH directory, <code>C:\Users\user\.ssh</code> by default, and then fill in like this:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">Host &lt;name of the host&gt;
+    HostName &lt;ip addres or a domain name of the host&gt;
+    User &lt;username&gt;
+    IdentityFile &lt;path the private key&gt;
+</code></pre><p>example:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">Host atlas
+    HostName 192.168.1.79
+    User atlas
+    IdentityFile C:\Users\TG_3W3p\.ssh\atlas_ssh_key
+</code></pre><p>and i can login with <code>Host</code>, like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh atlas
+</span></span></code></pre></div><h2 id="share-public-key-to-server">Share public key to server<a href="#share-public-key-to-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -881,8 +899,13 @@ Each router is different but generally its under <code>Advanced &gt; IP Adrresin
    </svg></a></h3>
 <p>to test if this works you just try  to connect to server:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;username&gt;@&lt;server ip or domain&gt;
-</span></span></code></pre></div><p>and it should not ask for password.</p>
-<h2 id="disable-password-login">Disable password login<a href="#disable-password-login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+</span></span></code></pre></div><p>and it should not ask for password.
+If that failed check ssh config <code>/etc/ssh/sshd_config</code> and mae sure these lines are present and uncommmented:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+</code></pre><p>then restart SSH service:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart ssh
+</span></span></code></pre></div><h2 id="disable-password-login">Disable password login<a href="#disable-password-login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
