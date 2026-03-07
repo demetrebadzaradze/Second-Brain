@@ -1,6 +1,6 @@
 ---
 title: New Server Setup (Debian)
-description: Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole
+description: Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,
 date: 2025-10-05
 draft: false
 toc: true
@@ -51,7 +51,7 @@ for monitoring i will be using `btop` looks nice and is displaying some useful g
 
 
 ### Nextcloud setup
-Easiest way to run Nextcloud is with container, but since I'm using `btop` i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the [official manual](https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#) witch uses [LAMP Stack](https://www.ibm.com/think/topics/lamp-stack).
+Easiest way to run Nextcloud is with container, but since I'm using `btop` i want to monitor everything separately and not as one docker program for example, so i will be instaldling it manually, following the [official manual](https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#) witch uses [LAMP Stack]()https://www.ibm.com/think/topics/lamp-stack.
 
 #### PHP Install
 Recommended PHP version, for now, is `v8.3` and in Debian repos there is only the newest version that can be installed like this:
