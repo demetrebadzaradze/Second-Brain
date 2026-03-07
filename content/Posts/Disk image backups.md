@@ -8,7 +8,7 @@ ShowLastmod: true
 ---
 ## Plan
 Here how simple **backup** works:
-- Make raw disk image containing exact bit-by-bit copy of the physical drive.
+- Make raw `disk image` containing exact bit-by-bit copy of the physical drive.
 - Compress it for better storage.
 
 When it comes to **restoring** this data I will just:
@@ -26,7 +26,7 @@ here `sdx` is the  name of the device. `lsblk` command can be used to list stora
 
 ## Compress disk image
 Usually this `.img` file takes up as much storage as the devices storage amount. So compressing it is a good Idea. 
-There are lot of compression algorithms and one you chouse may vary depending on what king of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like `xz` would not do a lot, other than take a lot longer.  I found that `gzip` is the  best middle of the ground option. It had been the standard for Linux for decades at this point.
+There are lot of compression algorithms and one you choose may vary depending on what kind of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like `xz` would not do a lot, other than take a lot longer.  I found that `gzip` is the  best middle of the ground option. It had been the standard for Linux for decades at this point.
 So here is how compression with `gzip` goes:
 ```bash
 gzip random_sdcard_backup.img
