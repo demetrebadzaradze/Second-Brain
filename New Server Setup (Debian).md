@@ -51,7 +51,7 @@ for monitoring i will be using `btop` looks nice and is displaying some useful g
 
 
 ### Nextcloud setup
-Easiest way to run Nextcloud is with container, but since I'm using `btop` i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the [official manual](https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#) witch uses [LAMP Stack]()https://www.ibm.com/think/topics/lamp-stack.
+Easiest way to run Nextcloud is with container, but since I'm using `btop` i want to monitor everything separately and not as one docker program for example, so i will be instaldling it manually, following the [official manual](https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#) witch uses [LAMP Stack]()https://www.ibm.com/think/topics/lamp-stack.
 
 #### PHP Install
 Recommended PHP version, for now, is `v8.3` and in Debian repos there is only the newest version that can be installed like this:
