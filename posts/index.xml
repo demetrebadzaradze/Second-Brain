@@ -7,7 +7,7 @@
 		<generator>Hugo -- 0.139.4</generator>
 		<language>en-us</language>
 		<copyright>The actual content on this site other than code is under CC BY-NC 4.0 licence</copyright>
-		<lastBuildDate>Sun, 05 Oct 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
 		<atom:link href="https://demetrebadzaradze.github.io/Second-Brain/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		
@@ -93,10 +93,154 @@ Always exploring new technologies and learning by doing.</p>
 		</item>
 		
 		<item>
+			<title>Disk images</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/disk-image-backups/</link>
+			<pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/disk-image-backups/</guid>
+			<description><![CDATA[Recently I found myself working with SD cards and thumb drives more often than usual. Reformatting and data recovery and all sorts of related things. Here I will explain how I backup data from storage devices.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Here how simple <strong>backup</strong> works:</p>
+<ul>
+<li>Make raw disk image containing exact bit-by-bit copy of the physical drive.</li>
+<li>Compress it for better storage.</li>
+</ul>
+<p>When it comes to <strong>restoring</strong> this data I will just:</p>
+<ul>
+<li>Decompress the <code>dick image</code>.</li>
+<li>Write it to the drive.</li>
+</ul>
+<p>Also, I must mention that, You should not always write to disk. instead you could mount the <code>disc image</code> as a loop device.</p>
+<h2 id="make-raw-disk-image">Make raw disk image<a href="#make-raw-disk-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>this is commonly done with <code>dd</code> command on Linux.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/dev/sdx <span class="nv">of</span><span class="o">=</span>random_sdcard_backup.img <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><p>here <code>sdx</code> is the  name of the device. <code>lsblk</code> command can be used to list storage devices and their information (e.g. name).</p>
+<h2 id="compress-disk-image">Compress disk image<a href="#compress-disk-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Usually this <code>.img</code> file takes up as much storage as the devices storage amount. So compressing it is a good Idea.
+There are lot of compression algorithms and one you chouse may vary depending on what king of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like <code>xz</code> would not do a lot, other than take a lot longer.  I found that <code>gzip</code> is the  best middle of the ground option. It had been the standard for Linux for decades at this point.
+So here is how compression with <code>gzip</code> goes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gzip random_sdcard_backup.img
+</span></span></code></pre></div><p>Here we could use <code>-k</code> for the option for keeping the original file. Also <code>-1, --fast</code> to compress faster and <code>-9, --best</code> to compress better.</p>
+<h2 id="decompress-disk-image">Decompress disk image<a href="#decompress-disk-image" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Decompressing is similar we just :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gunzip random_sdcard_backup.img.gz
+</span></span></code></pre></div><p><code>-k</code> can again be used to keep the input file.</p>
+<p>This can also be  done with  <code>gzip</code> and <code>-d</code> option.</p>
+<h2 id="write-to-disk">Write to disk<a href="#write-to-disk" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Now this is the actual writing to disk part and it is done with <code>dd</code> command, like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>random_sdcard_backup.img <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
+</span></span></code></pre></div><p>Make sure the device path is correct.</p>
+<p><code>.img</code> can also be mounted as a loop device like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -o loop random_sdcard_backup.img /mnt/sd-loop
+</span></span></code></pre></div><p>make sure destination path exists.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>New Terraria server</title>
+			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/new-terraria-server/</link>
+			<pubDate>Thu, 04 Dec 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/new-terraria-server/</guid>
+			<description><![CDATA[Updating existing Terraria server from vanilla containerized server (not even using the compose file) to more professional server using `TShock`, open source software for more control over the server.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="intro">Intro<a href="#intro" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>I already had a <a href="https://demetrebadzaradze.github.io/Second-Brain/posts/host-terraria-server-on-linux-server/">Terraria server</a> set up that I used for a while. But once I came back, I saw a lot of flaws with my previous setup, mainly performance, and not enough customization. So I searched and found this project called <a href="https://github.com/Pryaxis/TShock/">TShock.</a> It is great, and in short, it tweaks a lot of things that are public in the Terraria source code. It also makes a lot of things much better like world saving, administration and it is structurally better than junk I had before.</p>
+<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Plan is to have a <strong>TShock</strong> powered terraria server as a container, make it easily runnable and also migrate to it.</p>
+<h2 id="docker-compose-set-up">Docker compose set-up<a href="#docker-compose-set-up" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>This time i will  be using <code>docker compose</code>, since it is easy to configure one <code>.yml</code> file once and than just compose it up and down, rather than figuring out want environment variable need to be based in a docker run command, every time I start the server. Plus this way I can make server start automatically after boot.</p>
+<p>Here is what the <code>compose.yml</code> file looks like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">terraria</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">ghcr.io/pryaxis/tshock:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">terraria-test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;./tshock/:/tshock&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;./worlds:/worlds&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;./plugins:/plugins&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;/etc/localtime:/etc/localtime:ro&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7777:7777&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#    command: -world /worlds/&lt;world name&gt;.wld</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;no&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">stop_grace_period</span><span class="p">:</span><span class="w"> </span><span class="l">60s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p><code>restart</code> can be set to <code>unless-stopped</code> so it starts on boot.</p>
+<blockquote>
+<p><strong>NOTE:</strong> <code>command</code> option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing <code>&lt;</code>, <code>&gt;</code> and content in the middle).</p>
+</blockquote>
+<h2 id="running-the-server">Running the server<a href="#running-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>Now this can be ran in two ways.</p>
+<ol>
+<li>First is the interactive way with this:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run terraria
+</span></span></code></pre></div><blockquote>
+<p><strong>NOTE:</strong> Here <code>terraria</code> is the name of the service that is defined in the <code>.yml</code> file. So replace it accordingly.</p>
+</blockquote>
+<ol start="2">
+<li>And none interactive way with:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up
+</span></span></code></pre></div><p>This just gives read only logs of the container. You can also run this in detached mode with <code>-d</code> option. This way is simpler and preferred if you are not going to use any commands on not interact with the program, it is great for just running it.</p>
+<h3 id="first-run">First run<a href="#first-run" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>Upon first boot, if you don&rsquo;t have the world created and entered in the  <code>.yml</code>, you will have to create the world. This is an interactive process so run with <code>run</code> command instead of <code>up</code> and follow the world configuration steps.</p>
+<h3 id="after-first-run">After first run<a href="#after-first-run" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h3>
+<p>After initial run world should be created in the appropriate directory (<code>./worlds</code>, on host, in this case) with the name you chouse, as a <code>.wld</code> file. Then uncomment the the <code>command</code> option in <code>.yml</code> file and configure whatever you wish. And finally run it as you wish.</p>
+<h2 id="migrating-from-old-set-up-to-tshock">Migrating from old set-up to TShock<a href="#migrating-from-old-set-up-to-tshock" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+      <line x1="8" y1="12" x2="16" y2="12"></line>
+   </svg></a></h2>
+<p>All we need is a <code>.wld</code> file from the old set-up. Place that into <code>./worlds</code> directory (optional, since you can just mount the old path for <code>/worlds</code> directory, but clean), uncomment <code>command</code> option in the <code>.yml</code> and  input the appropriate path to this world.</p>
+<p>You can then follow the TShock guidance in the chat and finish the setup and then configure the server as you wish.</p>
+]]></content>
+		</item>
+		
+		<item>
 			<title>New Server Setup (Debian)</title>
 			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/</link>
 			<pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/</guid>
-			<description><![CDATA[Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud and maybe pihole]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+			<description><![CDATA[Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -162,7 +306,7 @@ this one is not mine though, but i will be experimenting with it and the themes 
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>Easiest way to run Nextcloud is with container, but since I&rsquo;m using <code>btop</code> i want to monitor everything separately and not as one docker program for example, so i will be installing it manually, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> witch uses <a href="https://www.ibm.com/think/topics/lamp-stack">LAMP Stack</a>.</p>
+<p>Easiest way to run Nextcloud is with container, but since I&rsquo;m using <code>btop</code> i want to monitor everything separately and not as one docker program for example, so i will be instaldling it manually, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> witch uses <a href="">LAMP Stack</a><a href="https://www.ibm.com/think/topics/lamp-stack">https://www.ibm.com/think/topics/lamp-stack</a>.</p>
 <h4 id="php-install">PHP Install<a href="#php-install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -836,7 +980,7 @@ Each router is different but generally its under <code>Advanced &gt; IP Adrresin
 </span></span></code></pre></div><ul>
 <li>it will ask for a file name for keys and these must be inside <code>.ssh</code> folder. it makes key with default name if input is empty. could use that but naming it better practice.</li>
 <li>it also will ask for a <code>passphrase</code> witch is an extra layer of protection and is recommended to set but could be done with this empty too.</li>
-<li>than saves one files with the name you entered that&rsquo;s private key and one with <code>.pub</code> extension the public key.</li>
+<li>this command than saves one files with he name you entered that&rsquo;s private key and one with <code>.pub</code> extension the public key.</li>
 <li>and output should look like this:
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\u</span>ser&gt;ssh-keygen
 </span></span><span class="line"><span class="cl">Generating public/private ed25519 key pair.
@@ -861,25 +1005,7 @@ Each router is different but generally its under <code>Advanced &gt; IP Adrresin
 </span></span><span class="line"><span class="cl">+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
 </span></span></code></pre></div></li>
 </ul>
-<h3 id="ssh-config-file">SSH Config file<a href="#ssh-config-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h3>
-<p>In order to use this named file, we must set up the <code>config</code> file to declare this use case, because SSH skips non-default named files, and if you have many or just one named, it becomes necessary.
-Make a file named <code>config</code> in the SSH directory, <code>C:\Users\user\.ssh</code> by default, and then fill in like this:</p>
-<pre tabindex="0"><code class="language-config" data-lang="config">Host &lt;name of the host&gt;
-    HostName &lt;ip addres or a domain name of the host&gt;
-    User &lt;username&gt;
-    IdentityFile &lt;path the private key&gt;
-</code></pre><p>example:</p>
-<pre tabindex="0"><code class="language-config" data-lang="config">Host atlas
-    HostName 192.168.1.79
-    User atlas
-    IdentityFile C:\Users\TG_3W3p\.ssh\atlas_ssh_key
-</code></pre><p>and i can login with <code>Host</code>, like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh atlas
-</span></span></code></pre></div><h2 id="share-public-key-to-server">Share public key to server<a href="#share-public-key-to-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+<h2 id="share-public-key-to-server">Share public key to server<a href="#share-public-key-to-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -899,13 +1025,8 @@ Make a file named <code>config</code> in the SSH directory, <code>C:\Users\user\
    </svg></a></h3>
 <p>to test if this works you just try  to connect to server:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;username&gt;@&lt;server ip or domain&gt;
-</span></span></code></pre></div><p>and it should not ask for password.
-If that failed check ssh config <code>/etc/ssh/sshd_config</code> and mae sure these lines are present and uncommmented:</p>
-<pre tabindex="0"><code class="language-config" data-lang="config">PubkeyAuthentication yes
-AuthorizedKeysFile .ssh/authorized_keys
-</code></pre><p>then restart SSH service:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart ssh
-</span></span></code></pre></div><h2 id="disable-password-login">Disable password login<a href="#disable-password-login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+</span></span></code></pre></div><p>and it should not ask for password.</p>
+<h2 id="disable-password-login">Disable password login<a href="#disable-password-login" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -1905,18 +2026,6 @@ and also response module:</p>
 <li>while running it you should see webview in the tabs so copy its URL and setup the <a href="https://uptimerobot.com/">uptimerobot</a> with it .
 and you are done make some better ones though.</li>
 </ol>
-]]></content>
-		</item>
-		
-		<item>
-			<title>crypto transactions with Solana API(solnet) in C#</title>
-			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</link>
-			<pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/crypto-transactions-with-solana-apisolnet-in-c-sharp/</guid>
-			<description><![CDATA[Im planing to use my solana token in web market app for transactions and walets and such.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="heading"><a href="#heading" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-   </svg></a></h2>
 ]]></content>
 		</item>
 		
