@@ -36,7 +36,8 @@ services:
     stdin_open: true
 ```
 `restart` can be set to `unless-stopped` so it starts on boot.
-> **NOTE:** `command` option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing `<`, `>` and content in the middle).  
+> [!NOTE] 
+> `command` option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing `<`, `>` and content in the middle).  
 
 ## Running the server
 Now this can be ran in two ways. 
@@ -45,7 +46,8 @@ Now this can be ran in two ways.
 ```bash
 docker compose run terraria
 ```
->**NOTE:** Here `terraria` is the name of the service that is defined in the `.yml` file. So replace it accordingly.
+> [!NOTE]
+> Here `terraria` is the name of the service that is defined in the `.yml` file. So replace it accordingly.
 
 2. And none interactive way with:
 ```bash

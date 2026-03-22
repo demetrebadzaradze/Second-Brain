@@ -8,7 +8,8 @@ ShowLastmod: true
 ---
 
 
-> **WARNING**: STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION
+> [!WARNING]
+> STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION
 
 ## Plan
 1. since working with [F2FS](https://docs.kernel.org/filesystems/f2fs.html)(Flash-Friendly File System) Linux is more feasible since it's is supported on there and these tools that i will use are on Linux and are free. for this i will setup a VM(virtual machine) with kali (iso i have but any will do). the tools used here support other popular formats too.
@@ -16,7 +17,8 @@ ShowLastmod: true
 3. backup the disk image of that corrupted drive so if we screw something up we have a backup or do the recovering on the image while drive is being fixed, but i will be saving that compressed so i wont have to use that much storage.
 4. using the tools downloaded, recover the data.
 
-> **_NOTE:_**  if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.
+> [!NOTE] 
+> if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.
 
 ## Backup the raw data of the drive(optional but recommended)
 plug in the USB drive or the device you are recovering and do:
@@ -72,7 +74,8 @@ gunzip /home/user/backup.img.gz
 enter correct path to file.
 
 ## Write back the image to the drive (if wanted)
-> **_NOTE_**:  the image will be same so it contains corrupted data
+> [!NOTE]
+> the image will be same so it contains corrupted data
 
 done with `dd` command once again run:
 ```bash

@@ -18,7 +18,8 @@ normally if one needs to connect to remote server/machine they would use `secure
 3. optionally disable password login 
 
 ## Making key pair
-> **_NOTE:_** `SSH` is installed on Windows mac OS and most Linux's by default and it will be needed off course.
+> [!NOTE] 
+> `SSH` is installed on Windows mac OS and most Linux's by default and it will be needed off course.
 
 key gen is is pretty simple run:
 ```bash
