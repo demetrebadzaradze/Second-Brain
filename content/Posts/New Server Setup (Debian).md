@@ -1,6 +1,6 @@
 ---
 title: New Server Setup (Debian)
-description: Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,
+description: Giving second life to another old laptop. This one has an SATA port which I populated with 256GB SSD. It also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud.
 date: 2025-10-05
 draft: false
 toc: true
@@ -19,46 +19,45 @@ plan is extremally simple:
 
 ****
 ## Debian Install
-This step i thought would take somewhere around a hour but i was stuck here for **3 days**. the thing was that i didn't had beefy enough USB drive, but as always i would realize that far into the project, after i would try every possible configuration starting from Rufus all the way to the custom made ISOs, but nothing worked other than **most bizarre solution**:
-1. Install Arch(BTW) on a USB drive since it is so lite.
+This step I thought would take somewhere around a hour but I was stuck here for **3 days**. The thing was that I didn't had beefy enough USB drive, but as always I would realize that far into the project, after i would try every possible configuration starting from Rufus all the way to the custom made ISOs, but nothing worked other than **most bizarre solution**:
+1. Install Arch(BTW) on a USB drive for its lite nature.
 2. Get Arch running.
 3. Install the media SSD.
 4. mount the internal storage, since live USB has limited storage.
-5. Install and flash Debian ISO in media Drive.
+5. Flash and install Debian ISO on media Drive.
 6. Boot from that drive and install Debian.
-and i had that working just fine, other than some packages straight up not working.
+I had that working just fine, other than some packages straight up not working.
 
 ****
 ## Configuration 
-Coming from Ubuntu server Debian is not as defaulted in terms of configurations, even the aliases are commented out so there was a a plenty things to setup way i like it. 
+Coming from Ubuntu server Debian is not as defaulted in terms of configurations. Even the aliases are commented out, so there were a plenty of things to setup the way I liked it. 
 #### `sudo` and `su`
-Also no `sudo` by default, witch was surprising until i found out the reason, that `sudo` is just `su` do, so telling the superuser to do one thing and for authorization it uses the current users password. so using `su` is better for security and I'm getting along with it quite nicely.
+Also no `sudo` by default, which was surprising until I found out the reason. `sudo` is just `su` + `do`, so it is telling the superuser to do one thing and for authorization it uses password of the current user. So using `su` is better for security and I'm getting along with it quite nicely.
+> [!NOTE]
+> Edit from about 6 months later: I quite like the separation of `su`, It really is better for security. I see myself using superuser less, when I need to go into different userspace. The password for it is much stronger. It is dedicaded for important tasks, as it should be, and overall everything is much cleaner and defined.
+
 
 #### `.bashrc`
-Also I wanted this server to resemble the Debian setup that i have in `termux` on my phone so kind of like a station so had to display some ASCII art,`fastfetch` and `micro` instead of `nano`. Custom `PS1`, but nothing fancy just red colored `root` for super user and green for others.
+Also I wanted this server to resemble the Debian setup which I have in `termux` on my phone. It is kind of like a station, so had to display some ASCII art. Installed `fastfetch` and `micro` instead of `nano`. Custom `PS1`, but nothing fancy just red colored `root` for superuser and green for others.
   
 ****
 
 ## Software Install
 
-### Monitoring/Always On Display
-This new `top` child called [btop](https://github.com/aristocratos/btop/tree/v1.4.5) looks cool and is actually useful and feature dense and just look at [it](https://github.com/aristocratos/btop/tree/v1.4.5?tab=readme-ov-file#screenshots):
+### Monitoring/Always-On-Display
+This new `top` 'child' called [btop](https://github.com/aristocratos/btop/tree/v1.4.5) looks cool and it is actually useful. It is feature dense and just look it:
 ![beautiful btop screenshot](https://screenshots.debian.net/screenshot/btop/22650)
-this one is not mine though, but i will be experimenting with it and the themes look so good too.
-
-for monitoring i will be using `btop` looks nice and is displaying some useful general info that i need.
-
-
+This one is not mine though. But I will be experimenting with it and the themes look so good too.
 
 ### Nextcloud setup
-Easiest way to run Nextcloud is with container, but since I'm using `btop` i want to monitor everything separately and not as one docker program for example, so i will be instaldling it manually, following the [official manual](https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#) witch uses [LAMP Stack]()https://www.ibm.com/think/topics/lamp-stack.
+Easiest way to run Nextcloud is with a container, but since I'm using `btop` I want to monitor everything and not one docker program. So I will be instaldling it on bare-bone, following the [official manual](https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#) which uses [LAMP Stack](https://www.ibm.com/think/topics/lamp-stack).
 
 #### PHP Install
 Recommended PHP version, for now, is `v8.3` and in Debian repos there is only the newest version that can be installed like this:
 ```bash
 apt install -y php libapache2-mod-php php-mysql php-mbstring
 ```
-so for specific version, i added sury.org repository:
+so for specific version, I added sury.org repository:
 first install tools, get the sign and add repo:
 ```bash
 apt install -y apt-transport-https lsb-release ca-certificates curl
@@ -75,8 +74,8 @@ and now install specific versions
 apt install php8.3 libapache2-mod-php8.3 php8.3-mysql php8.3-mbstring
 ```
 
-##### test PHP
-First check the version to see if its even installed:
+##### Test PHP
+First check the version to see if it's even installed:
 ```bash
 php -v
 ```
@@ -102,10 +101,9 @@ Nextcloud needs some extensions to work as intended:
 ```bash
 apt install -y php php-mysql php-gd php-xml php-mbstring php-curl php-zip php-intl php-bcmath php-gmp libapache2-mod-php unzip wget
 ```
-or the specific versions of this.
 
 #### MariaDB Install
-MariaDB is is the suggested database for Nextcloud so i installed it:
+MariaDB is is the suggested database for Nextcloud so I installed it:
 ```bash
 apt install -y mariadb-server mariadb-client
 ```
@@ -137,7 +135,7 @@ Create new user for Nextcloud to use:
 ```sql
 CREATE USER <database username>@localhost IDENTIFIED BY '<password for this user>';  
 ```
-- Replace `<database username>` with actual  username and `<password for this user>` withe secure password for that user, these will also be needed for initial setup of Nextcloud. 'localhost' is used since the Nextcloud and the database are  on the same server.  
+- Replace `<database username>` with actual  username and `<password for this user>` withe secure password for that user, these will also be needed for initial setup of Nextcloud. 'localhost' is used since the Nextcloud and the database are on the same server.  
 Give permissions for the database to user, both of witch we just made in an earlier steps. 
 ```sql
 GRANT ALL PRIVILEGES ON <database name>.* TO <database username>@localhost;
@@ -164,7 +162,7 @@ And visiting the `http://<Servers IP>` should display the default `apache2` page
 
 ##### Firewall configuration 
 configuring the  firewall is critical part of this for security and for it to work properly.
-so i installed `ufw` (Uncomplicated Firewall) witch is a frontend for `iptables` or `nftables`, making it easier to manage rules without complex syntax. 
+I installed `ufw` (Uncomplicated Firewall) witch is a frontend for `iptables` or `nftables`, making it easier to manage rules without complex syntax. 
 Install:
 ```bash
 apt install -y ufw
@@ -201,23 +199,23 @@ First change the working directory to where `apache2` serving files are located 
 ```bash
 cd /var/www/html/
 ```
-Get the latest version of Nextcloud from the official website and unzip and delete it:
+Get the latest version of Nextcloud from the official website and unzip and delete the archive:
 ```bash
 wget https://download.nextcloud.com/server/releases/latest.zip
 unzip latest.zip
 rm -f latest.zip
 ```
-correct the ownership and permissions so Apache can access the unzipped folder `nextcloud`:
+Correct the ownership and permissions so Apache can access the unzipped folder `nextcloud`:
 ```bash
 chown -R www-data:www-data nextcloud/
 chmod -R 755 nextcloud/
 ls -l
 ```
-list should show this:
+The list should show this:
 ```bash
 drwxr-xr-x 14 www-data www-data  4096 Sep 27 11:55 nextcloud
 ```
-Then i added single configuration file. for Debian it should in this path:
+Then I added single configuration file. For Debian it should be in this path:
 ```bash
 micro /etc/apache2/sites-available/nextcloud.conf
 ```
@@ -238,7 +236,7 @@ and insert this content:
   </Directory>
 </VirtualHost>
 ```
-and replace `DocumentRoot`, `DocumentRoot` and `Directory` according to your setup but this works for this documentation.
+Replace `DocumentRoot`, `DocumentRoot` and `Directory` according to your setup, but it works for this documentation.
 To enable the site run:
 ```bash
 a2ensite nextcloud.conf
@@ -253,14 +251,14 @@ systemctl restart apache2
 ```
 
 #### Web interface setup
-On browser go to the domain name or the IP of the server. The first Time visit asks for configuration like **admin username and password**. Also **Data folder**, this is where data is saved at and by default it is set to the same directory were app is server from + `/data`. setting custom path is simple:
+On browser go to the domain name or the IP of the server. The first Time visit asks for configuration like **admin username and password**. Also **Data folder**, this is where data is saved at and by default it is set to the same directory were app is server from + `/data`. Setting custom path is simple:
 ```bash
 mkdir nextcloud
 chown -R www-data:www-data nextcloud/
 chmod -R 700 nextcloud/
 ls -l
 ```
-this could be ran everywhere and gives correct, permissions:
+This could be ran everywhere and gives correct, permissions:
 ```bash
 drwx------ 2 www-data www-data  4096 Oct 12 15:29 nextcloud
 ```
@@ -281,9 +279,9 @@ For me web UI didn't work so i changed directory to the Nextcloud and ran this:
 php occ  maintenance:install  --database '<mysql>' --database-name '<database name>'  --d
 atabase-user '<database user>' --database-pass '<data base user password>'  --admin-user '<admin name>' --admin-pass '<admin password>'
 ```
-replace the items that are like this `< >`.after install edit the `config/config.php` to adjust some desired setting like trusted domains and data folder path(this still needs `.mcdata` file in there with same `# Nextcloud data directory` content) after that reapply all the permissions to all Nextcloud directories and all set.
+Replace the items that are like this `< >`. After the install edit the `config/config.php` to adjust some desired settings like trusted domains and data folder path (this still needs `.mcdata` file in there with same `# Nextcloud data directory` content). After that reapply all the permissions to all Nextcloud directories and all set.
 
 ****
 
 ## Finish
-Now that all of this is done I will be adding users to Nextcloud and make it usable for  other at my house and maybe if specs help me i will move this to different port and also run PIHole on here too.  
+Now that all of this is done I will be adding users to Nextcloud and I will be makeing it usable for other at my house and maybe, if specs allow me, I will move this to different port and also run PIHole on here too.  
