@@ -91,7 +91,7 @@ gunzip -c /home/user/backup.img.gz | sudo dd of=/dev/sdb bs=4M status=progress
 - `gunzip -c ` : decompresses the image and pipes it to `dd`.
 
 ## Fixing the USB
-i will still be using the `F2FS` format for this but you are welcome to chouse any that you would like.
+i will still be using the `F2FS` format for this but you are welcome to choose any that you would like.
 
 so lets try to fix it by installing the tools for this format:
 ```bash
@@ -107,7 +107,7 @@ in my case fixing it like this didn't work so i will just reformat it:
 ```bash
 sudo fsck.f2fs /dev/sdb
 ```
-this will delete all data on there but then i will just move recovered files on there and its done.
+this will try to recover files but all of the corrupted files will be gone.
 
 ### Testing USB 
 make a folder in `/mnt` directory and mount it on there:
