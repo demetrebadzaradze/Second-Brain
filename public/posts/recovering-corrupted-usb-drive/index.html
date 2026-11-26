@@ -18,8 +18,8 @@
   <meta itemprop="name" content="Recovering corrupted USB drive">
   <meta itemprop="description" content="I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.">
   <meta itemprop="datePublished" content="2025-07-16T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-07-17T14:03:52+00:00">
-  <meta itemprop="wordCount" content="725"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/">
+  <meta itemprop="dateModified" content="2026-11-26T17:31:45+04:00">
+  <meta itemprop="wordCount" content="720"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/">
   <meta property="og:site_name" content="Second-Brain">
   <meta property="og:title" content="Recovering corrupted USB drive">
   <meta property="og:description" content="I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-07-16T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-07-17T14:03:52+00:00">
+    <meta property="article:modified_time" content="2026-11-26T17:31:45+04:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Recovering corrupted USB drive">
@@ -41,11 +41,11 @@
     "name": "Recovering corrupted USB drive",
     "description": "I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.",
     "keywords": [],
-    "articleBody": " WARNING: STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION\nPlan since working with F2FS(Flash-Friendly File System) Linux is more feasible since it’s is supported on there and these tools that i will use are on Linux and are free. for this i will setup a VM(virtual machine) with kali (iso i have but any will do). the tools used here support other popular formats too. download tools or a tool testdisk witch also comes with photorec. powerful and free tools for recovering data. backup the disk image of that corrupted drive so if we screw something up we have a backup or do the recovering on the image while drive is being fixed, but i will be saving that compressed so i wont have to use that much storage. using the tools downloaded, recover the data. NOTE: if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.\nBackup the raw data of the drive(optional but recommended) plug in the USB drive or the device you are recovering and do:\nlsblk this lists out all the storage devices accessible(should not be mounted and sizes of drive are sometimes different than what they are branded as). find the one needed and like sdb in my case and run the disk image creation command with dd:\nsudo dd if=/dev/sdb of=/home/user/backup.img status=progress replace sdb and destination on the backup disk image file according to your needs and if you want to compress it run:\nsudo dd if=/dev/sdb status=progress | gzip -c \u003e /home/user/backup.img.gz again fill in the sdb and path for file. destination should have enough.\nDownload tool the tool is testdisk soo:\nsudo apt install -y testdisk and doing this this will also downloads the photorec.\nRecover data i will be using photorec so just run:\nsudo photorec chouse the correct drive(must be plugged in at this point). an then select partition and hot search this will take some time, i waited for 5 hours for 64 GB drive but it will be different for different environments. after it finishes you should have some directories named: recup_dir.1 recup_dir.2 recup_dir.3 these are recovered files and photorec doesn’t keeps the folder structure or any names. soo that is on you to fix manually but there are some other ways I’m sure but i want to see what is going on in the there. if you want to recover from image do:\nsudo photorec /home/user/backup.img edit path to the drive image wit was dove with [[Recovering corrupted USB drive#Backup the raw data of the drive(optional but recommended)]].\nif its image file is compressed decompress it first with gunzip first and than start photorec:\ngunzip /home/user/backup.img.gz enter correct path to file.\nWrite back the image to the drive (if wanted) NOTE: the image will be same so it contains corrupted data\ndone with dd command once again run:\nsudo dd if=/home/user/backup.img of=/dev/sdb bs=4M status=progress if=/home/user/backup.img: Path to your backup image. of=/dev/sdb: The thumb drive’s device name (not a partition like /dev/sdb1). bs=4M: Block size for faster transfer. if image is compressed run: gunzip -c /home/user/backup.img.gz | sudo dd of=/dev/sdb bs=4M status=progress gunzip -c : decompresses the image and pipes it to dd. Fixing the USB i will still be using the F2FS format for this but you are welcome to chouse any that you would like.\nso lets try to fix it by installing the tools for this format:\nsudo apt install f2fs-tools and then try to fix it by:\nsudo fsck.f2fs /dev/sdb1 change the path accordingly and again use lsblk to identify it.\nin my case fixing it like this didn’t work so i will just reformat it:\nsudo fsck.f2fs /dev/sdb this will delete all data on there but then i will just move recovered files on there and its done.\nTesting USB make a folder in /mnt directory and mount it on there:\nsudo mkdir /mnt/thumb sudo mount /dev/sdb /mnt/thumb and this should give no errors and we should be able to read and write on that path and also once we unmount/disconnect all should disappear.\n",
-    "wordCount" : "725",
+    "articleBody": " [!WARNING] STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION\nPlan since working with F2FS(Flash-Friendly File System) Linux is more feasible since it’s is supported on there and these tools that i will use are on Linux and are free. for this i will setup a VM(virtual machine) with kali (iso i have but any will do). the tools used here support other popular formats too. download tools or a tool testdisk witch also comes with photorec. powerful and free tools for recovering data. backup the disk image of that corrupted drive so if we screw something up we have a backup or do the recovering on the image while drive is being fixed, but i will be saving that compressed so i wont have to use that much storage. using the tools downloaded, recover the data. [!NOTE] if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.\nBackup the raw data of the drive(optional but recommended) plug in the USB drive or the device you are recovering and do:\nlsblk this lists out all the storage devices accessible(should not be mounted and sizes of drive are sometimes different than what they are branded as). find the one needed and like sdb in my case and run the disk image creation command with dd:\nsudo dd if=/dev/sdb of=/home/user/backup.img status=progress replace sdb and destination on the backup disk image file according to your needs and if you want to compress it run:\nsudo dd if=/dev/sdb status=progress | gzip -c \u003e /home/user/backup.img.gz again fill in the sdb and path for file. destination should have enough.\nDownload tool the tool is testdisk soo:\nsudo apt install -y testdisk and doing this this will also downloads the photorec.\nRecover data i will be using photorec so just run:\nsudo photorec chouse the correct drive(must be plugged in at this point). an then select partition and hot search this will take some time, i waited for 5 hours for 64 GB drive but it will be different for different environments. after it finishes you should have some directories named: recup_dir.1 recup_dir.2 recup_dir.3 these are recovered files and photorec doesn’t keeps the folder structure or any names. soo that is on you to fix manually but there are some other ways I’m sure but i want to see what is going on in the there. if you want to recover from image do:\nsudo photorec /home/user/backup.img edit path to the drive image wit was dove with [[Recovering corrupted USB drive#Backup the raw data of the drive(optional but recommended)]].\nif its image file is compressed decompress it first with gunzip first and than start photorec:\ngunzip /home/user/backup.img.gz enter correct path to file.\nWrite back the image to the drive (if wanted) [!NOTE] the image will be same so it contains corrupted data\ndone with dd command once again run:\nsudo dd if=/home/user/backup.img of=/dev/sdb bs=4M status=progress if=/home/user/backup.img: Path to your backup image. of=/dev/sdb: The thumb drive’s device name (not a partition like /dev/sdb1). bs=4M: Block size for faster transfer. if image is compressed run: gunzip -c /home/user/backup.img.gz | sudo dd of=/dev/sdb bs=4M status=progress gunzip -c : decompresses the image and pipes it to dd. Fixing the USB i will still be using the F2FS format for this but you are welcome to choose any that you would like.\nso lets try to fix it by installing the tools for this format:\nsudo apt install f2fs-tools and then try to fix it by:\nsudo fsck.f2fs /dev/sdb1 change the path accordingly and again use lsblk to identify it.\nin my case fixing it like this didn’t work so i will just reformat it:\nsudo fsck.f2fs /dev/sdb this will try to recover files but all of the corrupted files will be gone.\nTesting USB make a folder in /mnt directory and mount it on there:\nsudo mkdir /mnt/thumb sudo mount /dev/sdb /mnt/thumb and this should give no errors and we should be able to read and write on that path and also once we unmount/disconnect all should disappear.\n",
+    "wordCount" : "720",
     "inLanguage": "en",
     "datePublished": "2025-07-16T00:00:00Z",
-    "dateModified": "2025-07-17T14:03:52Z",
+    "dateModified": "2026-11-26T17:31:45+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -182,7 +182,7 @@
       <line x1="16" y1="13" x2="8" y2="13"></line>
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
-   </svg>725&nbspWords words, 3 Minutes, 17 Seconds</p>
+   </svg>720&nbspWords words, 3 Minutes, 16 Seconds</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -195,11 +195,12 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradze212f13c93c96f0a3c1fe4a95882e26bc4c426c34" target="_blank" rel="noopener">212f13c</a> @ 2025-07-17]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradze2a1ceb42e1864d95d31c2b912c2869fdb9ea7d58" target="_blank" rel="noopener">2a1ceb4</a> @ 2026-11-26]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <blockquote>
-<p><strong>WARNING</strong>: STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION</p>
+<p>[!WARNING]
+STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION</p>
 </blockquote>
 <h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -213,7 +214,8 @@
 <li>using the tools downloaded, recover the data.</li>
 </ol>
 <blockquote>
-<p><strong><em>NOTE:</em></strong>  if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.</p>
+<p>[!NOTE]
+if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.</p>
 </blockquote>
 <h2 id="backup-the-raw-data-of-the-driveoptional-but-recommended">Backup the raw data of the drive(optional but recommended)<a href="#backup-the-raw-data-of-the-driveoptional-but-recommended" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -273,7 +275,8 @@
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
 <blockquote>
-<p><strong><em>NOTE</em></strong>:  the image will be same so it contains corrupted data</p>
+<p>[!NOTE]
+the image will be same so it contains corrupted data</p>
 </blockquote>
 <p>done with <code>dd</code> command once again run:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/home/user/backup.img <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
@@ -292,7 +295,7 @@ if image is compressed run:</li>
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
-<p>i will still be using the <code>F2FS</code> format for this but you are welcome to chouse any that you would like.</p>
+<p>i will still be using the <code>F2FS</code> format for this but you are welcome to choose any that you would like.</p>
 <p>so lets try to fix it by installing the tools for this format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install f2fs-tools
 </span></span></code></pre></div><p>and then try to fix it by:</p>
@@ -300,7 +303,7 @@ if image is compressed run:</li>
 </span></span></code></pre></div><p>change the path accordingly and again use <code>lsblk</code> to identify it.</p>
 <p>in my case fixing it like this didn&rsquo;t work so i will just reformat it:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fsck.f2fs /dev/sdb
-</span></span></code></pre></div><p>this will delete all data on there but then i will just move recovered files on there and its done.</p>
+</span></span></code></pre></div><p>this will try to recover files but all of the corrupted files will be gone.</p>
 <h3 id="testing-usb">Testing USB<a href="#testing-usb" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>

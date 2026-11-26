@@ -18,7 +18,7 @@
   <meta itemprop="name" content="Making SSH-Keys">
   <meta itemprop="description" content="here i will be setting up ssh keys for my server bc im tired of entering my password aggain and aggain and aggain and it is more secure.">
   <meta itemprop="datePublished" content="2025-08-16T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-03-07T12:49:06+00:00">
+  <meta itemprop="dateModified" content="2026-03-22T16:06:23+00:00">
   <meta itemprop="wordCount" content="693"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/making-ssh-keys/">
   <meta property="og:site_name" content="Second-Brain">
   <meta property="og:title" content="Making SSH-Keys">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-08-16T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-03-07T12:49:06+00:00">
+    <meta property="article:modified_time" content="2026-03-22T16:06:23+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Making SSH-Keys">
@@ -41,11 +41,11 @@
     "name": "Making SSH-Keys",
     "description": "here i will be setting up ssh keys for my server bc im tired of entering my password aggain and aggain and aggain and it is more secure.",
     "keywords": [],
-    "articleBody": "What are SSH Keys normally if one needs to connect to remote server/machine they would use secure shell this is a go to way it is secure as the name implies but this way is not protected against brute force attacks. SSH keys does something different to get you connected, it makes keys one for client (private) and one for server (public). once you share the public one to the server, it sends ‘puzzle’ based on that public key to you and if your private key can solve that than you are authenticated. so it is basically a if server and client have valid key pair than it lets you in.\nPlan we need a key pair (public and private) share public kay to the server test it out optionally disable password login Making key pair NOTE: SSH is installed on Windows mac OS and most Linux’s by default and it will be needed off course.\nkey gen is is pretty simple run:\nssh-keygen it will ask for a file name for keys and these must be inside .ssh folder. it makes key with default name if input is empty. could use that but naming it better practice. it also will ask for a passphrase witch is an extra layer of protection and is recommended to set but could be done with this empty too. this command than saves one files with he name you entered that’s private key and one with .pub extension the public key. and output should look like this: C:\\Users\\user\u003essh-keygen Generating public/private ed25519 key pair. Enter file in which to save the key (C:\\Users\\user/.ssh/id_ed25519): test Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in test Your public key has been saved in test.pub The key fingerprint is: SHA256:********/******+****+****/*/************ user@host The keys randomart image is: +--[ED25519 256]--+ | + | | . E | | . . | | . . o .| | = S + ..| | = + o o +.| | . o = BoTm | | . + X +BX+| | . o *e$@+| +----[SHA256]-----+ Share public key to server The server should have a ~/.ssh/authorized_keys file (if not make it) and your public key (the contents of the generated file that has .pub extension) should be copied there as new line.\nAll of this is is easily done with this command:\nssh-copy-id -i ",
+    "articleBody": "What are SSH Keys normally if one needs to connect to remote server/machine they would use secure shell this is a go to way it is secure as the name implies but this way is not protected against brute force attacks. SSH keys does something different to get you connected, it makes keys one for client (private) and one for server (public). once you share the public one to the server, it sends ‘puzzle’ based on that public key to you and if your private key can solve that than you are authenticated. so it is basically a if server and client have valid key pair than it lets you in.\nPlan we need a key pair (public and private) share public kay to the server test it out optionally disable password login Making key pair [!NOTE] SSH is installed on Windows mac OS and most Linux’s by default and it will be needed off course.\nkey gen is is pretty simple run:\nssh-keygen it will ask for a file name for keys and these must be inside .ssh folder. it makes key with default name if input is empty. could use that but naming it better practice. it also will ask for a passphrase witch is an extra layer of protection and is recommended to set but could be done with this empty too. this command than saves one files with he name you entered that’s private key and one with .pub extension the public key. and output should look like this: C:\\Users\\user\u003essh-keygen Generating public/private ed25519 key pair. Enter file in which to save the key (C:\\Users\\user/.ssh/id_ed25519): test Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in test Your public key has been saved in test.pub The key fingerprint is: SHA256:********/******+****+****/*/************ user@host The keys randomart image is: +--[ED25519 256]--+ | + | | . E | | . . | | . . o .| | = S + ..| | = + o o +.| | . o = BoTm | | . + X +BX+| | . o *e$@+| +----[SHA256]-----+ Share public key to server The server should have a ~/.ssh/authorized_keys file (if not make it) and your public key (the contents of the generated file that has .pub extension) should be copied there as new line.\nAll of this is is easily done with this command:\nssh-copy-id -i ",
     "wordCount" : "693",
     "inLanguage": "en",
     "datePublished": "2025-08-16T00:00:00Z",
-    "dateModified": "2026-03-07T12:49:06Z",
+    "dateModified": "2026-03-22T16:06:23Z",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -195,7 +195,7 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradzec199c905c706bff1a799524bbba890b8ea0c577e" target="_blank" rel="noopener">c199c90</a> @ 2026-03-07]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradzeed080a821f1317c1eeef81b004ea855662569446" target="_blank" rel="noopener">ed080a8</a> @ 2026-03-22]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <h2 id="what-are-ssh-keys">What are SSH Keys<a href="#what-are-ssh-keys" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -220,7 +220,8 @@
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
 <blockquote>
-<p><strong><em>NOTE:</em></strong> <code>SSH</code> is installed on Windows mac OS and most Linux&rsquo;s by default and it will be needed off course.</p>
+<p>[!NOTE]
+<code>SSH</code> is installed on Windows mac OS and most Linux&rsquo;s by default and it will be needed off course.</p>
 </blockquote>
 <p>key gen is is pretty simple run:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
