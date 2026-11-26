@@ -279,7 +279,7 @@ For me web UI didn't work so i changed directory to the Nextcloud and ran this:
 php occ  maintenance:install  --database '<mysql>' --database-name '<database name>'  --d
 atabase-user '<database user>' --database-pass '<data base user password>'  --admin-user '<admin name>' --admin-pass '<admin password>'
 ```
-Replace the items that are like this `< >`. After the install edit the `config/config.php` to adjust some desired settings like trusted domains and data folder path (this still needs `.mcdata` file in there with same `# Nextcloud data directory` content). After that reapply all the permissions to all Nextcloud directories and all set.
+Replace the items that are like this `< >`. After the install edit the `config/config.php` to adjust some desired settings like trusted domains and data folder path (this still needs `.ncdata` file in there with same `# Nextcloud data directory` content). After that reapply all the permissions to all Nextcloud directories and all set.
 
 ****
 
