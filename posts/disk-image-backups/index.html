@@ -18,7 +18,7 @@
   <meta itemprop="name" content="Disk images">
   <meta itemprop="description" content="Recently I found myself working with SD cards and thumb drives more often than usual. Reformatting and data recovery and all sorts of related things. Here I will explain how I backup data from storage devices.">
   <meta itemprop="datePublished" content="2026-03-06T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-03-07T12:49:06+00:00">
+  <meta itemprop="dateModified" content="2026-03-07T17:01:08+04:00">
   <meta itemprop="wordCount" content="337"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/disk-image-backups/">
   <meta property="og:site_name" content="Second-Brain">
   <meta property="og:title" content="Disk images">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-03-06T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-03-07T12:49:06+00:00">
+    <meta property="article:modified_time" content="2026-03-07T17:01:08+04:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Disk images">
@@ -41,11 +41,11 @@
     "name": "Disk images",
     "description": "Recently I found myself working with SD cards and thumb drives more often than usual. Reformatting and data recovery and all sorts of related things. Here I will explain how I backup data from storage devices.",
     "keywords": [],
-    "articleBody": "Plan Here how simple backup works:\nMake raw disk image containing exact bit-by-bit copy of the physical drive. Compress it for better storage. When it comes to restoring this data I will just:\nDecompress the dick image. Write it to the drive. Also, I must mention that, You should not always write to disk. instead you could mount the disc image as a loop device.\nMake raw disk image this is commonly done with dd command on Linux.\nsudo dd if=/dev/sdx of=random_sdcard_backup.img bs=4M status=progress here sdx is the name of the device. lsblk command can be used to list storage devices and their information (e.g. name).\nCompress disk image Usually this .img file takes up as much storage as the devices storage amount. So compressing it is a good Idea. There are lot of compression algorithms and one you chouse may vary depending on what king of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like xz would not do a lot, other than take a lot longer. I found that gzip is the best middle of the ground option. It had been the standard for Linux for decades at this point. So here is how compression with gzip goes:\ngzip random_sdcard_backup.img Here we could use -k for the option for keeping the original file. Also -1, --fast to compress faster and -9, --best to compress better.\nDecompress disk image Decompressing is similar we just :\ngunzip random_sdcard_backup.img.gz -k can again be used to keep the input file.\nThis can also be done with gzip and -d option.\nWrite to disk Now this is the actual writing to disk part and it is done with dd command, like this:\nsudo dd if=random_sdcard_backup.img of=/dev/sdX bs=4M status=progress Make sure the device path is correct.\n.img can also be mounted as a loop device like this:\nsudo mount -o loop random_sdcard_backup.img /mnt/sd-loop make sure destination path exists.\n",
+    "articleBody": "Plan Here how simple backup works:\nMake raw disk image containing exact bit-by-bit copy of the physical drive. Compress it for better storage. When it comes to restoring this data I will just:\nDecompress the dick image. Write it to the drive. Also, I must mention that, You should not always write to disk. instead you could mount the disc image as a loop device.\nMake raw disk image this is commonly done with dd command on Linux.\nsudo dd if=/dev/sdx of=random_sdcard_backup.img bs=4M status=progress here sdx is the name of the device. lsblk command can be used to list storage devices and their information (e.g. name).\nCompress disk image Usually this .img file takes up as much storage as the devices storage amount. So compressing it is a good Idea. There are lot of compression algorithms and one you choose may vary depending on what kind of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like xz would not do a lot, other than take a lot longer. I found that gzip is the best middle of the ground option. It had been the standard for Linux for decades at this point. So here is how compression with gzip goes:\ngzip random_sdcard_backup.img Here we could use -k for the option for keeping the original file. Also -1, --fast to compress faster and -9, --best to compress better.\nDecompress disk image Decompressing is similar we just :\ngunzip random_sdcard_backup.img.gz -k can again be used to keep the input file.\nThis can also be done with gzip and -d option.\nWrite to disk Now this is the actual writing to disk part and it is done with dd command, like this:\nsudo dd if=random_sdcard_backup.img of=/dev/sdX bs=4M status=progress Make sure the device path is correct.\n.img can also be mounted as a loop device like this:\nsudo mount -o loop random_sdcard_backup.img /mnt/sd-loop make sure destination path exists.\n",
     "wordCount" : "337",
     "inLanguage": "en",
     "datePublished": "2026-03-06T00:00:00Z",
-    "dateModified": "2026-03-07T12:49:06Z",
+    "dateModified": "2026-03-07T17:01:08+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -195,7 +195,7 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradzec199c905c706bff1a799524bbba890b8ea0c577e" target="_blank" rel="noopener">c199c90</a> @ 2026-03-07]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradzeafadb83ab128ab752c835ee33d0dfd36a5d0613f" target="_blank" rel="noopener">afadb83</a> @ 2026-03-07]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -205,7 +205,7 @@
    </svg></a></h2>
 <p>Here how simple <strong>backup</strong> works:</p>
 <ul>
-<li>Make raw disk image containing exact bit-by-bit copy of the physical drive.</li>
+<li>Make raw <code>disk image</code> containing exact bit-by-bit copy of the physical drive.</li>
 <li>Compress it for better storage.</li>
 </ul>
 <p>When it comes to <strong>restoring</strong> this data I will just:</p>
@@ -228,7 +228,7 @@
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
 <p>Usually this <code>.img</code> file takes up as much storage as the devices storage amount. So compressing it is a good Idea.
-There are lot of compression algorithms and one you chouse may vary depending on what king of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like <code>xz</code> would not do a lot, other than take a lot longer.  I found that <code>gzip</code> is the  best middle of the ground option. It had been the standard for Linux for decades at this point.
+There are lot of compression algorithms and one you choose may vary depending on what kind of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like <code>xz</code> would not do a lot, other than take a lot longer.  I found that <code>gzip</code> is the  best middle of the ground option. It had been the standard for Linux for decades at this point.
 So here is how compression with <code>gzip</code> goes:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gzip random_sdcard_backup.img
 </span></span></code></pre></div><p>Here we could use <code>-k</code> for the option for keeping the original file. Also <code>-1, --fast</code> to compress faster and <code>-9, --best</code> to compress better.</p>

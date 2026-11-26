@@ -18,8 +18,8 @@
   <meta itemprop="name" content="Setting up PI-Hole">
   <meta itemprop="description" content="Are you also tired of ads, I certainly am so don&#39;t i get the network wide ad blocker like  PI-Hole. It looks like a  cool piece of software and i kind of want an ad blocker and it will be better if its network wide thing and added my VPN its a strong combo despite my CG-NAT limitations">
   <meta itemprop="datePublished" content="2025-09-01T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-09-01T19:48:15+00:00">
-  <meta itemprop="wordCount" content="387"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/setting-up-pi-hole/">
+  <meta itemprop="dateModified" content="2026-11-26T17:23:38+04:00">
+  <meta itemprop="wordCount" content="388"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/setting-up-pi-hole/">
   <meta property="og:site_name" content="Second-Brain">
   <meta property="og:title" content="Setting up PI-Hole">
   <meta property="og:description" content="Are you also tired of ads, I certainly am so don&#39;t i get the network wide ad blocker like  PI-Hole. It looks like a  cool piece of software and i kind of want an ad blocker and it will be better if its network wide thing and added my VPN its a strong combo despite my CG-NAT limitations">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-09-01T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-09-01T19:48:15+00:00">
+    <meta property="article:modified_time" content="2026-11-26T17:23:38+04:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Setting up PI-Hole">
@@ -41,11 +41,11 @@
     "name": "Setting up PI-Hole",
     "description": "Are you also tired of ads, I certainly am so don't i get the network wide ad blocker like  PI-Hole. It looks like a  cool piece of software and i kind of want an ad blocker and it will be better if its network wide thing and added my VPN its a strong combo despite my CG-NAT limitations",
     "keywords": [],
-    "articleBody": "My setup Currently I have small low end server witch is behind a CG-NAT, but I have a VPN so this ad blocker should work if I’m away. Also i want it as a container, so I will use pi-hole docker version. Reason why I went for container is little influenced by this project. It is really cool, it displays docker containers and logs and info about them in a terminal.\nPlan Read the docs and get familiar with the tool Install it on the server Update per device DNS settings or the router DNS settings Docs and helpful information pi-hole website pi-hole docs website Linus’s video about pi-hole pi-hole Github\nInstallation on the server Install as container is pretty simple from this repo as they have nice compose file in a Readme. But it will not work for my setup, Because my DNS, HTTPS and HTTP ports are already in use. HTTP/HTTPS in no problem but DNS ports are different. I don’t want to stop one that’s in use already so my compose.yml file looks like this:\nservices: pihole: container_name: pihole image: pihole/pihole:latest ports: - \"53:53/tcp\" - \"53:53/udp\" - \"9000:80/tcp\" - \"9443:443/tcp\" environment: TZ: 'Etc/GMT' FTLCONF_webserver_api_password: 'ExTrAeXtRa__STRONG__PaSsWoRd' FTLCONF_dns_listeningMode: 'all' volumes: - './etc-pihole:/etc/pihole' cap_add: - SYS_NICE restart: unless-stopped Making Pi-hole host use Pi-hole and since I’m on ubuntu server i still need some modifications, like adding this:\nstatic domain_name_servers=127.0.0.1 to this file /etc/dhcpcd.conf. And also stopping and disabling systemd-resolved.service service:\nsudo systemctl stop systemd-resolved.service sudo systemctl disable systemd-resolved.service and make sure that inside /etc/resolv.conf nameserver is not something local set it to google as DNS provider:\nnameserver=8.8.8.8 Making your network take advantage of Pi-hole So here we need to configure router to use my servers pi-hole as DNS server and the app will block malicious sites, ads and unwanted sites. Each router is different but generally its under Advanced \u003e IP Adrresing \u003e DHCP Settings. there are many docs for understanding this further like here\nAccessing web UI of Pi-Hole The settings and whole dashboard is web based so go to your server’s IP address and application’s port and enter the password for login. If you didn’t set the password it will generate a random one and print that in logs, be sure to change it afterwards. after that you have full accesses to this powerful application.\n",
-    "wordCount" : "387",
+    "articleBody": "My setup Currently I have small low end server witch is behind a CG-NAT, but I have a VPN so this ad blocker should work if I’m away. Also i want it as a container, so I will use pi-hole docker version. Reason why I went for container is little influenced by this project. It is really cool, it displays docker containers and logs and info about them in a terminal.\nPlan Read the docs and get familiar with the tool Install it on the server Update per device DNS settings or the router DNS settings Docs and helpful information pi-hole website pi-hole docs website Linus’s video about pi-hole pi-hole Github\nInstallation on the server Install as container is pretty simple from this repo as they have nice compose file in a Readme. But it will not work for my setup, Because my DNS, HTTPS and HTTP ports are already in use. HTTP/HTTPS in no problem but DNS ports are different. I don’t want to stop one that’s in use already so my compose.yml file looks like this:\nservices: pihole: container_name: pihole image: pihole/pihole:latest ports: - \"53:53/tcp\" - \"53:53/udp\" - \"9000:80/tcp\" - \"9443:443/tcp\" environment: TZ: 'Etc/GMT' FTLCONF_webserver_api_password: 'ExTrAeXtRa__STRONG__PaSsWoRd' FTLCONF_dns_listeningMode: 'all' volumes: - './etc-pihole:/etc/pihole' cap_add: - SYS_NICE restart: unless-stopped Making Pi-hole host use Pi-hole and since I’m on ubuntu server i still need some modifications, like adding this:\nstatic domain_name_servers=127.0.0.1 to this file /etc/dhcpcd.conf. And also stopping and disabling systemd-resolved.service service:\nsudo systemctl stop systemd-resolved.service sudo systemctl disable systemd-resolved.service and make sure that inside /etc/resolv.conf nameserver is not something local set it to google as DNS provider:\nnameserver 8.8.8.8 Making your network take advantage of Pi-hole So here we need to configure router to use my servers pi-hole as DNS server and the app will block malicious sites, ads and unwanted sites. Each router is different but generally its under Advanced \u003e IP Adrresing \u003e DHCP Settings. there are many docs for understanding this further like here\nAccessing web UI of Pi-Hole The settings and whole dashboard is web based so go to your server’s IP address and application’s port and enter the password for login. If you didn’t set the password it will generate a random one and print that in logs, be sure to change it afterwards. after that you have full accesses to this powerful application.\n",
+    "wordCount" : "388",
     "inLanguage": "en",
     "datePublished": "2025-09-01T00:00:00Z",
-    "dateModified": "2025-09-01T19:48:15Z",
+    "dateModified": "2026-11-26T17:23:38+04:00",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -182,7 +182,7 @@
       <line x1="16" y1="13" x2="8" y2="13"></line>
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
-   </svg>387&nbspWords words, 1 Minute, 45 Seconds</p>
+   </svg>388&nbspWords words, 1 Minute, 45 Seconds</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -195,7 +195,7 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradzee67285ecc11c9a3c4602a5eb13ab2bd7eb73b75d" target="_blank" rel="noopener">e67285e</a> @ 2025-09-01]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradze3f5d67ea0122d83c483aa28190efb8acb04945c4" target="_blank" rel="noopener">3f5d67e</a> @ 2026-11-26]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <h2 id="my-setup">My setup<a href="#my-setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -264,7 +264,7 @@ And also stopping and disabling <code>systemd-resolved.service</code> service:</
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl stop systemd-resolved.service
 </span></span><span class="line"><span class="cl">sudo systemctl disable systemd-resolved.service
 </span></span></code></pre></div><p>and make sure that inside <code>/etc/resolv.conf</code> <code>nameserver</code> is not something local set it to google as DNS provider:</p>
-<pre tabindex="0"><code class="language-conf" data-lang="conf">nameserver=8.8.8.8
+<pre tabindex="0"><code class="language-conf" data-lang="conf">nameserver 8.8.8.8
 </code></pre><hr>
 <h2 id="making-your-network-take-advantage-of-pi-hole">Making your network take advantage of Pi-hole<a href="#making-your-network-take-advantage-of-pi-hole" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">

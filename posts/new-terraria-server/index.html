@@ -18,7 +18,7 @@
   <meta itemprop="name" content="New Terraria server">
   <meta itemprop="description" content="Updating existing Terraria server from vanilla containerized server (not even using the compose file) to more professional server using `TShock`, open source software for more control over the server.">
   <meta itemprop="datePublished" content="2025-12-04T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-03-07T12:49:06+00:00">
+  <meta itemprop="dateModified" content="2026-03-22T16:06:23+00:00">
   <meta itemprop="wordCount" content="527"><meta property="og:url" content="https://demetrebadzaradze.github.io/Second-Brain/posts/new-terraria-server/">
   <meta property="og:site_name" content="Second-Brain">
   <meta property="og:title" content="New Terraria server">
@@ -27,7 +27,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-12-04T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-03-07T12:49:06+00:00">
+    <meta property="article:modified_time" content="2026-03-22T16:06:23+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="New Terraria server">
@@ -41,11 +41,11 @@
     "name": "New Terraria server",
     "description": "Updating existing Terraria server from vanilla containerized server (not even using the compose file) to more professional server using `TShock`, open source software for more control over the server.",
     "keywords": [],
-    "articleBody": "Intro I already had a Terraria server set up that I used for a while. But once I came back, I saw a lot of flaws with my previous setup, mainly performance, and not enough customization. So I searched and found this project called TShock. It is great, and in short, it tweaks a lot of things that are public in the Terraria source code. It also makes a lot of things much better like world saving, administration and it is structurally better than junk I had before.\nPlan Plan is to have a TShock powered terraria server as a container, make it easily runnable and also migrate to it.\nDocker compose set-up This time i will be using docker compose, since it is easy to configure one .yml file once and than just compose it up and down, rather than figuring out want environment variable need to be based in a docker run command, every time I start the server. Plus this way I can make server start automatically after boot.\nHere is what the compose.yml file looks like:\nservices: terraria: image: ghcr.io/pryaxis/tshock:latest container_name: terraria-test volumes: - \"./tshock/:/tshock\" - \"./worlds:/worlds\" - \"./plugins:/plugins\" - \"/etc/localtime:/etc/localtime:ro\" ports: - \"7777:7777\" # command: -world /worlds/.wld restart: \"no\" stop_grace_period: 60s tty: true stdin_open: true restart can be set to unless-stopped so it starts on boot.\nNOTE: command option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing \u003c, \u003e and content in the middle).\nRunning the server Now this can be ran in two ways.\nFirst is the interactive way with this: docker compose run terraria NOTE: Here terraria is the name of the service that is defined in the .yml file. So replace it accordingly.\nAnd none interactive way with: docker compose up This just gives read only logs of the container. You can also run this in detached mode with -d option. This way is simpler and preferred if you are not going to use any commands on not interact with the program, it is great for just running it.\nFirst run Upon first boot, if you don’t have the world created and entered in the .yml, you will have to create the world. This is an interactive process so run with run command instead of up and follow the world configuration steps.\nAfter first run After initial run world should be created in the appropriate directory (./worlds, on host, in this case) with the name you chouse, as a .wld file. Then uncomment the the command option in .yml file and configure whatever you wish. And finally run it as you wish.\nMigrating from old set-up to TShock All we need is a .wld file from the old set-up. Place that into ./worlds directory (optional, since you can just mount the old path for /worlds directory, but clean), uncomment command option in the .yml and input the appropriate path to this world.\nYou can then follow the TShock guidance in the chat and finish the setup and then configure the server as you wish.\n",
+    "articleBody": "Intro I already had a Terraria server set up that I used for a while. But once I came back, I saw a lot of flaws with my previous setup, mainly performance, and not enough customization. So I searched and found this project called TShock. It is great, and in short, it tweaks a lot of things that are public in the Terraria source code. It also makes a lot of things much better like world saving, administration and it is structurally better than junk I had before.\nPlan Plan is to have a TShock powered terraria server as a container, make it easily runnable and also migrate to it.\nDocker compose set-up This time i will be using docker compose, since it is easy to configure one .yml file once and than just compose it up and down, rather than figuring out want environment variable need to be based in a docker run command, every time I start the server. Plus this way I can make server start automatically after boot.\nHere is what the compose.yml file looks like:\nservices: terraria: image: ghcr.io/pryaxis/tshock:latest container_name: terraria-test volumes: - \"./tshock/:/tshock\" - \"./worlds:/worlds\" - \"./plugins:/plugins\" - \"/etc/localtime:/etc/localtime:ro\" ports: - \"7777:7777\" # command: -world /worlds/.wld restart: \"no\" stop_grace_period: 60s tty: true stdin_open: true restart can be set to unless-stopped so it starts on boot.\n[!NOTE] command option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing \u003c, \u003e and content in the middle).\nRunning the server Now this can be ran in two ways.\nFirst is the interactive way with this: docker compose run terraria [!NOTE] Here terraria is the name of the service that is defined in the .yml file. So replace it accordingly.\nAnd none interactive way with: docker compose up This just gives read only logs of the container. You can also run this in detached mode with -d option. This way is simpler and preferred if you are not going to use any commands on not interact with the program, it is great for just running it.\nFirst run Upon first boot, if you don’t have the world created and entered in the .yml, you will have to create the world. This is an interactive process so run with run command instead of up and follow the world configuration steps.\nAfter first run After initial run world should be created in the appropriate directory (./worlds, on host, in this case) with the name you chouse, as a .wld file. Then uncomment the the command option in .yml file and configure whatever you wish. And finally run it as you wish.\nMigrating from old set-up to TShock All we need is a .wld file from the old set-up. Place that into ./worlds directory (optional, since you can just mount the old path for /worlds directory, but clean), uncomment command option in the .yml and input the appropriate path to this world.\nYou can then follow the TShock guidance in the chat and finish the setup and then configure the server as you wish.\n",
     "wordCount" : "527",
     "inLanguage": "en",
     "datePublished": "2025-12-04T00:00:00Z",
-    "dateModified": "2026-03-07T12:49:06Z",
+    "dateModified": "2026-03-22T16:06:23Z",
     "author":{
         "@type": "Person",
         "name": "Demetre Badzgaradze",
@@ -195,7 +195,7 @@
       <circle cx="12" cy="12" r="4"></circle>
       <line x1="1.05" y1="12" x2="7" y2="12"></line>
       <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
-   </svg><a href="https://github.com/demetrebadzaradzec199c905c706bff1a799524bbba890b8ea0c577e" target="_blank" rel="noopener">c199c90</a> @ 2026-03-07]</p></div>
+   </svg><a href="https://github.com/demetrebadzaradzeed080a821f1317c1eeef81b004ea855662569446" target="_blank" rel="noopener">ed080a8</a> @ 2026-03-22]</p></div>
 			<hr class="post-end">
 			<div class="content">
 				 <h2 id="intro">Intro<a href="#intro" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -235,7 +235,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span></code></pre></div><p><code>restart</code> can be set to <code>unless-stopped</code> so it starts on boot.</p>
 <blockquote>
-<p><strong>NOTE:</strong> <code>command</code> option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing <code>&lt;</code>, <code>&gt;</code> and content in the middle).</p>
+<p>[!NOTE]
+<code>command</code> option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing <code>&lt;</code>, <code>&gt;</code> and content in the middle).</p>
 </blockquote>
 <h2 id="running-the-server">Running the server<a href="#running-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -248,7 +249,8 @@
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run terraria
 </span></span></code></pre></div><blockquote>
-<p><strong>NOTE:</strong> Here <code>terraria</code> is the name of the service that is defined in the <code>.yml</code> file. So replace it accordingly.</p>
+<p>[!NOTE]
+Here <code>terraria</code> is the name of the service that is defined in the <code>.yml</code> file. So replace it accordingly.</p>
 </blockquote>
 <ol start="2">
 <li>And none interactive way with:</li>

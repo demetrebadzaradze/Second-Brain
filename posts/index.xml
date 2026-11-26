@@ -103,7 +103,7 @@ Always exploring new technologies and learning by doing.</p>
    </svg></a></h2>
 <p>Here how simple <strong>backup</strong> works:</p>
 <ul>
-<li>Make raw disk image containing exact bit-by-bit copy of the physical drive.</li>
+<li>Make raw <code>disk image</code> containing exact bit-by-bit copy of the physical drive.</li>
 <li>Compress it for better storage.</li>
 </ul>
 <p>When it comes to <strong>restoring</strong> this data I will just:</p>
@@ -126,7 +126,7 @@ Always exploring new technologies and learning by doing.</p>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
 <p>Usually this <code>.img</code> file takes up as much storage as the devices storage amount. So compressing it is a good Idea.
-There are lot of compression algorithms and one you chouse may vary depending on what king of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like <code>xz</code> would not do a lot, other than take a lot longer.  I found that <code>gzip</code> is the  best middle of the ground option. It had been the standard for Linux for decades at this point.
+There are lot of compression algorithms and one you choose may vary depending on what kind of information is on the drive and what do you intend to use it for. For example if the data on the drive is already pretty compressed then using better compression algorithms like <code>xz</code> would not do a lot, other than take a lot longer.  I found that <code>gzip</code> is the  best middle of the ground option. It had been the standard for Linux for decades at this point.
 So here is how compression with <code>gzip</code> goes:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gzip random_sdcard_backup.img
 </span></span></code></pre></div><p>Here we could use <code>-k</code> for the option for keeping the original file. Also <code>-1, --fast</code> to compress faster and <code>-9, --best</code> to compress better.</p>
@@ -194,7 +194,8 @@ So here is how compression with <code>gzip</code> goes:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span></code></pre></div><p><code>restart</code> can be set to <code>unless-stopped</code> so it starts on boot.</p>
 <blockquote>
-<p><strong>NOTE:</strong> <code>command</code> option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing <code>&lt;</code>, <code>&gt;</code> and content in the middle).</p>
+<p>[!NOTE]
+<code>command</code> option is commented because initial run of the container is just needed to create the world. After that this option needs to be uncommented and world name needs to be entered appropriately (replacing <code>&lt;</code>, <code>&gt;</code> and content in the middle).</p>
 </blockquote>
 <h2 id="running-the-server">Running the server<a href="#running-the-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -207,7 +208,8 @@ So here is how compression with <code>gzip</code> goes:</p>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run terraria
 </span></span></code></pre></div><blockquote>
-<p><strong>NOTE:</strong> Here <code>terraria</code> is the name of the service that is defined in the <code>.yml</code> file. So replace it accordingly.</p>
+<p>[!NOTE]
+Here <code>terraria</code> is the name of the service that is defined in the <code>.yml</code> file. So replace it accordingly.</p>
 </blockquote>
 <ol start="2">
 <li>And none interactive way with:</li>
@@ -240,7 +242,7 @@ So here is how compression with <code>gzip</code> goes:</p>
 			<title>New Server Setup (Debian)</title>
 			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/</link>
 			<pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/new-server-setup-debian/</guid>
-			<description><![CDATA[Giving second life to another old laptop. This one has an SATA port with I populated with 256GB SSD also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud,]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+			<description><![CDATA[Giving second life to another old laptop. This one has an SATA port which I populated with 256GB SSD. It also has an intel atom x5-E8000 CPU @ 1.04GHz 4 cores and 4GB of RAM. Dedicated for running Nextcloud.]]></description><content type="text/html" mode="escaped"><![CDATA[<h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -257,15 +259,15 @@ So here is how compression with <code>gzip</code> goes:</p>
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
-<p>This step i thought would take somewhere around a hour but i was stuck here for <strong>3 days</strong>. the thing was that i didn&rsquo;t had beefy enough USB drive, but as always i would realize that far into the project, after i would try every possible configuration starting from Rufus all the way to the custom made ISOs, but nothing worked other than <strong>most bizarre solution</strong>:</p>
+<p>This step I thought would take somewhere around a hour but I was stuck here for <strong>3 days</strong>. The thing was that I didn&rsquo;t had beefy enough USB drive, but as always I would realize that far into the project, after i would try every possible configuration starting from Rufus all the way to the custom made ISOs, but nothing worked other than <strong>most bizarre solution</strong>:</p>
 <ol>
-<li>Install Arch(BTW) on a USB drive since it is so lite.</li>
+<li>Install Arch(BTW) on a USB drive for its lite nature.</li>
 <li>Get Arch running.</li>
 <li>Install the media SSD.</li>
 <li>mount the internal storage, since live USB has limited storage.</li>
-<li>Install and flash Debian ISO in media Drive.</li>
+<li>Flash and install Debian ISO on media Drive.</li>
 <li>Boot from that drive and install Debian.
-and i had that working just fine, other than some packages straight up not working.</li>
+I had that working just fine, other than some packages straight up not working.</li>
 </ol>
 <hr>
 <h2 id="configuration">Configuration<a href="#configuration" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -273,40 +275,43 @@ and i had that working just fine, other than some packages straight up not worki
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
-<p>Coming from Ubuntu server Debian is not as defaulted in terms of configurations, even the aliases are commented out so there was a a plenty things to setup way i like it.</p>
+<p>Coming from Ubuntu server Debian is not as defaulted in terms of configurations. Even the aliases are commented out, so there were a plenty of things to setup the way I liked it.</p>
 <h4 id="sudo-and-su"><code>sudo</code> and <code>su</code><a href="#sudo-and-su" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h4>
-<p>Also no <code>sudo</code> by default, witch was surprising until i found out the reason, that <code>sudo</code> is just <code>su</code> do, so telling the superuser to do one thing and for authorization it uses the current users password. so using <code>su</code> is better for security and I&rsquo;m getting along with it quite nicely.</p>
+<p>Also no <code>sudo</code> by default, which was surprising until I found out the reason. <code>sudo</code> is just <code>su</code> + <code>do</code>, so it is telling the superuser to do one thing and for authorization it uses password of the current user. So using <code>su</code> is better for security and I&rsquo;m getting along with it quite nicely.</p>
+<blockquote>
+<p>[!NOTE]
+Edit from about 6 months later: I quite like the separation of <code>su</code>, It really is better for security. I see myself using superuser less, when I need to go into different userspace. The password for it is much stronger. It is dedicaded for important tasks, as it should be, and overall everything is much cleaner and defined.</p>
+</blockquote>
 <h4 id="bashrc"><code>.bashrc</code><a href="#bashrc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h4>
-<p>Also I wanted this server to resemble the Debian setup that i have in <code>termux</code> on my phone so kind of like a station so had to display some ASCII art,<code>fastfetch</code> and <code>micro</code> instead of <code>nano</code>. Custom <code>PS1</code>, but nothing fancy just red colored <code>root</code> for super user and green for others.</p>
+<p>Also I wanted this server to resemble the Debian setup which I have in <code>termux</code> on my phone. It is kind of like a station, so had to display some ASCII art. Installed <code>fastfetch</code> and <code>micro</code> instead of <code>nano</code>. Custom <code>PS1</code>, but nothing fancy just red colored <code>root</code> for superuser and green for others.</p>
 <hr>
 <h2 id="software-install">Software Install<a href="#software-install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
-<h3 id="monitoringalways-on-display">Monitoring/Always On Display<a href="#monitoringalways-on-display" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+<h3 id="monitoringalways-on-display">Monitoring/Always-On-Display<a href="#monitoringalways-on-display" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>This new <code>top</code> child called <a href="https://github.com/aristocratos/btop/tree/v1.4.5">btop</a> looks cool and is actually useful and feature dense and just look at <a href="https://github.com/aristocratos/btop/tree/v1.4.5?tab=readme-ov-file#screenshots">it</a>:
+<p>This new <code>top</code> &lsquo;child&rsquo; called <a href="https://github.com/aristocratos/btop/tree/v1.4.5">btop</a> looks cool and it is actually useful. It is feature dense and just look it:
 <img src="https://screenshots.debian.net/screenshot/btop/22650" alt="beautiful btop screenshot">
-this one is not mine though, but i will be experimenting with it and the themes look so good too.</p>
-<p>for monitoring i will be using <code>btop</code> looks nice and is displaying some useful general info that i need.</p>
+This one is not mine though. But I will be experimenting with it and the themes look so good too.</p>
 <h3 id="nextcloud-setup">Nextcloud setup<a href="#nextcloud-setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h3>
-<p>Easiest way to run Nextcloud is with container, but since I&rsquo;m using <code>btop</code> i want to monitor everything separately and not as one docker program for example, so i will be instaldling it manually, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> witch uses <a href="">LAMP Stack</a><a href="https://www.ibm.com/think/topics/lamp-stack">https://www.ibm.com/think/topics/lamp-stack</a>.</p>
+<p>Easiest way to run Nextcloud is with a container, but since I&rsquo;m using <code>btop</code> I want to monitor everything and not one docker program. So I will be instaldling it on bare-bone, following the <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/source_installation.html#">official manual</a> which uses <a href="https://www.ibm.com/think/topics/lamp-stack">LAMP Stack</a>.</p>
 <h4 id="php-install">PHP Install<a href="#php-install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
@@ -314,7 +319,7 @@ this one is not mine though, but i will be experimenting with it and the themes 
    </svg></a></h4>
 <p>Recommended PHP version, for now, is <code>v8.3</code> and in Debian repos there is only the newest version that can be installed like this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install -y php libapache2-mod-php php-mysql php-mbstring
-</span></span></code></pre></div><p>so for specific version, i added sury.org repository:
+</span></span></code></pre></div><p>so for specific version, I added sury.org repository:
 first install tools, get the sign and add repo:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install -y apt-transport-https lsb-release ca-certificates curl
 </span></span><span class="line"><span class="cl">curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg 
@@ -323,12 +328,12 @@ first install tools, get the sign and add repo:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt update
 </span></span></code></pre></div><p>and now install specific versions</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install php8.3 libapache2-mod-php8.3 php8.3-mysql php8.3-mbstring
-</span></span></code></pre></div><h5 id="test-php">test PHP<a href="#test-php" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+</span></span></code></pre></div><h5 id="test-php">Test PHP<a href="#test-php" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h5>
-<p>First check the version to see if its even installed:</p>
+<p>First check the version to see if it&rsquo;s even installed:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">php -v
 </span></span></code></pre></div><p>Then add new <code>php</code> file in <code>apache</code> directory with your editor of choice:</p>
 <pre tabindex="0"><code>micro /var/www/html/test.php
@@ -347,13 +352,12 @@ then restart <code>apache2</code></p>
    </svg></a></h5>
 <p>Nextcloud needs some extensions to work as intended:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install -y php php-mysql php-gd php-xml php-mbstring php-curl php-zip php-intl php-bcmath php-gmp libapache2-mod-php unzip wget
-</span></span></code></pre></div><p>or the specific versions of this.</p>
-<h4 id="mariadb-install">MariaDB Install<a href="#mariadb-install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+</span></span></code></pre></div><h4 id="mariadb-install">MariaDB Install<a href="#mariadb-install" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h4>
-<p>MariaDB is is the suggested database for Nextcloud so i installed it:</p>
+<p>MariaDB is is the suggested database for Nextcloud so I installed it:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install -y mariadb-server mariadb-client
 </span></span></code></pre></div><p>start and enable it:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl start mariadb <span class="o">&amp;&amp;</span> systemctl <span class="nb">enable</span> mariadb
@@ -378,7 +382,7 @@ Create new user for Nextcloud to use:</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="o">&lt;</span><span class="k">database</span><span class="w"> </span><span class="n">username</span><span class="o">&gt;@</span><span class="n">localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password for this user&gt;&#39;</span><span class="p">;</span><span class="w">  
 </span></span></span></code></pre></div><ul>
-<li>Replace <code>&lt;database username&gt;</code> with actual  username and <code>&lt;password for this user&gt;</code> withe secure password for that user, these will also be needed for initial setup of Nextcloud. &rsquo;localhost&rsquo; is used since the Nextcloud and the database are  on the same server.<br>
+<li>Replace <code>&lt;database username&gt;</code> with actual  username and <code>&lt;password for this user&gt;</code> withe secure password for that user, these will also be needed for initial setup of Nextcloud. &rsquo;localhost&rsquo; is used since the Nextcloud and the database are on the same server.<br>
 Give permissions for the database to user, both of witch we just made in an earlier steps.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="k">database</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="o">&lt;</span><span class="k">database</span><span class="w"> </span><span class="n">username</span><span class="o">&gt;@</span><span class="n">localhost</span><span class="p">;</span><span class="w">
@@ -403,7 +407,7 @@ Give permissions for the database to user, both of witch we just made in an earl
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h5>
 <p>configuring the  firewall is critical part of this for security and for it to work properly.
-so i installed <code>ufw</code> (Uncomplicated Firewall) witch is a frontend for <code>iptables</code> or <code>nftables</code>, making it easier to manage rules without complex syntax.
+I installed <code>ufw</code> (Uncomplicated Firewall) witch is a frontend for <code>iptables</code> or <code>nftables</code>, making it easier to manage rules without complex syntax.
 Install:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install -y ufw
 </span></span></code></pre></div><p>and configured to enable incoming http and https requests, loopback, witch is a virtual interface <code>lo</code> and is used for local services to communicate and not use the external interfaces like <code>wlan0</code> or <code>eth0</code>, and also SSH connections:</p>
@@ -435,17 +439,17 @@ Install:</p>
    </svg></a></h5>
 <p>First change the working directory to where <code>apache2</code> serving files are located at:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /var/www/html/
-</span></span></code></pre></div><p>Get the latest version of Nextcloud from the official website and unzip and delete it:</p>
+</span></span></code></pre></div><p>Get the latest version of Nextcloud from the official website and unzip and delete the archive:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://download.nextcloud.com/server/releases/latest.zip
 </span></span><span class="line"><span class="cl">unzip latest.zip
 </span></span><span class="line"><span class="cl">rm -f latest.zip
-</span></span></code></pre></div><p>correct the ownership and permissions so Apache can access the unzipped folder <code>nextcloud</code>:</p>
+</span></span></code></pre></div><p>Correct the ownership and permissions so Apache can access the unzipped folder <code>nextcloud</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chown -R www-data:www-data nextcloud/
 </span></span><span class="line"><span class="cl">chmod -R <span class="m">755</span> nextcloud/
 </span></span><span class="line"><span class="cl">ls -l
-</span></span></code></pre></div><p>list should show this:</p>
+</span></span></code></pre></div><p>The list should show this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">drwxr-xr-x <span class="m">14</span> www-data www-data  <span class="m">4096</span> Sep <span class="m">27</span> 11:55 nextcloud
-</span></span></code></pre></div><p>Then i added single configuration file. for Debian it should in this path:</p>
+</span></span></code></pre></div><p>Then I added single configuration file. For Debian it should be in this path:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">micro /etc/apache2/sites-available/nextcloud.conf
 </span></span></code></pre></div><p>and insert this content:</p>
 <pre tabindex="0"><code class="language-conf" data-lang="conf">&lt;VirtualHost *:80&gt;
@@ -462,7 +466,7 @@ Install:</p>
     &lt;/IfModule&gt;
   &lt;/Directory&gt;
 &lt;/VirtualHost&gt;
-</code></pre><p>and replace <code>DocumentRoot</code>, <code>DocumentRoot</code> and <code>Directory</code> according to your setup but this works for this documentation.
+</code></pre><p>Replace <code>DocumentRoot</code>, <code>DocumentRoot</code> and <code>Directory</code> according to your setup, but it works for this documentation.
 To enable the site run:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">a2ensite nextcloud.conf
 </span></span></code></pre></div><p>Enable additional modules:</p>
@@ -474,12 +478,12 @@ To enable the site run:</p>
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h4>
-<p>On browser go to the domain name or the IP of the server. The first Time visit asks for configuration like <strong>admin username and password</strong>. Also <strong>Data folder</strong>, this is where data is saved at and by default it is set to the same directory were app is server from + <code>/data</code>. setting custom path is simple:</p>
+<p>On browser go to the domain name or the IP of the server. The first Time visit asks for configuration like <strong>admin username and password</strong>. Also <strong>Data folder</strong>, this is where data is saved at and by default it is set to the same directory were app is server from + <code>/data</code>. Setting custom path is simple:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir nextcloud
 </span></span><span class="line"><span class="cl">chown -R www-data:www-data nextcloud/
 </span></span><span class="line"><span class="cl">chmod -R <span class="m">700</span> nextcloud/
 </span></span><span class="line"><span class="cl">ls -l
-</span></span></code></pre></div><p>this could be ran everywhere and gives correct, permissions:</p>
+</span></span></code></pre></div><p>This could be ran everywhere and gives correct, permissions:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">drwx------ <span class="m">2</span> www-data www-data  <span class="m">4096</span> Oct <span class="m">12</span> 15:29 nextcloud
 </span></span></code></pre></div><p>and also <code>.ncdata</code> file should be present in the data folder:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">micro ./nextcloud/.ncdata
@@ -494,14 +498,14 @@ To enable the site run:</p>
 <p>For me web UI didn&rsquo;t work so i changed directory to the Nextcloud and ran this:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">php occ  maintenance:install  --database <span class="s1">&#39;&lt;mysql&gt;&#39;</span> --database-name <span class="s1">&#39;&lt;database name&gt;&#39;</span>  --d
 </span></span><span class="line"><span class="cl">atabase-user <span class="s1">&#39;&lt;database user&gt;&#39;</span> --database-pass <span class="s1">&#39;&lt;data base user password&gt;&#39;</span>  --admin-user <span class="s1">&#39;&lt;admin name&gt;&#39;</span> --admin-pass <span class="s1">&#39;&lt;admin password&gt;&#39;</span>
-</span></span></code></pre></div><p>replace the items that are like this <code>&lt; &gt;</code>.after install edit the <code>config/config.php</code> to adjust some desired setting like trusted domains and data folder path(this still needs <code>.mcdata</code> file in there with same <code># Nextcloud data directory</code> content) after that reapply all the permissions to all Nextcloud directories and all set.</p>
+</span></span></code></pre></div><p>Replace the items that are like this <code>&lt; &gt;</code>. After the install edit the <code>config/config.php</code> to adjust some desired settings like trusted domains and data folder path (this still needs <code>.ncdata</code> file in there with same <code># Nextcloud data directory</code> content). After that reapply all the permissions to all Nextcloud directories and all set.</p>
 <hr>
 <h2 id="finish">Finish<a href="#finish" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
-<p>Now that all of this is done I will be adding users to Nextcloud and make it usable for  other at my house and maybe if specs help me i will move this to different port and also run PIHole on here too.</p>
+<p>Now that all of this is done I will be adding users to Nextcloud and I will be makeing it usable for other at my house and maybe, if specs allow me, I will move this to different port and also run PIHole on here too.</p>
 ]]></content>
 		</item>
 		
@@ -928,7 +932,7 @@ And also stopping and disabling <code>systemd-resolved.service</code> service:</
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl stop systemd-resolved.service
 </span></span><span class="line"><span class="cl">sudo systemctl disable systemd-resolved.service
 </span></span></code></pre></div><p>and make sure that inside <code>/etc/resolv.conf</code> <code>nameserver</code> is not something local set it to google as DNS provider:</p>
-<pre tabindex="0"><code class="language-conf" data-lang="conf">nameserver=8.8.8.8
+<pre tabindex="0"><code class="language-conf" data-lang="conf">nameserver 8.8.8.8
 </code></pre><hr>
 <h2 id="making-your-network-take-advantage-of-pi-hole">Making your network take advantage of Pi-hole<a href="#making-your-network-take-advantage-of-pi-hole" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -973,7 +977,8 @@ Each router is different but generally its under <code>Advanced &gt; IP Adrresin
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
 <blockquote>
-<p><strong><em>NOTE:</em></strong> <code>SSH</code> is installed on Windows mac OS and most Linux&rsquo;s by default and it will be needed off course.</p>
+<p>[!NOTE]
+<code>SSH</code> is installed on Windows mac OS and most Linux&rsquo;s by default and it will be needed off course.</p>
 </blockquote>
 <p>key gen is is pretty simple run:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
@@ -1586,7 +1591,8 @@ once you are a super user you can then manage channels and whatnot</p>
 			<link>https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/</link>
 			<pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate><author>Demetre Badzgaradze</author><guid>https://demetrebadzaradze.github.io/Second-Brain/posts/recovering-corrupted-usb-drive/</guid>
 			<description><![CDATA[I have an USB drive that my friend gave me it is 64 GB drive and USB 2.0 so so nothing crazy but solid. I tested it with validrive and it was pretty slow but truly 64 GB and no error. little did i knew i would have quite some time with it. at first i wanted to mount it on my server but formatting it as FAT32 NTFS or exFAT would not work i would get some errors and nothing else, so i went  with F2FS witch is format made for flash storage and support for it is not much but whatever it worked fine for holding media for my Jellyfin media server until it just started giving I/O error and now i will try to fix.]]></description><content type="text/html" mode="escaped"><![CDATA[<blockquote>
-<p><strong>WARNING</strong>: STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION</p>
+<p>[!WARNING]
+STOP USING THE DRIVE IMMEDIATELY IN CASE OF CORRUPTION</p>
 </blockquote>
 <h2 id="plan">Plan<a href="#plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -1600,7 +1606,8 @@ once you are a super user you can then manage channels and whatnot</p>
 <li>using the tools downloaded, recover the data.</li>
 </ol>
 <blockquote>
-<p><strong><em>NOTE:</em></strong>  if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.</p>
+<p>[!NOTE]
+if using a VM allocate more then the drive size, for making a backup and recover files allocate double the size of drive you want to recover to make sure you have enough space and wont have to restart 4 times (speaking from experience). for copying on another drive and recovering just Linux plus some space for swap and programs is good enough.</p>
 </blockquote>
 <h2 id="backup-the-raw-data-of-the-driveoptional-but-recommended">Backup the raw data of the drive(optional but recommended)<a href="#backup-the-raw-data-of-the-driveoptional-but-recommended" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
@@ -1660,7 +1667,8 @@ once you are a super user you can then manage channels and whatnot</p>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
 <blockquote>
-<p><strong><em>NOTE</em></strong>:  the image will be same so it contains corrupted data</p>
+<p>[!NOTE]
+the image will be same so it contains corrupted data</p>
 </blockquote>
 <p>done with <code>dd</code> command once again run:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>/home/user/backup.img <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress
@@ -1679,7 +1687,7 @@ if image is compressed run:</li>
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
       <line x1="8" y1="12" x2="16" y2="12"></line>
    </svg></a></h2>
-<p>i will still be using the <code>F2FS</code> format for this but you are welcome to chouse any that you would like.</p>
+<p>i will still be using the <code>F2FS</code> format for this but you are welcome to choose any that you would like.</p>
 <p>so lets try to fix it by installing the tools for this format:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install f2fs-tools
 </span></span></code></pre></div><p>and then try to fix it by:</p>
@@ -1687,7 +1695,7 @@ if image is compressed run:</li>
 </span></span></code></pre></div><p>change the path accordingly and again use <code>lsblk</code> to identify it.</p>
 <p>in my case fixing it like this didn&rsquo;t work so i will just reformat it:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fsck.f2fs /dev/sdb
-</span></span></code></pre></div><p>this will delete all data on there but then i will just move recovered files on there and its done.</p>
+</span></span></code></pre></div><p>this will try to recover files but all of the corrupted files will be gone.</p>
 <h3 id="testing-usb">Testing USB<a href="#testing-usb" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
