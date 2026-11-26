@@ -65,7 +65,7 @@ sudo systemctl disable systemd-resolved.service
 ```
  and make sure that inside `/etc/resolv.conf` `nameserver` is not something local set it to google as DNS provider:
 ```conf
-nameserver=8.8.8.8
+nameserver 8.8.8.8
 ```
 
 ****
